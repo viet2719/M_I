@@ -1,8 +1,96 @@
-import React from 'react'
-import styles from '../../styles/common/footer.module.scss'
+import React, { useState } from 'react'
 import Image from 'next/image'
-
+import styles from '../../styles/common/footer.module.scss'
+const footerData = [
+	{
+		id: 1,
+		header: 'Dành cho ứng viên',
+		links: [
+			{ label: 'Mẫu CV xin việc', url: '#' },
+			{ label: 'Thư xin việc', url: '#' },
+			{ label: 'Hồ sơ xin việc', url: '#' },
+			{ label: 'Bí quyết viết CV', url: '#' },
+			{ label: 'Trang vàng', url: '#' },
+		],
+	},
+	{
+		id: 2,
+		header: 'Dành cho nhà tuyển dụng',
+		links: [
+			{ label: 'Đăng tuyển dụng', url: '#' },
+			{ label: 'Cẩm nang tuyển dụng', url: '#' },
+			{ label: 'Tìm hồ sơ', url: '#' },
+			{ label: 'Ứng dụng chuyển đổi số', url: '#' },
+			{ label: 'Biểu mẫu', url: '#' },
+		],
+	},
+	{
+		id: 3,
+		header: 'Tiện ích',
+		links: [
+			{ label: 'Tra cứu lương', url: '#' },
+			{ label: 'Lương Gross - Net', url: '#' },
+			{ label: 'Email365', url: '#' },
+			{ label: 'Tải app', url: '#' },
+			{ label: 'Tính bảo hiểm thất nghiệp', url: '#' },
+		],
+	},
+	{
+		id: 4,
+		header: 'Việc làm theo khu vực',
+		links: [
+			{ label: 'Việc làm tại Hà Nội', url: '#' },
+			{ label: 'Việc làm tại Hồ Chí Minh', url: '#' },
+			{ label: 'Việc làm tại Đà Nẵng', url: '#' },
+			{ label: 'Việc làm tại Hải Phòng', url: '#' },
+			{ label: 'Việc làm tại Bình Dương', url: '#' },
+			{ label: 'Việc làm tại Cần Thơ', url: '#' },
+			{ label: 'Việc làm tại Đồng Nai', url: '#' },
+			{ label: 'Việc làm tại Bắc Ninh', url: '#' },
+		],
+		other_list: 'Xem tất cả',
+	},
+	{
+		id: 5,
+		header: 'Việc làm theo ngành nghề',
+		links: [
+			{ label: 'Việc làm kinh doanh', url: '#' },
+			{ label: 'Việc làm bất động sản', url: '#' },
+			{ label: 'Việc làm bảo hiểm', url: '#' },
+			{ label: 'Việc làm IT', url: '#' },
+			{ label: 'Việc làm nhân sự', url: '#' },
+			{ label: 'Việc làm bán hàng', url: '#' },
+			{ label: 'Việc làm lương cao', url: '#' },
+			{ label: 'Việc làm kế toán', url: '#' },
+		],
+		other_list: 'Xem tất cả',
+	},
+	{
+		id: 6,
+		header: 'Việc làm theo tag',
+		links: [
+			{ label: 'Việc làm PHP', url: '#' },
+			{ label: 'Việc làm Kế toán nội bộ', url: '#' },
+			{ label: 'Việc làm Digital Marketing', url: '#' },
+			{ label: 'Việc làm chuyên viên seo', url: '#' },
+			{ label: 'Việc làm bất động sản', url: '#' },
+			{ label: 'Việc làm thực tập sinh', url: '#' },
+			{ label: 'Việc làm nhân viên bảo hiểm', url: '#' },
+			{ label: 'Việc làm Content', url: '#' },
+		],
+		other_list: 'Xem tất cả',
+	},
+]
 const Footer = () => {
+	const [show_timviec365, setShow_timviec365] = useState(false)
+	const [activeSection, setActiveSection] = useState(null)
+	const toggleSection = (index: any) => {
+		if (activeSection === index) {
+			setActiveSection(null)
+		} else {
+			setActiveSection(index)
+		}
+	}
 	return (
 		<div className={styles.footer_main}>
 			<div className={styles.footer_content}>
@@ -243,26 +331,38 @@ const Footer = () => {
 				<div className={styles.gach_ngang} />
 				<div className={styles.footer_block2}>
 					<div className={styles.about_365}>
-						<div className={`${styles.wrap_arr} ${styles.open_content}`}>
+						<div
+							className={`${styles.wrap_arr} ${styles.open_content}`}
+							onClick={() => {
+								setShow_timviec365(!show_timviec365)
+							}}
+						>
 							<p className={styles.footer_block2_header}>Về Timviec365</p>
 							<div className={`${styles.arr_respon} ${styles.hidden}`}>
-								<Image
-									width={14}
-									height={15}
-									src={'images/before_login/arr_up.svg'}
-									className={styles.hidden}
-									alt="arrow_up"
-								/>
-								<Image
-									width={14}
-									height={15}
-									src={'images/before_login/arr_down.svg'}
-									className={styles.hidden}
-									alt="arrow_up"
-								/>
+								{show_timviec365 ? (
+									<Image
+										width={14}
+										height={15}
+										src={'images/before_login/arr_up.svg'}
+										className={styles.hidden}
+										alt="arrow_up"
+									/>
+								) : (
+									<Image
+										width={14}
+										height={15}
+										src={'images/before_login/arr_down.svg'}
+										className={styles.hidden}
+										alt="arrow_up"
+									/>
+								)}
 							</div>
 						</div>
-						<div className={`${styles.list_about_365} ${styles.content_show}`}>
+						<div
+							className={`${styles.list_about_365} ${styles.content_show} ${
+								show_timviec365 ? styles.show : styles.hide
+							}`}
+						>
 							<div className={styles.timviec_item}>
 								<div className={styles.content_item}>
 									<a rel="nofollow" href="https://timviec365.vn/gioi-thieu-chung.html">
@@ -318,311 +418,78 @@ const Footer = () => {
 						</div>
 					</div>
 					<div className={styles.footer_block2_right}>
-						<div className={styles.for_uv}>
-							<div className={`${styles.wrap_arr} ${styles.open_content}`}>
-								<p className={styles.footer_block2_header}>Về Timviec365</p>
-								<div className={`${styles.arr_respon} ${styles.hidden}`}>
-									<Image
-										width={14}
-										height={15}
-										src={'images/before_login/arr_up.svg'}
-										className={styles.hidden}
-										alt="arrow_up"
-									/>
-									<Image
-										width={14}
-										height={15}
-										src={'images/before_login/arr_down.svg'}
-										className={styles.hidden}
-										alt="arrow_up"
-									/>
-								</div>
-							</div>
-							<div className={`${styles.list_for_uv} ${styles.content_show}`}>
-								<div className={styles.timviec_item}>
-									<div className={styles.content_item}>
-										<a href="https://timviec365.vn/cv-xin-viec">Mẫu CV xin việc</a>
-										<a href="https://timviec365.vn/cv365/mau-cover-letter-thu-xin-viec">
-											Thư xin việc
-										</a>
-										<a href="https://timviec365.vn/cv365/mau-don-xin-viec">Hồ sơ xin việc</a>
-									</div>
-									<div className={styles.content_item}>
-										<a href="https://timviec365.vn/blog/c24/bi-quyet-viet-cv">Bí quyết viết CV</a>
-										<a rel="nofollow" href="https://timviec365.vn/trang-vang-doanh-nghiep.html">
-											Trang vàng
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div className={styles.for_ntd}>
-							<div className={`${styles.wrap_arr} ${styles.open_content}`}>
-								<p className={styles.footer_block2_header}>Dành cho nhà tuyển dụng</p>
-								<div className={`${styles.arr_respon} ${styles.hidden}`}>
-									<Image
-										width={14}
-										height={15}
-										src={'images/before_login/arr_up.svg'}
-										className={styles.hidden}
-										alt="arrow_up"
-									/>
-									<Image
-										width={14}
-										height={15}
-										src={'images/before_login/arr_down.svg'}
-										className={styles.hidden}
-										alt="arrow_up"
-									/>
-								</div>
-							</div>
-							<div className={`${styles.list_for_ntd} ${styles.content_show}`}>
-								<div className={styles.timviec_item}>
-									<div className={styles.content_item}>
-										<a href="https://timviec365.vn/dang-tin-tuyen-dung-mien-phi.html">
-											Đăng tuyển dụng
-										</a>
-										<a href="https://timviec365.vn/blog">Cẩm nang tuyển dụng</a>
-										<a href="https://timviec365.vn/nguoi-tim-viec.html">Tìm hồ sơ</a>
-									</div>
-									<div className={styles.content_item}>
-										<a rel="nofollow" href="https://quanlychung.timviec365.vn/">
-											Ứng dụng chuyển đổi số
-										</a>
-										<a href="https://timviec365.vn/bieu-mau">Biểu mẫu</a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div className={styles.tien_ich}>
-							<div className={`${styles.wrap_arr} ${styles.open_content}`}>
-								<p className={styles.footer_block2_header}>Tiện ích</p>
-								<div className={`${styles.arr_respon} ${styles.hidden}`}>
-									<Image
-										width={14}
-										height={15}
-										src={'images/before_login/arr_up.svg'}
-										className={styles.hidden}
-										alt="arrow_up"
-									/>
-									<Image
-										width={14}
-										height={15}
-										src={'images/before_login/arr_down.svg'}
-										className={styles.hidden}
-										alt="arrow_up"
-									/>
-								</div>
-							</div>
-							<div className={`${styles.list_tien_ich} ${styles.content_show}`}>
-								<div className={styles.timviec_item}>
-									<div className={styles.content_item}>
-										<a rel="nofollow" href="https://timviec365.vn/ssl/so-sanh-luong.html">
-											Tra cứu lương
-										</a>
-										<a href="https://timviec365.vn/tinh-luong-gross-net.html">Lương Gross - Net</a>
-										<a rel="nofollow" href="https://timviec365.vn/mail365/">
-											Email365
-										</a>
-									</div>
-									<div className={styles.content_item}>
-										<a href="https://timviec365.vn/gioi-thieu-app-tim-viec.html">Tải app</a>
-										<a href="https://timviec365.vn/tinh-bao-hiem-that-nghiep" rel="nofollow">
-											Tính bảo hiểm thất nghiệp
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div className={styles.work_area}>
-							<div className={`${styles.wrap_arr} ${styles.open_content}`}>
-								<p className={styles.footer_block2_header}>Việc làm theo khu vực</p>
-								<div className={`${styles.arr_respon} ${styles.hidden}`}>
-									<Image
-										width={14}
-										height={15}
-										src={'images/before_login/arr_up.svg'}
-										className={styles.hidden}
-										alt="arrow_up"
-									/>
-									<Image
-										width={14}
-										height={15}
-										src={'images/before_login/arr_down.svg'}
-										className={styles.hidden}
-										alt="arrow_up"
-									/>
-								</div>
-							</div>
-							<div className={`${styles.list_work_area} ${styles.content_show}`}>
-								<div className={styles.timviec_item}>
-									<div className={styles.content_item}>
-										<a href="https://timviec365.vn/tim-viec-lam-tai-ha-noi.html">
-											Việc làm tại Hà Nội
-										</a>
-										<a href="https://timviec365.vn/viec-lam-tai-ho-chi-minh-c0v45">
-											Việc làm tại Hồ Chí Minh
-										</a>
-										<a href="https://timviec365.vn/viec-lam-tai-da-nang-c0v26">
-											Việc làm tại Đà Nẵng
-										</a>
-										<a href="https://timviec365.vn/viec-lam-tai-hai-phong-c0v2">
-											Việc làm tại Hải Phòng
-										</a>
-									</div>
-									<div className={styles.content_item}>
-										<a href="https://timviec365.vn/viec-lam-tai-binh-duong-c0v46">
-											Việc làm tại Bình Dương
-										</a>
-										<a href="https://timviec365.vn/viec-lam-tai-can-tho-c0v48">
-											Việc làm tại Cần Thơ
-										</a>
-										<a href="https://timviec365.vn/viec-lam-tai-dong-nai-c0v55">
-											Việc làm tại Đồng Nai
-										</a>
-										<a href="https://timviec365.vn/viec-lam-tai-bac-ninh-c0v5">
-											Việc làm tại Bắc Ninh
-										</a>
-									</div>
-								</div>
-								<a
-									rel="nofollow"
-									href="https://timviec365.vn/viec-lam-tai-tinh-thanh"
-									className={styles.seen_all}
+						{footerData.map((item, index) => (
+							<div key={index} className={styles.for_uv}>
+								<div
+									className={`${styles.wrap_arr} ${styles.open_content}`}
+									onClick={() => {
+										toggleSection(item.id)
+									}}
 								>
-									Xem tất cả{' '}
-									<Image
-										style={{ display: 'inline-block' }}
-										width={12}
-										height={11}
-										src="/images/before_login/2arr_right.svg"
-										alt="see_all"
-									/>
-								</a>
-							</div>
-						</div>
-						<div className={styles.work_job}>
-							<div className={`${styles.wrap_arr} ${styles.open_content}`}>
-								<p className={styles.footer_block2_header}>Việc làm theo ngành nghề</p>
-								<div className={`${styles.arr_respon} ${styles.hidden}`}>
-									<Image
-										width={14}
-										height={15}
-										src={'images/before_login/arr_up.svg'}
-										className={styles.hidden}
-										alt="arrow_up"
-									/>
-									<Image
-										width={14}
-										height={15}
-										src={'images/before_login/arr_down.svg'}
-										className={styles.hidden}
-										alt="arrow_up"
-									/>
-								</div>
-							</div>
-							<div className={`${styles.list_work_job} ${styles.content_show}`}>
-								<div className={styles.timviec_item}>
-									<div className={styles.content_item}>
-										<a href="https://timviec365.vn/viec-lam-nhan-vien-kinh-doanh-c9v0">
-											Việc làm kinh doanh
-										</a>
-										<a href="https://timviec365.vn/viec-lam-kd-bat-dong-san-c33v0">
-											Việc làm bất động sản
-										</a>
-										<a href="https://timviec365.vn/viec-lam-bao-hiem-c66v0">Việc làm bảo hiểm</a>
-										<a href="https://timviec365.vn/viec-lam-it-phan-mem-c13v0">Việc làm IT</a>
-									</div>
-									<div className={styles.content_item}>
-										<a href="https://timviec365.vn/viec-lam-nhan-su-c27v0">Việc làm nhân sự</a>
-										<a href="https://timviec365.vn/viec-lam-ban-hang-c10v0">Việc làm bán hàng</a>
-										<a href="https://timviec365.vn/viec-lam-luong-cao.html">Việc làm lương cao</a>
-										<a href="https://timviec365.vn/viec-lam-ke-toan-kiem-toan-c1v0">
-											Việc làm kế toán
-										</a>
+									<p className={styles.footer_block2_header}>{item.header}</p>
+									<div className={`${styles.arr_respon} ${styles.hidden}`}>
+										{activeSection === item.id ? (
+											<Image
+												width={14}
+												height={15}
+												src={'images/before_login/arr_up.svg'}
+												className={styles.hidden}
+												alt="arrow_up"
+											/>
+										) : (
+											<Image
+												width={14}
+												height={15}
+												src={'images/before_login/arr_down.svg'}
+												className={styles.hidden}
+												alt="arrow_down"
+											/>
+										)}
 									</div>
 								</div>
-								<a
-									rel="nofollow"
-									href="https://timviec365.vn/danh-sach-nganh-nghe"
-									className={styles.seen_all}
+								<div
+									key={`${index}_content`}
+									className={`${styles.list_for_uv} ${styles.content_show} ${
+										activeSection === item.id ? styles.show : styles.hide
+									}`}
 								>
-									Xem tất cả{' '}
-									<Image
-										style={{ display: 'inline-block' }}
-										width={12}
-										height={11}
-										src="/images/before_login/2arr_right.svg"
-										alt="see_all"
-									/>
-								</a>
-							</div>
-						</div>
-						<div className={styles.work_tag}>
-							<div className={`${styles.wrap_arr} ${styles.open_content}`}>
-								<p className={styles.footer_block2_header}>Việc làm theo tag</p>
-								<div className={`${styles.arr_respon} ${styles.hidden}`}>
-									<Image
-										width={14}
-										height={15}
-										src={'images/before_login/arr_up.svg'}
-										className={styles.hidden}
-										alt="arrow_up"
-									/>
-									<Image
-										width={14}
-										height={15}
-										src={'images/before_login/arr_down.svg'}
-										className={styles.hidden}
-										alt="arrow_up"
-									/>
+									<div className={styles.timviec_item}>
+										<div className={styles.content_item}>
+											{item.links
+												.slice(0, Math.ceil(item.links.length / 2))
+												.map((link, linkIndex) => (
+													<a key={linkIndex} href={link.url}>
+														{link.label}
+													</a>
+												))}
+										</div>
+										<div className={styles.content_item}>
+											{item.links.slice(Math.ceil(item.links.length / 2)).map((link, linkIndex) => (
+												<a key={`${linkIndex}_second`} href={link.url}>
+													{link.label}
+												</a>
+											))}
+										</div>
+									</div>
+									{item.other_list && (
+										<a
+											rel="nofollow"
+											href="https://timviec365.vn/danh-sach-viec-lam-theo-tags"
+											className={styles.seen_all}
+										>
+											{item.other_list}{' '}
+											<Image
+												style={{ display: 'inline-block' }}
+												width={12}
+												height={11}
+												src="/images/before_login/2arr_right.svg"
+												alt="see_all"
+											/>
+										</a>
+									)}
 								</div>
 							</div>
-							<div className={`${styles.list_work_tag} ${styles.content_show}`}>
-								<div className={styles.timviec_item}>
-									<div className={styles.content_item}>
-										<a href="https://timviec365.vn/tim-viec-lam-php-t11394.html">Việc làm PHP</a>
-										<a href="https://timviec365.vn/tag7/DS-viec-lam-tuyen-dung-ke-toan-noi-bo-866">
-											Việc làm Kế toán nội bộ
-										</a>
-										<a href="https://timviec365.vn/tag7/DS-viec-lam-tuyen-dung-digital-marketing-521">
-											Việc làm Digital Marketing
-										</a>
-										<a href="https://timviec365.vn/tag7/DS-viec-lam-tuyen-dung-chuyen-vien-seo-2070">
-											Việc làm chuyên viên seo
-										</a>
-									</div>
-									<div className={styles.content_item}>
-										<a href="https://timviec365.vn/tag7/DS-viec-lam-tuyen-dung-tu-van-bat-dong-san-2737">
-											Việc làm bất động sản
-										</a>
-										<a href="https://timviec365.vn/tag7/DS-viec-lam-tuyen-dung-thuc-tap-sinh-1265">
-											Việc làm thực tập sinh
-										</a>
-										<a href="https://timviec365.vn/tag7/DS-viec-lam-tuyen-dung-nhan-vien-bao-hiem-900">
-											Việc làm nhân viên bảo hiểm
-										</a>
-										<a href="https://timviec365.vn/tag7/DS-viec-lam-tuyen-dung-content-526">
-											Việc làm Content
-										</a>
-									</div>
-								</div>
-								<a
-									rel="nofollow"
-									href="https://timviec365.vn/danh-sach-viec-lam-theo-tags"
-									className={styles.seen_all}
-								>
-									Xem tất cả{' '}
-									<Image
-										style={{ display: 'inline-block' }}
-										width={12}
-										height={11}
-										src="/images/before_login/2arr_right.svg"
-										alt="see_all"
-									/>
-								</a>
-							</div>
-						</div>
+						))}
 					</div>
 				</div>
 				<div className={styles.gach_ngang} />
@@ -766,6 +633,151 @@ const Footer = () => {
 								<p className={styles.qr_txt}>App Chat365</p>
 							</div>
 						</div>
+					</div>
+				</div>
+				<div className={`${styles.footer_block3_2}`}>
+					<div>
+						<img
+							className={`${styles.lazyloaded}`}
+							src="https://timviec365.vn/images/365timviec.png"
+							alt="timviec365"
+						/>
+					</div>
+					<div className={`${styles.wrap_address}`}>
+						<p className={`${styles.wrap_address_header}`}>CÔNG TY CỔ PHẦN THANH TOÁN HƯNG HÀ</p>
+						<p className={`${styles.wrap_address_txt}`}>
+							VP 1: Tầng 4, B50, Lô 6, KĐT Định Công - Hoàng Mai - Hà Nội
+						</p>
+						<p className={`${styles.wrap_address_txt}`}>
+							VP2: Thôn Thanh Miếu, Xã Việt Hưng, Huyện Văn Lâm, Tỉnh Hưng Yên
+						</p>
+						<p className={`${styles.wrap_address_txt}`}>
+							Hotline: 0982079209, 1900633682 - ấn phím 1
+						</p>
+						<p className={`${styles.wrap_address_txt}`}>Email: timviec365.vn@gmail.com</p>
+					</div>
+					<div className={`${styles.flex} ${styles.jtf_sb}`}>
+						<div className={`${styles.wrap_certify}`}>
+							<a
+								rel="nofollow"
+								target="_blank"
+								href="http://online.gov.vn/Home/WebDetails/35979?AspxAutoDetectCookieSupport=1"
+							>
+								<img
+									className={`${styles.icon_bct} ${styles.lazyloaded}`}
+									src="https://timviec365.vn/images/DK_bocongthuong.png"
+									alt="Đã đăng ký bộ công thương"
+								/>
+							</a>
+							<a
+								rel="nofollow"
+								href="//www.dmca.com/Protection/Status.aspx?ID=5b1070f1-e6fb-4ba4-8283-84c7da8f8398"
+							>
+								<img
+									className={`${styles.icon_dmca} ${styles.lazyloaded}`}
+									src="https://timviec365.vn/images/dmca.png"
+									alt="DMCA.com Protection Status"
+								/>
+							</a>
+						</div>
+						<div className={`${styles.wrap_block_connect}`}>
+							<div className={`${styles.wrap_icon_connet}`}>
+								<a href="https://chat365.timviec365.vn/" rel="nofollow" target="_blank">
+									<img src="https://timviec365.vn/images/icon365.svg" alt="chat" />
+								</a>
+							</div>
+							<div className={`${styles.wrap_icon_connet}`}>
+								<a href="https://www.facebook.com/Timviec365.Vn/" rel="nofollow" target="_blank">
+									<img src="https://timviec365.vn/images/icon_fb.svg" alt="facebook" />
+								</a>
+							</div>
+							<div className={`${styles.wrap_icon_connet}`}>
+								<a href="https://twitter.com/timviec365vn" rel="nofollow" target="_blank">
+									<img src="https://timviec365.vn/images/icon_witter.svg" alt="witter" />
+								</a>
+							</div>
+							<div className={`${styles.wrap_icon_connet}`}>
+								<a
+									href="https://www.youtube.com/channel/UCI6_mZYL8exLuvmtipBFrkg/videos"
+									rel="nofollow"
+									target="_blank"
+								>
+									<img src="https://timviec365.vn/images/icon_youtube.svg" alt="youtube" />
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div className={styles.footer_block4}>
+					<p className={styles.wrap_qr_header}>TẢI APP ĐỂ TÌM VIỆC SIÊU TỐC</p>
+					<p className={styles.wrap_qr_header_2}>
+						Tải app để tìm việc siêu tốc Tạo CV đẹp với 365+ mẫu CV xin việc
+					</p>
+					<div className={styles.wrap_qr_block}>
+						<button className={styles.wrap_qr_child}>
+							<a
+								href="https://play.google.com/store/apps/details?id=timviec365vn.timviec365_vn"
+								ios-href="https://apps.apple.com/vn/app/t%C3%ACm-vi%E1%BB%87c-365-t%C3%ACm-vi%E1%BB%87c-online/id1597712953?l=vi"
+								className={styles.ios_check}
+								rel="nofollow"
+								target="_blank"
+							>
+								<p className={styles.qr_txt}>Tải app Timviec365 UV</p>
+								<img
+									className={styles.download_img}
+									src="https://timviec365.vn/images/download.svg"
+									alt="download"
+								/>
+							</a>
+						</button>
+						<button className={styles.wrap_qr_child}>
+							<a
+								href="https://play.google.com/store/apps/details?id=vn.timviec365.company"
+								ios-href="https://apps.apple.com/vn/app/nh%C3%A0-tuy%E1%BB%83n-d%E1%BB%A5ng-timviec365-vn/id1606069668"
+								rel="nofollow"
+								className={styles.ios_check}
+								target="_blank"
+							>
+								<p className={styles.qr_txt}>Tải app Timviec365 NTD</p>
+								<img
+									className={styles.download_img}
+									src="https://timviec365.vn/images/download.svg"
+									alt="download"
+								/>
+							</a>
+						</button>
+						<button className={styles.wrap_qr_child + ' ' + styles.wrap_qr_child_respon}>
+							<a
+								href="https://play.google.com/store/apps/details?id=vn.timviec365.cv.cv365_vn"
+								className={styles.ios_check}
+								ios-href="https://apps.apple.com/us/app/cv-xin-vi%E1%BB%87c-365-t%E1%BA%A1o-cv-%C4%91%E1%BA%B9p/id1631076979"
+								rel="nofollow"
+								target="_blank"
+							>
+								<p className={styles.qr_txt}>Tải app CV365</p>
+								<img
+									className={styles.download_img}
+									src="https://timviec365.vn/images/download.svg"
+									alt="download"
+								/>
+							</a>
+						</button>
+						<button className={styles.wrap_qr_child + ' ' + styles.wrap_qr_child_respon}>
+							<a
+								href="https://play.google.com/store/apps/details?id=vn.timviec365.chat_365"
+								className={styles.ios_check}
+								ios-href="https://apps.apple.com/us/app/chat365-nh%E1%BA%AFn-tin-nhanh-ch%C3%B3ng/id1623353330"
+								rel="nofollow"
+								target="_blank"
+							>
+								<p className={styles.qr_txt}>Tải app Chat365</p>
+								<img
+									className={styles.download_img}
+									src="https://timviec365.vn/images/download.svg"
+									alt="download"
+								/>
+							</a>
+						</button>
 					</div>
 				</div>
 			</div>

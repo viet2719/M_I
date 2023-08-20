@@ -37,6 +37,20 @@ const Home: NextPageWithLayout = () => {
 			date: '25/08/2023',
 			salary: 'Từ 7.5 triệu',
 		},
+		{
+			title: '[Tuyển dụng] Nhân viên Kinh doanh',
+			company: 'Công Ty TNHH Chung Anh Logistics',
+			location: 'Hà Nội',
+			date: '25/08/2023',
+			salary: 'Từ 7.5 triệu',
+		},
+		{
+			title: '[Tuyển dụng] Nhân viên Kinh doanh',
+			company: 'Công Ty TNHH Chung Anh Logistics',
+			location: 'Hà Nội',
+			date: '25/08/2023',
+			salary: 'Từ 7.5 triệu',
+		},
 	]
 	const cityOptions = [
 		{ value: 'hanoi', label: 'Hà Nội' },
@@ -44,12 +58,6 @@ const Home: NextPageWithLayout = () => {
 		{ value: 'danang', label: 'Đà Nẵng' },
 		{ value: 'hue', label: 'Huế' },
 	]
-
-	const [isSelectOpen, setIsSelectOpen] = useState(false)
-
-	const handleSelectClick = () => {
-		setIsSelectOpen(!isSelectOpen) // Đảo ngược trạng thái khi click vào Select
-	}
 	return (
 		<>
 			<Head>

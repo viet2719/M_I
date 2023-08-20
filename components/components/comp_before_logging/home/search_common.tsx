@@ -41,7 +41,6 @@ const Search_common = () => {
 	]
 
 	const [isSelectOpen, setIsSelectOpen] = useState(false)
-
 	const handleSelectClick = () => {
 		setIsSelectOpen(!isSelectOpen) // Đảo ngược trạng thái khi click vào Select
 	}
@@ -173,12 +172,7 @@ const Search_common = () => {
 								setShowHideSelect(!showHideSelect)
 							}}
 						>
-							<span
-								className={`${styles.select2_selection} ${styles.select2_selection__single} `}
-								aria-haspopup="true"
-								aria-expanded="false"
-								aria-labelledby="select2-index_dia_diem-container"
-							>
+							<span className={`${styles.select2_selection} ${styles.select2_selection__single} `}>
 								<Select
 									id="city_search"
 									className="city_search"
@@ -229,12 +223,7 @@ const Search_common = () => {
 								</span>
 							</span>
 							{/* Tablet */}
-							<span
-								className={`${styles.select2_selection} ${styles.select2_selection__single2} `}
-								aria-haspopup="true"
-								aria-expanded="false"
-								aria-labelledby="select2-index_dia_diem-container"
-							>
+							<span className={`${styles.select2_selection} ${styles.select2_selection__single2} `}>
 								<Select
 									id="city_search"
 									className={styles.city_search}
@@ -285,12 +274,7 @@ const Search_common = () => {
 								</span>
 							</span>
 							{/* Mobile */}
-							<span
-								className={`${styles.select2_selection} ${styles.select2_selection__single3} `}
-								aria-haspopup="true"
-								aria-expanded="false"
-								aria-labelledby="select2-index_dia_diem-container"
-							>
+							<span className={`${styles.select2_selection} ${styles.select2_selection__single3} `}>
 								<Select
 									id="city_search"
 									className={styles.city_search}

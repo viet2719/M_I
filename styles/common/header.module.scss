@@ -347,7 +347,7 @@
 			justify-content: center;
 			img {
 				width: 150px;
-				margin-top: 5px;
+				margin-top: 40px;
 				height: auto;
 			}
 			.mobi_sel {
@@ -514,7 +514,7 @@
 		.logo_header {
 			line-height: 60px;
 			img {
-				margin-top: 17px;
+				margin-top: 28px;
 			}
 			.mobi_sel {
 				top: 20px;
@@ -532,9 +532,6 @@
 @media screen and (max-width: 376px) {
 	.new_header {
 		.logo_header {
-			img {
-				margin-top: 14px;
-			}
 			.mobi_sel {
 				top: 17px;
 			}
