@@ -23,7 +23,7 @@
 	position: relative;
 }
 .footer_content {
-	width: 1170px;
+	width: 100%;
 	margin: auto;
 }
 .footer_block1 {
@@ -232,9 +232,15 @@
 
 @media screen and (min-width: 1366px) {
 	.footer_content {
-		width: 1170px;
+		width: 100%;
+		margin: auto;
 	}
-
+	.footer_block1 {
+		flex-wrap: wrap;
+		display: flex;
+		flex-direction: row;
+		gap: 16px;
+	}
 	.footer_block2_header {
 		font-size: 18px;
 		font-weight: unset;

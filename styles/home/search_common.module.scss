@@ -50,7 +50,7 @@
 			}
 		}
 		.box_input:before {
-			content: url(../../../public/images/before_login/ic_search.png);
+			content: url('/images/before_login/ic_search.png');
 			position: absolute;
 			width: 16px;
 			height: 16px;
@@ -59,7 +59,7 @@
 			z-index: 1;
 		}
 		.custom_select::before {
-			content: url(../../../public/images/before_login/ic_search.png);
+			content: url('/images/before_login/ic_search.png');
 			position: absolute;
 			width: 16px;
 			height: 16px;
@@ -286,6 +286,9 @@
 			height: 65px;
 			line-height: 36px;
 		}
+		.select2_selection__single2 {
+			display: none;
+		}
 		.select2_selection__rendered {
 			color: #9ca3af;
 			line-height: 66px;
@@ -382,11 +385,7 @@
 				line-height: 59px;
 				color: #9ca3af;
 			}
-			.mobi_bor {
-				.btn_search {
-					height: 56px;
-				}
-			}
+
 			.select2_container {
 				max-width: 500px !important;
 			}
@@ -422,8 +421,15 @@
 				width: 100% !important;
 			}
 			.select2_selection__single {
-				height: 40px;
+				display: none;
+			}
+			.select2_selection__single2 {
+				display: block;
 				border-radius: 40px;
+				height: 40px;
+				.city_search {
+					border-radius: 40px;
+				}
 			}
 			.select2_selection__arrow {
 				height: 35px;

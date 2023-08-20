@@ -1,19 +1,55 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { NextPageWithLayout } from '@/models/common'
 import Head from 'next/head'
-import styles from '../styles/Home.module.scss'
+import styles from '../styles/home/Home.module.scss'
 import { HomePageBeforeLayout } from '@/components/layout/home_before_login'
 import Image from 'next/image'
 import Header from '@/components/common/header'
-import Banner_QR from '@/components/common/components/banner_QR'
-import Search_common from '@/components/common/components/search_common'
-import ProvinceList from './test'
 import Footer from '@/components/common/footer'
+import { Carousel } from 'antd'
+import Select from 'react-select'
+import Banner_QR from '@/components/components/comp_before_logging/home/banner_QR'
+import Search_common from '@/components/components/comp_before_logging/home/search_common'
+import Box_vlth from '@/components/components/comp_before_logging/home/box_vlth'
+import Box_vlhd_top from '@/components/components/comp_before_logging/home/box_vlhd_top'
 
 const Home: NextPageWithLayout = () => {
-	const img_qr_con = 'https://timviec365.vn/images/banner_new/qr_code.svg'
-	const img_down = 'https://timviec365.vn/images/New_images/icn_dow.png'
+	const img_down = '/images/before_login/icn_dow.png'
+	const jobData = [
+		{
+			title: '[Tuyển dụng] Nhân viên Kinh doanh',
+			company: 'Công Ty TNHH Chung Anh Logistics',
+			location: 'Hà Nội',
+			date: '25/08/2023',
+			salary: 'Từ 7.5 triệu',
+		},
+		{
+			title: '[Tuyển dụng] Nhân viên Kinh doanh',
+			company: 'Công Ty TNHH Chung Anh Logistics',
+			location: 'Hà Nội',
+			date: '25/08/2023',
+			salary: 'Từ 7.5 triệu',
+		},
+		{
+			title: '[Tuyển dụng] Nhân viên Kinh doanh',
+			company: 'Công Ty TNHH Chung Anh Logistics',
+			location: 'Hà Nội',
+			date: '25/08/2023',
+			salary: 'Từ 7.5 triệu',
+		},
+	]
+	const cityOptions = [
+		{ value: 'hanoi', label: 'Hà Nội' },
+		{ value: 'hochiminh', label: 'TP. Hồ Chí Minh' },
+		{ value: 'danang', label: 'Đà Nẵng' },
+		{ value: 'hue', label: 'Huế' },
+	]
 
+	const [isSelectOpen, setIsSelectOpen] = useState(false)
+
+	const handleSelectClick = () => {
+		setIsSelectOpen(!isSelectOpen) // Đảo ngược trạng thái khi click vào Select
+	}
 	return (
 		<>
 			<Head>
@@ -97,25 +133,25 @@ const Home: NextPageWithLayout = () => {
 					</div>
 					{/* <div className={styles.tktk}></div> */}
 				</div>
+
 				<section className={styles.section_home}>
 					<div className={styles.vieclam_container}>
 						<p className={styles.clear}></p>
-
 						<div className={styles.box_vl}>
 							<div className={`${styles.box_vl_fix} ${styles.stiky}`}>
 								<div className={styles.span_vl}>
 									<a href="">
-										<p>Hap dan</p>
+										<p>HẤP DẪN</p>
 									</a>
 								</div>
 								<div className={styles.span_vl}>
 									<a href="">
-										<p>Hap dan</p>
+										<p>THƯƠNG HIỆU</p>
 									</a>
 								</div>
 								<div className={styles.span_vl}>
 									<a href="">
-										<p>Hap dan</p>
+										<p>TUYỂN GẤP</p>
 									</a>
 								</div>
 							</div>
@@ -126,315 +162,14 @@ const Home: NextPageWithLayout = () => {
 								className={`${styles.box_vieclam} ${styles.box_vieclam_hot}`}
 							>
 								<h2 className={styles.ic_vlth}>VIỆC LÀM HẤP DẪN</h2>
+
 								<div className={styles.main_box_vieclam}>
-									<div className={styles.slide_hd}>
-										<div className={`${styles.item_vl} ${styles.item_home_th}`}>
-											<div className={styles.in_vl}>
-												<div className={styles.img_item_vl}>
-													<a
-														href=""
-														className={styles.logo_user_th}
-														title="[tuyen dung] nhan vien kinh doan"
-													>
-														<Image
-															height={70}
-															width={70}
-															src="/images/before_login/user_chat_off.png"
-															className={`${styles.tia_set} ${styles.no_logo_chat} ${styles.lazyloaded}`}
-															alt=""
-														/>
-														<span className={styles.box_time_off}>1 ngay</span>
-													</a>
-													<div className={styles.box_vote_new}>
-														<Image
-															className="icon_vote_new"
-															width={13}
-															height={13}
-															src="/images/before_login/icon_star_gray.svg"
-															alt="star grey"
-														/>
-														<Image
-															className="icon_vote_new"
-															width={13}
-															height={13}
-															src="/images/before_login/icon_star_gray.svg"
-															alt="star grey"
-														/>
-														<Image
-															className="icon_vote_new"
-															width={13}
-															height={13}
-															src="/images/before_login/icon_star_gray.svg"
-															alt="star grey"
-														/>
-														<Image
-															className="icon_vote_new"
-															width={13}
-															height={13}
-															src="/images/before_login/icon_star_gray.svg"
-															alt="star grey"
-														/>
-														<Image
-															className="icon_vote_new"
-															width={13}
-															height={13}
-															src="/images/before_login/icon_star_gray.svg"
-															alt="star grey"
-														/>
-													</div>
-													<Image
-														width={28}
-														height={28}
-														src="/images/before_login/icon_tiaset.svg"
-														className={styles.icon_tiaset_new}
-														alt=""
-													/>
-												</div>
-												<div className={styles.right_item_vl}>
-													<h3>
-														<a
-															className={styles.tit_vip}
-															href="/tuyen-dung-nhan-vien-kinh-doanh-p867245.html"
-															title="[Tuyển dụng] Nhân viên Kinh doanh"
-														>
-															[Tuyển dụng] Nhân viên Kinh doanh
-														</a>
-													</h3>
-													<a
-														className={styles.name_com}
-														href="/cong-ty-tnhh-chung-anh-logistics-co243931"
-														title="Công Ty TNHH Chung Anh Logistics"
-													>
-														Công Ty TNHH Chung Anh Logistics
-													</a>
-													<p className={styles.job_local}>Hà Nội</p>
-													<p className={styles.job_chat} data-id="243931" id-chat="1346583">
-														Chat
-													</p>
-													<p className={styles.job_time}>25/08/2023</p>
-													<p className={styles.job_money} title="Từ 7.5 triệu ">
-														Từ 7.5 triệu{' '}
-													</p>
-													<a
-														href="/lich-su/danh-sach-tong-u243931t1"
-														className={styles.job_history}
-													>
-														<Image
-															width={16}
-															height={16}
-															src="/images/before_login/icon_history_home.svg"
-															alt="icon lịch sử"
-														/>
-														Lịch sử
-													</a>
-												</div>
-											</div>
-										</div>
-										<div className={`${styles.item_vl} ${styles.item_home_th}`}>
-											<div className={styles.in_vl}>
-												<div className={styles.img_item_vl}>
-													<a
-														href=""
-														className={styles.logo_user_th}
-														title="[tuyen dung] nhan vien kinh doan"
-													>
-														<Image
-															height={70}
-															width={70}
-															src="/images/before_login/user_chat_off.png"
-															className={`${styles.tia_set} ${styles.no_logo_chat} ${styles.lazyloaded}`}
-															alt=""
-														/>
-														<span className={styles.box_time_off}>1 ngay</span>
-													</a>
-													<div className={styles.box_vote_new}>
-														<Image
-															className="icon_vote_new"
-															width={13}
-															height={13}
-															src="/images/before_login/icon_star_gray.svg"
-															alt="star grey"
-														/>
-														<Image
-															className="icon_vote_new"
-															width={13}
-															height={13}
-															src="/images/before_login/icon_star_gray.svg"
-															alt="star grey"
-														/>
-														<Image
-															className="icon_vote_new"
-															width={13}
-															height={13}
-															src="/images/before_login/icon_star_gray.svg"
-															alt="star grey"
-														/>
-														<Image
-															className="icon_vote_new"
-															width={13}
-															height={13}
-															src="/images/before_login/icon_star_gray.svg"
-															alt="star grey"
-														/>
-														<Image
-															className="icon_vote_new"
-															width={13}
-															height={13}
-															src="/images/before_login/icon_star_gray.svg"
-															alt="star grey"
-														/>
-													</div>
-													<Image
-														width={28}
-														height={28}
-														src="/images/before_login/icon_tiaset.svg"
-														className={styles.icon_tiaset_new}
-														alt=""
-													/>
-												</div>
-												<div className={styles.right_item_vl}>
-													<h3>
-														<a
-															className={styles.tit_vip}
-															href="/tuyen-dung-nhan-vien-kinh-doanh-p867245.html"
-															title="[Tuyển dụng] Nhân viên Kinh doanh"
-														>
-															[Tuyển dụng] Nhân viên Kinh doanh
-														</a>
-													</h3>
-													<a
-														className={styles.name_com}
-														href="/cong-ty-tnhh-chung-anh-logistics-co243931"
-														title="Công Ty TNHH Chung Anh Logistics"
-													>
-														Công Ty TNHH Chung Anh Logistics
-													</a>
-													<p className={styles.job_local}>Hà Nội</p>
-													<p className={styles.job_chat} data-id="243931" id-chat="1346583">
-														Chat
-													</p>
-													<p className={styles.job_time}>25/08/2023</p>
-													<p className={styles.job_money} title="Từ 7.5 triệu ">
-														Từ 7.5 triệu{' '}
-													</p>
-													<a
-														href="/lich-su/danh-sach-tong-u243931t1"
-														className={styles.job_history}
-													>
-														<Image
-															width={16}
-															height={16}
-															src="/images/before_login/icon_history_home.svg"
-															alt="icon lịch sử"
-														/>
-														Lịch sử
-													</a>
-												</div>
-											</div>
-										</div>
-										<div className={`${styles.item_vl} ${styles.item_home_th}`}>
-											<div className={styles.in_vl}>
-												<div className={styles.img_item_vl}>
-													<a
-														href=""
-														className={styles.logo_user_th}
-														title="[tuyen dung] nhan vien kinh doan"
-													>
-														<Image
-															height={70}
-															width={70}
-															src="/images/before_login/user_chat_off.png"
-															className={`${styles.tia_set} ${styles.no_logo_chat} ${styles.lazyloaded}`}
-															alt=""
-														/>
-														<span className={styles.box_time_off}>1 ngay</span>
-													</a>
-													<div className={styles.box_vote_new}>
-														<Image
-															className="icon_vote_new"
-															width={13}
-															height={13}
-															src="/images/before_login/icon_star_gray.svg"
-															alt="star grey"
-														/>
-														<Image
-															className="icon_vote_new"
-															width={13}
-															height={13}
-															src="/images/before_login/icon_star_gray.svg"
-															alt="star grey"
-														/>
-														<Image
-															className="icon_vote_new"
-															width={13}
-															height={13}
-															src="/images/before_login/icon_star_gray.svg"
-															alt="star grey"
-														/>
-														<Image
-															className="icon_vote_new"
-															width={13}
-															height={13}
-															src="/images/before_login/icon_star_gray.svg"
-															alt="star grey"
-														/>
-														<Image
-															className="icon_vote_new"
-															width={13}
-															height={13}
-															src="/images/before_login/icon_star_gray.svg"
-															alt="star grey"
-														/>
-													</div>
-													<Image
-														width={28}
-														height={28}
-														src="/images/before_login/icon_tiaset.svg"
-														className={styles.icon_tiaset_new}
-														alt=""
-													/>
-												</div>
-												<div className={styles.right_item_vl}>
-													<h3>
-														<a
-															className={styles.tit_vip}
-															href="/tuyen-dung-nhan-vien-kinh-doanh-p867245.html"
-															title="[Tuyển dụng] Nhân viên Kinh doanh"
-														>
-															[Tuyển dụng] Nhân viên Kinh doanh
-														</a>
-													</h3>
-													<a
-														className={styles.name_com}
-														href="/cong-ty-tnhh-chung-anh-logistics-co243931"
-														title="Công Ty TNHH Chung Anh Logistics"
-													>
-														Công Ty TNHH Chung Anh Logistics
-													</a>
-													<p className={styles.job_local}>Hà Nội</p>
-													<p className={styles.job_chat} data-id="243931" id-chat="1346583">
-														Chat
-													</p>
-													<p className={styles.job_time}>25/08/2023</p>
-													<p className={styles.job_money} title="Từ 7.5 triệu ">
-														Từ 7.5 triệu{' '}
-													</p>
-													<a
-														href="/lich-su/danh-sach-tong-u243931t1"
-														className={styles.job_history}
-													>
-														<Image
-															width={16}
-															height={16}
-															src="/images/before_login/icon_history_home.svg"
-															alt="icon lịch sử"
-														/>
-														Lịch sử
-													</a>
-												</div>
-											</div>
-										</div>
-									</div>
+									<Carousel autoplay className={styles.customCarousel}>
+										<Box_vlhd_top jobData={jobData} />
+										<Box_vlhd_top jobData={jobData} />
+										<Box_vlhd_top jobData={jobData} />
+										<Box_vlhd_top jobData={jobData} />
+									</Carousel>
 								</div>
 								<div className={styles.plus_next}>
 									<a className={styles.icon_plus} href="/tin-tuyen-dung-viec-lam.html">
@@ -558,307 +293,7 @@ const Home: NextPageWithLayout = () => {
 						</div>
 						<div id={styles.box_vlth} className={`${styles.box_vieclam} ${styles.box_vieclam_hot}`}>
 							<h2 className={styles.icn_vlhd}>VIỆC LÀM THƯƠNG HIỆU</h2>
-							<div className={styles.main_box_vieclam1}>
-								<div className={styles.slide_hd}>
-									<div className={`${styles.item_vl} ${styles.item_home_th}`}>
-										<div className={styles.in_vl}>
-											<div className={styles.img_item_vl}>
-												<a
-													href=""
-													className={styles.logo_user_th}
-													title="[tuyen dung] nhan vien kinh doan"
-												>
-													<Image
-														height={70}
-														width={70}
-														src="/images/before_login/user_chat_off.png"
-														className={`${styles.tia_set} ${styles.no_logo_chat} ${styles.lazyloaded}`}
-														alt=""
-													/>
-													<span className={styles.box_time_off}>1 ngay</span>
-												</a>
-												<div className={styles.box_vote_new}>
-													<Image
-														className="icon_vote_new"
-														width={13}
-														height={13}
-														src="/images/before_login/icon_star_gray.svg"
-														alt="star grey"
-													/>
-													<Image
-														className="icon_vote_new"
-														width={13}
-														height={13}
-														src="/images/before_login/icon_star_gray.svg"
-														alt="star grey"
-													/>
-													<Image
-														className="icon_vote_new"
-														width={13}
-														height={13}
-														src="/images/before_login/icon_star_gray.svg"
-														alt="star grey"
-													/>
-													<Image
-														className="icon_vote_new"
-														width={13}
-														height={13}
-														src="/images/before_login/icon_star_gray.svg"
-														alt="star grey"
-													/>
-													<Image
-														className="icon_vote_new"
-														width={13}
-														height={13}
-														src="/images/before_login/icon_star_gray.svg"
-														alt="star grey"
-													/>
-												</div>
-												<Image
-													width={28}
-													height={28}
-													src="/images/before_login/icon_tiaset.svg"
-													className={styles.icon_tiaset_new}
-													alt=""
-												/>
-											</div>
-											<div className={styles.right_item_vl}>
-												<h3>
-													<a
-														className={styles.tit_vip}
-														href="/tuyen-dung-nhan-vien-kinh-doanh-p867245.html"
-														title="[Tuyển dụng] Nhân viên Kinh doanh"
-													>
-														[Tuyển dụng] Nhân viên Kinh doanh
-													</a>
-												</h3>
-												<a
-													className={styles.name_com}
-													href="/cong-ty-tnhh-chung-anh-logistics-co243931"
-													title="Công Ty TNHH Chung Anh Logistics"
-												>
-													Công Ty TNHH Chung Anh Logistics
-												</a>
-												<p className={styles.job_local}>Hà Nội</p>
-												<p className={styles.job_chat} data-id="243931" id-chat="1346583">
-													Chat
-												</p>
-												<p className={styles.job_time}>25/08/2023</p>
-												<p className={styles.job_money} title="Từ 7.5 triệu ">
-													Từ 7.5 triệu{' '}
-												</p>
-												<a href="/lich-su/danh-sach-tong-u243931t1" className={styles.job_history}>
-													<Image
-														width={16}
-														height={16}
-														src="/images/before_login/icon_history_home.svg"
-														alt="icon lịch sử"
-													/>
-													Lịch sử
-												</a>
-											</div>
-										</div>
-									</div>
-									<div className={`${styles.item_vl} ${styles.item_home_th}`}>
-										<div className={styles.in_vl}>
-											<div className={styles.img_item_vl}>
-												<a
-													href=""
-													className={styles.logo_user_th}
-													title="[tuyen dung] nhan vien kinh doan"
-												>
-													<Image
-														height={70}
-														width={70}
-														src="/images/before_login/user_chat_off.png"
-														className={`${styles.tia_set} ${styles.no_logo_chat} ${styles.lazyloaded}`}
-														alt=""
-													/>
-													<span className={styles.box_time_off}>1 ngay</span>
-												</a>
-												<div className={styles.box_vote_new}>
-													<Image
-														className="icon_vote_new"
-														width={13}
-														height={13}
-														src="/images/before_login/icon_star_gray.svg"
-														alt="star grey"
-													/>
-													<Image
-														className="icon_vote_new"
-														width={13}
-														height={13}
-														src="/images/before_login/icon_star_gray.svg"
-														alt="star grey"
-													/>
-													<Image
-														className="icon_vote_new"
-														width={13}
-														height={13}
-														src="/images/before_login/icon_star_gray.svg"
-														alt="star grey"
-													/>
-													<Image
-														className="icon_vote_new"
-														width={13}
-														height={13}
-														src="/images/before_login/icon_star_gray.svg"
-														alt="star grey"
-													/>
-													<Image
-														className="icon_vote_new"
-														width={13}
-														height={13}
-														src="/images/before_login/icon_star_gray.svg"
-														alt="star grey"
-													/>
-												</div>
-												<Image
-													width={28}
-													height={28}
-													src="/images/before_login/icon_tiaset.svg"
-													className={styles.icon_tiaset_new}
-													alt=""
-												/>
-											</div>
-											<div className={styles.right_item_vl}>
-												<h3>
-													<a
-														className={styles.tit_vip}
-														href="/tuyen-dung-nhan-vien-kinh-doanh-p867245.html"
-														title="[Tuyển dụng] Nhân viên Kinh doanh"
-													>
-														[Tuyển dụng] Nhân viên Kinh doanh
-													</a>
-												</h3>
-												<a
-													className={styles.name_com}
-													href="/cong-ty-tnhh-chung-anh-logistics-co243931"
-													title="Công Ty TNHH Chung Anh Logistics"
-												>
-													Công Ty TNHH Chung Anh Logistics
-												</a>
-												<p className={styles.job_local}>Hà Nội</p>
-												<p className={styles.job_chat} data-id="243931" id-chat="1346583">
-													Chat
-												</p>
-												<p className={styles.job_time}>25/08/2023</p>
-												<p className={styles.job_money} title="Từ 7.5 triệu ">
-													Từ 7.5 triệu{' '}
-												</p>
-												<a href="/lich-su/danh-sach-tong-u243931t1" className={styles.job_history}>
-													<Image
-														width={16}
-														height={16}
-														src="/images/before_login/icon_history_home.svg"
-														alt="icon lịch sử"
-													/>
-													Lịch sử
-												</a>
-											</div>
-										</div>
-									</div>
-									<div className={`${styles.item_vl} ${styles.item_home_th}`}>
-										<div className={styles.in_vl}>
-											<div className={styles.img_item_vl}>
-												<a
-													href=""
-													className={styles.logo_user_th}
-													title="[tuyen dung] nhan vien kinh doan"
-												>
-													<Image
-														height={70}
-														width={70}
-														src="/images/before_login/user_chat_off.png"
-														className={`${styles.tia_set} ${styles.no_logo_chat} ${styles.lazyloaded}`}
-														alt=""
-													/>
-													<span className={styles.box_time_off}>1 ngay</span>
-												</a>
-												<div className={styles.box_vote_new}>
-													<Image
-														className="icon_vote_new"
-														width={13}
-														height={13}
-														src="/images/before_login/icon_star_gray.svg"
-														alt="star grey"
-													/>
-													<Image
-														className="icon_vote_new"
-														width={13}
-														height={13}
-														src="/images/before_login/icon_star_gray.svg"
-														alt="star grey"
-													/>
-													<Image
-														className="icon_vote_new"
-														width={13}
-														height={13}
-														src="/images/before_login/icon_star_gray.svg"
-														alt="star grey"
-													/>
-													<Image
-														className="icon_vote_new"
-														width={13}
-														height={13}
-														src="/images/before_login/icon_star_gray.svg"
-														alt="star grey"
-													/>
-													<Image
-														className="icon_vote_new"
-														width={13}
-														height={13}
-														src="/images/before_login/icon_star_gray.svg"
-														alt="star grey"
-													/>
-												</div>
-												<Image
-													width={28}
-													height={28}
-													src="/images/before_login/icon_tiaset.svg"
-													className={styles.icon_tiaset_new}
-													alt=""
-												/>
-											</div>
-											<div className={styles.right_item_vl}>
-												<h3>
-													<a
-														className={styles.tit_vip}
-														href="/tuyen-dung-nhan-vien-kinh-doanh-p867245.html"
-														title="[Tuyển dụng] Nhân viên Kinh doanh"
-													>
-														[Tuyển dụng] Nhân viên Kinh doanh
-													</a>
-												</h3>
-												<a
-													className={styles.name_com}
-													href="/cong-ty-tnhh-chung-anh-logistics-co243931"
-													title="Công Ty TNHH Chung Anh Logistics"
-												>
-													Công Ty TNHH Chung Anh Logistics
-												</a>
-												<p className={styles.job_local}>Hà Nội</p>
-												<p className={styles.job_chat} data-id="243931" id-chat="1346583">
-													Chat
-												</p>
-												<p className={styles.job_time}>25/08/2023</p>
-												<p className={styles.job_money} title="Từ 7.5 triệu ">
-													Từ 7.5 triệu{' '}
-												</p>
-												<a href="/lich-su/danh-sach-tong-u243931t1" className={styles.job_history}>
-													<Image
-														width={16}
-														height={16}
-														src="/images/before_login/icon_history_home.svg"
-														alt="icon lịch sử"
-													/>
-													Lịch sử
-												</a>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
+							<Box_vlth jobList={jobData} />
 							<div className={styles.plus_next}>
 								<a className={styles.icon_plus} href="/tin-tuyen-dung-viec-lam.html">
 									Tất cả tin tuyển dụng &gt;&gt;
@@ -926,307 +361,7 @@ const Home: NextPageWithLayout = () => {
 						</div>
 						<div id={styles.box_vlth} className={`${styles.box_vieclam} ${styles.box_vieclam_hot}`}>
 							<h2 className={styles.icn_vllc}>VIỆC LÀM TUYỂN GẤP</h2>
-							<div className={styles.main_box_vieclam1}>
-								<div className={styles.slide_hd}>
-									<div className={`${styles.item_vl} ${styles.item_home_th}`}>
-										<div className={styles.in_vl}>
-											<div className={styles.img_item_vl}>
-												<a
-													href=""
-													className={styles.logo_user_th}
-													title="[tuyen dung] nhan vien kinh doan"
-												>
-													<Image
-														height={70}
-														width={70}
-														src="/images/before_login/user_chat_off.png"
-														className={`${styles.tia_set} ${styles.no_logo_chat} ${styles.lazyloaded}`}
-														alt=""
-													/>
-													<span className={styles.box_time_off}>1 ngay</span>
-												</a>
-												<div className={styles.box_vote_new}>
-													<Image
-														className="icon_vote_new"
-														width={13}
-														height={13}
-														src="/images/before_login/icon_star_gray.svg"
-														alt="star grey"
-													/>
-													<Image
-														className="icon_vote_new"
-														width={13}
-														height={13}
-														src="/images/before_login/icon_star_gray.svg"
-														alt="star grey"
-													/>
-													<Image
-														className="icon_vote_new"
-														width={13}
-														height={13}
-														src="/images/before_login/icon_star_gray.svg"
-														alt="star grey"
-													/>
-													<Image
-														className="icon_vote_new"
-														width={13}
-														height={13}
-														src="/images/before_login/icon_star_gray.svg"
-														alt="star grey"
-													/>
-													<Image
-														className="icon_vote_new"
-														width={13}
-														height={13}
-														src="/images/before_login/icon_star_gray.svg"
-														alt="star grey"
-													/>
-												</div>
-												<Image
-													width={28}
-													height={28}
-													src="/images/before_login/icon_tiaset.svg"
-													className={styles.icon_tiaset_new}
-													alt=""
-												/>
-											</div>
-											<div className={styles.right_item_vl}>
-												<h3>
-													<a
-														className={styles.tit_vip}
-														href="/tuyen-dung-nhan-vien-kinh-doanh-p867245.html"
-														title="[Tuyển dụng] Nhân viên Kinh doanh"
-													>
-														[Tuyển dụng] Nhân viên Kinh doanh
-													</a>
-												</h3>
-												<a
-													className={styles.name_com}
-													href="/cong-ty-tnhh-chung-anh-logistics-co243931"
-													title="Công Ty TNHH Chung Anh Logistics"
-												>
-													Công Ty TNHH Chung Anh Logistics
-												</a>
-												<p className={styles.job_local}>Hà Nội</p>
-												<p className={styles.job_chat} data-id="243931" id-chat="1346583">
-													Chat
-												</p>
-												<p className={styles.job_time}>25/08/2023</p>
-												<p className={styles.job_money} title="Từ 7.5 triệu ">
-													Từ 7.5 triệu{' '}
-												</p>
-												<a href="/lich-su/danh-sach-tong-u243931t1" className={styles.job_history}>
-													<Image
-														width={16}
-														height={16}
-														src="/images/before_login/icon_history_home.svg"
-														alt="icon lịch sử"
-													/>
-													Lịch sử
-												</a>
-											</div>
-										</div>
-									</div>
-									<div className={`${styles.item_vl} ${styles.item_home_th}`}>
-										<div className={styles.in_vl}>
-											<div className={styles.img_item_vl}>
-												<a
-													href=""
-													className={styles.logo_user_th}
-													title="[tuyen dung] nhan vien kinh doan"
-												>
-													<Image
-														height={70}
-														width={70}
-														src="/images/before_login/user_chat_off.png"
-														className={`${styles.tia_set} ${styles.no_logo_chat} ${styles.lazyloaded}`}
-														alt=""
-													/>
-													<span className={styles.box_time_off}>1 ngay</span>
-												</a>
-												<div className={styles.box_vote_new}>
-													<Image
-														className="icon_vote_new"
-														width={13}
-														height={13}
-														src="/images/before_login/icon_star_gray.svg"
-														alt="star grey"
-													/>
-													<Image
-														className="icon_vote_new"
-														width={13}
-														height={13}
-														src="/images/before_login/icon_star_gray.svg"
-														alt="star grey"
-													/>
-													<Image
-														className="icon_vote_new"
-														width={13}
-														height={13}
-														src="/images/before_login/icon_star_gray.svg"
-														alt="star grey"
-													/>
-													<Image
-														className="icon_vote_new"
-														width={13}
-														height={13}
-														src="/images/before_login/icon_star_gray.svg"
-														alt="star grey"
-													/>
-													<Image
-														className="icon_vote_new"
-														width={13}
-														height={13}
-														src="/images/before_login/icon_star_gray.svg"
-														alt="star grey"
-													/>
-												</div>
-												<Image
-													width={28}
-													height={28}
-													src="/images/before_login/icon_tiaset.svg"
-													className={styles.icon_tiaset_new}
-													alt=""
-												/>
-											</div>
-											<div className={styles.right_item_vl}>
-												<h3>
-													<a
-														className={styles.tit_vip}
-														href="/tuyen-dung-nhan-vien-kinh-doanh-p867245.html"
-														title="[Tuyển dụng] Nhân viên Kinh doanh"
-													>
-														[Tuyển dụng] Nhân viên Kinh doanh
-													</a>
-												</h3>
-												<a
-													className={styles.name_com}
-													href="/cong-ty-tnhh-chung-anh-logistics-co243931"
-													title="Công Ty TNHH Chung Anh Logistics"
-												>
-													Công Ty TNHH Chung Anh Logistics
-												</a>
-												<p className={styles.job_local}>Hà Nội</p>
-												<p className={styles.job_chat} data-id="243931" id-chat="1346583">
-													Chat
-												</p>
-												<p className={styles.job_time}>25/08/2023</p>
-												<p className={styles.job_money} title="Từ 7.5 triệu ">
-													Từ 7.5 triệu{' '}
-												</p>
-												<a href="/lich-su/danh-sach-tong-u243931t1" className={styles.job_history}>
-													<Image
-														width={16}
-														height={16}
-														src="/images/before_login/icon_history_home.svg"
-														alt="icon lịch sử"
-													/>
-													Lịch sử
-												</a>
-											</div>
-										</div>
-									</div>
-									<div className={`${styles.item_vl} ${styles.item_home_th}`}>
-										<div className={styles.in_vl}>
-											<div className={styles.img_item_vl}>
-												<a
-													href=""
-													className={styles.logo_user_th}
-													title="[tuyen dung] nhan vien kinh doan"
-												>
-													<Image
-														height={70}
-														width={70}
-														src="/images/before_login/user_chat_off.png"
-														className={`${styles.tia_set} ${styles.no_logo_chat} ${styles.lazyloaded}`}
-														alt=""
-													/>
-													<span className={styles.box_time_off}>1 ngay</span>
-												</a>
-												<div className={styles.box_vote_new}>
-													<Image
-														className="icon_vote_new"
-														width={13}
-														height={13}
-														src="/images/before_login/icon_star_gray.svg"
-														alt="star grey"
-													/>
-													<Image
-														className="icon_vote_new"
-														width={13}
-														height={13}
-														src="/images/before_login/icon_star_gray.svg"
-														alt="star grey"
-													/>
-													<Image
-														className="icon_vote_new"
-														width={13}
-														height={13}
-														src="/images/before_login/icon_star_gray.svg"
-														alt="star grey"
-													/>
-													<Image
-														className="icon_vote_new"
-														width={13}
-														height={13}
-														src="/images/before_login/icon_star_gray.svg"
-														alt="star grey"
-													/>
-													<Image
-														className="icon_vote_new"
-														width={13}
-														height={13}
-														src="/images/before_login/icon_star_gray.svg"
-														alt="star grey"
-													/>
-												</div>
-												<Image
-													width={28}
-													height={28}
-													src="/images/before_login/icon_tiaset.svg"
-													className={styles.icon_tiaset_new}
-													alt=""
-												/>
-											</div>
-											<div className={styles.right_item_vl}>
-												<h3>
-													<a
-														className={styles.tit_vip}
-														href="/tuyen-dung-nhan-vien-kinh-doanh-p867245.html"
-														title="[Tuyển dụng] Nhân viên Kinh doanh"
-													>
-														[Tuyển dụng] Nhân viên Kinh doanh
-													</a>
-												</h3>
-												<a
-													className={styles.name_com}
-													href="/cong-ty-tnhh-chung-anh-logistics-co243931"
-													title="Công Ty TNHH Chung Anh Logistics"
-												>
-													Công Ty TNHH Chung Anh Logistics
-												</a>
-												<p className={styles.job_local}>Hà Nội</p>
-												<p className={styles.job_chat} data-id="243931" id-chat="1346583">
-													Chat
-												</p>
-												<p className={styles.job_time}>25/08/2023</p>
-												<p className={styles.job_money} title="Từ 7.5 triệu ">
-													Từ 7.5 triệu{' '}
-												</p>
-												<a href="/lich-su/danh-sach-tong-u243931t1" className={styles.job_history}>
-													<Image
-														width={16}
-														height={16}
-														src="/images/before_login/icon_history_home.svg"
-														alt="icon lịch sử"
-													/>
-													Lịch sử
-												</a>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
+							<Box_vlth jobList={jobData} />
 							<div className={styles.plus_next}>
 								<a className={styles.icon_plus} href="/tin-tuyen-dung-viec-lam.html">
 									Tất cả tin tuyển dụng &gt;&gt;
@@ -1306,18 +441,6 @@ const Home: NextPageWithLayout = () => {
 							</div>
 							<div className={`${styles.box_filter} ${styles.filter_new}`}>
 								<div className={styles.filter_left}>
-									<select
-										name="filter_select"
-										className={`${styles.filter_select} ${styles.select2_hidden_accessible}`}
-										id="filter_select"
-										tabIndex={-1}
-										aria-hidden="true"
-									>
-										<option value="addr">Địa điểm</option>
-										<option value="money">Mức lương</option>
-										<option value="exp">Kinh nghiệm</option>
-										<option value="cate">Ngành nghề</option>
-									</select>
 									<span
 										className={`${styles.select2} ${styles.select2_container} ${styles.select2_container_default}`}
 										dir="ltr"
@@ -1326,19 +449,51 @@ const Home: NextPageWithLayout = () => {
 										<span className={styles.selection}>
 											<span
 												className={`${styles.select2_selection} ${styles.select2_selection_single}`}
-												role="combobox"
-												aria-haspopup="true"
-												aria-expanded="false"
-												tabIndex={0}
-												aria-labelledby="select2-filter_select-container"
 											>
-												<span
-													className={`${styles.select2_selection__rendered}`}
-													id="select2-filter_select-container"
-													title="Địa điểm"
-												>
-													Địa điểm
-												</span>
+												<Select
+													id="city_search"
+													className={styles.city_search}
+													options={cityOptions}
+													placeholder="Chọn thành phố"
+													styles={{
+														indicatorsContainer: (baseStyles, state) => ({
+															...baseStyles,
+															display: 'none',
+														}),
+														input: (baseStyles, state) => ({
+															...baseStyles,
+															outline: 'none',
+															border: 'none',
+														}),
+														placeholder: (baseStyles, state) => ({
+															...baseStyles,
+															fontSize: '16px',
+														}),
+														singleValue: (baseStyles, state) => ({
+															...baseStyles,
+															height: '100%',
+															fontSize: '16px',
+															color: '#474747',
+															lineHeight: '31px',
+															fontWeight: 600,
+														}),
+
+														control: (baseStyles, state) => ({
+															...baseStyles,
+															margin: '0',
+															height: '30px',
+															lineHeight: '22px',
+															minHeight: '25px',
+															border: 'none',
+															outline: 'none',
+															boxShadow: 'none',
+														}),
+														option: (baseStyles, state) => ({
+															...baseStyles,
+															padding: '0 8px',
+														}),
+													}}
+												/>
 												<span className={`${styles.select2_selection__arrow}`} role="presentation">
 													<b role="presentation" />
 												</span>
@@ -1386,42 +541,58 @@ const Home: NextPageWithLayout = () => {
 									</div>
 								</div>
 								<div className={styles.filter_right_select}>
-									<select
-										name="filter_select"
-										className={`${styles.filter_select} ${styles.select2_hidden_accessible}`}
-										id="filter_select_right"
-										tabIndex={-1}
-										aria-hidden="true"
-									>
-										<option value={0}>Ngẫu nhiên</option>
-										<option value={1}>Hà Nội</option>
-										<option value={45}>Hồ Chí Minh</option>
-										<option value={1000}>Miền Bắc</option>
-										<option value={1001}>Miền Trung</option>
-										<option value={1002}>Miền Nam</option>
-									</select>
 									<span
 										className={`${styles.select2} ${styles.select2_container} ${styles.select2_container_default}`}
 										dir="ltr"
-										style={{ width: '100px' }}
 									>
 										<span className={`${styles.selection}`}>
 											<span
 												className={`${styles.select2_selection} ${styles.select2_selection_single} ${styles.addr}`}
-												role="combobox"
-												aria-haspopup="true"
-												aria-expanded="false"
-												tabIndex={0}
-												aria-labelledby="select2-filter_select_right-container"
-												data-before="Việc làm tại:"
 											>
-												<span
-													className={`${styles.select2_selection__rendered}`}
-													id="select2-filter_select_right-container"
-													title="Ngẫu nhiên"
-												>
-													Ngẫu nhiên
-												</span>
+												<Select
+													id="city_search"
+													className={styles.city_search}
+													options={cityOptions}
+													placeholder="Ngẫu nhiên"
+													styles={{
+														indicatorsContainer: (baseStyles, state) => ({
+															...baseStyles,
+															display: 'none',
+														}),
+														input: (baseStyles, state) => ({
+															...baseStyles,
+															outline: 'none',
+															border: 'none',
+														}),
+														placeholder: (baseStyles, state) => ({
+															...baseStyles,
+															fontSize: '16px',
+														}),
+														singleValue: (baseStyles, state) => ({
+															...baseStyles,
+															height: '100%',
+															fontSize: '16px',
+															color: '#474747',
+															lineHeight: '28px',
+															fontWeight: 600,
+														}),
+
+														control: (baseStyles, state) => ({
+															...baseStyles,
+															margin: '0',
+															height: '30px',
+															lineHeight: '22px',
+															minHeight: '25px',
+															border: 'none',
+															outline: 'none',
+															boxShadow: 'none',
+														}),
+														option: (baseStyles, state) => ({
+															...baseStyles,
+															padding: '0 8px',
+														}),
+													}}
+												/>
 												<span className={`${styles.select2_selection__arrow}`} role="presentation">
 													<b role="presentation" />
 												</span>
@@ -1431,314 +602,14 @@ const Home: NextPageWithLayout = () => {
 									</span>
 								</div>
 							</div>
-
-							<div className={styles.main_box_vieclam1}>
-								<div className={styles.slide_hd}>
-									<div className={`${styles.item_vl} ${styles.item_home_th}`}>
-										<div className={styles.in_vl}>
-											<div className={styles.img_item_vl}>
-												<a
-													href=""
-													className={styles.logo_user_th}
-													title="[tuyen dung] nhan vien kinh doan"
-												>
-													<Image
-														height={70}
-														width={70}
-														src="/images/before_login/user_chat_off.png"
-														className={`${styles.tia_set} ${styles.no_logo_chat} ${styles.lazyloaded}`}
-														alt=""
-													/>
-													<span className={styles.box_time_off}>1 ngay</span>
-												</a>
-												<div className={styles.box_vote_new}>
-													<Image
-														className="icon_vote_new"
-														width={13}
-														height={13}
-														src="/images/before_login/icon_star_gray.svg"
-														alt="star grey"
-													/>
-													<Image
-														className="icon_vote_new"
-														width={13}
-														height={13}
-														src="/images/before_login/icon_star_gray.svg"
-														alt="star grey"
-													/>
-													<Image
-														className="icon_vote_new"
-														width={13}
-														height={13}
-														src="/images/before_login/icon_star_gray.svg"
-														alt="star grey"
-													/>
-													<Image
-														className="icon_vote_new"
-														width={13}
-														height={13}
-														src="/images/before_login/icon_star_gray.svg"
-														alt="star grey"
-													/>
-													<Image
-														className="icon_vote_new"
-														width={13}
-														height={13}
-														src="/images/before_login/icon_star_gray.svg"
-														alt="star grey"
-													/>
-												</div>
-												<Image
-													width={28}
-													height={28}
-													src="/images/before_login/icon_tiaset.svg"
-													className={styles.icon_tiaset_new}
-													alt=""
-												/>
-											</div>
-											<div className={styles.right_item_vl}>
-												<h3>
-													<a
-														className={styles.tit_vip}
-														href="/tuyen-dung-nhan-vien-kinh-doanh-p867245.html"
-														title="[Tuyển dụng] Nhân viên Kinh doanh"
-													>
-														[Tuyển dụng] Nhân viên Kinh doanh
-													</a>
-												</h3>
-												<a
-													className={styles.name_com}
-													href="/cong-ty-tnhh-chung-anh-logistics-co243931"
-													title="Công Ty TNHH Chung Anh Logistics"
-												>
-													Công Ty TNHH Chung Anh Logistics
-												</a>
-												<p className={styles.job_local}>Hà Nội</p>
-												<p className={styles.job_chat} data-id="243931" id-chat="1346583">
-													Chat
-												</p>
-												<p className={styles.job_time}>25/08/2023</p>
-												<p className={styles.job_money} title="Từ 7.5 triệu ">
-													Từ 7.5 triệu{' '}
-												</p>
-												<a href="/lich-su/danh-sach-tong-u243931t1" className={styles.job_history}>
-													<Image
-														width={16}
-														height={16}
-														src="/images/before_login/icon_history_home.svg"
-														alt="icon lịch sử"
-													/>
-													Lịch sử
-												</a>
-											</div>
-										</div>
-									</div>
-									<div className={`${styles.item_vl} ${styles.item_home_th}`}>
-										<div className={styles.in_vl}>
-											<div className={styles.img_item_vl}>
-												<a
-													href=""
-													className={styles.logo_user_th}
-													title="[tuyen dung] nhan vien kinh doan"
-												>
-													<Image
-														height={70}
-														width={70}
-														src="/images/before_login/user_chat_off.png"
-														className={`${styles.tia_set} ${styles.no_logo_chat} ${styles.lazyloaded}`}
-														alt=""
-													/>
-													<span className={styles.box_time_off}>1 ngay</span>
-												</a>
-												<div className={styles.box_vote_new}>
-													<Image
-														className="icon_vote_new"
-														width={13}
-														height={13}
-														src="/images/before_login/icon_star_gray.svg"
-														alt="star grey"
-													/>
-													<Image
-														className="icon_vote_new"
-														width={13}
-														height={13}
-														src="/images/before_login/icon_star_gray.svg"
-														alt="star grey"
-													/>
-													<Image
-														className="icon_vote_new"
-														width={13}
-														height={13}
-														src="/images/before_login/icon_star_gray.svg"
-														alt="star grey"
-													/>
-													<Image
-														className="icon_vote_new"
-														width={13}
-														height={13}
-														src="/images/before_login/icon_star_gray.svg"
-														alt="star grey"
-													/>
-													<Image
-														className="icon_vote_new"
-														width={13}
-														height={13}
-														src="/images/before_login/icon_star_gray.svg"
-														alt="star grey"
-													/>
-												</div>
-												<Image
-													width={28}
-													height={28}
-													src="/images/before_login/icon_tiaset.svg"
-													className={styles.icon_tiaset_new}
-													alt=""
-												/>
-											</div>
-											<div className={styles.right_item_vl}>
-												<h3>
-													<a
-														className={styles.tit_vip}
-														href="/tuyen-dung-nhan-vien-kinh-doanh-p867245.html"
-														title="[Tuyển dụng] Nhân viên Kinh doanh"
-													>
-														[Tuyển dụng] Nhân viên Kinh doanh
-													</a>
-												</h3>
-												<a
-													className={styles.name_com}
-													href="/cong-ty-tnhh-chung-anh-logistics-co243931"
-													title="Công Ty TNHH Chung Anh Logistics"
-												>
-													Công Ty TNHH Chung Anh Logistics
-												</a>
-												<p className={styles.job_local}>Hà Nội</p>
-												<p className={styles.job_chat} data-id="243931" id-chat="1346583">
-													Chat
-												</p>
-												<p className={styles.job_time}>25/08/2023</p>
-												<p className={styles.job_money} title="Từ 7.5 triệu ">
-													Từ 7.5 triệu{' '}
-												</p>
-												<a href="/lich-su/danh-sach-tong-u243931t1" className={styles.job_history}>
-													<Image
-														width={16}
-														height={16}
-														src="/images/before_login/icon_history_home.svg"
-														alt="icon lịch sử"
-													/>
-													Lịch sử
-												</a>
-											</div>
-										</div>
-									</div>
-									<div className={`${styles.item_vl} ${styles.item_home_th}`}>
-										<div className={styles.in_vl}>
-											<div className={styles.img_item_vl}>
-												<a
-													href=""
-													className={styles.logo_user_th}
-													title="[tuyen dung] nhan vien kinh doan"
-												>
-													<Image
-														height={70}
-														width={70}
-														src="/images/before_login/user_chat_off.png"
-														className={`${styles.tia_set} ${styles.no_logo_chat} ${styles.lazyloaded}`}
-														alt=""
-													/>
-													<span className={styles.box_time_off}>1 ngay</span>
-												</a>
-												<div className={styles.box_vote_new}>
-													<Image
-														className="icon_vote_new"
-														width={13}
-														height={13}
-														src="/images/before_login/icon_star_gray.svg"
-														alt="star grey"
-													/>
-													<Image
-														className="icon_vote_new"
-														width={13}
-														height={13}
-														src="/images/before_login/icon_star_gray.svg"
-														alt="star grey"
-													/>
-													<Image
-														className="icon_vote_new"
-														width={13}
-														height={13}
-														src="/images/before_login/icon_star_gray.svg"
-														alt="star grey"
-													/>
-													<Image
-														className="icon_vote_new"
-														width={13}
-														height={13}
-														src="/images/before_login/icon_star_gray.svg"
-														alt="star grey"
-													/>
-													<Image
-														className="icon_vote_new"
-														width={13}
-														height={13}
-														src="/images/before_login/icon_star_gray.svg"
-														alt="star grey"
-													/>
-												</div>
-												<Image
-													width={28}
-													height={28}
-													src="/images/before_login/icon_tiaset.svg"
-													className={styles.icon_tiaset_new}
-													alt=""
-												/>
-											</div>
-											<div className={styles.right_item_vl}>
-												<h3>
-													<a
-														className={styles.tit_vip}
-														href="/tuyen-dung-nhan-vien-kinh-doanh-p867245.html"
-														title="[Tuyển dụng] Nhân viên Kinh doanh"
-													>
-														[Tuyển dụng] Nhân viên Kinh doanh
-													</a>
-												</h3>
-												<a
-													className={styles.name_com}
-													href="/cong-ty-tnhh-chung-anh-logistics-co243931"
-													title="Công Ty TNHH Chung Anh Logistics"
-												>
-													Công Ty TNHH Chung Anh Logistics
-												</a>
-												<p className={styles.job_local}>Hà Nội</p>
-												<p className={styles.job_chat} data-id="243931" id-chat="1346583">
-													Chat
-												</p>
-												<p className={styles.job_time}>25/08/2023</p>
-												<p className={styles.job_money} title="Từ 7.5 triệu ">
-													Từ 7.5 triệu{' '}
-												</p>
-												<a href="/lich-su/danh-sach-tong-u243931t1" className={styles.job_history}>
-													<Image
-														width={16}
-														height={16}
-														src="/images/before_login/icon_history_home.svg"
-														alt="icon lịch sử"
-													/>
-													Lịch sử
-												</a>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
+							<Box_vlth jobList={jobData} />
 							<div className={styles.plus_next}>
 								<a className={styles.icon_plus} href="/tin-tuyen-dung-viec-lam.html">
 									Tất cả tin tuyển dụng &gt;&gt;
 								</a>
 							</div>
 						</div>
+						{/* Hotline */}
 						<div className={styles.hotlineLeft}>
 							<div className={styles.hotline}>
 								<h3 className={styles.hotlineH4}>
@@ -1806,26 +677,6 @@ const Home: NextPageWithLayout = () => {
 												<span>Chat 365</span>
 											</a>
 										</div>
-										<div className={`${styles.hotNd} ${styles.mbHot} ${styles.hidden}`}>
-											<a
-												rel="nofollow"
-												target="_blank"
-												title="Click chọn để chat qua zalo"
-												href="http://zalo.me/0904646975"
-												className="user-support"
-											>
-												Zalo
-											</a>
-											<a
-												rel="nofollow"
-												target="_blank"
-												title="Click chọn để chat qua Skype"
-												href="skype:live:binhminhmta123?chat"
-												className="user-support"
-											>
-												Skype
-											</a>
-										</div>
 									</div>
 								</div>
 							</div>
@@ -1833,209 +684,6 @@ const Home: NextPageWithLayout = () => {
 					</div>
 				</section>
 				<Footer />
-				{/* <div id="liveChatContainer">
-					<div className="widget timviec365">
-						<button className="talk_button">Trực tuyến</button>
-						<div className="liveChatMain" style={{ display: 'none' }}>
-							<div className="liveChatHeader">
-								<div className="liveChatHeaderButton">
-									<button id="liveChatClose">X</button>
-								</div>
-								<div className="text-center text">
-									<a rel="nofollow" download href="/dowload/livechat/chat.exe" className="text">
-										Bạn tải CHAT365 <span className="underLine">tại đây</span> để nhận được sự hỗ
-										trợ tốt nhất, <span className="underLine">tải ngay</span>
-									</a>
-								</div>
-							</div>
-							<div className="liveChatBody">
-								<div className="listConversation" />
-								<div id="typing" />
-								<div id="mainEnterChat">
-									<div id="boxPreview" className="hidden">
-										<button className="itemPreview" id="itemAddNewFile">
-											<img src="/images/livechat/add_new_file.svg" />
-										</button>
-									</div>
-									<div id="boxEnterChat">
-										<div id="boxEditor">
-											<div id="boxRepMess">
-												<div id="boxRepMessTop">
-													<img src="/images/livechat/repMess.svg" />
-													<div id="boxContentRepMess">
-														<p id="contentRepMess" />
-														<p id="timeRepMess" />
-													</div>
-													<button id="closeRepMess">X</button>
-												</div>
-											</div>
-											<textarea
-												disabled
-												placeholder="Nhập nội dung"
-												id="tawk-chatinput-editor"
-												rows={1}
-												defaultValue={''}
-											/>
-										</div>
-										<div id="chatinputActionButtons">
-											<button id="btnSendMess" className="hidden">
-												<svg
-													width={50}
-													height={51}
-													viewBox="0 0 30 31"
-													fill="none"
-													xmlns="http://www.w3.org/2000/svg"
-												>
-													<g clipPath="url(#clip0_571_56690)">
-														<path
-															d="M30 7.4273V23.5726C30 27.3987 26.8987 30.5 23.0727 30.5H6.92736C3.10131 30.5 0 27.3987 0 23.5727V7.4273C0 3.60131 3.10131 0.5 6.92736 0.5H23.0727C26.8987 0.5 30 3.60131 30 7.4273Z"
-															fill="url(#paint0_linear_571_56690)"
-														/>
-														<path
-															d="M6.79923 30.5C3.05012 30.5 0 27.4499 0 23.7008V7.29923C0 3.55012 3.05012 0.5 6.79923 0.5H23.2008C26.9499 0.5 30 3.55012 30 7.29923V23.7008C30 27.4499 26.9499 30.5 23.2008 30.5H6.79923Z"
-															fill="url(#paint1_linear_571_56690)"
-														/>
-														<path
-															opacity="0.5"
-															d="M30.0001 15.4666V23.5725C30.0001 27.3986 26.8987 30.5 23.0726 30.5H16.8868L8.66577 22.279L23.4435 8.90997L30.0001 15.4666Z"
-															fill="url(#paint2_linear_571_56690)"
-														/>
-														<path
-															opacity="0.3"
-															d="M23.7208 9.24756L5.73975 13.7902L8.95742 16.8186V22.5914L12.1258 20.1762L15.2035 23.2539L23.7208 9.24756Z"
-															fill="#1A1A1A"
-														/>
-														<path
-															d="M23.4085 8.93506L10.2539 18.3042L14.8911 22.9414L23.4085 8.93506Z"
-															fill="url(#paint3_linear_571_56690)"
-														/>
-														<path
-															d="M8.64502 16.5061V22.279L10.2539 18.3042L23.4085 8.93506L8.64502 16.5061Z"
-															fill="url(#paint4_linear_571_56690)"
-														/>
-														<path
-															d="M5.42725 13.4777L8.64492 16.5061L23.4084 8.93506L5.42725 13.4777Z"
-															fill="url(#paint5_linear_571_56690)"
-														/>
-														<path
-															d="M8.64502 22.279L11.8134 19.8638L10.2539 18.3042L8.64502 22.279Z"
-															fill="#D2D2D2"
-														/>
-														<path
-															d="M23.4085 8.93506L10.2539 18.3042L14.8911 22.9414L23.4085 8.93506Z"
-															fill="white"
-														/>
-														<path
-															d="M8.64502 16.5061V22.279L10.2539 18.3042L23.4085 8.93506L8.64502 16.5061Z"
-															fill="#9FB5DF"
-														/>
-														<path
-															d="M5.42725 13.4777L8.64492 16.5061L23.4084 8.93506L5.42725 13.4777Z"
-															fill="white"
-														/>
-													</g>
-													<defs>
-														<linearGradient
-															id="paint0_linear_571_56690"
-															x1={15}
-															y1="0.5"
-															x2={15}
-															y2="30.5"
-															gradientUnits="userSpaceOnUse"
-														>
-															<stop offset="0.005" stopColor="#FFE5AE" />
-															<stop offset={1} stopColor="#FF992D" />
-														</linearGradient>
-														<linearGradient
-															id="paint1_linear_571_56690"
-															x1={15}
-															y1="0.792976"
-															x2={15}
-															y2="30.678"
-															gradientUnits="userSpaceOnUse"
-														>
-															<stop stopColor="#4C5BD4" />
-															<stop offset={1} stopColor="#1F7ED0" />
-														</linearGradient>
-														<linearGradient
-															id="paint2_linear_571_56690"
-															x1="15.9939"
-															y1="15.5339"
-															x2="28.7275"
-															y2="28.267"
-															gradientUnits="userSpaceOnUse"
-														>
-															<stop stopColor="#64A8E2" />
-															<stop offset={1} stopColor="#1F7ED0" stopOpacity={0} />
-														</linearGradient>
-														<linearGradient
-															id="paint3_linear_571_56690"
-															x1="10.2539"
-															y1="15.9382"
-															x2="23.4085"
-															y2="15.9382"
-															gradientUnits="userSpaceOnUse"
-														>
-															<stop offset="0.009" stopColor="#F3E0DF" />
-															<stop offset={1} stopColor="#E8E0BA" />
-														</linearGradient>
-														<linearGradient
-															id="paint4_linear_571_56690"
-															x1="14.2217"
-															y1="12.9556"
-															x2="15.4627"
-															y2="14.7785"
-															gradientUnits="userSpaceOnUse"
-														>
-															<stop offset="0.009" stopColor="#65BCC0" />
-															<stop offset={1} stopColor="#53838A" />
-														</linearGradient>
-														<linearGradient
-															id="paint5_linear_571_56690"
-															x1="5.42725"
-															y1="12.7206"
-															x2="23.4084"
-															y2="12.7206"
-															gradientUnits="userSpaceOnUse"
-														>
-															<stop offset="0.009" stopColor="#F3E0DF" />
-															<stop offset={1} stopColor="#E8E0BA" />
-														</linearGradient>
-														<clipPath id="clip0_571_56690">
-															<rect y="0.5" width={30} height={30} rx={15} fill="white" />
-														</clipPath>
-													</defs>
-												</svg>
-											</button>
-											<button id="addFile">
-												<svg
-													width={32}
-													height={38}
-													viewBox="0 0 22 28"
-													fill="none"
-													xmlns="http://www.w3.org/2000/svg"
-												>
-													<path
-														d="M21.0371 7.45508L14.7324 1.15039C14.5566 0.974609 14.3193 0.875 14.0703 0.875H1.625C1.10645 0.875 0.6875 1.29395 0.6875 1.8125V26.1875C0.6875 26.7061 1.10645 27.125 1.625 27.125H20.375C20.8936 27.125 21.3125 26.7061 21.3125 26.1875V8.12012C21.3125 7.87109 21.2129 7.63086 21.0371 7.45508ZM19.1504 8.55078H13.6367V3.03711L19.1504 8.55078ZM19.2031 25.0156H2.79688V2.98438H11.6445V9.3125C11.6445 9.63884 11.7742 9.95182 12.0049 10.1826C12.2357 10.4133 12.5487 10.543 12.875 10.543H19.2031V25.0156ZM11.9375 12.8281C11.9375 12.6992 11.832 12.5938 11.7031 12.5938H10.2969C10.168 12.5938 10.0625 12.6992 10.0625 12.8281V15.9922H6.89844C6.76953 15.9922 6.66406 16.0977 6.66406 16.2266V17.6328C6.66406 17.7617 6.76953 17.8672 6.89844 17.8672H10.0625V21.0312C10.0625 21.1602 10.168 21.2656 10.2969 21.2656H11.7031C11.832 21.2656 11.9375 21.1602 11.9375 21.0312V17.8672H15.1016C15.2305 17.8672 15.3359 17.7617 15.3359 17.6328V16.2266C15.3359 16.0977 15.2305 15.9922 15.1016 15.9922H11.9375V12.8281Z"
-														fill="#474747"
-													/>
-												</svg>
-											</button>
-											<input type="file" id="tawk-chatinput-addFile" multiple hidden />
-										</div>
-									</div>
-								</div>
-								<button id="onBotLiveChat">
-									<img src="/images/livechat/onBottom.svg" />
-								</button>
-							</div>
-							<div id="drag">
-								<img src="/images/livechat/drag.png" />
-							</div>
-						</div>
-					</div>
-					<audio controls id="notificationAudio" style={{ display: 'none' }} />
-				</div> */}
 			</>
 		</>
 	)

@@ -1,6 +1,6 @@
 /* Top - banner */
 .new_banner {
-	background: url('../public/images/banner_home_1520.png') bottom;
+	background: url('/images/banner_home_1520.png') bottom;
 	background-size: 100% 90%;
 	float: left;
 	width: 100%;
@@ -58,16 +58,17 @@
 			left: 49.3%;
 		}
 	}
+	.tktk {
+		position: absolute;
+		bottom: -160px;
+		height: 38px;
+		line-height: 38px;
+		width: 100%;
+		background: #4c5bd4;
+		text-align: center;
+	}
 }
-.tktk {
-	position: absolute;
-	bottom: -160px;
-	height: 38px;
-	line-height: 38px;
-	width: 100%;
-	background: #4c5bd4;
-	text-align: center;
-}
+
 .section_home {
 	background: #f2f2f2;
 	width: 100%;
@@ -131,167 +132,6 @@
 				.main_box_vieclam {
 					padding: 15px;
 					margin-bottom: 0;
-					.item_vl:nth-child(2n + 1) {
-						margin-right: 1.8%;
-					}
-					.item_vl {
-						width: 49%;
-						box-sizing: border-box;
-						height: 110px;
-						padding: 10px;
-						border-radius: 1px;
-						margin-top: 8px;
-						background-color: #fff;
-						float: left;
-						position: relative;
-						border: 1px solid #dfdfdf;
-						.in_vl {
-							width: 100%;
-							float: left;
-						}
-						.img_item_vl {
-							min-height: 70px;
-							max-height: 88px;
-							height: auto;
-							position: relative;
-							width: 70px;
-							margin-right: 10px;
-							float: left;
-							overflow: hidden;
-							img {
-								max-width: 100%;
-								max-height: 100%;
-								vertical-align: middle;
-								object-fit: contain;
-								border-radius: 50%;
-							}
-							.logo_user_th {
-								position: relative;
-								display: inline-block;
-								img {
-									width: 70px;
-									height: 70px;
-								}
-								.tia_set {
-									border: 2px solid #4c5bd4 !important;
-								}
-								.box_time_off {
-									position: absolute;
-									padding: 1px 5px;
-									right: 0px;
-									top: 75%;
-									background: #f4fce9;
-									border-radius: 24px;
-									font-weight: unset;
-									font-size: 10px;
-									line-height: 14px;
-									color: #76b51b;
-								}
-							}
-							.box_vote_new {
-								display: flex;
-								justify-content: center;
-							}
-							.icon_tiaset_new {
-								width: 28px;
-								height: 28px;
-								position: absolute;
-								left: 0;
-								top: 0;
-								border-radius: unset;
-							}
-						}
-						.right_item_vl {
-							width: calc(100% - 80px);
-							float: left;
-							position: relative;
-							h3 {
-								margin-bottom: 0;
-							}
-							a:not(.job_chat) {
-								width: 100%;
-								float: left;
-								white-space: nowrap;
-								text-overflow: ellipsis;
-								overflow: hidden;
-								font-family: Roboto-Medium, sans-serif;
-								margin-bottom: 5px;
-								font-weight: 400;
-							}
-							.tit_vip {
-								color: #4c5bd4;
-								font-size: 16px;
-								line-height: 20px;
-							}
-							.name_com {
-								color: #6f6f6f;
-								font-size: 14px;
-								line-height: 17px;
-							}
-							.job_local {
-								width: 35%;
-								float: left;
-								padding-left: 15px;
-								text-overflow: ellipsis;
-								white-space: nowrap;
-								overflow: hidden;
-								background: url('/images/before_login/icn_location.png') no-repeat;
-								color: #6f6f6f;
-								font-size: 14px;
-								line-height: 17px;
-							}
-							.job_chat {
-								width: calc(35% - 10px);
-								float: left;
-								padding-left: 20px;
-								margin-left: 5px;
-								color: #6f6f6f;
-								font-size: 14px;
-								line-height: 17px;
-								background: url('/images/before_login/vl_chat_off.png') no-repeat;
-								cursor: pointer;
-							}
-							.job_time {
-								width: 35%;
-								color: #6f6f6f;
-								font-size: 14px;
-								line-height: 17px;
-								width: 35%;
-								float: left;
-								margin-top: 6px;
-								padding-left: 15px;
-								background: url('/images/hn_icon.png') no-repeat;
-							}
-							.job_money {
-								color: #d44cae;
-								width: calc(37% - 5px) !important;
-								float: left !important;
-								float: left !important;
-								padding-left: 17px;
-								margin-left: 5px;
-								text-overflow: ellipsis;
-								white-space: nowrap;
-								overflow: hidden;
-								background: url('/images/icn_money.png') no-repeat;
-								font-size: 14px;
-								line-height: 17px;
-								margin-top: 6px;
-							}
-							.job_history {
-								color: #6f6f6f;
-								font-size: 14px;
-								line-height: 17px;
-								cursor: pointer;
-								width: calc(28% - 5px) !important;
-								margin: 6px 0 0 5px !important;
-								display: flex;
-								align-items: center;
-								gap: 3px;
-								justify-content: flex-start;
-								font-family: Roboto-Regular, sans-serif !important;
-							}
-						}
-					}
 				}
 				.plus_next {
 					float: right;
@@ -705,172 +545,7 @@
 				background-position: left 10px;
 				background-size: 35px;
 			}
-			.main_box_vieclam1 {
-				padding: 15px;
-				margin-bottom: 0;
-				.item_vl:nth-child(3n + 1),
-				.item_vl:nth-child(3n + 2) {
-					margin-right: 15px;
-				}
-				.item_vl {
-					box-sizing: border-box;
-					height: 110px;
-					width: 370px;
-					padding: 10px;
-					border-radius: 1px;
-					margin-top: 8px;
-					background-color: #fff;
-					float: left;
-					position: relative;
-					border: 1px solid #dfdfdf;
-					.in_vl {
-						width: 100%;
-						float: left;
-					}
-					.img_item_vl {
-						min-height: 70px;
-						max-height: 88px;
-						height: auto;
-						position: relative;
-						width: 70px;
-						margin-right: 10px;
-						float: left;
-						overflow: hidden;
-						img {
-							max-width: 100%;
-							max-height: 100%;
-							vertical-align: middle;
-							object-fit: contain;
-							border-radius: 50%;
-						}
-						.logo_user_th {
-							position: relative;
-							display: inline-block;
-							img {
-								width: 70px;
-								height: 70px;
-							}
-							.tia_set {
-								border: 2px solid #4c5bd4 !important;
-							}
-							.box_time_off {
-								position: absolute;
-								padding: 1px 5px;
-								right: 0px;
-								top: 75%;
-								background: #f4fce9;
-								border-radius: 24px;
-								font-weight: unset;
-								font-size: 10px;
-								line-height: 14px;
-								color: #76b51b;
-							}
-						}
-						.box_vote_new {
-							display: flex;
-							justify-content: center;
-						}
-						.icon_tiaset_new {
-							width: 28px;
-							height: 28px;
-							position: absolute;
-							left: 0;
-							top: 0;
-							border-radius: unset;
-						}
-					}
-					.right_item_vl {
-						width: calc(100% - 80px);
-						float: left;
-						position: relative;
-						h3 {
-							margin-bottom: 0;
-						}
-						a:not(.job_chat) {
-							width: 100%;
-							float: left;
-							white-space: nowrap;
-							text-overflow: ellipsis;
-							overflow: hidden;
-							font-family: Roboto-Medium, sans-serif;
-							margin-bottom: 5px;
-							font-weight: 400;
-						}
-						.tit_vip {
-							color: #4c5bd4;
-							font-size: 16px;
-							line-height: 20px;
-						}
-						.name_com {
-							color: #6f6f6f;
-							font-size: 14px;
-							line-height: 17px;
-						}
-						.job_local {
-							width: 35%;
-							float: left;
-							padding-left: 15px;
-							text-overflow: ellipsis;
-							white-space: nowrap;
-							overflow: hidden;
-							background: url('/images/before_login/icn_location.png') no-repeat;
-							color: #6f6f6f;
-							font-size: 14px;
-							line-height: 17px;
-						}
-						.job_chat {
-							width: calc(35% - 10px);
-							float: left;
-							padding-left: 20px;
-							margin-left: 5px;
-							color: #6f6f6f;
-							font-size: 14px;
-							line-height: 17px;
-							background: url('/images/before_login/vl_chat_off.png') no-repeat;
-							cursor: pointer;
-						}
-						.job_time {
-							width: 35%;
-							color: #6f6f6f;
-							font-size: 14px;
-							line-height: 17px;
-							width: 35%;
-							float: left;
-							margin-top: 6px;
-							padding-left: 15px;
-							background: url('/images/hn_icon.png') no-repeat;
-						}
-						.job_money {
-							color: #d44cae;
-							width: calc(37% - 5px) !important;
-							float: left !important;
-							float: left !important;
-							padding-left: 17px;
-							margin-left: 5px;
-							text-overflow: ellipsis;
-							white-space: nowrap;
-							overflow: hidden;
-							background: url('/images/icn_money.png') no-repeat;
-							font-size: 14px;
-							line-height: 17px;
-							margin-top: 6px;
-						}
-						.job_history {
-							color: #6f6f6f;
-							font-size: 14px;
-							line-height: 17px;
-							cursor: pointer;
-							width: calc(28% - 5px) !important;
-							margin: 6px 0 0 5px !important;
-							display: flex;
-							align-items: center;
-							gap: 3px;
-							justify-content: flex-start;
-							font-family: Roboto-Regular, sans-serif !important;
-						}
-					}
-				}
-			}
+
 			.plus_next {
 				float: right;
 				position: absolute;
@@ -1305,7 +980,7 @@
 
 @media screen and (max-width: 1165px) {
 	.new_banner {
-		background: url('../public/images/new_banner_th_375.png') no-repeat;
+		background: url('/images/new_banner_th_375.png') no-repeat;
 		background-size: cover;
 		.box_search {
 			height: 350px !important;
@@ -1321,11 +996,597 @@
 				}
 			}
 			.btn_dow {
-				bottom: 30px;
+				display: none;
 			}
 		}
 		.tktk {
 			display: none;
 		}
 	}
+	.section_home {
+		margin-top: -3px;
+		width: 100%;
+		float: left;
+		background: #f2f2f2 !important;
+		.vieclam_container {
+			width: auto;
+			background: #fff;
+			.clear {
+				clear: both;
+			}
+			p {
+				margin: 0;
+				padding: 0;
+			}
+			.box_vl {
+				width: 100%;
+				background: #fff;
+				float: left;
+				display: block;
+				padding: 3px 0;
+				.box_vl_fix {
+					box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.3);
+					height: 40px;
+					z-index: 90;
+					background-color: #4c5bd4;
+					text-transform: uppercase;
+					width: 100%;
+					background: #4c5bd4;
+					float: left;
+					.span_vl {
+						width: 32.66%;
+						float: left;
+						text-align: center;
+						p {
+							padding: 0 3px;
+							line-height: 42px;
+							height: 33px;
+							display: inline-block;
+							color: #fff;
+							font-family: Roboto-Medium, sans-serif;
+							font-size: 18px;
+						}
+					}
+				}
+				.sticky {
+					position: fixed !important;
+					top: 0;
+					width: 100%;
+					z-index: 99;
+				}
+			}
+			.vl_left {
+				width: 100%;
+				#box_vlth {
+					width: 100%;
+					float: left;
+					h2 {
+						width: calc(100% - 75px);
+						margin-left: 18px;
+					}
+					.plus_next {
+						display: none;
+					}
+				}
+			}
+			.vl_right {
+				width: calc(100% - 30px);
+				float: left;
+				margin-left: 15px;
+				.list_ntd_home {
+					.list_nganh_nghe {
+						.list_chat_ntd {
+							cursor: pointer;
+						}
+					}
+				}
+			}
+			#box_vlth {
+				h2 {
+					width: calc(100% - 75px);
+					margin-left: 18px;
+				}
+				.icn_vlhd {
+					background: url('/images/before_login/icn_vlhd.png') 100% 100% no-repeat;
+					background-position: left 10px;
+					background-size: 35px;
+				}
+				.icn_vllc {
+					background: url('/images/before_login/icn_vllc.png') 100% 100% no-repeat;
+					background-position: left 10px;
+					background-size: 35px;
+				}
+				.icon_ai_home {
+					background: url('/images/before_login/icon_ai_home.svg') 100% 100% no-repeat;
+					background-position: left 10px;
+					background-size: 35px;
+				}
+				.plus_next {
+					float: right;
+					position: absolute;
+					bottom: 15px;
+					right: 15px;
+					.icon_plus {
+						color: #6f6f6f;
+						font-size: 14px;
+					}
+				}
+			}
+			/*BANNER TIA SÉT TRANG CHỦ*/
+			.box_banner_tiaset.banner_home_tiaset {
+				background: url('/images/bn_home_tiaset_1024.png');
+				.content_banner_tiaset {
+					padding: 44px 20px 33px 20px;
+					.banner_tiaset_left {
+						width: 58%;
+					}
+				}
+			}
+			/*BANNER ÁNH SAO TRANG CHỦ*/
+			.banner_home_tiaset.banner_home_anhsao {
+				padding: 20px;
+			}
+			// Hotline
+			.hotlineLeft {
+				margin-left: 15px;
+				width: calc(100% - 30px);
+				float: left;
+			}
+		}
+	}
+}
+@media screen and (max-width: 1024px) {
+	.section_home {
+		.vieclam_container {
+			.ctn_banner_utcv {
+				.ctn_ndung_utcv {
+					flex-wrap: wrap;
+					gap: 20px;
+					width: 100%;
+					display: flex;
+					.ctn_chung_utcv {
+						width: 100%;
+					}
+					.ctn_left_uplcv {
+						background: url('/images/exp_upl_cv_1024.png') no-repeat;
+						background-size: 100% 100%;
+						.ctn_des_uplcv {
+							width: 78%;
+						}
+					}
+					.ctn_right_tcv {
+						background: url('/images/exp_tcv_1024.png') no-repeat;
+						background-size: 100% 100%;
+					}
+				}
+			}
+			#box_vlth {
+				.box_filter {
+					.filter_right {
+						display: none;
+					}
+					.filter_right_select {
+						display: block;
+						width: 50%;
+						.select2_container {
+							margin-bottom: unset !important;
+							float: left;
+							width: 260px;
+							position: relative;
+							margin-top: 0 !important;
+							vertical-align: middle;
+							box-sizing: border-box;
+							display: inline-block;
+							margin: 0;
+							.select2_selection_single {
+								border: 1px solid #c4c4c4;
+								padding: 0px 10px;
+								float: left;
+								width: 100% !important;
+								background-color: #fff;
+								line-height: 36px;
+								height: 36px;
+								box-sizing: border-box;
+								cursor: pointer;
+								display: block;
+								-webkit-user-select: none;
+								border-radius: 4px;
+							}
+							.select2_selection_single::before {
+								background: url('/images/icon_item_AI.svg') no-repeat;
+								background-position-y: center;
+								float: left;
+								font-size: 16px;
+								color: #999999;
+								line-height: 31px;
+								padding-left: 28px;
+								content: 'Việc làm:';
+							}
+						}
+					}
+				}
+			}
+			// Hotline
+			.hotlineLeft {
+				.hotline {
+					.boxHotline {
+						flex-direction: column;
+						.boxContact {
+							width: 100%;
+							.hotlineTitle {
+								margin-bottom: 0;
+								text-align: left;
+							}
+						}
+						.boxComplaint {
+							width: 100%;
+							.hotlineTitle {
+								margin-bottom: 0;
+								text-align: left;
+							}
+							.hotNd {
+								display: flex;
+								gap: 15px;
+								flex-wrap: wrap;
+								p {
+									width: fit-content;
+									margin-bottom: 0;
+									padding: 8px !important;
+								}
+								a {
+									width: fit-content;
+									margin-bottom: 0;
+									padding: 8px !important;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+@media screen and (max-width: 768px) {
+	.section_home {
+		.vieclam_container {
+			.ctn_banner_utcv {
+				.ctn_ndung_utcv {
+					flex-wrap: wrap;
+					gap: 20px;
+					.ctn_chung_utcv {
+						width: 100%;
+					}
+					.ctn_left_uplcv {
+						background: url('/images/exp_upl_cv_768.png') no-repeat;
+						background-size: 100% 100%;
+					}
+					.ctn_right_tcv {
+						background: url('/images/exp_tcv_768.png') no-repeat;
+						background-size: 100% 100%;
+					}
+					.ctn_tde_uplcv {
+						width: 100%;
+						display: flex;
+						margin-bottom: 15px;
+						font-weight: 700;
+						font-size: 18px;
+						line-height: 26px;
+						color: #4c5bd4;
+					}
+
+					.ctn_des_uplcv {
+						width: 78%;
+					}
+				}
+			}
+			/*BANNER TIA SÉT TRANG CHỦ*/
+			.box_banner_tiaset.banner_home_tiaset {
+				background: url('/images/bn_home_tiaset_768.png');
+				background-size: 100% 100%;
+				.content_banner_tiaset {
+					padding: 45px 20px 40px 28px;
+					.banner_tiaset_left {
+						width: calc(100% - 187px);
+						column-gap: 5px;
+						.box_title_banner {
+							max-width: 237px;
+							.title_tiaset {
+								font-size: 24px;
+								line-height: 28px;
+							}
+							.note_tiaset {
+								font-size: 13px;
+								line-height: 18px;
+							}
+						}
+					}
+					.banner_tiaset_right {
+						row-gap: 12px;
+						max-width: 180px;
+						.title_list {
+							font-size: 13px;
+							line-height: 18px;
+						}
+						.link_list {
+							font-size: 15px;
+							line-height: 18px;
+						}
+					}
+				}
+			}
+			/*BANNER ÁNH SAO TRANG CHỦ*/
+			.banner_home_tiaset.banner_home_anhsao {
+				.content_banner_anhsao {
+					.banner_anhsao_left {
+						flex-direction: row-reverse;
+						column-gap: 0;
+						align-items: flex-start;
+						.icon_anhsao_banner {
+							width: 41px;
+							height: 41px;
+						}
+						.box_title_banner {
+							max-width: 225px;
+							.title_tiaset {
+								font-size: 24px;
+								line-height: 28px;
+							}
+							.note_tiaset {
+								line-height: 18px;
+								font-size: 14px;
+							}
+						}
+					}
+					.box_time_tiaset {
+						.txt_time_ts {
+							font-size: 13px;
+							line-height: 18px;
+						}
+					}
+					.banner_tiaset_right {
+						row-gap: 12px;
+						max-width: 180px;
+						.title_list {
+							font-size: 13px;
+							line-height: 18px;
+						}
+						.link_list {
+							font-size: 15px;
+							line-height: 18px;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+@media screen and (max-width: 600px) {
+	.new_banner {
+		height: 335px;
+	}
+	.section_home {
+		background: #fff !important;
+		.vieclam_container {
+			.vl_left {
+				width: 100%;
+				#box_vlth {
+					margin: 0;
+					padding: 20px 0;
+					h2 {
+						width: calc(100% - 55px);
+						margin-left: 0;
+						padding-left: 55px;
+					}
+				}
+			}
+			.vl_right {
+				width: 100%;
+				margin-left: 0;
+			}
+			.ctn_banner_utcv {
+				.ctn_ndung_utcv {
+					.ctn_left_uplcv {
+						background: url('/images/exp_ulcv_480.png') no-repeat;
+						background-size: 100% 100%;
+						padding: 62px 195px 70px 27px;
+					}
+					.ctn_right_tcv {
+						display: none;
+					}
+					.ctn_des_uplcv {
+						width: 100%;
+					}
+				}
+			}
+			#box_vlth {
+				h2 {
+					width: calc(100% - 75px);
+					margin-left: 18px;
+				}
+				.icn_vlhd {
+					background: url('/images/before_login/icn_vlhd.png') 100% 100% no-repeat;
+					background-position: left 10px;
+					background-size: 35px;
+				}
+				.icn_vllc {
+					background: url('/images/before_login/icn_vllc.png') 100% 100% no-repeat;
+					background-position: left 10px;
+					background-size: 35px;
+				}
+				.icon_ai_home {
+					background: url('/images/before_login/icon_ai_home.svg') 100% 100% no-repeat;
+					background-position: left 10px;
+					background-size: 35px;
+				}
+				.plus_next {
+					float: right;
+					position: absolute;
+					bottom: 15px;
+					right: 15px;
+					.icon_plus {
+						color: #6f6f6f;
+						font-size: 14px;
+					}
+				}
+			}
+			/*BANNER TIA SÉT TRANG CHỦ*/
+			.box_banner_tiaset.banner_home_tiaset {
+				background: url('/images/bn_home_tiaset_414.png');
+				background-size: 100% 100%;
+				.content_banner_tiaset {
+					padding: 16px;
+					flex-direction: column;
+					row-gap: 15px;
+
+					.banner_tiaset_left {
+						flex-direction: column;
+						row-gap: 10px;
+						width: 100%;
+						.box_title_banner {
+							max-width: calc(100% - 70px);
+							.title_tiaset {
+								font-size: 16px;
+								line-height: 19px;
+								text-align: left;
+							}
+							.note_tiaset {
+								text-align: left;
+							}
+						}
+					}
+					.banner_tiaset_right {
+						align-items: center;
+						max-width: 100%;
+						.title_list {
+							text-align: center;
+						}
+						.link_list {
+							padding: 5px 10px;
+							img {
+								width: 20px;
+								height: 20px;
+							}
+						}
+					}
+				}
+			}
+			/*BANNER ÁNH SAO TRANG CHỦ*/
+			.banner_home_tiaset.banner_home_anhsao {
+				background: url('/images/bn_home_anhsao_414.png');
+				background-size: 100% 100%;
+				.content_banner_anhsao {
+					padding: 16px;
+					flex-direction: column;
+					row-gap: 15px;
+					.banner_anhsao_left {
+						width: 100%;
+						justify-content: space-between;
+						.box_title_banner {
+							max-width: unset;
+							.title_tiaset {
+								font-size: 16px;
+								line-height: 19px;
+								text-align: left;
+							}
+							.note_tiaset {
+								text-align: left;
+								font-size: 14px;
+							}
+						}
+					}
+					.box_time_tiaset {
+						align-items: center;
+						.txt_time_ts {
+							font-size: 13px;
+							line-height: 18px;
+						}
+					}
+					.banner_tiaset_right {
+						align-items: center;
+						max-width: 100%;
+						.title_list {
+							text-align: center;
+						}
+						.link_list {
+							padding: 5px 10px;
+							img {
+								width: 20px;
+								height: 20px;
+							}
+						}
+					}
+				}
+			}
+			#box_vlth {
+				.box_filter {
+					.filter_left {
+						width: 180px;
+						.select2_container {
+							.select2_selection_single::before {
+								content: ':';
+							}
+						}
+					}
+					.filter_right_select {
+						.select2_container {
+							width: 180px;
+							.select2_selection_single::before {
+								content: ':';
+							}
+						}
+					}
+				}
+			}
+			// Hotline
+			.hotlineLeft {
+				width: 100%;
+				margin-left: 0;
+				.hotline {
+					float: left;
+					margin-bottom: 13px;
+					width: 100%;
+					margin-left: 0;
+					.boxHotline {
+						flex-direction: column;
+						.boxContact {
+							width: 100%;
+							.content {
+								.hotNd {
+									width: 100%;
+									margin-left: 0 !important;
+								}
+							}
+							.hotlineTitle {
+								margin-bottom: 0;
+								text-align: left;
+							}
+						}
+						.boxComplaint {
+							.hotNd {
+								display: flex;
+								gap: 15px;
+								flex-wrap: wrap;
+								p {
+									width: 100%;
+								}
+								a {
+									width: 100%;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+/* YourCarousel.module.css */
+// .customCarousel li button {
+// 	content: url('/images/before_login/dots_slick.png') !important;
+// 	&::after {
+// 		content: url('/images/before_login/dots_active_slick.png') !important;
+// 		background-color: #9fc7e0;
+// 	}
+// }
+.city_search {
 }

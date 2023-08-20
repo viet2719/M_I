@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import React, { useState } from 'react'
-import styles from './search_common.module.scss'
+import styles from '../../../../styles/home/search_common.module.scss'
 import Select from 'react-select'
 // import chroma from 'chroma-js'
 const Search_common = () => {
@@ -33,7 +33,18 @@ const Search_common = () => {
 		)
 		setProvinceData(filteredProvinces)
 	}
+	const cityOptions = [
+		{ value: 'hanoi', label: 'Hà Nội' },
+		{ value: 'hochiminh', label: 'TP. Hồ Chí Minh' },
+		{ value: 'danang', label: 'Đà Nẵng' },
+		{ value: 'hue', label: 'Huế' },
+	]
 
+	const [isSelectOpen, setIsSelectOpen] = useState(false)
+
+	const handleSelectClick = () => {
+		setIsSelectOpen(!isSelectOpen) // Đảo ngược trạng thái khi click vào Select
+	}
 	return (
 		<div className={styles.box_m_search} id={styles.search_new_ntd}>
 			<div className={styles.new_search}>
@@ -58,7 +69,14 @@ const Search_common = () => {
 					</span>
 					{toggleSearchName && (
 						<div className={`${styles.box_key} ${styles.box_show}`} id={styles.box_key}>
-							<span className={styles.close_bs}>×</span>
+							<span
+								className={styles.close_bs}
+								onClick={() => {
+									setToggleSearchName(false)
+								}}
+							>
+								×
+							</span>
 							<div className={styles.nd_box_key}>
 								<div className={styles.kq_lq} id={styles.key_lq}>
 									<p className={styles.text_def}>Tìm kiếm gần đây</p>
@@ -145,80 +163,6 @@ const Search_common = () => {
 					)}
 				</div>
 				<div className={`${styles.box_input} `}>
-					<select
-						id={styles.index_dia_diem}
-						className={`${styles.city_ab} ${styles.select2_hidden_accessible}`}
-						// tabIndex="-1"
-						aria-hidden="true"
-					>
-						<option value="0">Chọn tỉnh thành</option>
-						<option value="1000">Miền Bắc</option>
-						<option value="1001">Miền Trung</option>
-						<option value="1002">Miền Nam</option>
-						<option value="45">Hồ Chí Minh</option>
-						<option value="1">Hà Nội</option>
-						<option value="46">Bình Dương</option>
-						<option value="26">Đà Nẵng</option>
-						<option value="55">Đồng Nai</option>
-						<option value="48">Cần Thơ</option>
-						<option value="5">Bắc Ninh</option>
-						<option value="2">Hải Phòng</option>
-						<option value="12">Hưng Yên</option>
-						<option value="9">Hải Dương</option>
-						<option value="44">Thanh Hóa</option>
-						<option value="28">Khánh Hòa</option>
-						<option value="58">Long An</option>
-						<option value="47">Bà Rịa Vũng Tàu</option>
-						<option value="41">Quảng Nam</option>
-						<option value="37">Nghệ An</option>
-						<option value="24">Vĩnh Phúc</option>
-						<option value="49">An Giang</option>
-						<option value="42">Quảng Ngãi</option>
-						<option value="27">Thừa Thiên Huế</option>
-						<option value="3">Bắc Giang</option>
-						<option value="30">Bình Định</option>
-						<option value="17">Nam Định</option>
-						<option value="57">Kiên Giang</option>
-						<option value="11">Hà Nam</option>
-						<option value="22">Thái Nguyên</option>
-						<option value="21">Thái Bình</option>
-						<option value="63">Vĩnh Long</option>
-						<option value="29">Lâm Đồng</option>
-						<option value="19">Quảng Ninh</option>
-						<option value="54">Đồng Tháp</option>
-						<option value="32">Đắk Lắk</option>
-						<option value="60">Tiền Giang</option>
-						<option value="61">Tây Ninh</option>
-						<option value="16">Ninh Bình</option>
-						<option value="39">Phú Yên</option>
-						<option value="53">Cà Mau</option>
-						<option value="59">Sóc Trăng</option>
-						<option value="31">Bình Thuận</option>
-						<option value="52">Bến Tre</option>
-						<option value="18">Phú Thọ</option>
-						<option value="35">Hà Tĩnh</option>
-						<option value="34">Gia Lai</option>
-						<option value="56">Hậu Giang</option>
-						<option value="51">Bình Phước</option>
-						<option value="43">Quảng Trị</option>
-						<option value="50">Bạc Liêu</option>
-						<option value="62">Trà Vinh</option>
-						<option value="40">Quảng Bình</option>
-						<option value="38">Ninh Thuận</option>
-						<option value="8">Hòa Bình</option>
-						<option value="13">Lào Cai</option>
-						<option value="33">Đắk Nông</option>
-						<option value="36">Kon Tum</option>
-						<option value="15">Lạng Sơn</option>
-						<option value="23">Tuyên Quang</option>
-						<option value="20">Sơn La</option>
-						<option value="25">Yên Bái</option>
-						<option value="4">Bắc Kạn</option>
-						<option value="10">Hà Giang</option>
-						<option value="6">Cao Bằng</option>
-						<option value="7">Điện Biên</option>
-						<option value="14">Lai Châu</option>
-					</select>
 					<span
 						className={`${styles.select2} ${styles.select2_container} ${styles.select2_container__default}`}
 						dir="ltr"
@@ -235,20 +179,114 @@ const Search_common = () => {
 								aria-expanded="false"
 								aria-labelledby="select2-index_dia_diem-container"
 							>
-								<span
-									className={styles.select2_selection__rendered}
-									id="select2-index_dia_diem-container"
-									title="Chọn tỉnh thành"
-								>
-									{selectedProvince ? selectedProvince : 'Chọn tỉnh thành'}
+								<Select
+									id="city_search"
+									className="city_search"
+									options={cityOptions}
+									placeholder="Chọn thành phố"
+									styles={{
+										indicatorsContainer: (baseStyles, state) => ({
+											...baseStyles,
+											display: 'none',
+										}),
+										input: (baseStyles, state) => ({
+											...baseStyles,
+											paddingLeft: '48px',
+										}),
+										placeholder: (baseStyles, state) => ({
+											...baseStyles,
+											paddingLeft: '50px',
+											fontSize: '16px',
+										}),
+										singleValue: (baseStyles, state) => ({
+											...baseStyles,
+											paddingLeft: '50px',
+											fontSize: '16px',
+										}),
+
+										control: (baseStyles, state) => ({
+											...baseStyles,
+											borderTopLeftRadius: '40px',
+											borderTopRightRadius: '0px',
+											borderBottomRightRadius: '0px',
+											borderBottomLeftRadius: '40px',
+											height: '65px',
+											lineHeight: '36px',
+											border: 'none',
+											outline: 'none',
+										}),
+										option: (baseStyles, state) => ({
+											...baseStyles,
+											padding: '0 8px',
+										}),
+									}}
+									onMenuOpen={handleSelectClick} // Gọi hàm khi mở dropdown
+									onMenuClose={handleSelectClick} // Gọi hàm khi đóng dropdown
+									menuIsOpen={isSelectOpen} // Trạng thái để kiểm soát việc mở/closed dropdown
+								/>
+								<span className={styles.select2_selection__arrow}>
+									<b role="presentation"></b>
 								</span>
+							</span>
+							<span
+								className={`${styles.select2_selection} ${styles.select2_selection__single2} `}
+								aria-haspopup="true"
+								aria-expanded="false"
+								aria-labelledby="select2-index_dia_diem-container"
+							>
+								<Select
+									id="city_search"
+									className={styles.city_search}
+									options={cityOptions}
+									placeholder="Chọn thành phố"
+									styles={{
+										indicatorsContainer: (baseStyles, state) => ({
+											...baseStyles,
+											display: 'none',
+										}),
+										input: (baseStyles, state) => ({
+											...baseStyles,
+											paddingLeft: '38px',
+											lineHeight: '30px',
+										}),
+										placeholder: (baseStyles, state) => ({
+											...baseStyles,
+											paddingLeft: '40px',
+											fontSize: '16px',
+										}),
+										singleValue: (baseStyles, state) => ({
+											...baseStyles,
+											paddingLeft: '40px',
+											fontSize: '16px',
+										}),
+
+										control: (baseStyles, state) => ({
+											...baseStyles,
+											borderTopLeftRadius: '40px',
+											borderTopRightRadius: '0px',
+											borderBottomRightRadius: '0px',
+											borderBottomLeftRadius: '40px',
+											height: '40px',
+											lineHeight: '30px',
+											border: 'none',
+											outline: 'none',
+										}),
+										option: (baseStyles, state) => ({
+											...baseStyles,
+											padding: '0 8px',
+										}),
+									}}
+									onMenuOpen={handleSelectClick}
+									onMenuClose={handleSelectClick}
+									menuIsOpen={isSelectOpen}
+								/>
 								<span className={styles.select2_selection__arrow}>
 									<b role="presentation"></b>
 								</span>
 							</span>
 						</span>
 						<span className="dropdown-wrapper" aria-hidden="true"></span>
-						<span>
+						{/* <span>
 							{showHideSelect && (
 								<span className={`${styles.select2_dropdown} ${styles.select2_dropdown__below}`}>
 									<span className={`${styles.select2_search} ${styles.select2_search__dropdown}`}>
@@ -285,7 +323,7 @@ const Search_common = () => {
 									</span>
 								</span>
 							)}
-						</span>
+						</span> */}
 					</span>
 					<div className={styles.mobi_bor}>
 						<input
