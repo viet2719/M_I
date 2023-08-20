@@ -2,6 +2,7 @@ import Image from 'next/image'
 import React, { useState } from 'react'
 import styles from '../../../../styles/before_loggin/home/search_common.module.scss'
 import Select from 'react-select'
+import BtnSelect from './btnSelect'
 // import chroma from 'chroma-js'
 const Search_common = () => {
 	const search_add = 'https://timviec365.vn/images/New_images/ic_show_nc.png'
@@ -39,11 +40,13 @@ const Search_common = () => {
 		{ value: 'danang', label: 'Đà Nẵng' },
 		{ value: 'hue', label: 'Huế' },
 	]
-
 	const [isSelectOpen, setIsSelectOpen] = useState(false)
 	const handleSelectClick = () => {
 		setIsSelectOpen(!isSelectOpen) // Đảo ngược trạng thái khi click vào Select
 	}
+	// Xử lý tìm kiếm nâng cao
+	const [chooseSearchAdvanced, setChooseSearchAdvanced] = useState<any>(false)
+
 	return (
 		<div className={styles.box_m_search} id={styles.search_new_ntd}>
 			<div className={styles.new_search}>
@@ -380,6 +383,9 @@ const Search_common = () => {
 						height={40}
 						alt="Tìm kiếm nâng cao"
 						className={styles.show_nc}
+						onClick={() => {
+							setChooseSearchAdvanced(true)
+						}}
 					/>
 					{toggleSearchCity && (
 						<div className={`${styles.box_city} ${styles.box_show}`} id={styles.box_city}>
@@ -462,6 +468,58 @@ const Search_common = () => {
 								</div>
 							</div>
 						</div>
+					)}
+					{chooseSearchAdvanced && (
+						<>
+							<div
+								className={`${styles['pop-nangcao']} ${styles['search_nc_th']}`}
+								style={{ display: 'block' }}
+							>
+								<div className={styles['pop-bor']}>
+									<div className={styles['from-pop']}>
+										<div className={styles['title-pop']}>
+											<p>Tìm kiếm nâng cao</p>
+											<i
+												className={styles['close']}
+												onClick={() => {
+													setChooseSearchAdvanced(false)
+												}}
+											>
+												✘
+											</i>
+										</div>
+										<div className={styles['nd-pop']}>
+											<div className={styles['pop-cod']}>
+												<div className={styles['ip_search_nc']}>
+													<input
+														type="text"
+														name="key_th"
+														className={styles['key_th']}
+														placeholder="Tìm kiếm theo tên nhà tuyển dụng..."
+													/>
+												</div>
+											</div>
+											<div className={styles['pop-cod']}>
+												<BtnSelect>Chọn tỉnh thành</BtnSelect>
+												<BtnSelect>Chọn quận huyện</BtnSelect>
+												<BtnSelect> Chọn trình độ học vấn</BtnSelect>
+												<BtnSelect>Chọn giới tính</BtnSelect>
+												<BtnSelect> Chọn mức lương</BtnSelect>
+												<BtnSelect> Chọn hình thức</BtnSelect>
+												<BtnSelect>Chọn cấp bậc</BtnSelect>
+												<BtnSelect>Chọn kinh nghiệm</BtnSelect>
+												<BtnSelect> Chọn ngày cập nhật</BtnSelect>
+											</div>
+											<div className={styles['btn-pop']}>
+												<div className={styles['btn-pop-click']}>
+													<a id="btnsearchadvance">Tìm kiếm</a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</>
 					)}
 				</div>
 			</div>

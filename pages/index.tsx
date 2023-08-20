@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { NextPageWithLayout } from '@/models/common'
 import Head from 'next/head'
-import styles from '../styles/before_loggin/home/Home.module.scss'
+import styles from '../styles/before_loggin/home/home.module.scss'
 import { HomePageBeforeLayout } from '@/components/layout/home_before_login'
 import Image from 'next/image'
 import Header from '@/components/common/header'
@@ -139,7 +139,7 @@ const Home: NextPageWithLayout = () => {
 						</div>
 						<Banner_QR />
 					</div>
-					{/* <div className={styles.tktk}></div> */}
+					<div className={styles.tktk}></div>
 				</div>
 
 				<section className={styles.section_home}>
