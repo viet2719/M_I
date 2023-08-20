@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import React from 'react'
-import styles from '../../../../styles/home/Box_vlth.module.scss'
+import styles from '../../../../styles/before_loggin/home/Box_vlth.module.scss'
 
 const Box_vlth = ({ jobList }: any) => {
 	return (

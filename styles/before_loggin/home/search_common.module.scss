@@ -286,7 +286,8 @@
 			height: 65px;
 			line-height: 36px;
 		}
-		.select2_selection__single2 {
+		.select2_selection__single2,
+		.select2_selection__single3 {
 			display: none;
 		}
 		.select2_selection__rendered {
@@ -360,6 +361,8 @@
 			.box_input:before {
 				left: 20px;
 				top: 20px;
+				width: 14px;
+				height: 14px;
 			}
 
 			#fts_id {
@@ -369,6 +372,7 @@
 				padding-top: 0;
 				padding-bottom: 0;
 				height: 56px;
+				padding-left: 40px;
 			}
 			#recordButton {
 				top: 14px;
@@ -424,12 +428,15 @@
 				display: none;
 			}
 			.select2_selection__single2 {
+				background-color: #fff;
+				border: none;
+				border-radius: 0;
+				border-left: 1px solid #4c5bd4;
+				box-sizing: border-box;
+				cursor: pointer;
 				display: block;
 				border-radius: 40px;
 				height: 40px;
-				.city_search {
-					border-radius: 40px;
-				}
 			}
 			.select2_selection__arrow {
 				height: 35px;
@@ -450,6 +457,27 @@
 				width: 35px;
 				height: 35px;
 				margin-top: 2px;
+			}
+		}
+	}
+}
+
+@media (max-width: 800px) {
+	.box_m_search {
+		.new_search {
+			.select2_selection__single2 {
+				display: none;
+			}
+			.select2_selection__single3 {
+				background-color: #fff;
+				border: none;
+				border-radius: 0;
+				border-left: 1px solid #4c5bd4;
+				box-sizing: border-box;
+				cursor: pointer;
+				display: block;
+				border-radius: 40px;
+				height: 40px;
 			}
 		}
 	}

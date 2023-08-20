@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import React, { useState } from 'react'
-import styles from '../../../../styles/home/search_common.module.scss'
+import styles from '../../../../styles/before_loggin/home/search_common.module.scss'
 import Select from 'react-select'
 // import chroma from 'chroma-js'
 const Search_common = () => {
@@ -228,6 +228,7 @@ const Search_common = () => {
 									<b role="presentation"></b>
 								</span>
 							</span>
+							{/* Tablet */}
 							<span
 								className={`${styles.select2_selection} ${styles.select2_selection__single2} `}
 								aria-haspopup="true"
@@ -246,30 +247,85 @@ const Search_common = () => {
 										}),
 										input: (baseStyles, state) => ({
 											...baseStyles,
-											paddingLeft: '38px',
+											paddingLeft: '28px',
 											lineHeight: '30px',
 										}),
 										placeholder: (baseStyles, state) => ({
 											...baseStyles,
-											paddingLeft: '40px',
+											paddingLeft: '30px',
 											fontSize: '16px',
 										}),
 										singleValue: (baseStyles, state) => ({
 											...baseStyles,
-											paddingLeft: '40px',
+											paddingLeft: '30px',
 											fontSize: '16px',
 										}),
 
 										control: (baseStyles, state) => ({
 											...baseStyles,
-											borderTopLeftRadius: '40px',
-											borderTopRightRadius: '0px',
-											borderBottomRightRadius: '0px',
-											borderBottomLeftRadius: '40px',
-											height: '40px',
+											borderRadius: '40px',
+											height: '28px',
 											lineHeight: '30px',
+											width: '480px',
 											border: 'none',
 											outline: 'none',
+											boxShadow: 'none',
+										}),
+										option: (baseStyles, state) => ({
+											...baseStyles,
+											padding: '0 8px',
+										}),
+									}}
+									onMenuOpen={handleSelectClick}
+									onMenuClose={handleSelectClick}
+									menuIsOpen={isSelectOpen}
+								/>
+								<span className={styles.select2_selection__arrow}>
+									<b role="presentation"></b>
+								</span>
+							</span>
+							{/* Mobile */}
+							<span
+								className={`${styles.select2_selection} ${styles.select2_selection__single3} `}
+								aria-haspopup="true"
+								aria-expanded="false"
+								aria-labelledby="select2-index_dia_diem-container"
+							>
+								<Select
+									id="city_search"
+									className={styles.city_search}
+									options={cityOptions}
+									placeholder="Chọn thành phố"
+									styles={{
+										indicatorsContainer: (baseStyles, state) => ({
+											...baseStyles,
+											display: 'none',
+										}),
+										input: (baseStyles, state) => ({
+											...baseStyles,
+											paddingLeft: '28px',
+											lineHeight: '30px',
+										}),
+										placeholder: (baseStyles, state) => ({
+											...baseStyles,
+											paddingLeft: '30px',
+											fontSize: '16px',
+										}),
+										singleValue: (baseStyles, state) => ({
+											...baseStyles,
+											paddingLeft: '30px',
+											fontSize: '16px',
+										}),
+
+										control: (baseStyles, state) => ({
+											...baseStyles,
+											borderRadius: '40px',
+											height: '28px',
+											lineHeight: '30px',
+											width: '240px',
+											border: 'none',
+											outline: 'none',
+											boxShadow: 'none',
 										}),
 										option: (baseStyles, state) => ({
 											...baseStyles,

@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from '../../../../styles/home/banner_QR.module.scss'
+import styles from '../../../../styles/before_loggin/home/banner_QR.module.scss'
 import Image from 'next/image'
 
 const Banner_QR = () => {
