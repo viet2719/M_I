@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import React, { useState } from 'react'
-import styles from '@styles/before_loggin/home/search_common.module.scss'
+import styles from '@styles/home/search_common.module.scss'
 import Select from 'react-select'
 import BtnSelect from './btnSelect'
 // import chroma from 'chroma-js'

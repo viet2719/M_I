@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import styles from '@styles/before_loggin/home/chat_container.module.scss'
+import styles from '@styles/home/chat_container.module.scss'
 import Image from 'next/image'
 
 const Chat_container = () => {

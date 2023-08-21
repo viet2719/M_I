@@ -536,7 +536,7 @@ const Footer = () => {
 									width={108}
 									height={40}
 									className={`${styles.icon_bct} ${styles.lazyloaded}`}
-									src="/images/before_login/DK_bocongthuong.png"
+									src={'/images/before_login/DK_bocongthuong.png'}
 									alt="Đã đăng ký bộ công thương"
 								/>
 							</a>
@@ -548,7 +548,7 @@ const Footer = () => {
 									width={40}
 									height={40}
 									className={`${styles.icon_dmca} ${styles.lazyloaded}`}
-									src="/images/before_login/dmca.png"
+									src={'/images/before_login/dmca.png'}
 									alt="DMCA.com Protection Status"
 								/>
 							</a>
