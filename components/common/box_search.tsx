@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from '@styles/common/box_search.module.scss'
 import Image from 'next/image'
 import Select from 'react-select'
+import BtnSelect from '../home/btnSelect'
 
 const Box_search = () => {
 	const cityOptions = [
@@ -10,6 +11,12 @@ const Box_search = () => {
 		{ value: 'danang', label: 'Đà Nẵng' },
 		{ value: 'hue', label: 'Huế' },
 	]
+	// Xử lý show-hide phần tìm kiếm theo tên
+	const [valueNameSearch, setValueNameSearch] = useState('')
+	const [checkSearchNameCity, setCheckSearchNameCity] = useState<any>(false)
+
+	// Xử lý tìm kiếm nâng cao
+	const [chooseSearchAdvanced, setChooseSearchAdvanced] = useState<any>(false)
 	return (
 		<div className={styles.box_m_search} id={styles.search_new_ntd}>
 			<div className={styles.new_search}>
@@ -19,6 +26,9 @@ const Box_search = () => {
 						id={styles.fts_id}
 						className={styles.enter_ntd}
 						placeholder="Nhập tên công việc, vị trí ..."
+						onChange={(e) => {
+							setValueNameSearch(e.target.value)
+						}}
 					/>
 					<span className={styles.tkiem_giongnoi} id={styles.recordButton}>
 						<Image
@@ -29,12 +39,114 @@ const Box_search = () => {
 						/>
 					</span>
 				</div>
+				{valueNameSearch && (
+					<div className={`${styles.box_key} ${styles.box_show}`} id={styles.box_key}>
+						<span
+							className={styles.close_bs}
+							onClick={() => {
+								setValueNameSearch('')
+							}}
+						>
+							×
+						</span>
+						<div className={styles.nd_box_key}>
+							<div className={styles.kq_lq} id={styles.key_lq}>
+								<p className={styles.text_def}>Tìm kiếm gần đây</p>
+								<div className={styles.autocomplete_items}>
+									<div>
+										Kế toán - Kiểm toán
+										<input type="hidden" value="Kế toán - Kiểm toán" />
+									</div>
+									<div>
+										Kế toán - Kiểm toán
+										<input type="hidden" value="Kế toán - Kiểm toán" />
+									</div>
+									<div>
+										Kế toán - Kiểm toán
+										<input type="hidden" value="Kế toán - Kiểm toán" />
+									</div>
+								</div>
+							</div>
+							<div className={`${styles.kq_gy} ${styles.solid}`}>
+								<p className={styles.text_def}>Từ khóa phổ biến</p>
+								<span>
+									<a>Nhân viên kinh doanh</a>
+								</span>
+								<span>
+									<a>IT phần mềm</a>
+								</span>
+								<span>
+									<a>Kế toán - Kiểm toán</a>
+								</span>
+								<span>
+									<a>KD bất động sản</a>
+								</span>
+								<span>
+									<a>IT Phần cứng - mạng</a>
+								</span>
+								<span>
+									<a>Marketing - PR</a>
+								</span>
+								<span>
+									<a>Việc làm bán hàng</a>
+								</span>
+								<span>
+									<a>Xây dựng</a>
+								</span>
+								<span>
+									<a>Tiếp thị - Quảng cáo</a>
+								</span>
+								<span>
+									<a>Tư vấn</a>
+								</span>
+								<span>
+									<a>Sản xuất - Vận hành sản xuất</a>
+								</span>
+								<span>
+									<a>Nhập liệu</a>
+								</span>
+								<span>
+									<a>Chăm sóc khách hàng</a>
+								</span>
+								<span>
+									<a>Cơ khí - Chế tạo</a>
+								</span>
+								<span>
+									<a>Du lịch</a>
+								</span>
+								<span>
+									<a>Dịch vụ</a>
+								</span>
+								<span>
+									<a>Bưu chính viễn thông</a>
+								</span>
+								<span>
+									<a>Phát triển thị trường</a>
+								</span>
+								<span>
+									<a>Bảo hiểm</a>
+								</span>
+								<span>
+									<a>Quản lý điều hành</a>
+								</span>
+								<span>
+									<a>Xuất - nhập khẩu</a>
+								</span>
+							</div>
+						</div>
+					</div>
+				)}
 				<div className={styles.box_input}>
 					<span
 						className={`${styles.select2} ${styles['select2-container']} ${styles['select2-container--default']}`}
 						style={{ width: 131 }}
 					>
-						<span className={styles.selection1}>
+						<span
+							className={styles.selection1}
+							onClick={() => {
+								setCheckSearchNameCity(true)
+							}}
+						>
 							<Select
 								options={cityOptions}
 								placeholder="Chọn thành phố"
@@ -87,7 +199,12 @@ const Box_search = () => {
 								}}
 							/>
 						</span>
-						<span className={styles.selection2}>
+						<span
+							className={styles.selection2}
+							onClick={() => {
+								setCheckSearchNameCity(true)
+							}}
+						>
 							<Select
 								options={cityOptions}
 								placeholder="Chọn thành phố"
@@ -146,8 +263,136 @@ const Box_search = () => {
 						className={`${styles.show_nc} ${styles.nangcao}`}
 						src="/images/before_login/ic_show_nc.png"
 						alt="Tìm kiếm nâng cao"
+						onClick={() => {
+							setChooseSearchAdvanced(true)
+						}}
 					/>
+
+					{chooseSearchAdvanced && (
+						<>
+							<div
+								className={`${styles['pop-nangcao']} ${styles['search_nc_th']}`}
+								style={{ display: 'block' }}
+							>
+								<div className={styles['pop-bor']}>
+									<div className={styles['from-pop']}>
+										<div className={styles['title-pop']}>
+											<p>Tìm kiếm nâng cao</p>
+											<i
+												className={styles['close']}
+												onClick={() => {
+													setChooseSearchAdvanced(false)
+												}}
+											>
+												✘
+											</i>
+										</div>
+										<div className={styles['nd-pop']}>
+											<div className={styles['pop-cod']}>
+												<div className={styles['ip_search_nc']}>
+													<input
+														type="text"
+														name="key_th"
+														className={styles['key_th']}
+														placeholder="Tìm kiếm theo tên nhà tuyển dụng..."
+													/>
+												</div>
+											</div>
+											<div className={styles['pop-cod']}>
+												<BtnSelect>Chọn tỉnh thành</BtnSelect>
+												<BtnSelect>Chọn quận huyện</BtnSelect>
+												<BtnSelect> Chọn trình độ học vấn</BtnSelect>
+												<BtnSelect>Chọn giới tính</BtnSelect>
+												<BtnSelect> Chọn mức lương</BtnSelect>
+												<BtnSelect> Chọn hình thức</BtnSelect>
+												<BtnSelect>Chọn cấp bậc</BtnSelect>
+												<BtnSelect>Chọn kinh nghiệm</BtnSelect>
+												<BtnSelect> Chọn ngày cập nhật</BtnSelect>
+											</div>
+											<div className={styles['btn-pop']}>
+												<div className={styles['btn-pop-click']}>
+													<a id="btnsearchadvance">Tìm kiếm</a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</>
+					)}
 				</div>
+				{checkSearchNameCity && (
+					<div
+						className={`${styles.box_city} ${styles.box_show}`}
+						id={styles.box_city}
+						style={{ display: 'block' }}
+					>
+						<span
+							className={styles.close_bs}
+							onClick={() => {
+								setCheckSearchNameCity(false)
+							}}
+						>
+							×
+						</span>
+						<div className={`${styles.nd_box_city}`}>
+							<div className={styles.kq_gy}>
+								<p className={styles.text_def}>Địa điểm phổ biến</p>
+								<span>
+									<a>
+										<strong>Đà Nẵng</strong>
+									</a>
+								</span>
+								<span>
+									<a>
+										<strong>Hồ Chí Minh</strong>
+									</a>
+								</span>
+								<span>
+									<a>
+										<strong>Hà Nội</strong>
+									</a>
+								</span>
+								<span>
+									<a>Huyện Bình Chánh</a>
+								</span>
+								<span>
+									<a>Huyện Bình Chánh</a>
+								</span>
+								<span>
+									<a>Huyện Bình Chánh</a>
+								</span>
+								<span>
+									<a>Huyện Bình Chánh</a>
+								</span>
+								<span>
+									<a>Huyện Bình Chánh</a>
+								</span>
+								<span>
+									<a>Huyện Bình Chánh</a>
+								</span>
+								<span>
+									<a>Huyện Bình Chánh</a>
+								</span>
+								<span>
+									<a>Huyện Bình Chánh</a>
+								</span>
+								<span>
+									<a>Huyện Bình Chánh</a>
+								</span>
+								<span>
+									<a>Huyện Bình Chánh</a>
+								</span>
+								<span>
+									<a>Huyện Bình Chánh</a>
+								</span>
+							</div>
+							<div className={`${styles.kq_lq} ${styles.solid}`} id={styles.city_lq}>
+								<p className={styles.text_def}>Danh sách địa điểm</p>
+							</div>
+						</div>
+					</div>
+				)}
 			</div>
 		</div>
 	)

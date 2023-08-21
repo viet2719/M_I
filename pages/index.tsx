@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { NextPageWithLayout } from '@/models/common'
 import Head from 'next/head'
-import styles from '@styles/home/home.module.scss'
 import { HomePageBeforeLayout } from '@/components/layout/home_before_login'
 import Image from 'next/image'
 import Header from '@/components/common/header'
@@ -14,9 +13,9 @@ import Box_vlhd_top from '@/components/home/box_vlhd_top'
 import Chat_container from '@/components/home/chat_container'
 import Head_common from '@/components/head'
 import Box_search from '@/components/common/box_search'
+import styles from '@styles/home/home.module.scss'
 
 const Home: NextPageWithLayout = () => {
-	const img_down = '/images/before_login/icn_dow.png'
 	const jobData = [
 		{
 			title: '[Tuyển dụng] Nhân viên Kinh doanh',
@@ -70,7 +69,134 @@ const Home: NextPageWithLayout = () => {
 	const cano = 'https://timviec365.vn'
 	const url_img = 'https://timviec365.vn/images/banner/og_default.png'
 	const abstract = 'Tìm việc mới nhất trên toàn quốc - Tim viec online'
-
+	const listDataChats = [
+		{
+			id: 1,
+			company: 'Công Ty Cổ Phần Nam Dược Cn Miền Nam',
+			jobTitle: 'Trình Dược Viên kênh OTC tại KV Đắk Lắk',
+			location: 'Đắk Lắk',
+			avatarSrc: '',
+		},
+		{
+			id: 1,
+			company: 'Công Ty Cổ Phần Nam Dược Cn Miền Nam',
+			jobTitle: 'Trình Dược Viên kênh OTC tại KV Đắk Lắk',
+			location: 'Đắk Lắk',
+			avatarSrc: '',
+		},
+		{
+			id: 1,
+			company: 'Công Ty Cổ Phần Nam Dược Cn Miền Nam',
+			jobTitle: 'Trình Dược Viên kênh OTC tại KV Đắk Lắk',
+			location: 'Đắk Lắk',
+			avatarSrc: '',
+		},
+		{
+			id: 1,
+			company: 'Công Ty Cổ Phần Nam Dược Cn Miền Nam',
+			jobTitle: 'Trình Dược Viên kênh OTC tại KV Đắk Lắk',
+			location: 'Đắk Lắk',
+			avatarSrc: '',
+		},
+		{
+			id: 1,
+			company: 'Công Ty Cổ Phần Nam Dược Cn Miền Nam',
+			jobTitle: 'Trình Dược Viên kênh OTC tại KV Đắk Lắk',
+			location: 'Đắk Lắk',
+			avatarSrc: '',
+		},
+		{
+			id: 1,
+			company: 'Công Ty Cổ Phần Nam Dược Cn Miền Nam',
+			jobTitle: 'Trình Dược Viên kênh OTC tại KV Đắk Lắk',
+			location: 'Đắk Lắk',
+			avatarSrc: '',
+		},
+		{
+			id: 1,
+			company: 'Công Ty Cổ Phần Nam Dược Cn Miền Nam',
+			jobTitle: 'Trình Dược Viên kênh OTC tại KV Đắk Lắk',
+			location: 'Đắk Lắk',
+			avatarSrc: '',
+		},
+		{
+			id: 1,
+			company: 'Công Ty Cổ Phần Nam Dược Cn Miền Nam',
+			jobTitle: 'Trình Dược Viên kênh OTC tại KV Đắk Lắk',
+			location: 'Đắk Lắk',
+			avatarSrc: '',
+		},
+		{
+			id: 1,
+			company: 'Công Ty Cổ Phần Nam Dược Cn Miền Nam',
+			jobTitle: 'Trình Dược Viên kênh OTC tại KV Đắk Lắk',
+			location: 'Đắk Lắk',
+			avatarSrc: '',
+		},
+		{
+			id: 1,
+			company: 'Công Ty Cổ Phần Nam Dược Cn Miền Nam',
+			jobTitle: 'Trình Dược Viên kênh OTC tại KV Đắk Lắk',
+			location: 'Đắk Lắk',
+			avatarSrc: '',
+		},
+		{
+			id: 1,
+			company: 'Công Ty Cổ Phần Nam Dược Cn Miền Nam',
+			jobTitle: 'Trình Dược Viên kênh OTC tại KV Đắk Lắk',
+			location: 'Đắk Lắk',
+			avatarSrc: '',
+		},
+		{
+			id: 1,
+			company: 'Công Ty Cổ Phần Nam Dược Cn Miền Nam',
+			jobTitle: 'Trình Dược Viên kênh OTC tại KV Đắk Lắk',
+			location: 'Đắk Lắk',
+			avatarSrc: '',
+		},
+		{
+			id: 1,
+			company: 'Công Ty Cổ Phần Nam Dược Cn Miền Nam',
+			jobTitle: 'Trình Dược Viên kênh OTC tại KV Đắk Lắk',
+			location: 'Đắk Lắk',
+			avatarSrc: '',
+		},
+		{
+			id: 1,
+			company: 'Công Ty Cổ Phần Nam Dược Cn Miền Nam',
+			jobTitle: 'Trình Dược Viên kênh OTC tại KV Đắk Lắk',
+			location: 'Đắk Lắk',
+			avatarSrc: '',
+		},
+		{
+			id: 1,
+			company: 'Công Ty Cổ Phần Nam Dược Cn Miền Nam',
+			jobTitle: 'Trình Dược Viên kênh OTC tại KV Đắk Lắk',
+			location: 'Đắk Lắk',
+			avatarSrc: '',
+		},
+		{
+			id: 1,
+			company: 'Công Ty Cổ Phần Nam Dược Cn Miền Nam',
+			jobTitle: 'Trình Dược Viên kênh OTC tại KV Đắk Lắk',
+			location: 'Đắk Lắk',
+			avatarSrc: '',
+		},
+		{
+			id: 1,
+			company: 'Công Ty Cổ Phần Nam Dược Cn Miền Nam',
+			jobTitle: 'Trình Dược Viên kênh OTC tại KV Đắk Lắk',
+			location: 'Đắk Lắk',
+			avatarSrc: '',
+		},
+		{
+			id: 1,
+			company: 'Công Ty Cổ Phần Nam Dược Cn Miền Nam',
+			jobTitle: 'Trình Dược Viên kênh OTC tại KV Đắk Lắk',
+			location: 'Đắk Lắk',
+			avatarSrc: '',
+		},
+	]
 	return (
 		<>
 			<Head>
@@ -115,7 +241,12 @@ const Home: NextPageWithLayout = () => {
 
 						<div className={styles.btn_dow}>
 							<a href="#dow_here">
-								<Image width={19} height={19} src={img_down} alt="xem thêm" />
+								<Image
+									width={19}
+									height={19}
+									src={'/images/before_login/icn_dow.png'}
+									alt="xem thêm"
+								/>
 							</a>
 						</div>
 						<Banner_QR />
@@ -184,63 +315,28 @@ const Home: NextPageWithLayout = () => {
 										Tất cả &gt;&gt;
 									</a>
 									<ul className={styles.list_chat_ntd}>
-										<li className={`${styles.online_item} ${styles.openApp} ${styles.m_online}`}>
-											<a href="">
-												<span className={`${styles.ava_mess} ${styles.m_online}`}>
-													<Image src="" alt="" width={20} height={20} />
-												</span>
-												<span className={`${styles.ct_online} ${styles.box_tooltip}`}>
-													<p>Công Ty Cổ Phần Nam Dược Cn Miền Nam</p>
-													<p className={`${styles.con_tooltip} ${styles.top}`}>
-														<span className={styles.span_con_item}>
-															Trình Dược Viên kênh OTC tại KV Đắk Lắk
-														</span>
-														<span className={styles.tooltip}>
-															<span>Trình Dược Viên kênh OTC tại KV Đắk Lắk</span>
-														</span>
-													</p>
-													<p>Đắk Lắk</p>
-												</span>
-											</a>
-										</li>
-										<li className={`${styles.online_item} ${styles.openApp} ${styles.m_online}`}>
-											<a href="">
-												<span className={`${styles.ava_mess} ${styles.m_online}`}>
-													<Image src="" alt="" width={20} height={20} />
-												</span>
-												<span className={`${styles.ct_online} ${styles.box_tooltip}`}>
-													<p>Công Ty Cổ Phần Nam Dược Cn Miền Nam</p>
-													<p className={`${styles.con_tooltip} ${styles.top}`}>
-														<span className={styles.span_con_item}>
-															Trình Dược Viên kênh OTC tại KV Đắk Lắk
-														</span>
-														<span className={styles.tooltip}>
-															<span>Trình Dược Viên kênh OTC tại KV Đắk Lắk</span>
-														</span>
-													</p>
-													<p>Đắk Lắk</p>
-												</span>
-											</a>
-										</li>
-										<li className={`${styles.online_item} ${styles.openApp} ${styles.m_online}`}>
-											<a href="">
-												<span className={`${styles.ava_mess} ${styles.m_online}`}>
-													<Image src="" alt="" width={20} height={20} />
-												</span>
-												<span className={`${styles.ct_online} ${styles.box_tooltip}`}>
-													<p>Công Ty Cổ Phần Nam Dược Cn Miền Nam</p>
-													<p className={`${styles.con_tooltip} ${styles.top}`}>
-														<span className={styles.span_con_item}>
-															Trình Dược Viên kênh OTC tại KV Đắk Lắk
-														</span>
-														<span className={styles.tooltip}>
-															<span>Trình Dược Viên kênh OTC tại KV Đắk Lắk</span>
-														</span>
-													</p>
-													<p>Đắk Lắk</p>
-												</span>
-											</a>
-										</li>
+										{listDataChats.map((item) => (
+											<li
+												key={item.id}
+												className={`${styles.online_item} ${styles.openApp} ${styles.m_online}`}
+											>
+												<a href="">
+													<span className={`${styles.ava_mess} ${styles.m_online}`}>
+														<Image src={item.avatarSrc} alt="" width={20} height={20} />
+													</span>
+													<span className={`${styles.ct_online} ${styles.box_tooltip}`}>
+														<p>{item.company}</p>
+														<p className={`${styles.con_tooltip} ${styles.top}`}>
+															<span className={styles.span_con_item}>{item.jobTitle}</span>
+															<span className={styles.tooltip}>
+																<span>{item.jobTitle}</span>
+															</span>
+														</p>
+														<p>{item.location}</p>
+													</span>
+												</a>
+											</li>
+										))}
 									</ul>
 								</div>
 							</div>
