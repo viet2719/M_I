@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Image from 'next/image'
-import styles from '../../styles/common/footer.module.scss'
+import styles from '@styles/common/footer.module.scss'
 const footerData = [
 	{
 		id: 1,
@@ -652,7 +652,7 @@ const Footer = () => {
 									width={109}
 									height={40}
 									className={`${styles.icon_bct} ${styles.lazyloaded}`}
-									src="/images/DK_bocongthuong.png"
+									src={'/images/before_login/DK_bocongthuong.png'}
 									alt="Đã đăng ký bộ công thương"
 								/>
 							</a>
@@ -664,7 +664,7 @@ const Footer = () => {
 									width={37}
 									height={40}
 									className={`${styles.icon_dmca} ${styles.lazyloaded}`}
-									src="/images/dmca.png"
+									src={'/images/before_login/dmca.png'}
 									alt="DMCA.com Protection Status"
 								/>
 							</a>
@@ -716,7 +716,7 @@ const Footer = () => {
 									width={9}
 									height={14}
 									className={styles.download_img}
-									src="/images/download.svg"
+									src="/images/before_login/download.svg"
 									alt="download"
 								/>
 							</a>
@@ -734,7 +734,7 @@ const Footer = () => {
 									width={9}
 									height={14}
 									className={styles.download_img}
-									src="/images/download.svg"
+									src="/images/before_login/download.svg"
 									alt="download"
 								/>
 							</a>
@@ -752,7 +752,7 @@ const Footer = () => {
 									width={9}
 									height={14}
 									className={styles.download_img}
-									src="/images/download.svg"
+									src="/images/before_login/download.svg"
 									alt="download"
 								/>
 							</a>
@@ -770,7 +770,7 @@ const Footer = () => {
 									width={9}
 									height={14}
 									className={styles.download_img}
-									src="/images/download.svg"
+									src="/images/before_login/download.svg"
 									alt="download"
 								/>
 							</a>

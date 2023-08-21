@@ -9,10 +9,11 @@ import Footer from '@/components/common/footer'
 import { Carousel } from 'antd'
 import Select from 'react-select'
 import Banner_QR from '@/components/home/banner_QR'
-import Search_common from '@/components/home/search_common'
 import Box_vlth from '@/components/home/box_vlth'
 import Box_vlhd_top from '@/components/home/box_vlhd_top'
 import Chat_container from '@/components/home/chat_container'
+import Head_common from '@/components/head'
+import Box_search from '@/components/common/box_search'
 
 const Home: NextPageWithLayout = () => {
 	const img_down = '/images/before_login/icn_dow.png'
@@ -59,51 +60,30 @@ const Home: NextPageWithLayout = () => {
 		{ value: 'danang', label: 'Đà Nẵng' },
 		{ value: 'hue', label: 'Huế' },
 	]
+	const title = 'Tìm Việc Làm & Tuyển Dụng Việc Làm Nhanh | timviec365.vn'
+	const des =
+		'Tìm việc làm nhanh, việc làm 24h hiệu quả, lương cao từ những nhà tuyển dụng uy tín. Hàng nghìn việc làm mới mỗi ngày trên toàn quốc. Tìm việc ngay tại Timviec365.vn'
+	const keyw =
+		'Tìm việc, việc làm, tìm việc làm, tuyển dụng, tuyển dụng việc làm, cần tìm việc làm, tìm việc làm nhanh, việc làm nhanh, công ty tuyển dụng, việc làm online, tìm việc làm online, kiếm việc, tim viec, viec lam, tim viec lam, tuyen dung'
+	const url = 'https://timviec365.vn'
+	const robot = 'noindex,nofollow'
+	const cano = 'https://timviec365.vn'
+	const url_img = 'https://timviec365.vn/images/banner/og_default.png'
+	const abstract = 'Tìm việc mới nhất trên toàn quốc - Tim viec online'
+
 	return (
 		<>
 			<Head>
-				<title>Tìm Việc Làm & Tuyển Dụng Việc Làm Nhanh | timviec365.vn</title>
-				<meta name="title" content="Tìm việc làm" />
-				{/* <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" /> */}
-				<meta name="robots" content="noindex,follow" />
-				<meta
-					name="description"
-					content="Tìm việc làm nhanh, việc làm 24h hiệu quả, lương cao từ những nhà tuyển dụng uy tín. Hàng nghìn việc làm mới mỗi ngày trên toàn quốc. Tìm việc ngay tại Timviec365.vn"
+				<Head_common
+					title={title}
+					des={des}
+					keyw={keyw}
+					url={url}
+					robot={robot}
+					url_img={url_img}
+					cano={cano}
+					abstract={abstract}
 				/>
-				<meta
-					name="keywords"
-					content="Tìm việc, việc làm, tìm việc làm, tuyển dụng, tuyển dụng việc làm, cần tìm việc làm, tìm việc làm nhanh, việc làm nhanh, công ty tuyển dụng, việc làm online, tìm việc làm online, kiếm việc, tim viec, viec lam, tim viec lam, tuyen dung"
-				/>
-				<meta
-					name="viewport"
-					content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, width=device-width, user-scalable=no, minimal-ui"
-				/>
-				<meta property="og:site_name" content="Kênh tuyển dụng việc làm" />
-				<meta property="og:type" content="Website" />
-				<meta property="og:locale" content="vi_VN" />
-				<meta
-					property="og:title"
-					content="Tìm Việc Làm & Tuyển Dụng Việc Làm Nhanh | timviec365.vn"
-				/>
-				<meta property="og:url" content="https://timviec365.vn" />
-				<meta
-					property="og:description"
-					content="Tìm việc làm nhanh, việc làm 24h hiệu quả, lương cao từ những nhà tuyển dụng uy tín. Hàng nghìn việc làm mới mỗi ngày trên toàn quốc. Tìm việc ngay tại Timviec365.vn"
-				/>
-				<meta property="og:image" content="https://timviec365.vn/images/banner/og_default.png" />
-				<meta name="copyright" content="Copyright © 2018 by Timviec365.vn" />
-				<meta name="twitter:card" content="summary" />
-				<meta
-					name="twitter:description"
-					content="Tìm việc làm nhanh, việc làm 24h hiệu quả, lương cao từ những nhà tuyển dụng uy tín. Hàng nghìn việc làm mới mỗi ngày trên toàn quốc. Tìm việc ngay tại Timviec365.vn"
-				/>
-				<meta
-					name="twitter:title"
-					content="Tìm Việc Làm & Tuyển Dụng Việc Làm Nhanh | timviec365.vn"
-				/>
-				<meta name="abstract" content="Tìm việc mới nhất trên toàn quốc - Tim viec online" />
-				<meta name="author" content="Timviec365.vn" />
-				<link rel="canonical" href="https://timviec365.vn" />
 			</Head>
 			<>
 				<div className={styles.new_banner}>
@@ -130,7 +110,7 @@ const Home: NextPageWithLayout = () => {
 							<div className={styles.logo_banner}>
 								<h1 className={styles.title_search}>Tìm việc làm</h1>
 							</div>
-							<Search_common />
+							<Box_search />
 						</div>
 
 						<div className={styles.btn_dow}>

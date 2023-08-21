@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import React, { useState } from 'react'
-import styles from '../../styles/common/header.module.scss'
+import styles from '@styles/common/header.module.scss'
 
 export interface HeaderProps {}
 
