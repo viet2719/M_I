@@ -95,18 +95,13 @@ const Footer = () => {
 		<div className={styles.footer_main}>
 			<div className={styles.footer_content}>
 				<div className={styles.footer_block1}>
-					<a
-						rel="dofollow"
-						target="_blank"
-						href="https://timviec365.vn/cv365/"
-						className={styles.footer_block1_txt}
-					>
+					<a rel="dofollow" target="_blank" href="cv365/" className={styles.footer_block1_txt}>
 						Hồ sơ xin việc,
 					</a>
 					<a
 						rel="dofollow"
 						target="_blank"
-						href="https://timviec365.vn/cv365/cv-tieng-anh"
+						href="cv365/cv-tieng-anh"
 						className={styles.footer_block1_txt}
 					>
 						cv tiếng anh,
@@ -114,7 +109,7 @@ const Footer = () => {
 					<a
 						rel="dofollow"
 						target="_blank"
-						href="https://timviec365.vn/cv365/cv-tieng-viet"
+						href="cv365/cv-tieng-viet"
 						className={styles.footer_block1_txt}
 					>
 						cv tiếng việt,
@@ -122,7 +117,7 @@ const Footer = () => {
 					<a
 						rel="dofollow"
 						target="_blank"
-						href="https://timviec365.vn/cv365/cv-tieng-han"
+						href="cv365/cv-tieng-han"
 						className={styles.footer_block1_txt}
 					>
 						cv tiếng hàn,
@@ -130,7 +125,7 @@ const Footer = () => {
 					<a
 						rel="dofollow"
 						target="_blank"
-						href="https://timviec365.vn/cv365/cv-tieng-nhat"
+						href="cv365/cv-tieng-nhat"
 						className={styles.footer_block1_txt}
 					>
 						cv tiếng nhật,
@@ -138,7 +133,7 @@ const Footer = () => {
 					<a
 						rel="dofollow"
 						target="_blank"
-						href="https://timviec365.vn/cv365/mau-don-xin-viec"
+						href="cv365/mau-don-xin-viec"
 						className={styles.footer_block1_txt}
 					>
 						đơn xin việc,
@@ -146,7 +141,7 @@ const Footer = () => {
 					<a
 						rel="dofollow"
 						target="_blank"
-						href="https://timviec365.vn/cv365/mau-cover-letter-thu-xin-viec"
+						href="cv365/mau-cover-letter-thu-xin-viec"
 						className={styles.footer_block1_txt}
 					>
 						thư xin việc,
@@ -154,7 +149,7 @@ const Footer = () => {
 					<a
 						rel="dofollow"
 						target="_blank"
-						href="https://timviec365.vn/cv365/mau-so-yeu-ly-lich"
+						href="cv365/mau-so-yeu-ly-lich"
 						className={styles.footer_block1_txt}
 					>
 						sơ yếu lý lịch,
@@ -162,7 +157,7 @@ const Footer = () => {
 					<a
 						rel="dofollow"
 						target="_blank"
-						href="https://timviec365.vn/cv365/cv-viet-tat-cua-tu-gi-nhung-dieu-can-biet-khi-viet-cv.html"
+						href="cv365/cv-viet-tat-cua-tu-gi-nhung-dieu-can-biet-khi-viet-cv.html"
 						className={styles.footer_block1_txt}
 					>
 						cv là gì,
@@ -170,7 +165,7 @@ const Footer = () => {
 					<a
 						rel="dofollow"
 						target="_blank"
-						href="https://timviec365.vn/cau-hoi-tuyen-dung"
+						href="cau-hoi-tuyen-dung"
 						className={styles.footer_block1_txt}
 					>
 						câu hỏi phỏng vấn,
@@ -178,7 +173,7 @@ const Footer = () => {
 					<a
 						rel="dofollow"
 						target="_blank"
-						href="https://timviec365.vn/cv365/cv-ke-toan"
+						href="cv365/cv-ke-toan"
 						className={styles.footer_block1_txt}
 					>
 						cv kế toán,
@@ -186,23 +181,18 @@ const Footer = () => {
 					<a
 						rel="dofollow"
 						target="_blank"
-						href="https://timviec365.vn/cv365/cv-kinh-doanh"
+						href="cv365/cv-kinh-doanh"
 						className={styles.footer_block1_txt}
 					>
 						cv kinh doanh,
 					</a>
-					<a
-						rel="dofollow"
-						target="_blank"
-						href="https://timviec365.vn/cv365/cv-it"
-						className={styles.footer_block1_txt}
-					>
+					<a rel="dofollow" target="_blank" href="cv365/cv-it" className={styles.footer_block1_txt}>
 						cv IT,
 					</a>
 					<a
 						rel="dofollow"
 						target="_blank"
-						href="https://timviec365.vn/cv365/cv-hanh-chinh-nhan-su"
+						href="cv365/cv-hanh-chinh-nhan-su"
 						className={styles.footer_block1_txt}
 					>
 						cv nhân sự,
@@ -210,7 +200,7 @@ const Footer = () => {
 					<a
 						rel="dofollow"
 						target="_blank"
-						href="https://timviec365.vn/cv365/cv-nhan-vien-ban-hang"
+						href="cv365/cv-nhan-vien-ban-hang"
 						className={styles.footer_block1_txt}
 					>
 						cv bán hàng,
@@ -218,7 +208,7 @@ const Footer = () => {
 					<a
 						rel="dofollow"
 						target="_blank"
-						href="https://timviec365.vn/cv365/cv-marketing"
+						href="cv365/cv-marketing"
 						className={styles.footer_block1_txt}
 					>
 						CV marketing,
@@ -226,7 +216,7 @@ const Footer = () => {
 					<a
 						rel="dofollow"
 						target="_blank"
-						href="https://timviec365.vn/cv365/cv-xay-dung"
+						href="cv365/cv-xay-dung"
 						className={styles.footer_block1_txt}
 					>
 						cv xây dựng,
@@ -234,7 +224,7 @@ const Footer = () => {
 					<a
 						rel="dofollow"
 						target="_blank"
-						href="https://timviec365.vn/cv365/cv-co-khi"
+						href="cv365/cv-co-khi"
 						className={styles.footer_block1_txt}
 					>
 						cv cơ khí,
@@ -242,7 +232,7 @@ const Footer = () => {
 					<a
 						rel="dofollow"
 						target="_blank"
-						href="https://timviec365.vn/cv365/cv-xuat-nhap-khau"
+						href="cv365/cv-xuat-nhap-khau"
 						className={styles.footer_block1_txt}
 					>
 						cv xuất nhập khẩu,
@@ -250,7 +240,7 @@ const Footer = () => {
 					<a
 						rel="dofollow"
 						target="_blank"
-						href="https://timviec365.vn/cv365/cv-sinh-vien-moi-ra-truong"
+						href="cv365/cv-sinh-vien-moi-ra-truong"
 						className={styles.footer_block1_txt}
 					>
 						cv sinh viên mới ra trường,
@@ -258,7 +248,7 @@ const Footer = () => {
 					<a
 						rel="dofollow"
 						target="_blank"
-						href="https://timviec365.vn/cv365/cv-kien-truc-noi-that"
+						href="cv365/cv-kien-truc-noi-that"
 						className={styles.footer_block1_txt}
 					>
 						cv kiến trúc nội thất,
@@ -266,7 +256,7 @@ const Footer = () => {
 					<a
 						rel="dofollow"
 						target="_blank"
-						href="https://timviec365.vn/cv365/cv-cham-soc-khach-hang"
+						href="cv365/cv-cham-soc-khach-hang"
 						className={styles.footer_block1_txt}
 					>
 						cv chăm sóc khách hàng,
@@ -274,7 +264,7 @@ const Footer = () => {
 					<a
 						rel="dofollow"
 						target="_blank"
-						href="https://timviec365.vn/cv365/cv-phat-trien-thi-truong"
+						href="cv365/cv-phat-trien-thi-truong"
 						className={styles.footer_block1_txt}
 					>
 						cv phát triển thị trường,
@@ -282,7 +272,7 @@ const Footer = () => {
 					<a
 						rel="dofollow"
 						target="_blank"
-						href="https://timviec365.vn/cv365/cv-du-lich"
+						href="cv365/cv-du-lich"
 						className={styles.footer_block1_txt}
 					>
 						cv du lịch,
@@ -290,7 +280,7 @@ const Footer = () => {
 					<a
 						rel="dofollow"
 						target="_blank"
-						href="https://timviec365.vn/cv365/cv-thu-ngan"
+						href="cv365/cv-thu-ngan"
 						className={styles.footer_block1_txt}
 					>
 						cv thu ngân,
@@ -298,7 +288,7 @@ const Footer = () => {
 					<a
 						rel="dofollow"
 						target="_blank"
-						href="https://timviec365.vn/cv365/cv-viec-lam-telesale"
+						href="cv365/cv-viec-lam-telesale"
 						className={styles.footer_block1_txt}
 					>
 						cv telesale,
@@ -306,7 +296,7 @@ const Footer = () => {
 					<a
 						rel="dofollow"
 						target="_blank"
-						href="https://timviec365.vn/cv365/cv-tai-chinh"
+						href="cv365/cv-tai-chinh"
 						className={styles.footer_block1_txt}
 					>
 						cv tài chính,
@@ -314,7 +304,7 @@ const Footer = () => {
 					<a
 						rel="dofollow"
 						target="_blank"
-						href="https://timviec365.vn/cv365/cv-logistic"
+						href="cv365/cv-logistic"
 						className={styles.footer_block1_txt}
 					>
 						cv logistic,
@@ -322,7 +312,7 @@ const Footer = () => {
 					<a
 						rel="dofollow"
 						target="_blank"
-						href="https://timviec365.vn/cv365/cv-nha-hang-khach-san"
+						href="cv365/cv-nha-hang-khach-san"
 						className={styles.footer_block1_txt}
 					>
 						cv nhà hàng khách sạn
@@ -365,33 +355,33 @@ const Footer = () => {
 						>
 							<div className={styles.timviec_item}>
 								<div className={styles.content_item}>
-									<a rel="nofollow" href="https://timviec365.vn/gioi-thieu-chung.html">
+									<a rel="nofollow" href="gioi-thieu-chung.html">
 										Giới thiệu
 									</a>
-									<a rel="nofollow" href="https://timviec365.vn/thong-tin-can-biet.html">
+									<a rel="nofollow" href="thong-tin-can-biet.html">
 										Thông tin
 									</a>
 									<a
 										rel="nofollow"
-										href="https://timviec365.vn/blog/hoi-va-dap-ve-timviec365vn-chat365-va-cac-ung-dung-chuyen-doi-so-new16648.html"
+										href="blog/hoi-va-dap-ve-timviec365vn-chat365-va-cac-ung-dung-chuyen-doi-so-new16648.html"
 									>
 										Hỏi đáp
 									</a>
-									<a rel="nofollow" href="https://timviec365.vn/blog">
+									<a rel="nofollow" href="blog">
 										Cẩm nang
 									</a>
-									<a rel="nofollow" href="https://timviec365.vn/thoa-thuan-su-dung.html">
+									<a rel="nofollow" href="thoa-thuan-su-dung.html">
 										Thỏa thuận
 									</a>
-									<a rel="nofollow" href="https://timviec365.vn/quy-dinh-bao-mat.html">
+									<a rel="nofollow" href="quy-dinh-bao-mat.html">
 										Bảo mật
 									</a>
 								</div>
 								<div className={styles.content_item}>
-									<a rel="nofollow" href="https://timviec365.vn/giai-quyet-tranh-chap.html">
+									<a rel="nofollow" href="giai-quyet-tranh-chap.html">
 										Giải quyết tranh chấp
 									</a>
-									<a rel="nofollow" href="https://timviec365.vn/so-do-trang-web.html">
+									<a rel="nofollow" href="so-do-trang-web.html">
 										Sơ đồ Website
 									</a>
 									<a
@@ -401,16 +391,10 @@ const Footer = () => {
 									>
 										Video
 									</a>
-									<a
-										rel="nofollow"
-										href="https://timviec365.vn/blog/ung-dung-cua-trinh-sat-ai365-new16655.html"
-									>
+									<a rel="nofollow" href="blog/ung-dung-cua-trinh-sat-ai365-new16655.html">
 										AI365
 									</a>
-									<a
-										rel="nofollow"
-										href="https://timviec365.vn/blog/huy-hieu-tia-set-new16722.html"
-									>
+									<a rel="nofollow" href="blog/huy-hieu-tia-set-new16722.html">
 										Huy hiệu tia sét
 									</a>
 								</div>
@@ -474,7 +458,7 @@ const Footer = () => {
 									{item.other_list && (
 										<a
 											rel="nofollow"
-											href="https://timviec365.vn/danh-sach-viec-lam-theo-tags"
+											href="danh-sach-viec-lam-theo-tags"
 											className={styles.seen_all}
 										>
 											{item.other_list}{' '}
@@ -612,7 +596,6 @@ const Footer = () => {
 								<p className={styles.qr_txt}>App Timviec365 NTD</p>
 							</div>
 							<div className={styles.wrap_qr_child}>
-								{/* <img class="qr_img lazyload" src="/images/qr_cv_365.png" alt="download_app"> */}
 								<Image
 									width={115}
 									height={114}
@@ -637,9 +620,11 @@ const Footer = () => {
 				</div>
 				<div className={`${styles.footer_block3_2}`}>
 					<div>
-						<img
+						<Image
+							width={184}
+							height={47}
 							className={`${styles.lazyloaded}`}
-							src="https://timviec365.vn/images/365timviec.png"
+							src="/images/365timviec.png"
 							alt="timviec365"
 						/>
 					</div>
@@ -663,9 +648,11 @@ const Footer = () => {
 								target="_blank"
 								href="http://online.gov.vn/Home/WebDetails/35979?AspxAutoDetectCookieSupport=1"
 							>
-								<img
+								<Image
+									width={109}
+									height={40}
 									className={`${styles.icon_bct} ${styles.lazyloaded}`}
-									src="https://timviec365.vn/images/DK_bocongthuong.png"
+									src="/images/DK_bocongthuong.png"
 									alt="Đã đăng ký bộ công thương"
 								/>
 							</a>
@@ -673,9 +660,11 @@ const Footer = () => {
 								rel="nofollow"
 								href="//www.dmca.com/Protection/Status.aspx?ID=5b1070f1-e6fb-4ba4-8283-84c7da8f8398"
 							>
-								<img
+								<Image
+									width={37}
+									height={40}
 									className={`${styles.icon_dmca} ${styles.lazyloaded}`}
-									src="https://timviec365.vn/images/dmca.png"
+									src="/images/dmca.png"
 									alt="DMCA.com Protection Status"
 								/>
 							</a>
@@ -683,17 +672,17 @@ const Footer = () => {
 						<div className={`${styles.wrap_block_connect}`}>
 							<div className={`${styles.wrap_icon_connet}`}>
 								<a href="https://chat365.timviec365.vn/" rel="nofollow" target="_blank">
-									<img src="https://timviec365.vn/images/icon365.svg" alt="chat" />
+									<Image width={9} height={14} src="/images/icon365.svg" alt="chat" />
 								</a>
 							</div>
 							<div className={`${styles.wrap_icon_connet}`}>
 								<a href="https://www.facebook.com/Timviec365.Vn/" rel="nofollow" target="_blank">
-									<img src="https://timviec365.vn/images/icon_fb.svg" alt="facebook" />
+									<Image width={9} height={14} src="/images/icon_fb.svg" alt="facebook" />
 								</a>
 							</div>
 							<div className={`${styles.wrap_icon_connet}`}>
 								<a href="https://twitter.com/timviec365vn" rel="nofollow" target="_blank">
-									<img src="https://timviec365.vn/images/icon_witter.svg" alt="witter" />
+									<Image width={9} height={14} src="/images/icon_witter.svg" alt="witter" />
 								</a>
 							</div>
 							<div className={`${styles.wrap_icon_connet}`}>
@@ -702,7 +691,7 @@ const Footer = () => {
 									rel="nofollow"
 									target="_blank"
 								>
-									<img src="https://timviec365.vn/images/icon_youtube.svg" alt="youtube" />
+									<Image width={9} height={14} src="/images/icon_youtube.svg" alt="youtube" />
 								</a>
 							</div>
 						</div>
@@ -723,9 +712,11 @@ const Footer = () => {
 								target="_blank"
 							>
 								<p className={styles.qr_txt}>Tải app Timviec365 UV</p>
-								<img
+								<Image
+									width={9}
+									height={14}
 									className={styles.download_img}
-									src="https://timviec365.vn/images/download.svg"
+									src="/images/download.svg"
 									alt="download"
 								/>
 							</a>
@@ -739,9 +730,11 @@ const Footer = () => {
 								target="_blank"
 							>
 								<p className={styles.qr_txt}>Tải app Timviec365 NTD</p>
-								<img
+								<Image
+									width={9}
+									height={14}
 									className={styles.download_img}
-									src="https://timviec365.vn/images/download.svg"
+									src="/images/download.svg"
 									alt="download"
 								/>
 							</a>
@@ -755,9 +748,11 @@ const Footer = () => {
 								target="_blank"
 							>
 								<p className={styles.qr_txt}>Tải app CV365</p>
-								<img
+								<Image
+									width={9}
+									height={14}
 									className={styles.download_img}
-									src="https://timviec365.vn/images/download.svg"
+									src="/images/download.svg"
 									alt="download"
 								/>
 							</a>
@@ -771,9 +766,11 @@ const Footer = () => {
 								target="_blank"
 							>
 								<p className={styles.qr_txt}>Tải app Chat365</p>
-								<img
+								<Image
+									width={9}
+									height={14}
 									className={styles.download_img}
-									src="https://timviec365.vn/images/download.svg"
+									src="/images/download.svg"
 									alt="download"
 								/>
 							</a>

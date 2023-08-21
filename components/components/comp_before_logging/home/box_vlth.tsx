@@ -16,7 +16,7 @@ const Box_vlth = ({ jobList }: any) => {
 										width={70}
 										src="/images/before_login/user_chat_off.png"
 										className={`${styles.tia_set} ${styles.no_logo_chat} ${styles.lazyloaded}`}
-										alt=""
+										alt="user_chat_off"
 									/>
 									<span className={styles.box_time_off}>1 ngay</span>
 								</a>
@@ -62,7 +62,7 @@ const Box_vlth = ({ jobList }: any) => {
 									height={28}
 									src="/images/before_login/icon_tiaset.svg"
 									className={styles.icon_tiaset_new}
-									alt=""
+									alt="icon_tiaset_new"
 								/>
 							</div>
 							<div className={styles.right_item_vl}>

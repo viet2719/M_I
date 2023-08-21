@@ -342,7 +342,7 @@ export default function Header({ children }: any, props: HeaderProps) {
 										<a href="" className={styles.ctn_mobi_sub1}>
 											<Image
 												src={'/images/before_login/exp_dangky.png'}
-												alt=""
+												alt="exp_dangky"
 												width={20}
 												height={21}
 												className={styles.lazyloaded}
@@ -354,7 +354,7 @@ export default function Header({ children }: any, props: HeaderProps) {
 										<a href="" className={styles.ctn_mobi_sub1}>
 											<Image
 												src={'/images/before_login/exp_dangnhap.png'}
-												alt=""
+												alt="exp_dangnhap"
 												width={20}
 												height={21}
 												className={styles.lazyloaded}
@@ -366,7 +366,7 @@ export default function Header({ children }: any, props: HeaderProps) {
 										<a href="">
 											<Image
 												src={img_dangtin}
-												alt=""
+												alt="img_dangtin"
 												width={20}
 												height={21}
 												className={styles.lazyloaded}
@@ -378,7 +378,7 @@ export default function Header({ children }: any, props: HeaderProps) {
 										<a href="" className={`${styles.ctn_mobi_sub} ${styles.ctn_mobi_sub2}`}>
 											<Image
 												src={img_cv}
-												alt=""
+												alt="img_cv"
 												width={20}
 												height={21}
 												className={styles.lazyloaded}
@@ -398,7 +398,7 @@ export default function Header({ children }: any, props: HeaderProps) {
 											<div className={styles.box_hd_saudn}>
 												<Image
 													src={img_khampha}
-													alt=""
+													alt="img_khampha"
 													width={20}
 													height={21}
 													className={styles.lazyloaded}
@@ -492,7 +492,7 @@ export default function Header({ children }: any, props: HeaderProps) {
 										<a href="" className={styles.ctn_mobi_sub1}>
 											<Image
 												src={'/images/before_login/exp_tim_uvien.png'}
-												alt=""
+												alt="exp_tim_uvien"
 												width={20}
 												height={21}
 												className={styles.lazyloaded}
@@ -504,7 +504,7 @@ export default function Header({ children }: any, props: HeaderProps) {
 										<a href="" className={styles.ctn_mobi_sub1}>
 											<Image
 												src={'/images/before_login/exp_chuyendoiso.png'}
-												alt=""
+												alt="exp_chuyendoiso"
 												width={20}
 												height={21}
 												className={styles.lazyloaded}

@@ -65,7 +65,7 @@ const Home: NextPageWithLayout = () => {
 				<title>Tìm Việc Làm & Tuyển Dụng Việc Làm Nhanh | timviec365.vn</title>
 				<meta name="title" content="Tìm việc làm" />
 				{/* <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" /> */}
-				<meta name="robots" content="index,follow" />
+				<meta name="robots" content="noindex,follow" />
 				<meta
 					name="description"
 					content="Tìm việc làm nhanh, việc làm 24h hiệu quả, lương cao từ những nhà tuyển dụng uy tín. Hàng nghìn việc làm mới mỗi ngày trên toàn quốc. Tìm việc ngay tại Timviec365.vn"
@@ -121,7 +121,7 @@ const Home: NextPageWithLayout = () => {
 											src={'/images/before_login/mess_icon2.png'}
 											width={44}
 											height={44}
-											alt=""
+											alt="Chat"
 										/>
 									</span>
 								</p>
@@ -207,7 +207,7 @@ const Home: NextPageWithLayout = () => {
 										<li className={`${styles.online_item} ${styles.openApp} ${styles.m_online}`}>
 											<a href="">
 												<span className={`${styles.ava_mess} ${styles.m_online}`}>
-													<img src="" alt="" />
+													<Image src="" alt="" width={20} height={20} />
 												</span>
 												<span className={`${styles.ct_online} ${styles.box_tooltip}`}>
 													<p>Công Ty Cổ Phần Nam Dược Cn Miền Nam</p>
@@ -226,7 +226,7 @@ const Home: NextPageWithLayout = () => {
 										<li className={`${styles.online_item} ${styles.openApp} ${styles.m_online}`}>
 											<a href="">
 												<span className={`${styles.ava_mess} ${styles.m_online}`}>
-													<img src="" alt="" />
+													<Image src="" alt="" width={20} height={20} />
 												</span>
 												<span className={`${styles.ct_online} ${styles.box_tooltip}`}>
 													<p>Công Ty Cổ Phần Nam Dược Cn Miền Nam</p>
@@ -245,7 +245,7 @@ const Home: NextPageWithLayout = () => {
 										<li className={`${styles.online_item} ${styles.openApp} ${styles.m_online}`}>
 											<a href="">
 												<span className={`${styles.ava_mess} ${styles.m_online}`}>
-													<img src="" alt="" />
+													<Image src="" alt="" width={20} height={20} />
 												</span>
 												<span className={`${styles.ct_online} ${styles.box_tooltip}`}>
 													<p>Công Ty Cổ Phần Nam Dược Cn Miền Nam</p>
@@ -363,7 +363,13 @@ const Home: NextPageWithLayout = () => {
 								<div className={styles.banner_tiaset_right}>
 									<p className={styles.title_list}>Danh sách tin ĐĂNG đạt huy hiệu tia sét</p>
 									<a className={styles.link_list} href="/danh-sach-tia-set">
-										XEM NGAY <img alt="xem ngay" src="/images/before_login/arrow_right.svg" />
+										XEM NGAY{' '}
+										<Image
+											width={20}
+											height={20}
+											alt="xem ngay"
+											src="/images/before_login/arrow_right.svg"
+										/>
 									</a>
 								</div>
 							</div>
@@ -437,7 +443,13 @@ const Home: NextPageWithLayout = () => {
 								<div className={styles.banner_tiaset_right}>
 									<p className={styles.title_list}>Danh sách tin ĐĂNG đạt huy hiệu ÁNH SAO</p>
 									<a className={styles.link_list} href="/danh-sach-anh-sao">
-										XEM NGAY <img alt="xem ngay" src="/images/before_login/arrow_right.svg" />
+										XEM NGAY{' '}
+										<Image
+											width={20}
+											height={20}
+											alt="xem ngay"
+											src="/images/before_login/arrow_right.svg"
+										/>
 									</a>
 								</div>
 							</div>

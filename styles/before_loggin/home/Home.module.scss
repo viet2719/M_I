@@ -985,7 +985,7 @@
 			height: 350px !important;
 			min-height: unset;
 			.main_search {
-				top: 80px;
+				top: 105px;
 				padding: 0 20%;
 				.box_text_search {
 					display: none;
@@ -1362,6 +1362,12 @@
 @media screen and (max-width: 600px) {
 	.new_banner {
 		height: 335px;
+		.box_search {
+			.main_search {
+				top: 70px;
+				padding: 0 5%;
+			}
+		}
 	}
 	.section_home {
 		background: #fff !important;

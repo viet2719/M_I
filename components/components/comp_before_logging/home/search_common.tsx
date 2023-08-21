@@ -5,8 +5,8 @@ import Select from 'react-select'
 import BtnSelect from './btnSelect'
 // import chroma from 'chroma-js'
 const Search_common = () => {
-	const search_add = 'https://timviec365.vn/images/New_images/ic_show_nc.png'
-	const img_voice = 'https://timviec365.vn/images/img_new/exp_search_voice.svg'
+	const search_add = '/images/before_login/ic_show_nc.png'
+	const img_voice = '/images/before_login/exp_search_voice.svg'
 	const [valueInputName, setValueInputName] = useState('')
 	const [toggleSearchName, setToggleSearchName] = useState(false)
 	const [toggleSearchCity, setToggleSearchCity] = useState(false)
