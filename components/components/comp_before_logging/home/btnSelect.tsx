@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import styles from '../../../../styles/before_loggin/home/btnSelect.module.scss'
+import styles from '@styles/before_loggin/home/btnSelect.module.scss'
 import Select from 'react-select'
 
 const BtnSelect = ({ children }: any) => {

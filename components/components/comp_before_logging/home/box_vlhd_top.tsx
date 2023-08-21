@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import React from 'react'
-import styles from '../../../../styles/before_loggin/home/box_vlhd_top.module.scss'
+import styles from '@styles/before_loggin/home/box_vlhd_top.module.scss'
 
 const Box_vlhd_top = ({ jobData }: any) => {
 	return (

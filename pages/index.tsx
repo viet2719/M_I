@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { NextPageWithLayout } from '@/models/common'
 import Head from 'next/head'
-import styles from '../styles/before_loggin/home/home.module.scss'
+import styles from '@styles/before_loggin/home/home.module.scss'
 import { HomePageBeforeLayout } from '@/components/layout/home_before_login'
 import Image from 'next/image'
 import Header from '@/components/common/header'
@@ -12,6 +12,7 @@ import Banner_QR from '@/components/components/comp_before_logging/home/banner_Q
 import Search_common from '@/components/components/comp_before_logging/home/search_common'
 import Box_vlth from '@/components/components/comp_before_logging/home/box_vlth'
 import Box_vlhd_top from '@/components/components/comp_before_logging/home/box_vlhd_top'
+import Chat_container from '@/components/components/comp_before_logging/home/chat_container'
 
 const Home: NextPageWithLayout = () => {
 	const img_down = '/images/before_login/icn_dow.png'
@@ -692,6 +693,7 @@ const Home: NextPageWithLayout = () => {
 					</div>
 				</section>
 				<Footer />
+				<Chat_container />
 			</>
 		</>
 	)
