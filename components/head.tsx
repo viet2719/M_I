@@ -44,44 +44,7 @@ const Head_common = ({
 				<meta name="abstract" content="Tìm việc mới nhất trên toàn quốc - Tim viec online" />
 				<meta name="author" content="Timviec365.vn" />
 				<link rel="canonical" href={cano} />
-				{/* Bỏ AMP trang chủ theo y/c của S  */}
-				{/* <link rel="amphtml" href="https://timviec365.vn/amp-home" /> */}
-				<link
-					rel="preload"
-					href="/fonts/Roboto-Medium.woff2"
-					as="font"
-					type="font/woff2"
-					crossOrigin=""
-				/>
-				<link
-					rel="preload"
-					href="/fonts/Roboto-Bold.woff2"
-					as="font"
-					type="font/woff2"
-					crossOrigin=""
-				/>
-				<link
-					rel="preload"
-					href="/fonts/Roboto-Regular.woff2"
-					as="font"
-					type="font/woff2"
-					crossOrigin=""
-				/>
-				<link
-					rel="preload"
-					href="/fonts/Rounded-Mplus-1c.woff2"
-					as="font"
-					type="font/woff2"
-					crossOrigin=""
-				/>
-				<link rel="preload" as="style" href="/css/select2.min.css?v=259" />
-				<link rel="preload" as="style" href="/css/new_style.css?v=259" />
-				<link rel="stylesheet" media="all" href="/css/select2.min.css?v=259" />
-				<link rel="stylesheet" media="all" href="/css/new_style.css?v=259" />
-				<link rel="preload" as="style" href="/css/popup_send_chat.css?v=259" />
-				<link rel="stylesheet" media="all" href="/css/popup_send_chat.css?v=259" />
-				<link rel="preload" as="style" href="/css/css_home_new.css?v=259" />
-				<link rel="stylesheet" media="all" href="/css/css_home_new.css?v=259" />
+
 				{/* <Helmet> */}
 				<script type="application/ld+json">
 					{JSON.stringify({
@@ -171,30 +134,11 @@ const Head_common = ({
 					})}
 				</script>
 				{/* <!-- Google Tag Manager --> */}
-				<script>
-					{`
-        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer','GTM-PSZNQGR');
-        `}
-				</script>
+
 				{/* <!-- End Google Tag Manager -->	<!-- End Google Tag Manager -->
     <!-- Global site tag (gtag.js) - Google Ads: 934002795 --> */}
 				<script async src="https://www.googletagmanager.com/gtag/js?id=AW-934002795"></script>
-				<script>
-					{`
-        window.dataLayer = window.dataLayer || [];
 
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-
-        gtag('config', 'AW-934002795');
-        `}
-				</script>
 				{/* </Helmet> */}
 			</Head>
 		</>

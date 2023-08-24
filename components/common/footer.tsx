@@ -672,17 +672,27 @@ const Footer = () => {
 						<div className={`${styles.wrap_block_connect}`}>
 							<div className={`${styles.wrap_icon_connet}`}>
 								<a href="https://chat365.timviec365.vn/" rel="nofollow" target="_blank">
-									<Image width={9} height={14} src="/images/icon365.svg" alt="chat" />
+									<Image width={9} height={14} src="/images/before_login/icon365.svg" alt="chat" />
 								</a>
 							</div>
 							<div className={`${styles.wrap_icon_connet}`}>
 								<a href="https://www.facebook.com/Timviec365.Vn/" rel="nofollow" target="_blank">
-									<Image width={9} height={14} src="/images/icon_fb.svg" alt="facebook" />
+									<Image
+										width={9}
+										height={14}
+										src="/images/before_login/icon_fb.svg"
+										alt="facebook"
+									/>
 								</a>
 							</div>
 							<div className={`${styles.wrap_icon_connet}`}>
 								<a href="https://twitter.com/timviec365vn" rel="nofollow" target="_blank">
-									<Image width={9} height={14} src="/images/icon_witter.svg" alt="witter" />
+									<Image
+										width={9}
+										height={14}
+										src="/images/before_login/icon_witter.svg"
+										alt="witter"
+									/>
 								</a>
 							</div>
 							<div className={`${styles.wrap_icon_connet}`}>
@@ -691,7 +701,12 @@ const Footer = () => {
 									rel="nofollow"
 									target="_blank"
 								>
-									<Image width={9} height={14} src="/images/icon_youtube.svg" alt="youtube" />
+									<Image
+										width={9}
+										height={14}
+										src="/images/before_login/icon_youtube.svg"
+										alt="youtube"
+									/>
 								</a>
 							</div>
 						</div>

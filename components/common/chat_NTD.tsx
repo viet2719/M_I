@@ -150,9 +150,9 @@ const Chat_NTD = ({ classNameProps, propsElementSlugNganhNghe }: any) => {
 						Tất cả &gt;&gt;
 					</a>
 					<ul className={styles.list_chat_ntd}>
-						{listDataChats.map((item) => (
+						{listDataChats.map((item, index) => (
 							<li
-								key={item.id}
+								key={index}
 								className={`${styles.online_item} ${styles.openApp} ${styles.m_online}`}
 							>
 								<a href="">

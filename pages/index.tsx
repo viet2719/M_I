@@ -207,6 +207,7 @@ const Home: NextPageWithLayout = () => {
 				cano={cano}
 				abstract={abstract}
 			/>
+
 			<New_banner />
 			<section className={styles.section_home}>
 				<div className={styles.vieclam_container}>
