@@ -1,0 +1,219 @@
+.item_cate {
+	padding-bottom: 0px;
+	background: #fff;
+	border-radius: 8px;
+	box-shadow: unset;
+	border: unset;
+	color: #474747;
+	padding: 15px 10px;
+	margin-bottom: 20px;
+	position: relative;
+	border: 1px solid #cccccc;
+	float: left;
+	width: 100%;
+	.box_input {
+		position: relative;
+		margin-right: 10px;
+		float: left;
+		label {
+			background-color: #fff;
+			border: 1.5px solid #474747;
+			border-radius: 50%;
+			cursor: pointer;
+			height: 16px;
+			left: 0;
+			position: absolute;
+			top: 0;
+			width: 16px;
+			&::after {
+				opacity: 0;
+				content: '';
+				position: absolute;
+			}
+		}
+	}
+	.box_input input[type='checkbox'] {
+		visibility: hidden;
+	}
+	.img_cate.box_new_left {
+		position: relative;
+	}
+	.img_cate {
+		text-align: center;
+		margin-right: 15px;
+		width: 142px;
+		float: left;
+		.nd_cate_new .item_cate .img_cate img {
+			border-radius: 50%;
+			border: 1px solid #f2f7fb;
+			float: unset;
+			margin: unset;
+			margin-bottom: 15px;
+			object-fit: contain;
+			position: relative;
+		}
+		.logo_user_th {
+			float: left;
+			position: relative;
+			display: inline-block;
+			&::before {
+				content: ' ';
+				width: 25px;
+				height: 25px;
+				border-radius: 50%;
+				background-color: #76b51b;
+				display: inline-block;
+				position: absolute;
+				top: 60%;
+				right: 0px;
+				border: 3px solid #ffffff;
+				z-index: 1;
+			}
+			img {
+				width: 142px;
+				height: 142px;
+				border-radius: 50%;
+				border: 1px solid #f2f7fb;
+				float: unset;
+				margin: unset;
+				margin-bottom: 15px;
+				object-fit: contain;
+				position: relative;
+			}
+			.box_time_off {
+				position: absolute;
+				padding: 5px 8px;
+				right: 5px;
+				top: 75%;
+				background: #f4fce9;
+				border-radius: 24px;
+				font-weight: 500;
+				font-size: 12px;
+				line-height: 14px;
+				color: #76b51b;
+			}
+		}
+		.box_vote_new {
+			float: left;
+			width: 100%;
+			.icon_vote_new {
+				width: 16px;
+				height: 16px;
+				border: none;
+			}
+		}
+	}
+	.center_cate {
+		width: calc(100% - 142px - 45px);
+		position: relative;
+		float: right;
+		.center_cate_l {
+			float: left;
+			width: 100%;
+			h2 {
+				width: calc(100% - 120px);
+				margin-bottom: 10px;
+				float: left;
+				a {
+					text-overflow: ellipsis;
+					font-size: 16px;
+					line-height: 22px;
+					-webkit-line-clamp: 2;
+					display: -webkit-box;
+					-webkit-box-orient: vertical;
+					overflow: hidden;
+					white-space: unset;
+					text-transform: capitalize;
+					font-weight: 700;
+					max-width: 85%;
+					float: left;
+					text-decoration: unset;
+					.img_center_cate_mb {
+						float: left;
+						width: 60px;
+						height: 60px;
+						object-fit: cover;
+						border-radius: 50%;
+						border: 1px solid #f2f7fb;
+						margin-right: 10px;
+						display: none;
+					}
+				}
+				.box_time_off {
+					position: absolute;
+					padding: 5px 8px;
+					right: 5px;
+					top: 75%;
+					background: #f4fce9;
+					border-radius: 24px;
+					font-weight: 500;
+					font-size: 12px;
+					line-height: 14px;
+					color: #76b51b;
+				}
+			}
+			.comp {
+				display: block;
+				float: left;
+				.cpn_name {
+					max-width: 95%;
+					margin-right: unset;
+					line-height: 25px;
+					overflow: hidden;
+					-webkit-line-clamp: 2;
+					display: -webkit-box;
+					-webkit-box-orient: vertical;
+					.tag_th {
+						font-weight: 700;
+						overflow: hidden;
+						-webkit-line-clamp: 1;
+						display: -webkit-box;
+						-webkit-box-orient: vertical;
+						text-overflow: ellipsis;
+						width: 100%;
+						float: left;
+						text-transform: capitalize;
+					}
+				}
+			}
+			.job_chat {
+				font-weight: normal;
+				position: absolute;
+				width: 82px;
+				border-radius: 20px;
+				right: 0px;
+				top: 0px;
+				padding: 7px 15px 7px 35px;
+				text-decoration: none;
+				&::before {
+					background-image: url('/images/vl_chat_wt.png') !important;
+					content: '';
+					background-size: 100% 100%;
+					position: absolute;
+					display: inline-block;
+					width: 17px;
+					height: 17px;
+					left: 15px;
+					top: 7px;
+				}
+			}
+			.job_chat.m_online {
+				color: #fff;
+				background: #5dc22d !important;
+			}
+			.con-tooltip.tt_sm {
+				width: 45%;
+			}
+			.nd_cate_new .con-tooltip {
+				float: left;
+				position: relative;
+				display: inline-block;
+			}
+		}
+	}
+}
+@media screen and (max-width: 1519.98px) {
+	.item_cate {
+		width: 100%;
+	}
+}

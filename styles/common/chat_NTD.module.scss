@@ -1,0 +1,209 @@
+.vl_right {
+	width: calc(26% - 26px);
+	float: left;
+	margin-left: 26px;
+	.list_ntd_home {
+		width: 100%;
+		background: #fff;
+		float: left;
+		margin-bottom: 15px;
+		position: relative;
+		padding-bottom: 8px;
+		.tt_chat_ntd {
+			font-size: 16px;
+			line-height: 18px;
+			text-align: center;
+			color: #fff;
+			padding: 20px 0px 10px;
+			text-transform: uppercase;
+			font-family: Roboto-Medium;
+			float: left;
+			width: 100%;
+			background: #4c5bd4;
+			border-radius: 8px 8px 0px 0px;
+			.ic_list_onnile {
+				display: inline-block;
+				float: left;
+				width: 40px;
+				height: 40px;
+				margin-left: 10px;
+				margin-top: -10px;
+			}
+		}
+		.tt_chat_ntd::after {
+			content: '';
+			width: 60%;
+			display: block;
+			margin: 0 auto;
+			border-top: 1px solid #4c5bd4;
+			position: relative;
+			top: 10px;
+		}
+		.list_nganh_nghe {
+			.link_all_onl {
+				display: block;
+				text-align: right;
+				padding: 15px 10px 0px 0px;
+				font-size: 15px;
+				float: right;
+				color: #4c5bd4;
+			}
+			.list_chat_ntd {
+				max-height: 895px;
+				padding: 0 10px;
+				padding-bottom: 15px;
+				overflow: auto;
+				width: 100%;
+				transition: 0.7s;
+				li {
+					list-style: none;
+					span.ava_mess {
+						width: unset;
+						position: relative;
+						float: left;
+					}
+					.ava_mess.m_online::before {
+						content: ' ';
+						width: 12px;
+						height: 12px;
+						border-radius: 50%;
+						background-color: #31a24c;
+						display: inline-block;
+						position: absolute;
+						top: 8%;
+						right: -8%;
+						border: solid 1px #fff;
+					}
+				}
+				.online_item,
+				.online_item a {
+					float: left;
+					width: 100%;
+					margin-top: 5px;
+				}
+				.online_item {
+					img {
+						width: 45px;
+						height: 45px;
+						object-fit: contain;
+						float: left;
+						border-radius: 50%;
+						border: solid 1px #ccc;
+					}
+					.ct_online {
+						width: calc(100% - 45px);
+						float: right;
+						padding: 2px 10px;
+						font-size: 16px;
+						line-height: 24px;
+						p {
+							color: #666666;
+							font-size: 14px;
+							line-height: 16px;
+							float: left;
+							width: 100%;
+							margin-bottom: 3px;
+							font-family: Roboto-Medium;
+						}
+						p:nth-child(1) {
+							font-size: 15px;
+							font-weight: 500;
+							line-height: 21px;
+							text-transform: uppercase;
+							margin-bottom: 4px;
+							color: #474747;
+							overflow: hidden;
+							white-space: nowrap;
+							text-overflow: ellipsis;
+						}
+						.con_tooltip {
+							position: relative;
+							display: inline-block;
+							.span_con_item {
+								display: block;
+								width: 100%;
+								overflow: hidden;
+								white-space: nowrap;
+								text-overflow: ellipsis;
+							}
+						}
+						.tooltip {
+							visibility: hidden;
+							z-index: 1;
+							opacity: 0.4;
+							max-width: 200px;
+							padding: 9px 15px;
+							background: #292d32;
+							color: #fff;
+							font-size: 13px;
+							border-radius: 4px;
+							position: absolute;
+							bottom: 25px;
+							left: 0px;
+						}
+					}
+				}
+				&::-webkit-scrollbar {
+					width: 4px;
+					background-color: transparent;
+				}
+				&::-webkit-scrollbar-thumb {
+					background: #cacef2;
+					border-radius: 4px;
+				}
+				&::-webkit-scrollbar-track {
+					background-color: transparent;
+				}
+			}
+		}
+	}
+	.banner_new {
+		width: 100%;
+		margin-top: 20px;
+		float: left;
+		img {
+			width: 100%;
+			object-fit: cover;
+		}
+		.box_btn {
+			padding: 166px 10px 0px 10px;
+			display: flex;
+			justify-content: space-between;
+			height: 227px;
+			gap: 20px;
+			img {
+				width: 114px;
+				height: 39px;
+				object-fit: cover;
+			}
+		}
+		.bg_bn_listNew {
+			background: url('/images/before_login/listNew_bn_taiapp.png') no-repeat;
+			background-size: 100% 100%;
+		}
+	}
+}
+
+.frame_th {
+	margin-top: 54px;
+}
+@media screen and (max-width: 1165px) {
+	.vl_right {
+		width: calc(100% - 30px);
+		float: left;
+		margin-left: 15px;
+		.list_ntd_home {
+			.list_nganh_nghe {
+				.list_chat_ntd {
+					cursor: pointer;
+				}
+			}
+		}
+	}
+}
+@media screen and (max-width: 600px) {
+	.vl_right {
+		width: 100%;
+		margin-left: 0;
+	}
+}

@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import React from 'react'
 import styles from '@styles/home/box_vlhd_top.module.scss'
+import Link from 'next/link'
 
 const Box_vlhd_top = ({ jobData }: any) => {
 	return (
@@ -82,7 +83,7 @@ const Box_vlhd_top = ({ jobData }: any) => {
 								<p className={styles.job_money} title={job.salary}>
 									{job.salary}
 								</p>
-								<a href="/lich-su/danh-sach-tong-u243931t1" className={styles.job_history}>
+								<Link href="/lich-su/danh-sach-tong-u243931t1" className={styles.job_history}>
 									<Image
 										width={16}
 										height={16}
@@ -90,7 +91,7 @@ const Box_vlhd_top = ({ jobData }: any) => {
 										alt="icon lịch sử"
 									/>
 									Lịch sử
-								</a>
+								</Link>
 							</div>
 						</div>
 					</div>
