@@ -5,8 +5,12 @@ import styles from '@styles/list_occupations/home.module.scss'
 import Link from 'next/link'
 import Chat_NTD from '@/components/common/chat_NTD'
 import Item_cate from '@/components/list_occupations/item_cate'
+import { useRouter } from 'next/router'
 
 const List_occupations = () => {
+	// const router = useRouter();
+	// const  {id}  = router.query;
+	// const jobId = id.split('-p').pop(); // Lấy phần số sau '-p' làm jobId
 	return (
 		<>
 			<New_banner />
