@@ -90,7 +90,6 @@ const List_occupations = () => {
 		},
 	]
 	const [expandedItems, setExpandedItems] = useState<any>()
-
 	const toggleItem = (index: number) => {
 		if (index === expandedItems) {
 			setExpandedItems('')
@@ -103,6 +102,7 @@ const List_occupations = () => {
 			{true ? (
 				<>
 					<New_banner />
+
 					<div className={styles.main_timviec}>
 						<div className={styles.container_timviec}>
 							<div className={`${styles.div_bre} ${styles.div_bre_2}`}>
