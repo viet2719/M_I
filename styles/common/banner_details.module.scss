@@ -1,0 +1,128 @@
+.new_banner {
+	background: url('https://timviec365.vn/images/loc/th_banner_tin_13.png') bottom;
+	background-size: 100% 88%;
+	float: left;
+	width: 100%;
+	position: relative;
+	.box_search {
+		position: relative;
+		min-height: 410px;
+		.main_search {
+			width: 100%;
+			position: absolute;
+			top: 150px;
+			padding: 0 5%;
+			// margin-left: -90px;
+			.box_text_search {
+				font-family: Rounded_Mplus_1c, sans-serif;
+				.box_text {
+					font-size: 28px;
+					color: #fff;
+					line-height: 65px;
+				}
+
+				.img_txt_s {
+					position: absolute;
+					top: 0;
+					img {
+						top: 10px;
+						position: relative;
+						left: 4px;
+					}
+				}
+
+				.txt_s {
+					font-size: 55px;
+					color: #fff;
+					font-family: Rounded_Mplus_1c, sans-serif;
+				}
+			}
+			.logo_banner {
+				width: 100%;
+				padding-left: 0px;
+				margin-bottom: 10px;
+				margin-top: 40px;
+				.title_search {
+					width: 100%;
+					color: #fff;
+					padding-left: 0px;
+					margin-bottom: 10px;
+					margin-top: 40px;
+					font-size: 26px;
+				}
+			}
+		}
+		.btn_dow {
+			position: absolute;
+			bottom: 62px;
+			left: 49.3%;
+		}
+	}
+	.tktk {
+		position: absolute;
+		height: 38px;
+		line-height: 38px;
+		width: 100%;
+		background: #4c5bd4;
+		text-align: center;
+	}
+}
+	// @media screen and (min-width: 1700px) {
+	// 	.new_banner {
+	// 		.box_search {
+	// 			.main_search {
+	// 				padding: 0 14%;
+	// 			}
+	// 		}
+	// 	}
+	// }
+@media screen and (max-width: 1400px) {
+	.new_banner {
+		.box_search {
+			.main_search {
+				padding-left: 10%;
+				
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 1165px) {
+	.new_banner {
+		background: url('/images/new_banner_th_375.png') no-repeat;
+		background-size: cover;
+		.box_search {
+			height: 350px !important;
+			min-height: unset;
+			.main_search {
+				top: 105px;
+				padding: 0 20%;
+				justify-content: center;
+				.box_text_search {
+					display: none;
+				}
+				.logo_banner {
+					display: none;
+				}
+			}
+			.btn_dow {
+				display: none;
+			}
+		}
+		.tktk {
+			display: none;
+		}
+	}
+}
+@media screen and (max-width: 600px) {
+	.new_banner {
+		height: 335px;
+		.box_search {
+			.main_search {
+				display: flex	;
+				top: 125px;
+				justify-content: center;
+			}
+		}
+	}
+}
