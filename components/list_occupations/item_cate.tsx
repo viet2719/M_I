@@ -15,7 +15,6 @@ const List_cate = () => {
 		{ id: 1, title: 'TUYỂN DỤNG TRƯỞNG NHÓM BÁN HÀNG' },
 		{ id: 2, title: 'TUYỂN DỤNG TRƯỞNG NHÓM BÁN HÀNG 2' },
 		{ id: 3, title: 'TUYỂN DỤNG TRƯỞNG NHÓM BÁN HÀNG 3' },
-		{ id: 4, title: 'TUYỂN DỤNG TRƯỞNG NHÓM BÁN HÀNG 4' },
 	]
 	const listIconStatus = [
 		{ id: 1, img: '/images/img_comment/Ic_1.png', alt: 'Thích' },
@@ -166,17 +165,17 @@ const List_cate = () => {
 									<p style={{ width: '100%' }}>
 										<span className={styles.cate_ml}>Từ 7.000.000 VNĐ Đến 15.000.000 VNĐ</span>
 									</p>
-									<span className={styles.tooltip}>
+									{/* <span className={styles.tooltip}>
 										<span>Từ 7.000.000 VNĐ Đến 15.000.000 VNĐ</span>
-									</span>
+									</span> */}
 								</div>
 								<div className={`${styles.con_tooltip} ${styles.top} ${styles.tt_sm}`}>
 									<p className={`${styles.ddlv} ${styles.cate_dd}`} style={{ width: '100%' }}>
 										<span title="">Hồ Chí Minh </span>
 									</p>
-									<span className={styles.tooltip}>
+									{/* <span className={styles.tooltip}>
 										<span>Hồ Chí MinhHà Nội</span>
-									</span>
+									</span> */}
 								</div>
 								<p>
 									<span className={styles.cate_hn} title="14/09/2023">
@@ -191,7 +190,15 @@ const List_cate = () => {
 								</p>
 								<span className={styles.job_chat + ' ' + styles.m_online}>Chat</span>
 								<div className={`${styles.con_tooltip} ${styles.top} ${styles.frame_txt}`}>
-									<p className={styles.box_txt}>
+									<p
+										className={styles.box_txt}
+										title="Quyền lợi: Lương khởi điểm 7.000.000đ + thưởng doanh số tháng/quý/năm, thu nhập
+									bình quân tháng từ 15.000.000đ + Được xem xét điều chỉnh chế độ đãi ngộ 2 lần/
+									năm Được liên tục đào tạo nâng cao năng lực bản thân, có lộ trình phát triển rõ
+									ràng Được làm việc trong môi trường chuyên nghiệp, năng động, sáng tạo. Được
+									hưởng đầy đủ các chế độ phúc lợi của công ty : BHXH, BHYT, BHTN... Thời gian làm
+									việc: 08h00 - 17h30 Thứ 2 đến sáng Thứ 7"
+									>
 										Quyền lợi: Lương khởi điểm 7.000.000đ + thưởng doanh số tháng/quý/năm, thu nhập
 										bình quân tháng từ 15.000.000đ + Được xem xét điều chỉnh chế độ đãi ngộ 2 lần/
 										năm Được liên tục đào tạo nâng cao năng lực bản thân, có lộ trình phát triển rõ
@@ -199,7 +206,7 @@ const List_cate = () => {
 										hưởng đầy đủ các chế độ phúc lợi của công ty : BHXH, BHYT, BHTN... Thời gian làm
 										việc: 08h00 - 17h30 Thứ 2 đến sáng Thứ 7
 									</p>
-									<span className={styles.tooltip}>
+									{/* <span className={styles.tooltip}>
 										<span>
 											Lương khởi điểm 7.000.000đ + thưởng doanh số tháng/quý/năm, thu nhập bình quân
 											tháng từ 15.000.000đ + Được xem xét điều chỉnh chế độ đãi ngộ 2 lần/ năm Được
@@ -208,12 +215,19 @@ const List_cate = () => {
 											đầy đủ các chế độ phúc lợi của công ty : BHXH, BHYT, BHTN... Thời gian làm
 											việc: 08h00 - 17h30 Thứ 2 đến sáng Thứ 7
 										</span>
-									</span>
+									</span> */}
 								</div>
 								<div
 									className={`${styles.con_tooltip} ${styles.top} ${styles.frame_txt} ${styles.ctn_frame_txt}`}
 								>
-									<p className={styles.box_txt}>
+									<p
+										className={styles.box_txt}
+										title="Yêu cầu: Yêu thích kinh doanh, máu lửa, năng động, tự tin, giao tiếp tốt Tốt
+									nghiệp Cao đẳng trở lên các khối ngành kinh tế, quản trị kinh doanh,... Độ tuổi:
+									Từ 21 đến 26 Có Laptop thành thạo sử dụng các phần mềm văn phòng, gửi/nhận
+									email. Năng động, nhiệt tình, kiên trì, chịu khó, có khả năng tập trung công
+									việc cao"
+									>
 										Yêu cầu: Yêu thích kinh doanh, máu lửa, năng động, tự tin, giao tiếp tốt Tốt
 										nghiệp Cao đẳng trở lên các khối ngành kinh tế, quản trị kinh doanh,... Độ tuổi:
 										Từ 21 đến 26 Có Laptop thành thạo sử dụng các phần mềm văn phòng, gửi/nhận
@@ -404,23 +418,23 @@ const List_cate = () => {
 												<path
 													d="M6.76017 22H17.2402C20.0002 22 21.1002 20.31 21.2302 18.25L21.7502 9.99C21.8902 7.83 20.1702 6 18.0002 6C17.3902 6 16.8302 5.65 16.5502 5.11L15.8302 3.66C15.3702 2.75 14.1702 2 13.1502 2H10.8602C9.83017 2 8.63017 2.75 8.17017 3.66L7.45017 5.11C7.17017 5.65 6.61017 6 6.00017 6C3.83017 6 2.11017 7.83 2.25017 9.99L2.77017 18.25C2.89017 20.31 4.00017 22 6.76017 22Z"
 													stroke="#999999"
-													stroke-width="1.5"
-													stroke-linecap="round"
-													stroke-linejoin="round"
+													strokeWidth="1.5"
+													strokeLinecap="round"
+													strokeLinejoin="round"
 												></path>
 												<path
 													d="M10.5 8H13.5"
 													stroke="#999999"
-													stroke-width="1.5"
-													stroke-linecap="round"
-													stroke-linejoin="round"
+													strokeWidth="1.5"
+													strokeLinecap="round"
+													strokeLinejoin="round"
 												></path>
 												<path
 													d="M12 18C13.79 18 15.25 16.54 15.25 14.75C15.25 12.96 13.79 11.5 12 11.5C10.21 11.5 8.75 12.96 8.75 14.75C8.75 16.54 10.21 18 12 18Z"
 													stroke="#999999"
-													stroke-width="1.5"
-													stroke-linecap="round"
-													stroke-linejoin="round"
+													strokeWidth="1.5"
+													strokeLinecap="round"
+													strokeLinejoin="round"
 												></path>
 											</svg>
 											<input
@@ -513,7 +527,7 @@ const List_cate = () => {
 					</div>
 				)
 			})}
-			<Pagination defaultCurrent={1} total={50000} current={1} pageSize={10} />
+			{/* <Pagination defaultCurrent={1} total={50000} current={1} pageSize={10} /> */}
 			<Model_noti />
 		</div>
 	)
