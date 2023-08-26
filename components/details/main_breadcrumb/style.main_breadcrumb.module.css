@@ -1,0 +1,119 @@
+.main_timviec.main_breadcrumb_new {
+	background: unset;
+	box-shadow: unset;
+}
+.main_breadcrumb_new .div_bre .breadcrumb {
+    margin-top: 10px;
+}
+.main_breadcrumb_new .br_clr a span,
+.main_breadcrumb.main_breadcrumb_new .div_bre .breadcrumb li:not(.first)::before {
+    color: #474747;
+}
+.main_breadcrumb_new.main_breadcrumb .div_bre .first a span:not(.line_h),
+.main_breadcrumb_new.main_breadcrumb .br_clr.active a span {
+    color: #4C5BD4;
+}
+.container_timviec {
+    max-width: 1200px;
+    margin: auto
+}
+.div_bre_2 {
+    margin-bottom: 20px
+}
+.div_bre_2 .breadcrumb li a {
+    padding-right: 0 !important;
+    font-weight: 700
+}
+.div_bre_2 a span {
+    padding: 0 !important
+}
+.div_bre_2 {
+    margin-top: 5px
+}
+.div_bre_2 .line_h {
+    padding: 0 15px !important;
+    display: inline-block
+}
+.div_bre .breadcrumb>li a {
+    display: inline-block;
+    font-size: 14px;
+    line-height: 37px;
+    color: #474747;
+    text-decoration: none;
+    background: #fff;
+    float: left;
+    font-family: Roboto-Regular, sans-serif;
+    padding-right: 14px
+}
+.main_breadcrumb .div_bre .breadcrumb>li a,
+.main_breadcrumb .div_bre .first a span:not(.line_h),
+.main_breadcrumb .div_bre .breadcrumb li:not(.first)::before {
+    background: transparent;
+    color: #fff;
+}
+.title .active {
+    color: #2758DD;
+    border-bottom: 1px #2758DD solid;
+}
+.div_bre .breadcrumb {
+    margin: 0;
+    padding: 0;
+    font-size: 0;
+    line-height: 0;
+    height: 37px
+}
+.main_breadcrumb .div_bre {
+    background: transparent;
+    margin-bottom: 0;
+}
+.div_bre .breadcrumb li:not(.first)::before {
+    content: '>';
+    font-size: 14px;
+    line-height: 37px;
+    color: #474747;
+    padding: 0 5px;
+    float: left;
+    position: relative;
+    left: -10px;
+    margin-left: 20px
+}
+@media screen and (max-width: 1519.98px) {
+    .container_timviec {
+        max-width: 1091px
+    }
+}
+
+
+@media screen and (max-width: 1023.98px) {
+	.main_timviec {
+		padding: 0px;
+		background: unset;
+	}
+
+	.container_thuut {
+		align-items: unset;
+		padding: 30px 16px;
+	}
+}
+@media only screen and (max-width: 480px) {
+    .main_timviec.m_detail_city {
+        overflow: hidden;
+    }
+    .main_timviec {
+        padding: 0px;
+        background: unset;
+    }
+    .main_breadcrumb.main_breadcrumb_new .div_bre {
+        padding: 0px 10px;
+    }
+    
+    .main_breadcrumb_new.main_breadcrumb .div_bre .first a span:not(.line_h),
+    .main_breadcrumb_new.main_breadcrumb .br_clr.active a span {
+        color: #474747;
+    }
+    .div_bre .breadcrumb>li a,
+    .div_bre .breadcrumb li:not(.first)::before {
+        line-height: 24px;
+    }
+    
+}

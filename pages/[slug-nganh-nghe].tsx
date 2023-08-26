@@ -1,6 +1,7 @@
 import Chat_NTD from '@/components/common/chat_NTD'
 import Footer from '@/components/common/footer'
 import New_banner from '@/components/common/new_banner'
+import Detail from '@/components/details/details'
 import List_cate from '@/components/list_occupations/item_cate'
 import styles from '@styles/list_occupations/home.module.scss'
 import Image from 'next/image'
@@ -100,7 +101,7 @@ const List_occupations = () => {
 	}
 	return (
 		<>
-			{true ? (
+			{!true ? (
 				<>
 					<New_banner />
 					<div className={styles.main_timviec}>
@@ -304,7 +305,9 @@ const List_occupations = () => {
 					<Footer />
 				</>
 			) : (
-				<></>
+				<>
+					<Detail />
+				</>
 			)}
 		</>
 	)

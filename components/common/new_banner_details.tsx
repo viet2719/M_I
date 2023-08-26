@@ -1,15 +1,16 @@
-import styles from "@/styles/common/banner_details.module.scss"
+import styles from '@/styles/common/banner_details.module.scss'
 import Image from 'next/image'
 import React from 'react'
 import Banner_QR from './banner_QR'
 import Box_search from './box_search'
 import Header from './header'
-import Box_search_details from "./box_search_detail"
+import Box_search_details from './box_search_detail'
+import HeaderAfterLogin from './header_after_login'
 const New_banner_detail = () => {
 	return (
 		<div>
 			<div className={styles.new_banner}>
-				<Header></Header>
+				<HeaderAfterLogin />
 				<div
 					className={`${styles.box_search} ${styles.searchindex} ${styles.searchindex_th} `}
 					id={styles.box_search_index}

@@ -1,6 +1,6 @@
 .new_banner {
 	background: url('https://timviec365.vn/images/loc/th_banner_tin_13.png') bottom;
-	background-size: 100% 85%;
+	background-size: 100% 88%;
 	float: left;
 	width: 100%;
 	position: relative;
@@ -8,17 +8,17 @@
 		position: relative;
 		min-height: 410px;
 		.main_search {
-			width: 80%;
+			width: 100%;
 			position: absolute;
 			top: 150px;
-			left: -90px;
-			// padding: 0 5%;
+			padding: 0 5%;
+			// margin-left: -90px;
 			.box_text_search {
 				font-family: Rounded_Mplus_1c, sans-serif;
 				.box_text {
 					font-size: 28px;
 					color: #fff;
-					line-height: 25px;
+					line-height: 65px;
 				}
 
 				.img_txt_s {
@@ -67,24 +67,26 @@
 		text-align: center;
 	}
 }
-@media screen and (min-width: 1700px) {
+	// @media screen and (min-width: 1700px) {
+	// 	.new_banner {
+	// 		.box_search {
+	// 			.main_search {
+	// 				padding: 0 14%;
+	// 			}
+	// 		}
+	// 	}
+	// }
+@media screen and (max-width: 1400px) {
 	.new_banner {
 		.box_search {
 			.main_search {
-				padding: 0 14%;
+				padding-left: 10%;
+				
 			}
 		}
 	}
 }
-@media screen and (min-width: 1400px) {
-	.new_banner {
-		.box_search {
-			.main_search {
-				padding: 0 11%;
-			}
-		}
-	}
-}
+
 @media screen and (max-width: 1165px) {
 	.new_banner {
 		background: url('/images/new_banner_th_375.png') no-repeat;
@@ -95,6 +97,7 @@
 			.main_search {
 				top: 105px;
 				padding: 0 20%;
+				justify-content: center;
 				.box_text_search {
 					display: none;
 				}
@@ -116,8 +119,9 @@
 		height: 335px;
 		.box_search {
 			.main_search {
+				display: flex	;
 				top: 125px;
-				padding: 0 5%;
+				justify-content: center;
 			}
 		}
 	}

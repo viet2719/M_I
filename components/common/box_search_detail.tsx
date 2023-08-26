@@ -24,7 +24,7 @@ const Box_search_details = () => {
 					<input
 						type="text"
 						id={styles.fts_id}
-						style={{height:55}}
+						style={{height:55,top:20}}
 						className={styles.enter_ntd}
 						placeholder="Nhập tên công việc, vị trí ..."
 						onChange={(e) => {
@@ -159,7 +159,7 @@ const Box_search_details = () => {
 									valueContainer: (provided, state) => ({
 										...provided,
 										left: '12px',
-										top: '12px',
+										top: '8px',
 									}),
 									input: (baseStyles, state) => ({
 										...baseStyles,
@@ -246,6 +246,7 @@ const Box_search_details = () => {
 										display: 'block',
 										height: '40px',
 										lineHeight: '36px',
+									
 									}),
 									option: (baseStyles, state) => ({
 										...baseStyles,
@@ -261,6 +262,7 @@ const Box_search_details = () => {
 					<Image
 						height={40}
 						width={40}
+						style={{marginTop:10}}
 						className={`${styles.show_nc} ${styles.nangcao}`}
 						src="/images/before_login/ic_show_nc.png"
 						alt="Tìm kiếm nâng cao"
@@ -336,62 +338,6 @@ const Box_search_details = () => {
 						>
 							×
 						</span>
-						<div className={`${styles.nd_box_city}`}>
-							<div className={styles.kq_gy}>
-								<p className={styles.text_def}>Địa điểm phổ biến</p>
-								<span>
-									<a>
-										<strong>Đà Nẵng</strong>
-									</a>
-								</span>
-								<span>
-									<a>
-										<strong>Hồ Chí Minh</strong>
-									</a>
-								</span>
-								<span>
-									<a>
-										<strong>Hà Nội</strong>
-									</a>
-								</span>
-								<span>
-									<a>Huyện Bình Chánh</a>
-								</span>
-								<span>
-									<a>Huyện Bình Chánh</a>
-								</span>
-								<span>
-									<a>Huyện Bình Chánh</a>
-								</span>
-								<span>
-									<a>Huyện Bình Chánh</a>
-								</span>
-								<span>
-									<a>Huyện Bình Chánh</a>
-								</span>
-								<span>
-									<a>Huyện Bình Chánh</a>
-								</span>
-								<span>
-									<a>Huyện Bình Chánh</a>
-								</span>
-								<span>
-									<a>Huyện Bình Chánh</a>
-								</span>
-								<span>
-									<a>Huyện Bình Chánh</a>
-								</span>
-								<span>
-									<a>Huyện Bình Chánh</a>
-								</span>
-								<span>
-									<a>Huyện Bình Chánh</a>
-								</span>
-							</div>
-							<div className={`${styles.kq_lq} ${styles.solid}`} id={styles.city_lq}>
-								<p className={styles.text_def}>Danh sách địa điểm</p>
-							</div>
-						</div>
 					</div>
 				)}
 			</div>
