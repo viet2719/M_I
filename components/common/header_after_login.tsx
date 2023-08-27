@@ -1,6 +1,8 @@
 import Image from 'next/image'
 import React, { useState } from 'react'
-import styles from '@styles/common/header.module.scss'
+import styles from '@/styles/common/header_affter_login.module.scss'
+import Notify_after_login from '../details/main_timviec/notify_after_login'
+import Mobile_form_after_login from '../details/molbile_form_after_login/mobile_form_after_login'
 
 export interface HeaderProps {}
 
@@ -163,10 +165,15 @@ export default function HeaderAfterLogin({ children }: any, props: HeaderProps) 
 	]
 	const [chooseKhamPha, setChooseKhamPha] = useState(false)
 	const [chooseTienIch, setChooseTienIch] = useState(false)
+	const [showAvatar,setShowAvatar] = useState(false)
 	return (
 		<>
 			<header className={styles.new_header}>
+				<Notify_after_login />
+				
 				<div className={styles.logo_header}>
+				{	showAvatar && <Mobile_form_after_login/>}
+
 					<a href="">
 						<Image
 							src={'/images/timviec365-logo.png'}
@@ -177,10 +184,12 @@ export default function HeaderAfterLogin({ children }: any, props: HeaderProps) 
 					</a>
 					<span
 						className={`${isToggle ? styles.mobi_sel : styles.close_mobi_sel}`}
+						style={{paddingTop:400}}
 						onClick={() => {
 							setIsToggle(!isToggle)
 						}}
 					></span>
+					
 					<div className={styles.ctn_noti_chat}>
 						<div className={styles.chat_tt}>
 							<div className={styles.ctn_menu_chat}>
@@ -189,29 +198,52 @@ export default function HeaderAfterLogin({ children }: any, props: HeaderProps) 
 								</span>
 								<span className={styles.txt_chat}>Chat</span>
 							</div>
+							<div className={styles.ctn_menu_chat}>
+							<span className={styles.chat_notifice2}>
+								<i className={styles.num_tb}>0</i>
+							</span>
+						</div>
 						</div>
 					</div>
 				</div>
 				<div className={styles.box_header}>
 					<div className={styles.m_hd_left}>
 						<div id={styles.mobi}>
-							<div className={styles.mobi_from}>
-								<div className={styles.box_btn} id={styles.box_dangnhap}>
-									<a href="" className={styles.ctn_chung_hr}>
-										<span>Đăng nhập</span>
-									</a>
-								</div>
-								<div className={styles.box_btn} id={styles.box_dangky}>
-									<a href="" className={styles.ctn_chung_hr}>
-										<span>Đăng ký</span>
-									</a>
-								</div>
-							</div>
+							<div className={styles.mobi_from}></div>
 						</div>
-						<div className={styles.box_btn_dangtin}>
-							<a href="" className={styles.ctn_chung_hr}>
-								Đăng tin
-							</a>
+						<div className={styles.ctn_menu_chat}>
+							<div className={styles.m_header_v2} style={{marginTop:-5}}>
+							<span className={styles.chat_notifice2}>
+
+								<div 
+								onClick={() => setShowAvatar(!showAvatar)}
+								className={`${styles.bgr_avatar} ${styles.cursor_pt}`} >
+									<div className={`${styles.arrow_bot}`} />
+									<div
+							
+									className={`${styles.avatar_lg} ${styles.ava_uv}`}>
+										<img
+										style={{height:30}}
+											className={`${styles.lazyloaded}`}
+											src="https://timviec365.vn/images/dk_s.png"
+											data-src="/images/dk_s.png"
+											alt="Nguyễn Quang Trường"
+										/>
+																	
+
+									</div>
+								</div>
+						
+							</span>
+							</div>
+						
+							<span className={styles.txt_chat}></span>
+						</div>
+
+						<div className={styles.ctn_menu_chat}>
+							<span className={styles.chat_notifice2}>
+								<i className={styles.num_tb}>0</i>
+							</span>
 						</div>
 						<div className={styles.ctn_menu_chat}>
 							<span className={styles.chat_notifice}>
@@ -334,188 +366,7 @@ export default function HeaderAfterLogin({ children }: any, props: HeaderProps) 
 				</div>
 				{/* Màn nhỏ hơn */}
 				{!isToggle && (
-					<div className={`${styles.mobi_sh_ul} ${styles.ctn_mobi_sh_ul}`}>
-						<div id={styles.mobi_ul} className={`${styles.m_header_mobile} ${styles.displayblock}`}>
-							<div className={styles.mobi_form}>
-								<div className={styles.m_ul_container}>
-									<li>
-										<a href="" className={styles.ctn_mobi_sub1}>
-											<Image
-												src={'/images/before_login/exp_dangky.png'}
-												alt="exp_dangky"
-												width={20}
-												height={21}
-												className={styles.lazyloaded}
-											/>
-											<span>Đăng ký</span>
-										</a>
-									</li>
-									<li>
-										<a href="" className={styles.ctn_mobi_sub1}>
-											<Image
-												src={'/images/before_login/exp_dangnhap.png'}
-												alt="exp_dangnhap"
-												width={20}
-												height={21}
-												className={styles.lazyloaded}
-											/>
-											<span>Đăng nhập</span>
-										</a>
-									</li>
-									<li className={styles.mobile_dangtin}>
-										<a href="">
-											<Image
-												src={img_dangtin}
-												alt="img_dangtin"
-												width={20}
-												height={21}
-												className={styles.lazyloaded}
-											/>
-											<span>Đăng tin</span>
-										</a>
-									</li>
-									<li className={styles.ctn_mobi_sub_domain}>
-										<a href="" className={`${styles.ctn_mobi_sub} ${styles.ctn_mobi_sub2}`}>
-											<Image
-												src={img_cv}
-												alt="img_cv"
-												width={20}
-												height={21}
-												className={styles.lazyloaded}
-											/>
-											<span>CV xin việc</span>
-										</a>
-									</li>
-									<li className={styles.ctn_mobi_sub_domain}>
-										<a
-											href=""
-											className={`${styles.ctn_mobi_sub} ${styles.ctn_mobi_sub2} ${styles.m_box_hdsaudn}`}
-											onClick={(event) => {
-												event.preventDefault()
-												setChooseKhamPha(!chooseKhamPha)
-											}}
-										>
-											<div className={styles.box_hd_saudn}>
-												<Image
-													src={img_khampha}
-													alt="img_khampha"
-													width={20}
-													height={21}
-													className={styles.lazyloaded}
-												/>
-												<span>Khám phá</span>
-											</div>
-											<Image
-												src={img_so_xuong}
-												alt="mở rộng"
-												width={20}
-												height={21}
-												style={{
-													transform: `${chooseKhamPha ? 'rotate(180deg)' : 'rotate(0deg)'}`,
-													transition: '1s all',
-												}}
-											/>
-										</a>
-										<ul
-											className={`${styles.ctn_mobi_sub_ul} ${
-												chooseKhamPha ? styles.show : styles.none
-											}`}
-										>
-											{dsKhamPha.map((item, index) => (
-												<li key={index} className={styles.ctn_box_ch}>
-													<Image
-														src={item.imageSrc}
-														alt={item.alt}
-														width={item.width}
-														height={item.height}
-														className={item.className}
-													/>
-													<a className={item.menuClass} href={item.link}>
-														{item.text}
-													</a>
-												</li>
-											))}
-										</ul>
-									</li>
-									<li className={styles.ctn_mobi_sub_domain}>
-										<a
-											href=""
-											className={`${styles.ctn_mobi_sub} ${styles.ctn_mobi_sub2} ${styles.m_box_hdsaudn}`}
-											onClick={(event) => {
-												event.preventDefault()
-												setChooseTienIch(!chooseTienIch)
-											}}
-										>
-											<div className={styles.box_hd_saudn}>
-												<Image
-													src={img_tienich}
-													alt="Tiện ích"
-													width={20}
-													height={21}
-													className={styles.lazyloaded}
-												/>
-												<span>Tiện ích</span>
-											</div>
-											<Image
-												src={img_so_xuong}
-												alt="mở rộng"
-												width={20}
-												height={21}
-												style={{
-													transform: `${chooseTienIch ? 'rotate(180deg)' : 'rotate(0deg)'}`,
-													transition: '1s all',
-												}}
-											/>
-										</a>
-										<ul
-											className={`${styles.ctn_mobi_sub_ul} ${
-												chooseTienIch ? styles.show : styles.none
-											}`}
-										>
-											{dsTienIch.map((item, index) => (
-												<li key={index} className={styles.ctn_box_ch}>
-													<Image
-														src={item.imageSrc}
-														alt={item.alt}
-														width={item.width}
-														height={item.height}
-														className={item.className}
-													/>
-													<a className={item.menuClass} href={item.link}>
-														{item.text}
-													</a>
-												</li>
-											))}
-										</ul>
-									</li>
-									<li>
-										<a href="" className={styles.ctn_mobi_sub1}>
-											<Image
-												src={'/images/before_login/exp_tim_uvien.png'}
-												alt="exp_tim_uvien"
-												width={20}
-												height={21}
-												className={styles.lazyloaded}
-											/>
-											<span>Tìm ứng viên</span>
-										</a>
-									</li>
-									<li>
-										<a href="" className={styles.ctn_mobi_sub1}>
-											<Image
-												src={'/images/before_login/exp_chuyendoiso.png'}
-												alt="exp_chuyendoiso"
-												width={20}
-												height={21}
-												className={styles.lazyloaded}
-											/>
-											<span>Chuyển đổi số</span>
-										</a>
-									</li>
-								</div>
-							</div>
-						</div>
-					</div>
+					<Mobile_form_after_login/>
 				)}
 			</header>
 		</>

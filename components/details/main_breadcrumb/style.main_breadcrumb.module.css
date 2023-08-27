@@ -96,19 +96,19 @@
 	}
 }
 @media only screen and (max-width: 480px) {
-    .main_timviec.m_detail_city {
+    .main_timviec .m_detail_city {
         overflow: hidden;
     }
     .main_timviec {
         padding: 0px;
         background: unset;
     }
-    .main_breadcrumb.main_breadcrumb_new .div_bre {
+    .main_breadcrumb .main_breadcrumb_new .div_bre {
         padding: 0px 10px;
     }
     
-    .main_breadcrumb_new.main_breadcrumb .div_bre .first a span:not(.line_h),
-    .main_breadcrumb_new.main_breadcrumb .br_clr.active a span {
+    .main_breadcrumb_new .main_breadcrumb .div_bre .first a span:not(.line_h),
+    .main_breadcrumb_new .main_breadcrumb .br_clr .active a span {
         color: #474747;
     }
     .div_bre .breadcrumb>li a,

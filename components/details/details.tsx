@@ -7,6 +7,7 @@ import New_banner_detail from '../common/new_banner_details'
 import Main_breadcrumb from './main_breadcrumb/main_breadcrumb'
 import Main_timviec from './main_timviec/main_timviec'
 import HeaderAfterLogin from '../common/header_after_login'
+import Notify_after_login from './main_timviec/notify_after_login'
 
 type Props = {}
 
