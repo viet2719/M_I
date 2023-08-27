@@ -24,7 +24,7 @@ const Box_search_details = () => {
 					<input
 						type="text"
 						id={styles.fts_id}
-						style={{height:55,top:20}}
+						style={{height:50,top:20}}
 						className={styles.enter_ntd}
 						placeholder="Nhập tên công việc, vị trí ..."
 						onChange={(e) => {
@@ -190,7 +190,7 @@ const Box_search_details = () => {
 										boxSizing: 'border-box',
 										cursor: 'pointer',
 										display: 'block',
-										height: '55px',
+										height: '50px',
 										lineHeight: '36px',
 									}),
 									option: (baseStyles, state) => ({
@@ -256,8 +256,8 @@ const Box_search_details = () => {
 							/>
 						</span>
 					</span>
-					<div className={styles['mobi-bor']} style={{height:55}}>
-						<input style={{height:55}} type="submit" className={styles.btn_search} value="Tìm kiếm" />
+					<div className={styles['mobi-bor']} style={{height:50}}>
+						<input style={{height:50}} type="submit" className={styles.btn_search} value="Tìm kiếm" />
 					</div>
 					<Image
 						height={40}

@@ -1,18 +1,18 @@
 .new_banner {
 	background: url('https://timviec365.vn/images/loc/th_banner_tin_13.png') bottom;
-	background-size: 100% 88%;
-	float: left;
+	background-size: 100% 76%;
 	width: 100%;
 	position: relative;
 	.box_search {
 		position: relative;
 		min-height: 410px;
+		width: 100%;
 		.main_search {
 			width: 100%;
 			position: absolute;
-			top: 150px;
+			top: 190px;
 			padding: 0 5%;
-			// margin-left: -90px;
+			left: -60px;
 			.box_text_search {
 				font-family: Rounded_Mplus_1c, sans-serif;
 				.box_text {
@@ -37,51 +37,17 @@
 					font-family: Rounded_Mplus_1c, sans-serif;
 				}
 			}
-			.logo_banner {
-				width: 100%;
-				padding-left: 0px;
-				margin-bottom: 10px;
-				margin-top: 40px;
-				.title_search {
-					width: 100%;
-					color: #fff;
-					padding-left: 0px;
-					margin-bottom: 10px;
-					margin-top: 40px;
-					font-size: 26px;
-				}
-			}
 		}
-		.btn_dow {
-			position: absolute;
-			bottom: 62px;
-			left: 49.3%;
-		}
-	}
-	.tktk {
-		position: absolute;
-		height: 38px;
-		line-height: 38px;
-		width: 100%;
-		background: #4c5bd4;
-		text-align: center;
 	}
 }
-	// @media screen and (min-width: 1700px) {
-	// 	.new_banner {
-	// 		.box_search {
-	// 			.main_search {
-	// 				padding: 0 14%;
-	// 			}
-	// 		}
-	// 	}
-	// }
+
 @media screen and (max-width: 1400px) {
 	.new_banner {
 		.box_search {
+			width: 100%;
 			.main_search {
 				padding-left: 10%;
-				
+			
 			}
 		}
 	}
@@ -89,14 +55,17 @@
 
 @media screen and (max-width: 1165px) {
 	.new_banner {
-		background: url('/images/new_banner_th_375.png') no-repeat;
+		background: url('https://timviec365.vn/images/loc/th_banner_tin_13.png') no-repeat;
 		background-size: cover;
+		width: 100%;
 		.box_search {
+			width: 100%;
 			height: 350px !important;
 			min-height: unset;
 			.main_search {
-				top: 105px;
+				top: 155px;
 				padding: 0 20%;
+				left: 0px;
 				justify-content: center;
 				.box_text_search {
 					display: none;
@@ -114,13 +83,32 @@
 		}
 	}
 }
-@media screen and (max-width: 600px) {
+
+@media screen and (max-width: 642px) {
+	.new_banner {
+		background: url('/images/banner_home_1520.png') bottom;
+		background-size: 100% 100%;
+		width: 100%;
+		
+		.box_search {
+			position: absolute;
+			top: 20px;
+			bottom: 200px;
+			.main_search input{
+			height: 30px;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 1024px) {
 	.new_banner {
 		height: 335px;
 		.box_search {
+			width: 100%;
 			.main_search {
-				display: flex	;
-				top: 125px;
+				display: flex;
+				top: 140px;
 				justify-content: center;
 			}
 		}
