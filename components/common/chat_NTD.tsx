@@ -146,16 +146,16 @@ const Chat_NTD = ({ classNameProps, propsElementSlugNganhNghe }: any) => {
 					Chat với nhà tuyển dụng
 				</p>
 				<div className={styles.list_nganh_nghe}>
-					<a rel="nofollow" className={styles.link_all_onl} href="">
+					<Link rel="nofollow" className={styles.link_all_onl} href="#">
 						Tất cả &gt;&gt;
-					</a>
+					</Link>
 					<ul className={styles.list_chat_ntd}>
 						{listDataChats.map((item, index) => (
 							<li
 								key={index}
 								className={`${styles.online_item} ${styles.openApp} ${styles.m_online}`}
 							>
-								<a href="">
+								<Link href="#">
 									<span className={`${styles.ava_mess} ${styles.m_online}`}>
 										<Image src={'/images/Ic_list_online.png'} alt="" width={20} height={20} />
 									</span>
@@ -169,7 +169,7 @@ const Chat_NTD = ({ classNameProps, propsElementSlugNganhNghe }: any) => {
 										</p>
 										<p>{item.location}</p>
 									</span>
-								</a>
+								</Link>
 							</li>
 						))}
 					</ul>

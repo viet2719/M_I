@@ -215,19 +215,19 @@ const Home: NextPageWithLayout = () => {
 					<div className={styles.box_vl}>
 						<div className={`${styles.box_vl_fix} ${styles.stiky}`}>
 							<div className={styles.span_vl}>
-								<a href="">
+								<Link href="#">
 									<p>HẤP DẪN</p>
-								</a>
+								</Link>
 							</div>
 							<div className={styles.span_vl}>
-								<a href="">
+								<Link href="#">
 									<p>THƯƠNG HIỆU</p>
-								</a>
+								</Link>
 							</div>
 							<div className={styles.span_vl}>
-								<a href="">
+								<Link href="#">
 									<p>TUYỂN GẤP</p>
-								</a>
+								</Link>
 							</div>
 						</div>
 					</div>
@@ -244,9 +244,9 @@ const Home: NextPageWithLayout = () => {
 								</Carousel>
 							</div>
 							<div className={styles.plus_next}>
-								<a className={styles.icon_plus} href="/tin-tuyen-dung-viec-lam.html">
+								<Link className={styles.icon_plus} href="/tin-tuyen-dung-viec-lam.html">
 									Tất cả tin tuyển dụng &gt;&gt;
-								</a>
+								</Link>
 							</div>
 						</div>
 					</div>
@@ -258,7 +258,7 @@ const Home: NextPageWithLayout = () => {
 								<p className={styles.ctn_des_uplcv}>
 									AI365: Có việc siêu tốc cập nhật cv nhanh - bật đèn xanh cho nhà tuyển dụng:
 								</p>
-								<a className={styles.ctn_dd_uplcv} href="/tai-ho-so.html">
+								<Link className={styles.ctn_dd_uplcv} href="/tai-ho-so.html">
 									Upload CV ngay{' '}
 									<Image
 										width={29}
@@ -266,7 +266,7 @@ const Home: NextPageWithLayout = () => {
 										src="/images/before_login/exp_ultcv.png"
 										alt="Upload CV"
 									/>
-								</a>
+								</Link>
 							</div>
 							<div className={`${styles.ctn_right_tcv} ${styles.ctn_chung_utcv}`}>
 								<p className={styles.ctn_tde_uplcv}>Tạo CV online ấn tượng</p>
@@ -290,9 +290,9 @@ const Home: NextPageWithLayout = () => {
 						<h2 className={styles.icn_vlhd}>VIỆC LÀM THƯƠNG HIỆU</h2>
 						<Box_vlth jobList={jobData} />
 						<div className={styles.plus_next}>
-							<a className={styles.icon_plus} href="/tin-tuyen-dung-viec-lam.html">
+							<Link className={styles.icon_plus} href="/tin-tuyen-dung-viec-lam.html">
 								Tất cả tin tuyển dụng &gt;&gt;
-							</a>
+							</Link>
 						</div>
 					</div>
 					<div className={`${styles.box_banner_tiaset} ${styles.banner_home_tiaset}`}>
@@ -364,9 +364,9 @@ const Home: NextPageWithLayout = () => {
 						<h2 className={styles.icn_vllc}>VIỆC LÀM TUYỂN GẤP</h2>
 						<Box_vlth jobList={jobData} />
 						<div className={styles.plus_next}>
-							<a className={styles.icon_plus} href="/tin-tuyen-dung-viec-lam.html">
+							<Link className={styles.icon_plus} href="/tin-tuyen-dung-viec-lam.html">
 								Tất cả tin tuyển dụng &gt;&gt;
-							</a>
+							</Link>
 						</div>
 					</div>
 					<div className={`${styles.banner_home_tiaset} ${styles.banner_home_anhsao}`}>
@@ -611,9 +611,9 @@ const Home: NextPageWithLayout = () => {
 						</div>
 						<Box_vlth jobList={jobData} />
 						<div className={styles.plus_next}>
-							<a className={styles.icon_plus} href="/tin-tuyen-dung-viec-lam.html">
+							<Link className={styles.icon_plus} href="/tin-tuyen-dung-viec-lam.html">
 								Tất cả tin tuyển dụng &gt;&gt;
-							</a>
+							</Link>
 						</div>
 					</div>
 					{/* Hotline */}
@@ -672,7 +672,7 @@ const Home: NextPageWithLayout = () => {
 											</span>
 											Hotline: <span>0982.079.209</span>
 										</p>
-										<a className={`${styles.callHot} ${styles.chat365}`} href="">
+										<Link className={`${styles.callHot} ${styles.chat365}`} href="#">
 											<span className={styles.icon}>
 												<Image
 													height={24}
@@ -682,7 +682,7 @@ const Home: NextPageWithLayout = () => {
 												/>
 											</span>
 											<span>Chat 365</span>
-										</a>
+										</Link>
 									</div>
 								</div>
 							</div>

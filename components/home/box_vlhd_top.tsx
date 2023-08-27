@@ -11,7 +11,7 @@ const Box_vlhd_top = ({ jobData }: any) => {
 					<div className={`${styles.item_vl} ${styles.item_home_th}`} key={index}>
 						<div className={styles.in_vl}>
 							<div className={styles.img_item_vl}>
-								<a href="" className={styles.logo_user_th} title="[tuyen dung] nhan vien kinh doan">
+								<Link href="#" className={styles.logo_user_th} title="[tuyen dung] nhan vien kinh doan">
 									<Image
 										height={70}
 										width={70}
@@ -20,7 +20,7 @@ const Box_vlhd_top = ({ jobData }: any) => {
 										alt=""
 									/>
 									<span className={styles.box_time_off}>1 ngay</span>
-								</a>
+								</Link>
 								<div className={styles.box_vote_new}>
 									<Image
 										className="icon_vote_new"
@@ -68,13 +68,13 @@ const Box_vlhd_top = ({ jobData }: any) => {
 							</div>
 							<div className={styles.right_item_vl}>
 								<h3>
-									<a className={styles.tit_vip} href="#" title={job.title}>
+									<Link className={styles.tit_vip} href="#" title={job.title}>
 										{job.title}
-									</a>
+									</Link>
 								</h3>
-								<a className={styles.name_com} href="#" title={job.company}>
+								<Link className={styles.name_com} href="#" title={job.company}>
 									{job.company}
-								</a>
+								</Link>
 								<p className={styles.job_local}>{job.location}</p>
 								<p className={styles.job_chat} data-id="243931" id-chat="1346583">
 									Chat

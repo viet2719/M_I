@@ -41,7 +41,7 @@ const Main_breadcrumb = (props: Props) => {
 							className={`${styles.br_clr}`}
 						>
 							<Link href={"#"} itemProp="item">
-								<span  itemProp="name">Nhân viên sale game online</span>
+								<span className={styles.namePage} itemProp="name">Nhân viên sale game online</span>
 							</Link>
 							<meta itemProp="position" content={'3'} />
 						</li>

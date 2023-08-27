@@ -3,6 +3,7 @@ import Image from 'next/image'
 import React from 'react'
 import Box_search_details from './box_search_detail'
 import HeaderAfterLogin from './header_after_login'
+import Link from 'next/link'
 const New_banner_detail = () => {
 	return (
 		<div>
@@ -17,14 +18,14 @@ const New_banner_detail = () => {
 					</div>
 
 					<div className={styles.btn_dow}>
-						<a href="#dow_here">
+						<Link href="#dow_here">
 							<Image
 								width={19}
 								height={19}
 								src={'/images/before_login/icn_dow.png'}
 								alt="xem thêm"
 							/>
-						</a>
+						</Link>
 					</div>
 				</div>
 			</div>

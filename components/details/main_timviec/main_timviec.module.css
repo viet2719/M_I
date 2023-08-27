@@ -1806,7 +1806,7 @@
 	/* margin-bottom: 15px; */
 }
 
-.chitiettd_head .logo_user_th.m_online:before {
+.chitiettd_head .logo_user_th .m_online:before {
 	bottom: 20px;
 	top: unset;
 }

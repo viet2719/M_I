@@ -4,6 +4,7 @@ import React from 'react'
 import Banner_QR from './banner_QR'
 import Box_search from './box_search'
 import Header from './header'
+import Link from 'next/link'
 
 const New_banner = () => {
 	return (
@@ -36,14 +37,14 @@ const New_banner = () => {
 					</div>
 
 					<div className={styles.btn_dow}>
-						<a href="#dow_here">
+						<Link href="#dow_here">
 							<Image
 								width={19}
 								height={19}
 								src={'/images/before_login/icn_dow.png'}
 								alt="xem thêm"
 							/>
-						</a>
+						</Link>
 					</div>
 					<Banner_QR />
 				</div>

@@ -48,70 +48,70 @@ const All_content_post_sub = (props: Props) => {
         <div className={`${styles.w_100} ${styles.list_client}`}>
             <div className={`${styles.list_item_chat} ${styles.openApp}`} id-chat={167565}>
                 <div className={`${styles.img_item_on}`} id-chat={167565}>
-                    {/* <a target="_blank" rel="nofollow" href="https://chat365.timviec365.vn/chat-MTY3NTY1"> */}
-                    <a target="_blank" rel="nofollow">
+                    {/* <Link target="_blank" rel="nofollow" href="https://chat365.timviec365.vn/chat-MTY3NTY1"> */}
+                    <Link href="#" target="_blank" rel="nofollow">
                         <img
                             src="https://ht.timviec365.vn:9002/avatarUser/167565/638263324081900000_167565.jpg"
                             alt="Đỗ Văn Hoàng"
                         />
-                    </a>
+                    </Link>
                 </div>
                 <div className={`${styles.right_item_vl}`}>
-                    {/* <a target="_blank" rel="nofollow" href="https://chat365.timviec365.vn/chat-MTY3NTY1" class="name_com"> */}
-                    <a target="_blank" rel="nofollow" className={`${styles.name_com}`}>
+                    {/* <Link target="_blank" rel="nofollow" href="https://chat365.timviec365.vn/chat-MTY3NTY1" class="name_com"> */}
+                    <Link href="#" target="_blank" rel="nofollow" className={`${styles.name_com}`}>
                         Đỗ Văn Hoàng{' '}
-                    </a>
+                    </Link>
                 </div>
             </div>
             <div className={`${styles.list_item_chat} ${styles.openApp}`} id-chat={1342764}>
                 <div className={`${styles.img_item_on}`} id-chat={1342764}>
-                    {/* <a target="_blank" rel="nofollow" href="https://chat365.timviec365.vn/chat-MTM0Mjc2NA=="> */}
-                    <a target="_blank" rel="nofollow">
+                    {/* <Link target="_blank" rel="nofollow" href="https://chat365.timviec365.vn/chat-MTM0Mjc2NA=="> */}
+                    <Link href="#" target="_blank" rel="nofollow">
                         <img
                             src="https://ht.timviec365.vn:9002/avatarUser/1342764/638276783687290000_1342764.jpg"
                             alt="Tran Quang Duc Dung"
                         />
-                    </a>
+                    </Link>
                 </div>
                 <div className={`${styles.right_item_vl}`}>
-                    {/* <a target="_blank" rel="nofollow" href="https://chat365.timviec365.vn/chat-MTM0Mjc2NA==" class="name_com"> */}
-                    <a target="_blank" rel="nofollow" className={`${styles.name_com}`}>
+                    {/* <Link target="_blank" rel="nofollow" href="https://chat365.timviec365.vn/chat-MTM0Mjc2NA==" class="name_com"> */}
+                    <Link href="#" target="_blank" rel="nofollow" className={`${styles.name_com}`}>
                         Tran Quang Duc Dung{' '}
-                    </a>
+                    </Link>
                 </div>
             </div>
             <div className={`${styles.list_item_chat} ${styles.openApp}`} id-chat={1404155}>
                 <div className={`${styles.img_item_on}`} id-chat={1404155}>
-                    {/* <a target="_blank" rel="nofollow" href="https://chat365.timviec365.vn/chat-MTQwNDE1NQ=="> */}
-                    <a target="_blank" rel="nofollow">
+                    {/* <Link target="_blank" rel="nofollow" href="https://chat365.timviec365.vn/chat-MTQwNDE1NQ=="> */}
+                    <Link href="#" target="_blank" rel="nofollow">
                         <img
                             src="https://ht.timviec365.vn:9002/avatarUser/1404155/638280918515770000_1404155.jpg"
                             alt="Nguyễn An Quân"
                         />
-                    </a>
+                    </Link>
                 </div>
                 <div className={`${styles.right_item_vl}`}>
-                    {/* <a target="_blank" rel="nofollow" href="https://chat365.timviec365.vn/chat-MTQwNDE1NQ==" class="name_com"> */}
-                    <a target="_blank" rel="nofollow" className={`${styles.name_com}`}>
+                    {/* <Link target="_blank" rel="nofollow" href="https://chat365.timviec365.vn/chat-MTQwNDE1NQ==" class="name_com"> */}
+                    <Link href="#" target="_blank" rel="nofollow" className={`${styles.name_com}`}>
                         Nguyễn An Quân{' '}
-                    </a>
+                    </Link>
                 </div>
             </div>
             <div className={`${styles.list_item_chat} ${styles.openApp}`} id-chat={1216972}>
                 <div className={`${styles.img_item_on}`} id-chat={1216972}>
-                    {/* <a target="_blank" rel="nofollow" href="https://chat365.timviec365.vn/chat-MTIxNjk3Mg=="> */}
-                    <a target="_blank" rel="nofollow">
+                    {/* <Link target="_blank" rel="nofollow" href="https://chat365.timviec365.vn/chat-MTIxNjk3Mg=="> */}
+                    <Link href="#" target="_blank" rel="nofollow">
                         <img
                             src="https://ht.timviec365.vn:9002/avatarUser/1216972/638231704233150000_1216972.jpg"
                             alt="Lưu trữ cá nhân"
                         />
-                    </a>
+                    </Link>
                 </div>
                 <div className={`${styles.right_item_vl}`}>
-                    {/* <a target="_blank" rel="nofollow" href="https://chat365.timviec365.vn/chat-MTIxNjk3Mg==" class="name_com"> */}
-                    <a target="_blank" rel="nofollow" className={`${styles.name_com}`}>
+                    {/* <Link target="_blank" rel="nofollow" href="https://chat365.timviec365.vn/chat-MTIxNjk3Mg==" class="name_com"> */}
+                    <Link href="#" target="_blank" rel="nofollow" className={`${styles.name_com}`}>
                         Lưu trữ cá nhân{' '}
-                    </a>
+                    </Link>
                 </div>
             </div>
             <div
@@ -119,53 +119,53 @@ const All_content_post_sub = (props: Props) => {
                 id-chat={701526}
             >
                 <div className={`${styles.img_item_on} ${styles.m_online}`} id-chat={701526}>
-                    {/* <a target="_blank" rel="nofollow" href="https://chat365.timviec365.vn/chat-NzAxNTI2"> */}
-                    <a target="_blank" rel="nofollow">
+                    {/* <Link target="_blank" rel="nofollow" href="https://chat365.timviec365.vn/chat-NzAxNTI2"> */}
+                    <Link href="#" target="_blank" rel="nofollow">
                         <img
                             src="https://timviec365.vn/images/user_no.png"
                             alt="CÔNG TY MINH DƯƠNG MEDIA"
                         />
-                    </a>
+                    </Link>
                 </div>
                 <div className={`${styles.right_item_vl}`}>
-                    {/* <a target="_blank" rel="nofollow" href="https://chat365.timviec365.vn/chat-NzAxNTI2" class="name_com"> */}
-                    <a target="_blank" rel="nofollow" className={`${styles.name_com}`}>
+                    {/* <Link target="_blank" rel="nofollow" href="https://chat365.timviec365.vn/chat-NzAxNTI2" class="name_com"> */}
+                    <Link href="#" target="_blank" rel="nofollow" className={`${styles.name_com}`}>
                         CÔNG TY MINH DƯƠNG MEDIA{' '}
-                    </a>
+                    </Link>
                 </div>
             </div>
             <div className={`${styles.list_item_chat} ${styles.openApp} ${styles.m_online}`} id-chat={56387}>
                 <div className={`${styles.img_item_on} ${styles.m_online}`} id-chat={56387}>
-                    {/* <a target="_blank" rel="nofollow" href="https://chat365.timviec365.vn/chat-NTYzODc="> */}
-                    <a target="_blank" rel="nofollow">
+                    {/* <Link target="_blank" rel="nofollow" href="https://chat365.timviec365.vn/chat-NTYzODc="> */}
+                    <Link href="#" target="_blank" rel="nofollow">
                         <img
                             src="https://ht.timviec365.vn:9002/avatarUser/56387/637995265018771766_56387.jpg"
                             alt="HHP"
                         />
-                    </a>
+                    </Link>
                 </div>
                 <div className={`${styles.right_item_vl}`}>
-                    {/* <a target="_blank" rel="nofollow" href="https://chat365.timviec365.vn/chat-NTYzODc=" class="name_com"> */}
-                    <a target="_blank" rel="nofollow" className={`${styles.name_com}`}>
+                    {/* <Link target="_blank" rel="nofollow" href="https://chat365.timviec365.vn/chat-NTYzODc=" class="name_com"> */}
+                    <Link href="#" target="_blank" rel="nofollow" className={`${styles.name_com}`}>
                         HHP{' '}
-                    </a>
+                    </Link>
                 </div>
             </div>
             <div className={`${styles.list_item_chat} ${styles.openApp} ${styles.m_online}`} id-chat={573341}>
                 <div className={`${styles.img_item_on} ${styles.m_online}`} id-chat={573341}>
-                    {/* <a target="_blank" rel="nofollow" href="https://chat365.timviec365.vn/chat-NTczMzQx"> */}
-                    <a target="_blank" rel="nofollow">
+                    {/* <Link target="_blank" rel="nofollow" href="https://chat365.timviec365.vn/chat-NTczMzQx"> */}
+                    <Link href="#" target="_blank" rel="nofollow">
                         <img
                             src="https://ht.timviec365.vn:9002/avatarUser/573341/638285308661400000_573341.jpg"
                             alt="Lê Thu Hà"
                         />
-                    </a>
+                    </Link>
                 </div>
                 <div className={`${styles.right_item_vl}`}>
-                    {/* <a target="_blank" rel="nofollow" href="https://chat365.timviec365.vn/chat-NTczMzQx" class="name_com"> */}
-                    <a target="_blank" rel="nofollow" className={`${styles.name_com}`}>
+                    {/* <Link target="_blank" rel="nofollow" href="https://chat365.timviec365.vn/chat-NTczMzQx" class="name_com"> */}
+                    <Link href="#" target="_blank" rel="nofollow" className={`${styles.name_com}`}>
                         Lê Thu Hà{' '}
-                    </a>
+                    </Link>
                 </div>
             </div>
         </div>
@@ -223,7 +223,7 @@ const All_content_post_sub = (props: Props) => {
                                 />
                                 <div className={`${styles.info}`}>
                                     <div className={`${styles.btn_box}`}>
-                                        {/* <p><a href="https://timviec365.vn/cv365/ky-thuat/mau-10" target="_blank">Sử dụng mẫu này</a></p> */}
+                                        {/* <p><Link href="https://timviec365.vn/cv365/ky-thuat/mau-10" target="_blank">Sử dụng mẫu này</Link></p> */}
                                         <p>
                                             <Link
                                                 href="https://timviec365.vn/cv365/tao-cv-ky-thuat/mau-10"
@@ -254,7 +254,7 @@ const All_content_post_sub = (props: Props) => {
                     alt="app timviec365"
                 />
                 <p className={`${styles.qr_text}`}>APP TIMVIEC365</p>
-                <a
+                <Link
                     className={`${styles.btn_down}`}
                     href="https://play.google.com/store/apps/details?id=vn.timviec365.company"
                     ios-href="https://apps.apple.com/vn/app/nh%C3%A0-tuy%E1%BB%83n-d%E1%BB%A5ng-timviec365-vn/id1606069668"
@@ -263,7 +263,7 @@ const All_content_post_sub = (props: Props) => {
                 >
                     <img src="https://timviec365.vn/images/detail/down_1.svg" />
                     DOWNLOAD
-                </a>
+                </Link>
             </div>
             <div className={`${styles.d_flex} ${styles.f_column}`}>
                 <img
@@ -272,7 +272,7 @@ const All_content_post_sub = (props: Props) => {
                     alt="app cv365"
                 />
                 <p className={`${styles.qr_text}`}>APP CV365</p>
-                <a
+                <Link
                     className={`${styles.btn_down}`}
                     href="https://play.google.com/store/apps/details?id=vn.timviec365.cv.cv365_vn"
                     ios-href="https://apps.apple.com/us/app/cv-xin-vi%E1%BB%87c-365-t%E1%BA%A1o-cv-%C4%91%E1%BA%B9p/id1631076979"
@@ -281,7 +281,7 @@ const All_content_post_sub = (props: Props) => {
                 >
                     <img src="https://timviec365.vn/images/detail/down_2.svg" />
                     DOWNLOAD
-                </a>
+                </Link>
             </div>
         </div>
     </div>

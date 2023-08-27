@@ -19,12 +19,12 @@ const Main_timviec = (props: Props) => {
 						<Chi_tiet_td/>
 							<Comment/>
 							<div className={`${styles.banner_timviec}`}>
-								<a href="/cv-xin-viec" className={`${styles.cv_xinviec}`} target="blank">
+								<Link href="/cv-xin-viec" className={`${styles.cv_xinviec}`} target="blank">
 									CV XIN VIỆC{' '}
 									<div>
 										<img src="https://timviec365.vn/images/detail/icon_go.svg" alt="icon cv" />
 									</div>
-								</a>
+								</Link>
 							</div>
 							<AI_365/>
 						</div>

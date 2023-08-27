@@ -8,6 +8,7 @@ import Main_breadcrumb from './main_breadcrumb/main_breadcrumb'
 import Main_timviec from './main_timviec/main_timviec'
 import HeaderAfterLogin from '../common/header_after_login'
 import Notify_after_login from './main_timviec/notify_after_login'
+import Footer_chat from './footer_chat/footer_chat'
 
 type Props = {}
 
@@ -16,7 +17,8 @@ const Detail = (props: Props) => {
 		<div>
 			<New_banner_detail />
 			<Main_breadcrumb />
-			<Main_timviec/>
+			<Main_timviec />
+			<Footer_chat />
 		</div>
 	)
 }

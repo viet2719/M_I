@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import styles from '@styles/home/chat_container.module.scss'
 import Image from 'next/image'
+import Link from 'next/link'
 
 const Chat_container = () => {
 	const [showChat, setShowChat] = useState(false)
@@ -32,7 +33,7 @@ const Chat_container = () => {
 								</button>
 							</div>
 							<div className={`${styles.textCenter} ${styles.text}`}>
-								<a
+								<Link
 									rel="nofollow"
 									download=""
 									href="/dowload/livechat/chat.exe"
@@ -40,7 +41,7 @@ const Chat_container = () => {
 								>
 									Bạn tải CHAT365 <span className={styles.underLine}>tại đây</span> để nhận được sự
 									hỗ trợ tốt nhất, <span className={styles.underLine}>tải ngay</span>
-								</a>
+								</Link>
 							</div>
 						</div>
 						<div className={styles.liveChatBody}>

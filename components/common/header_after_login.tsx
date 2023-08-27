@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import styles from '@/styles/common/header_affter_login.module.scss'
 import Notify_after_login from '../details/main_timviec/notify_after_login'
 import Mobile_form_after_login from '../details/molbile_form_after_login/mobile_form_after_login'
+import Link from 'next/link'
 
 export interface HeaderProps {}
 
@@ -172,16 +173,15 @@ export default function HeaderAfterLogin({ children }: any, props: HeaderProps) 
 				<Notify_after_login />
 				
 				<div className={styles.logo_header}>
-				{	showAvatar && <Mobile_form_after_login/>}
 
-					<a href="">
+					<Link href="/">
 						<Image
 							src={'/images/timviec365-logo.png'}
 							alt="Tìm việc làm nhanh & Tuyển dụng hiệu quả"
 							width={137}
 							height={29}
 						/>
-					</a>
+					</Link>
 					<span
 						className={`${isToggle ? styles.mobi_sel : styles.close_mobi_sel}`}
 						style={{paddingTop:400}}
@@ -252,117 +252,7 @@ export default function HeaderAfterLogin({ children }: any, props: HeaderProps) 
 							<span className={styles.txt_chat}>Chat</span>
 						</div>
 					</div>
-					<div className={styles.m_hd_right}>
-						<div className={`${styles.menu_item} ${styles.ctn_menu_item}`}>
-							<div className={`${styles.sub_domain} ${styles.ctn_sub_domain}`}>
-								<a href="" className={styles.sub_domain_url}>
-									CV xin việc
-								</a>
-							</div>
-						</div>
-						<div className={`${styles.menu_item} ${styles.ctn_menu_item}`}>
-							<li className={styles.sub_domain}>
-								<a href="" className={styles.sub_domain_url}>
-									Khám phá
-								</a>
-								<div className={styles.ctn_up_box}>
-									<ul className={`${styles.box_sub} ${styles.hidden}`}>
-										<li className={styles.ctn_box_ch}>
-											<a href="" className={styles.menu_blog}>
-												Blog
-											</a>
-										</li>
-										<li className={styles.ctn_box_ch}>
-											<a href="" className={styles.menu_bgia}>
-												Bảng giá
-											</a>
-										</li>
-										<li className={styles.ctn_box_ch}>
-											<a href="" className={styles.menu_tv}>
-												Trang vàng
-											</a>
-										</li>
-										<li className={styles.ctn_box_ch}>
-											<a href="" className={styles.menu_ctv}>
-												Cộng tác viên
-											</a>
-										</li>
-									</ul>
-								</div>
-							</li>
-						</div>
-						<div className={`${styles.menu_item} ${styles.ctn_menu_item}`}>
-							<div className={styles.sub_domain}>
-								<a href="" className={styles.sub_domain_url}>
-									Tiện ích
-								</a>
-								<div className={styles.ctn_up_box}>
-									<ul className={`${styles.box_sub} ${styles.hidden}`}>
-										<li className={styles.ctn_box_ch}>
-											<a href="" className={styles.menu_tra_luong}>
-												Tra cứu lương
-											</a>
-										</li>
-										<li className={styles.ctn_box_ch}>
-											<a href="" className={styles.menu_luong_grn}>
-												Lương GROSS - NET
-											</a>
-										</li>
-										<li className={styles.ctn_box_ch}>
-											<a href="" className={styles.menu_email}>
-												Email365
-											</a>
-										</li>
-										<li className={styles.ctn_box_ch}>
-											<a href="" className={styles.menu_taiapp}>
-												Tải app
-											</a>
-										</li>
-										<li className={styles.ctn_box_ch}>
-											<a href="" className={styles.menu_bhtn}>
-												Bảo hiểm thất nghiệp
-											</a>
-										</li>
-										<li className={styles.ctn_box_ch}>
-											<a href="" className={styles.menu_mi}>
-												Trắc nghiệm MI
-											</a>
-										</li>
-										<li className={styles.ctn_box_ch}>
-											<a href="" className={styles.menu_mbti}>
-												Trắc nghiệm MBTI
-											</a>
-										</li>
-										<li className={styles.ctn_box_ch}>
-											<a href="" className={styles.menu_eq}>
-												Trắc nghiệm EQ
-											</a>
-										</li>
-										<li className={styles.ctn_box_ch}>
-											<a href="" className={styles.menu_en}>
-												Trắc nghiệm Energram
-											</a>
-										</li>
-										<li className={styles.ctn_box_ch}>
-											<a href="" className={styles.menu_ptcv}>
-												Phân tích CV
-											</a>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<div className={`${styles.menu_item} ${styles.ctn_menu_item}`}>
-							<a href="" className={styles.sub_domain_url}>
-								Tìm ứng viên
-							</a>
-						</div>
-						<div className={`${styles.menu_item} ${styles.ctn_menu_item}`}>
-							<a href="" className={styles.sub_domain_url} target="_blank">
-								Chuyển đổi số
-							</a>
-						</div>
-					</div>
+				
 				</div>
 				{/* Màn nhỏ hơn */}
 				{!isToggle && (
