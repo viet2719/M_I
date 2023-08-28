@@ -228,7 +228,7 @@ export default function HeaderAfterLogin({ children }: any, props: HeaderProps) 
 											data-src="/images/dk_s.png"
 											alt="Nguyễn Quang Trường"
 										/>
-												333						
+															
 									</div>
 								</div>
 						
