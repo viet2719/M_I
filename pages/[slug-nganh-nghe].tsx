@@ -1,15 +1,14 @@
 import Detail from '@/components/details/details'
 import Main_search from '@/components/list_occupations/main_search'
+import { containsIdPattern } from '@/utils/convert'
 import { useRouter } from 'next/router'
 
 const List_occupations = () => {
 	const router = useRouter()
-	if (router.isFallback) {
-		return <div style={{ fontSize: '2rem', textAlign: 'center' }}>Loading...</div>
-	}
+	const slug = router.query['slug-nganh-nghe']
 	return (
 		<>
-			{true ? (
+			{!containsIdPattern(slug) ? (
 				<Main_search />
 			) : (
 				<>

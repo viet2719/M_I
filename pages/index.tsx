@@ -7,6 +7,7 @@ import Box_vlth from '@/components/home/box_vlth'
 import Chat_container from '@/components/home/chat_container'
 import { HomePageBeforeLayout } from '@/components/layout/home_before_login'
 import { NextPageWithLayout } from '@/models/common'
+import { convertToSlug } from '@/utils/convert'
 import styles from '@styles/home/home.module.scss'
 import { Carousel } from 'antd'
 import Image from 'next/image'
@@ -20,6 +21,7 @@ const Home: NextPageWithLayout = () => {
 			company: 'Công Ty TNHH Chung Anh Logistics',
 			location: 'Hà Nội',
 			date: '25/08/2023',
+			link: convertToSlug('[Tuyển dụng] Nhân viên Kinh doanh', '23'),
 			salary: 'Từ 7.5 triệu',
 		},
 		{
@@ -27,6 +29,7 @@ const Home: NextPageWithLayout = () => {
 			company: 'Công Ty TNHH Chung Anh Logistics',
 			location: 'Hà Nội',
 			date: '25/08/2023',
+			link: convertToSlug('[Tuyển dụng] Nhân viên Kinh doanh', 23),
 			salary: 'Từ 7.5 triệu',
 		},
 		{
@@ -34,6 +37,7 @@ const Home: NextPageWithLayout = () => {
 			company: 'Công Ty TNHH Chung Anh Logistics',
 			location: 'Hà Nội',
 			date: '25/08/2023',
+			link: convertToSlug('[Tuyển dụng] Nhân viên Kinh doanh', '24'),
 			salary: 'Từ 7.5 triệu',
 		},
 		{
@@ -41,6 +45,7 @@ const Home: NextPageWithLayout = () => {
 			company: 'Công Ty TNHH Chung Anh Logistics',
 			location: 'Hà Nội',
 			date: '25/08/2023',
+			link: convertToSlug('[Tuyển dụng] Nhân viên Kinh doanh', '24'),
 			salary: 'Từ 7.5 triệu',
 		},
 		{
@@ -48,9 +53,11 @@ const Home: NextPageWithLayout = () => {
 			company: 'Công Ty TNHH Chung Anh Logistics',
 			location: 'Hà Nội',
 			date: '25/08/2023',
+			link: convertToSlug('[Tuyển dụng] Nhân viên Kinh doanh', '24'),
 			salary: 'Từ 7.5 triệu',
 		},
 	]
+
 	const cityOptions = [
 		{ value: 'hanoi', label: 'Hà Nội' },
 		{ value: 'hochiminh', label: 'TP. Hồ Chí Minh' },
@@ -67,134 +74,7 @@ const Home: NextPageWithLayout = () => {
 	const cano = 'https://timviec365.vn'
 	const url_img = 'https://timviec365.vn/images/banner/og_default.png'
 	const abstract = 'Tìm việc mới nhất trên toàn quốc - Tim viec online'
-	const listDataChats = [
-		{
-			id: 1,
-			company: 'Công Ty Cổ Phần Nam Dược Cn Miền Nam',
-			jobTitle: 'Trình Dược Viên kênh OTC tại KV Đắk Lắk',
-			location: 'Đắk Lắk',
-			avatarSrc: '',
-		},
-		{
-			id: 1,
-			company: 'Công Ty Cổ Phần Nam Dược Cn Miền Nam',
-			jobTitle: 'Trình Dược Viên kênh OTC tại KV Đắk Lắk',
-			location: 'Đắk Lắk',
-			avatarSrc: '',
-		},
-		{
-			id: 1,
-			company: 'Công Ty Cổ Phần Nam Dược Cn Miền Nam',
-			jobTitle: 'Trình Dược Viên kênh OTC tại KV Đắk Lắk',
-			location: 'Đắk Lắk',
-			avatarSrc: '',
-		},
-		{
-			id: 1,
-			company: 'Công Ty Cổ Phần Nam Dược Cn Miền Nam',
-			jobTitle: 'Trình Dược Viên kênh OTC tại KV Đắk Lắk',
-			location: 'Đắk Lắk',
-			avatarSrc: '',
-		},
-		{
-			id: 1,
-			company: 'Công Ty Cổ Phần Nam Dược Cn Miền Nam',
-			jobTitle: 'Trình Dược Viên kênh OTC tại KV Đắk Lắk',
-			location: 'Đắk Lắk',
-			avatarSrc: '',
-		},
-		{
-			id: 1,
-			company: 'Công Ty Cổ Phần Nam Dược Cn Miền Nam',
-			jobTitle: 'Trình Dược Viên kênh OTC tại KV Đắk Lắk',
-			location: 'Đắk Lắk',
-			avatarSrc: '',
-		},
-		{
-			id: 1,
-			company: 'Công Ty Cổ Phần Nam Dược Cn Miền Nam',
-			jobTitle: 'Trình Dược Viên kênh OTC tại KV Đắk Lắk',
-			location: 'Đắk Lắk',
-			avatarSrc: '',
-		},
-		{
-			id: 1,
-			company: 'Công Ty Cổ Phần Nam Dược Cn Miền Nam',
-			jobTitle: 'Trình Dược Viên kênh OTC tại KV Đắk Lắk',
-			location: 'Đắk Lắk',
-			avatarSrc: '',
-		},
-		{
-			id: 1,
-			company: 'Công Ty Cổ Phần Nam Dược Cn Miền Nam',
-			jobTitle: 'Trình Dược Viên kênh OTC tại KV Đắk Lắk',
-			location: 'Đắk Lắk',
-			avatarSrc: '',
-		},
-		{
-			id: 1,
-			company: 'Công Ty Cổ Phần Nam Dược Cn Miền Nam',
-			jobTitle: 'Trình Dược Viên kênh OTC tại KV Đắk Lắk',
-			location: 'Đắk Lắk',
-			avatarSrc: '',
-		},
-		{
-			id: 1,
-			company: 'Công Ty Cổ Phần Nam Dược Cn Miền Nam',
-			jobTitle: 'Trình Dược Viên kênh OTC tại KV Đắk Lắk',
-			location: 'Đắk Lắk',
-			avatarSrc: '',
-		},
-		{
-			id: 1,
-			company: 'Công Ty Cổ Phần Nam Dược Cn Miền Nam',
-			jobTitle: 'Trình Dược Viên kênh OTC tại KV Đắk Lắk',
-			location: 'Đắk Lắk',
-			avatarSrc: '',
-		},
-		{
-			id: 1,
-			company: 'Công Ty Cổ Phần Nam Dược Cn Miền Nam',
-			jobTitle: 'Trình Dược Viên kênh OTC tại KV Đắk Lắk',
-			location: 'Đắk Lắk',
-			avatarSrc: '',
-		},
-		{
-			id: 1,
-			company: 'Công Ty Cổ Phần Nam Dược Cn Miền Nam',
-			jobTitle: 'Trình Dược Viên kênh OTC tại KV Đắk Lắk',
-			location: 'Đắk Lắk',
-			avatarSrc: '',
-		},
-		{
-			id: 1,
-			company: 'Công Ty Cổ Phần Nam Dược Cn Miền Nam',
-			jobTitle: 'Trình Dược Viên kênh OTC tại KV Đắk Lắk',
-			location: 'Đắk Lắk',
-			avatarSrc: '',
-		},
-		{
-			id: 1,
-			company: 'Công Ty Cổ Phần Nam Dược Cn Miền Nam',
-			jobTitle: 'Trình Dược Viên kênh OTC tại KV Đắk Lắk',
-			location: 'Đắk Lắk',
-			avatarSrc: '',
-		},
-		{
-			id: 1,
-			company: 'Công Ty Cổ Phần Nam Dược Cn Miền Nam',
-			jobTitle: 'Trình Dược Viên kênh OTC tại KV Đắk Lắk',
-			location: 'Đắk Lắk',
-			avatarSrc: '',
-		},
-		{
-			id: 1,
-			company: 'Công Ty Cổ Phần Nam Dược Cn Miền Nam',
-			jobTitle: 'Trình Dược Viên kênh OTC tại KV Đắk Lắk',
-			location: 'Đắk Lắk',
-			avatarSrc: '',
-		},
-	]
+
 	return (
 		<>
 			<Head_common

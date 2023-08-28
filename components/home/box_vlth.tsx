@@ -11,7 +11,11 @@ const Box_vlth = ({ jobList }: any) => {
 					<div key={index} className={`${styles.item_vl} ${styles.item_home_th}`}>
 						<div className={styles.in_vl}>
 							<div className={styles.img_item_vl}>
-								<Link href="#" className={styles.logo_user_th} title="[tuyen dung] nhan vien kinh doan">
+								<Link
+									href={job.link}
+									className={styles.logo_user_th}
+									title="[tuyen dung] nhan vien kinh doan"
+								>
 									<Image
 										height={70}
 										width={70}
@@ -68,19 +72,11 @@ const Box_vlth = ({ jobList }: any) => {
 							</div>
 							<div className={styles.right_item_vl}>
 								<h3>
-									<Link
-										className={styles.tit_vip}
-										href={`/tuyen-dung/${job.id}.html`}
-										title={job.title}
-									>
+									<Link className={styles.tit_vip} href={job.link} title={job.title}>
 										{job.title}
 									</Link>
 								</h3>
-								<Link
-									className={styles.name_com}
-									href={`/cong-ty/${job.companyName}`}
-									title={job.companyName}
-								>
+								<Link className={styles.name_com} href={job.link} title={job.companyName}>
 									{job.companyName}
 								</Link>
 								<p className={styles.job_local}>{job.location}</p>
@@ -91,7 +87,7 @@ const Box_vlth = ({ jobList }: any) => {
 								<p className={styles.job_money} title={job.salary}>
 									{job.salary}
 								</p>
-								<Link href={`/lich-su/danh-sach-tong-u${job.id}t1`} className={styles.job_history}>
+								<Link href={job.link} className={styles.job_history}>
 									<Image
 										width={16}
 										height={16}
