@@ -1,0 +1,116 @@
+.new_banner {
+	background: url('https://timviec365.vn/images/loc/th_banner_tin_13.png') bottom;
+	background-size: 100% 76%;
+	width: 100%;
+	position: relative;
+	.box_search {
+		position: relative;
+		min-height: 410px;
+		width: 100%;
+		.main_search {
+			width: 100%;
+			position: absolute;
+			top: 190px;
+			padding: 0 5%;
+		
+			.box_text_search {
+				font-family: Rounded_Mplus_1c, sans-serif;
+				.box_text {
+					font-size: 28px;
+					color: #fff;
+					line-height: 65px;
+				}
+
+				.img_txt_s {
+					position: absolute;
+					top: 0;
+					img {
+						top: 10px;
+						position: relative;
+						left: 4px;
+					}
+				}
+
+				.txt_s {
+					font-size: 55px;
+					color: #fff;
+					font-family: Rounded_Mplus_1c, sans-serif;
+				}
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 1400px) {
+	.new_banner {
+		.box_search {
+			width: 100%;
+			.main_search {
+			
+
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 1165px) {
+	.new_banner {
+		background: url('https://timviec365.vn/images/loc/th_banner_tin_13.png') no-repeat;
+		background-size: cover;
+		width: 100%;
+		.box_search {
+			width: 100%;
+			height: 350px !important;
+			min-height: unset;
+			.main_search {
+				top: 155px;
+				padding: 0 20%;
+				left: 0px;
+				justify-content: center;
+				.box_text_search {
+					display: none;
+				}
+				.logo_banner {
+					display: none;
+				}
+			}
+			.btn_dow {
+				display: none;
+			}
+		}
+		.tktk {
+			display: none;
+		}
+	}
+}
+
+@media screen and (max-width: 642px) {
+	.new_banner {
+		background: url('/images/banner_home_1520.png') bottom;
+		background-size: 100% 100%;
+		width: 100%;
+		
+		.box_search {
+			position: absolute;
+			top: 20px;
+			bottom: 200px;
+			.main_search input{
+			height: 30px;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 1024px) {
+	.new_banner {
+		height: 335px;
+		.box_search {
+			width: 100%;
+			.main_search {
+				display: flex;
+				top: 140px;
+				justify-content: center;
+			}
+		}
+	}
+}

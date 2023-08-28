@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
-import styles from '@styles/common/box_search.module.scss'
+import styles from '@styles/common/Box_search_details.module.scss'
 import Image from 'next/image'
 import Select from 'react-select'
 import BtnSelect from '../home/btnSelect'
 import Link from 'next/link'
 
-const Box_search = () => {
+const Box_search_details = () => {
 	const cityOptions = [
 		{ value: 'hanoi', label: 'Hà Nội' },
 		{ value: 'hochiminh', label: 'TP. Hồ Chí Minh' },
@@ -13,11 +13,11 @@ const Box_search = () => {
 		{ value: 'hue', label: 'Huế' },
 	]
 	// Xử lý show-hide phần tìm kiếm theo tên
-	const [valueNameSearch, setValueNameSearch] = useState('')
-	const [checkSearchNameCity, setCheckSearchNameCity] = useState<any>(false)
+	const [valueNameSearch, setValueNameSearch] = useState<string>('')
+	const [checkSearchNameCity, setCheckSearchNameCity] = useState<boolean>(false)
 
 	// Xử lý tìm kiếm nâng cao
-	const [chooseSearchAdvanced, setChooseSearchAdvanced] = useState<any>(false)
+	const [chooseSearchAdvanced, setChooseSearchAdvanced] = useState<boolean>(false)
 	return (
 		<div className={styles.box_m_search} id={styles.search_new_ntd}>
 			<div className={styles.new_search}>
@@ -25,6 +25,7 @@ const Box_search = () => {
 					<input
 						type="text"
 						id={styles.fts_id}
+						style={{height:50,top:20}}
 						className={styles.enter_ntd}
 						placeholder="Nhập tên công việc, vị trí ..."
 						onChange={(e) => {
@@ -71,67 +72,67 @@ const Box_search = () => {
 							<div className={`${styles.kq_gy} ${styles.solid}`}>
 								<p className={styles.text_def}>Từ khóa phổ biến</p>
 								<span>
-									<Link href="#">Nhân viên kinh doanh</Link>
+									<Link href={"#"} >Nhân viên kinh doanh</Link>
 								</span>
 								<span>
-									<Link href="#">IT phần mềm</Link>
+									<Link href={"#"}>IT phần mềm</Link>
 								</span>
 								<span>
-									<Link href="#">Kế toán - Kiểm toán</Link>
+									<Link href={"#"}>Kế toán - Kiểm toán</Link>
 								</span>
 								<span>
-									<Link href="#">KD bất động sản</Link>
+									<Link href={"#"}>KD bất động sản</Link>
 								</span>
 								<span>
-									<Link href="#">IT Phần cứng - mạng</Link>
+									<Link href={"#"}>IT Phần cứng - mạng</Link>
 								</span>
 								<span>
-									<Link href="#">Marketing - PR</Link>
+									<Link href={"#"}>Marketing - PR</Link>
 								</span>
 								<span>
-									<Link href="#">Việc làm bán hàng</Link>
+									<Link href={"#"}>Việc làm bán hàng</Link>
 								</span>
 								<span>
-									<Link href="#">Xây dựng</Link>
+									<Link href={"#"}>Xây dựng</Link>
 								</span>
 								<span>
-									<Link href="#">Tiếp thị - Quảng cáo</Link>
+									<Link href={"#"}>Tiếp thị - Quảng cáo</Link>
 								</span>
 								<span>
-									<Link href="#">Tư vấn</Link>
+									<Link href={"#"}>Tư vấn</Link>
 								</span>
 								<span>
-									<Link href="#">Sản xuất - Vận hành sản xuất</Link>
+									<Link href={"#"}>Sản xuất - Vận hành sản xuất</Link>
 								</span>
 								<span>
-									<Link href="#">Nhập liệu</Link>
+									<Link href={"#"}>Nhập liệu</Link>
 								</span>
 								<span>
-									<Link href="#">Chăm sóc khách hàng</Link>
+									<Link href={"#"}>Chăm sóc khách hàng</Link>
 								</span>
 								<span>
-									<Link href="#">Cơ khí - Chế tạo</Link>
+									<Link href={"#"}>Cơ khí - Chế tạo</Link>
 								</span>
 								<span>
-									<Link href="#">Du lịch</Link>
+									<Link href={"#"}>Du lịch</Link>
 								</span>
 								<span>
-									<Link href="#">Dịch vụ</Link>
+									<Link href={"#"}>Dịch vụ</Link>
 								</span>
 								<span>
-									<Link href="#">Bưu chính viễn thông</Link>
+									<Link href={"#"}>Bưu chính viễn thông</Link>
 								</span>
 								<span>
-									<Link href="#">Phát triển thị trường</Link>
+									<Link href={"#"}>Phát triển thị trường</Link>
 								</span>
 								<span>
-									<Link href="#">Bảo hiểm</Link>
+									<Link href={"#"}>Bảo hiểm</Link>
 								</span>
 								<span>
-									<Link href="#">Quản lý điều hành</Link>
+									<Link href={"#"}>Quản lý điều hành</Link>
 								</span>
 								<span>
-									<Link href="#">Xuất - nhập khẩu</Link>
+									<Link href={"#"}>Xuất - nhập khẩu</Link>
 								</span>
 							</div>
 						</div>
@@ -159,7 +160,7 @@ const Box_search = () => {
 									valueContainer: (provided, state) => ({
 										...provided,
 										left: '12px',
-										top: '12px',
+										top: '8px',
 									}),
 									input: (baseStyles, state) => ({
 										...baseStyles,
@@ -190,7 +191,7 @@ const Box_search = () => {
 										boxSizing: 'border-box',
 										cursor: 'pointer',
 										display: 'block',
-										height: '65px',
+										height: '50px',
 										lineHeight: '36px',
 									}),
 									option: (baseStyles, state) => ({
@@ -246,6 +247,7 @@ const Box_search = () => {
 										display: 'block',
 										height: '40px',
 										lineHeight: '36px',
+									
 									}),
 									option: (baseStyles, state) => ({
 										...baseStyles,
@@ -255,12 +257,13 @@ const Box_search = () => {
 							/>
 						</span>
 					</span>
-					<div className={styles['mobi-bor']}>
-						<input type="submit" className={styles.btn_search} value="Tìm kiếm" />
+					<div className={styles['mobi-bor']} style={{height:50}}>
+						<input style={{height:50}} type="submit" className={styles.btn_search} value="Tìm kiếm" />
 					</div>
 					<Image
 						height={40}
 						width={40}
+						style={{marginTop:5}}
 						className={`${styles.show_nc} ${styles.nangcao}`}
 						src="/images/before_login/ic_show_nc.png"
 						alt="Tìm kiếm nâng cao"
@@ -312,7 +315,7 @@ const Box_search = () => {
 											</div>
 											<div className={styles['btn-pop']}>
 												<div className={styles['btn-pop-click']}>
-													<Link href="#" id="btnsearchadvance">Tìm kiếm</Link>
+													<Link href={"#"} id="btnsearchadvance">Tìm kiếm</Link>
 												</div>
 											</div>
 										</div>
@@ -336,62 +339,6 @@ const Box_search = () => {
 						>
 							×
 						</span>
-						<div className={`${styles.nd_box_city}`}>
-							<div className={styles.kq_gy}>
-								<p className={styles.text_def}>Địa điểm phổ biến</p>
-								<span>
-									<Link href="#">
-										<strong>Đà Nẵng</strong>
-									</Link>
-								</span>
-								<span>
-									<Link href="#">
-										<strong>Hồ Chí Minh</strong>
-									</Link>
-								</span>
-								<span>
-									<Link href="#">
-										<strong>Hà Nội</strong>
-									</Link>
-								</span>
-								<span>
-									<Link href="#">Huyện Bình Chánh</Link>
-								</span>
-								<span>
-									<Link href="#">Huyện Bình Chánh</Link>
-								</span>
-								<span>
-									<Link href="#">Huyện Bình Chánh</Link>
-								</span>
-								<span>
-									<Link href="#">Huyện Bình Chánh</Link>
-								</span>
-								<span>
-									<Link href="#">Huyện Bình Chánh</Link>
-								</span>
-								<span>
-									<Link href="#">Huyện Bình Chánh</Link>
-								</span>
-								<span>
-									<Link href="#">Huyện Bình Chánh</Link>
-								</span>
-								<span>
-									<Link href="#">Huyện Bình Chánh</Link>
-								</span>
-								<span>
-									<Link href="#">Huyện Bình Chánh</Link>
-								</span>
-								<span>
-									<Link href="#">Huyện Bình Chánh</Link>
-								</span>
-								<span>
-									<Link href="#">Huyện Bình Chánh</Link>
-								</span>
-							</div>
-							<div className={`${styles.kq_lq} ${styles.solid}`} id={styles.city_lq}>
-								<p className={styles.text_def}>Danh sách địa điểm</p>
-							</div>
-						</div>
 					</div>
 				)}
 			</div>
@@ -399,4 +346,4 @@ const Box_search = () => {
 	)
 }
 
-export default Box_search
+export default Box_search_details
