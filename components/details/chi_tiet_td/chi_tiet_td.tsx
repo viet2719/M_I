@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styles from '../main_timviec/main_timviec.module.css'
 import Link from 'next/link'
+import Image from 'next/image'
 
 type Props = {
 	show: boolean
@@ -21,7 +22,9 @@ const Chi_tiet_td = ({ show }: Props) => {
 								data-id={206405}
 								id-chat={1361929}
 							>
-								<img
+								<Image
+									width={130}
+									height={130}
 									className={`${styles.avt} ${styles.lazyloaded}`}
 									src="https://timviec365.vn/pictures/2020/12/26/nmu1608965751.PNG"
 									data-src="https://timviec365.vn/pictures/2020/12/26/nmu1608965751.PNG"
@@ -41,8 +44,13 @@ const Chi_tiet_td = ({ show }: Props) => {
 
 							<p style={{ marginLeft: -15 }} className={`${styles.diachi_ctiet}`}>
 								{' '}
-								<img src="https://timviec365.vn/images/img_new/exp_ddien.png" alt="" /> Quận Cầu
-								Giấy ,Hà Nội
+								<Image
+									width={16}
+									height={16}
+									src="https://timviec365.vn/images/img_new/exp_ddien.png"
+									alt=""
+								/>{' '}
+								Quận Cầu Giấy ,Hà Nội
 							</p>
 						</div>
 						<Link
@@ -91,7 +99,9 @@ const Chi_tiet_td = ({ show }: Props) => {
 												data-id={206405}
 												id-chat={1361929}
 											>
-												<img
+												<Image
+													width={55}
+													height={57}
 													className={`${styles.lazyload}`}
 													src="https://timviec365.vn/pictures/2020/12/26/nmu1608965751.PNG"
 													data-src="https://timviec365.vn/pictures/2020/12/26/nmu1608965751.PNG"
@@ -147,11 +157,14 @@ const Chi_tiet_td = ({ show }: Props) => {
 									data-id={206405}
 									id-chat={1361929}
 								>
-									<img src="https://timviec365.vn/images/detail/icon_chat_w.svg" alt="Chat ngay" />
+									<Image
+										width={19}
+										height={20}
+										src="https://timviec365.vn/images/detail/icon_chat_w.svg"
+										alt="Chat ngay"
+									/>
 									Chat ngay
 								</Link>
-								{/*                                                 <Link rel="nofollow" href="https://chat365.timviec365.vn/chat-uTnVBdDVIdVpEWWdsVTZMVnVyQ2N3dz09-cdzd3YWk1emFWTXVNNUtyUGRHRm5vQT09-timviec365.vn-AOBaULtHED" target="_blank" class="chat_call" data-id="206405" id-chat="1361929"><img src="/images/detail/icon_chat_w.svg" alt="Chat ngay">Chat ngay</Link>
-								 */}
 							</div>
 							<div className={`${styles.ungtuyen} ${styles.ctn_chung_moi}`}>
 								<Link
@@ -162,7 +175,12 @@ const Chi_tiet_td = ({ show }: Props) => {
 									data-nc={0}
 									point-hths="12.5"
 								>
-									<img src="https://timviec365.vn/images/detail/icon_ut.svg" alt="ứng tuyển" />
+									<Image
+										width={17}
+										height={16}
+										src="https://timviec365.vn/images/detail/icon_ut.svg"
+										alt="ứng tuyển"
+									/>
 									Ứng tuyển
 								</Link>
 							</div>
@@ -175,7 +193,12 @@ const Chi_tiet_td = ({ show }: Props) => {
 									data-use={1333676}
 									data-uid={1333676}
 								>
-									<img src="https://timviec365.vn/images/detail/love.svg" alt="lưu công việc" />
+									<Image
+										width={17}
+										height={16}
+										src="https://timviec365.vn/images/detail/love.svg"
+										alt="lưu công việc"
+									/>
 									<span>Lưu tin</span>
 								</Link>
 							</div>
@@ -223,6 +246,14 @@ const Chi_tiet_td = ({ show }: Props) => {
 								target="_blank"
 							>
 								Lịch sử
+							</Link>
+							<Link
+								className={`${styles.option_post}`}
+								href="/phu-hop/danh-sach-tong-u206405t1"
+								rel="nofollow"
+								target="_blank"
+							>
+								Phù hợp
 							</Link>
 							<Link
 								href={'#'}
@@ -492,7 +523,9 @@ const Chi_tiet_td = ({ show }: Props) => {
 									<div className={`${styles.bdo_dgia}`}>
 										<div className={`${styles.ctn_avt_xeph}`}>
 											<p>0</p>
-											<img
+											<Image
+												width={25}
+												height={25}
 												src="/images/img_new/exp_xephang.png"
 												className={`${styles.ctn_xephang}`}
 												alt="xep hang"
@@ -510,7 +543,7 @@ const Chi_tiet_td = ({ show }: Props) => {
 												<div className={`${styles.ctn_kinhng_bdo}`} style={{ width: '40%' }} />
 											</div>
 											<div className={`${styles.bgr_ctn}`}>
-												<img src="/images/img_new/exp_kn.png" />
+												<Image width={25} height={25} alt="25" src="/images/img_new/exp_kn.png" />
 											</div>
 										</div>
 										<div className={`${styles.ctn_kinhng} ${styles.ph_mucluong}`}>
@@ -520,7 +553,7 @@ const Chi_tiet_td = ({ show }: Props) => {
 												<div className={`${styles.ctn_kinhng_bdo}`} style={{ width: '60%' }} />
 											</div>
 											<div className={`${styles.bgr_ctn}`}>
-												<img src="/images/img_new/exp_kn.png" />
+												<Image width={25} height={25} alt="25" src="/images/img_new/exp_kn.png" />
 											</div>
 										</div>
 									</div>

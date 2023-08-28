@@ -5,6 +5,7 @@ import validator from 'validator'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '@/reducers'
 import { closeModal } from '@/actions/actions'
+import Link from 'next/link'
 const Model_noti = () => {
 	const [inputValue, setInputValue] = useState('')
 	const [isValidSDT_Email, setIsValidSDT_Email] = useState(true)

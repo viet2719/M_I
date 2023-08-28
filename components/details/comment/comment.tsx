@@ -2,13 +2,18 @@ import React, { useEffect, useState } from 'react'
 import styles from '../main_timviec/main_timviec.module.css'
 import { Badge, Image } from 'antd'
 import Item from 'antd/es/list/Item'
+import Respones_comment from './respones_comment'
 
 type Props = {}
-interface Iicons {
+export interface Iicons {
 	id: number
 	img: string
 	alt: string
 	count: number
+}
+export interface Icomment {
+	name: string
+	content: string
 }
 const Comment = (props: Props) => {
 	const [showBinhLuan, setShowBinhLuan] = useState<boolean>(true)
@@ -17,7 +22,12 @@ const Comment = (props: Props) => {
 	const [showBox_share, setShowBox_share] = useState<boolean>(false)
 	const [show_Box_Share_Mxh, setShow_Box_Share_Mxh] = useState<boolean>(false)
 	const [icons_used, setIcons_used] = useState<Iicons[]>([])
-	const [name_active, setName_active] = useState<string>()
+	const [name_active, setName_active] = useState<string>('')
+	const [name_comment, setName_comemnt] = useState<string>('')
+	const [listComment, setlistComment] = useState<Icomment[]>([])
+	const [content_comment_demo, setcontent_comment_demo] = useState<string>('')
+	const [content_comment, setcontent_comment] = useState<string>('')
+	const [count_comment, setCount_comment] = useState<number>(0)
 	const [changeIcon, setchangeIcon] = useState<string>(
 		'https://timviec365.vn/images/img_comment/Ic_color_2.png'
 	)
@@ -64,7 +74,7 @@ const Comment = (props: Props) => {
 		{ id: 6, img: 'https://timviec365.vn/images/img_comment/Ic_6.png', alt: 'Buồn', count: count6 },
 		{ id: 7, img: 'https://timviec365.vn/images/img_comment/Ic_7.png', alt: 'Haha', count: count7 },
 	]
-
+	const [showComment, setshowComment] = useState<boolean>(false)
 	// Thay đổi icons và nội dung
 	const handleActionIcon = (icon: Iicons) => {
 		setchangeIcon(icon?.img)
@@ -108,7 +118,15 @@ const Comment = (props: Props) => {
 	useEffect(() => {
 		document?.addEventListener('click', handleOutsideClick)
 	}, [])
-
+	const handleComment = async () => {
+		if (content_comment) {
+			setlistComment([...listComment, { name: name_comment, content: content_comment }])
+			listComment.shift()
+			setcontent_comment('')
+		} else {
+			alert('Vui lòng nhập bình luận')
+		}
+	}
 	return (
 		<div
 			className={`${styles.title_all} ${styles.content_cmt_vote}`}
@@ -417,19 +435,32 @@ const Comment = (props: Props) => {
 												<option value={2}>Cũ nhất</option>
 											</select>
 											<div className={`${styles.cm_input} ${styles.input_comment}`}>
-												<img
+												<Image
+													preview={false}
+													width={36}
+													height={36}
 													className={`${styles.img_user}`}
-													src="https://ht.timviec365.vn:9002/avatarUser/1404156/638281025109010000_1404156.jpg"
-													alt="bình luận"
+													src={'/images/638286918069380000_1404156.jpg'}
+													alt="Nguyễn Quang Trường"
 												/>
 												<textarea
+													onKeyDown={(e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+														if (e.code === 'Enter' || e.code === 'NumpadEnter') {
+															handleComment()
+														}
+													}}
 													className={`${styles.ct_cm}`}
 													id="ct_cm"
 													maxLength={250}
+													onChange={(e) => {
+														setcontent_comment(e.target.value.trim()),
+															setName_comemnt('Nguyễn Quang Trường')
+													}}
 													placeholder="Viết bình luận"
-													defaultValue={''}
+													value={content_comment}
 												/>
 												<svg
+													onClick={() => handleComment()}
 													className={`${styles.ic_send_cm}`}
 													width={32}
 													height={32}
@@ -484,9 +515,8 @@ const Comment = (props: Props) => {
 												<div id="tag_friend" style={{ display: 'none' }} />
 											</div>
 										</div>
-										<div className={`${styles.cm_list}`} data-count={0}>
-											<div className={`${styles.box_cm_list}`}></div>
-										</div>
+
+										<Respones_comment listComment={listComment} />
 									</div>
 								</div>
 								<div
