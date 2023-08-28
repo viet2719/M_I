@@ -1,12 +1,15 @@
 import Image from 'next/image'
 import React, { useState } from 'react'
-import styles from '@styles/common/header.module.scss'
+import styles from '@/styles/common/header_affter_login.module.scss'
+import Notify_after_login from '../details/main_timviec/notify_after_login'
+import Mobile_form_after_login from '../details/molbile_form_after_login/mobile_form_after_login'
 import Link from 'next/link'
+import Pc_form_after_login from '../details/pc_form_after_login/pc_form_after_login'
 
 export interface HeaderProps {}
 
-export default function Header({ children }: any, props: HeaderProps) {
-	const [isToggle, setIsToggle] = useState(true)
+export default function HeaderAfterLogin({ children }: any, props: HeaderProps) {
+	const [isToggle, setIsToggle] = useState<boolean>(true)
 	const img_so_xuong = '/images/angle_bottom.svg'
 	const img_cv = '/images/banner/exp_cv_xviec_hso.png'
 	const img_khampha = '/images/banner/exp_khampha.png'
@@ -162,11 +165,12 @@ export default function Header({ children }: any, props: HeaderProps) {
 			menuClass: styles.menu_ptcv,
 		},
 	]
-	const [chooseKhamPha, setChooseKhamPha] = useState(false)
-	const [chooseTienIch, setChooseTienIch] = useState(false)
+	const [showAvatar, setShowAvatar] = useState(false)
 	return (
 		<>
 			<header className={styles.new_header}>
+				<Notify_after_login />
+				{/* {showAvatar && <Pc_form_after_login/>} */}
 				<div className={styles.logo_header}>
 					<Link href="/">
 						<Image
@@ -178,10 +182,12 @@ export default function Header({ children }: any, props: HeaderProps) {
 					</Link>
 					<span
 						className={`${isToggle ? styles.mobi_sel : styles.close_mobi_sel}`}
+						style={{ paddingTop: 400 }}
 						onClick={() => {
 							setIsToggle(!isToggle)
 						}}
 					></span>
+
 					<div className={styles.ctn_noti_chat}>
 						<div className={styles.chat_tt}>
 							<div className={styles.ctn_menu_chat}>
@@ -190,29 +196,48 @@ export default function Header({ children }: any, props: HeaderProps) {
 								</span>
 								<span className={styles.txt_chat}>Chat</span>
 							</div>
+							<div className={styles.ctn_menu_chat}>
+								<span className={styles.chat_notifice2}>
+									<i className={styles.num_tb}>0</i>
+								</span>
+							</div>
 						</div>
 					</div>
 				</div>
 				<div className={styles.box_header}>
 					<div className={styles.m_hd_left}>
 						<div id={styles.mobi}>
-							<div className={styles.mobi_from}>
-								<div className={styles.box_btn} id={styles.box_dangnhap}>
-									<Link href="#" className={styles.ctn_chung_hr}>
-										<span>Đăng nhập</span>
-									</Link>
-								</div>
-								<div className={styles.box_btn} id={styles.box_dangky}>
-									<Link href="#" className={styles.ctn_chung_hr}>
-										<span>Đăng ký</span>
-									</Link>
-								</div>
-							</div>
+							<div className={styles.mobi_from}></div>
 						</div>
-						<div className={styles.box_btn_dangtin}>
-							<Link href="#" className={styles.ctn_chung_hr}>
-								Đăng tin
-							</Link>
+						<div className={styles.ctn_menu_chat}>
+							<div className={styles.m_header_v2} style={{ marginTop: -5 }}>
+								<span className={styles.chat_notifice2}>
+									<div
+										onClick={() => setShowAvatar(!showAvatar)}
+										className={`${styles.bgr_avatar} ${styles.cursor_pt}`}
+									>
+										<div className={`${styles.arrow_bot}`} />
+										<div className={`${styles.avatar_lg} ${styles.ava_uv}`}>
+											<Image
+												width={30}
+												height={30}
+												className={`${styles.lazyloaded}`}
+												src="https://timviec365.vn/images/dk_s.png"
+												data-src="/images/dk_s.png"
+												alt="Nguyễn Quang Trường"
+											/>
+										</div>
+									</div>
+								</span>
+							</div>
+
+							<span className={styles.txt_chat}></span>
+						</div>
+
+						<div className={styles.ctn_menu_chat}>
+							<span className={styles.chat_notifice2}>
+								<i className={styles.num_tb}>0</i>
+							</span>
 						</div>
 						<div className={styles.ctn_menu_chat}>
 							<span className={styles.chat_notifice}>
@@ -224,7 +249,7 @@ export default function Header({ children }: any, props: HeaderProps) {
 					<div className={styles.m_hd_right}>
 						<div className={`${styles.menu_item} ${styles.ctn_menu_item}`}>
 							<div className={`${styles.sub_domain} ${styles.ctn_sub_domain}`}>
-								<Link href="#" className={styles.sub_domain_url}>
+								<Link href={'#'} className={styles.sub_domain_url}>
 									CV xin việc
 								</Link>
 							</div>
@@ -247,12 +272,12 @@ export default function Header({ children }: any, props: HeaderProps) {
 											</Link>
 										</li>
 										<li className={styles.ctn_box_ch}>
-											<Link href="#" className={styles.menu_tv}>
+											<Link href={'#'} className={styles.menu_tv}>
 												Trang vàng
 											</Link>
 										</li>
 										<li className={styles.ctn_box_ch}>
-											<Link href="#" className={styles.menu_ctv}>
+											<Link href={'#'} className={styles.menu_ctv}>
 												Cộng tác viên
 											</Link>
 										</li>
@@ -262,58 +287,58 @@ export default function Header({ children }: any, props: HeaderProps) {
 						</div>
 						<div className={`${styles.menu_item} ${styles.ctn_menu_item}`}>
 							<div className={styles.sub_domain}>
-								<Link href="#" className={styles.sub_domain_url}>
+								<Link href={'#'} className={styles.sub_domain_url}>
 									Tiện ích
 								</Link>
 								<div className={styles.ctn_up_box}>
 									<ul className={`${styles.box_sub} ${styles.hidden}`}>
 										<li className={styles.ctn_box_ch}>
-											<Link href="#" className={styles.menu_tra_luong}>
+											<Link href={'#'} className={styles.menu_tra_luong}>
 												Tra cứu lương
 											</Link>
 										</li>
 										<li className={styles.ctn_box_ch}>
-											<Link href="#" className={styles.menu_luong_grn}>
+											<Link href={'#'} className={styles.menu_luong_grn}>
 												Lương GROSS - NET
 											</Link>
 										</li>
 										<li className={styles.ctn_box_ch}>
-											<Link href="#" className={styles.menu_email}>
+											<Link href={'#'} className={styles.menu_email}>
 												Email365
 											</Link>
 										</li>
 										<li className={styles.ctn_box_ch}>
-											<Link href="#" className={styles.menu_taiapp}>
+											<Link href={'#'} className={styles.menu_taiapp}>
 												Tải app
 											</Link>
 										</li>
 										<li className={styles.ctn_box_ch}>
-											<Link href="#" className={styles.menu_bhtn}>
+											<Link href={'#'} className={styles.menu_bhtn}>
 												Bảo hiểm thất nghiệp
 											</Link>
 										</li>
 										<li className={styles.ctn_box_ch}>
-											<Link href="#" className={styles.menu_mi}>
+											<Link href={'#'} className={styles.menu_mi}>
 												Trắc nghiệm MI
 											</Link>
 										</li>
 										<li className={styles.ctn_box_ch}>
-											<Link href="#" className={styles.menu_mbti}>
+											<Link href={'#'} className={styles.menu_mbti}>
 												Trắc nghiệm MBTI
 											</Link>
 										</li>
 										<li className={styles.ctn_box_ch}>
-											<Link href="#" className={styles.menu_eq}>
+											<Link href={'#'} className={styles.menu_eq}>
 												Trắc nghiệm EQ
 											</Link>
 										</li>
 										<li className={styles.ctn_box_ch}>
-											<Link href="#" className={styles.menu_en}>
+											<Link href={'#'} className={styles.menu_en}>
 												Trắc nghiệm Energram
 											</Link>
 										</li>
 										<li className={styles.ctn_box_ch}>
-											<Link href="#" className={styles.menu_ptcv}>
+											<Link href={'#'} className={styles.menu_ptcv}>
 												Phân tích CV
 											</Link>
 										</li>
@@ -322,202 +347,21 @@ export default function Header({ children }: any, props: HeaderProps) {
 							</div>
 						</div>
 						<div className={`${styles.menu_item} ${styles.ctn_menu_item}`}>
-							<Link href="#" className={styles.sub_domain_url}>
+							<Link href={'#'} className={styles.sub_domain_url}>
 								Tìm ứng viên
 							</Link>
 						</div>
 						<div className={`${styles.menu_item} ${styles.ctn_menu_item}`}>
-							<Link href="#" className={styles.sub_domain_url} target="_blank">
+							<Link href={'#'} className={styles.sub_domain_url} target="_blank">
 								Chuyển đổi số
 							</Link>
 						</div>
 					</div>
 				</div>
 				{/* Màn nhỏ hơn */}
-				{!isToggle && (
-					<div className={`${styles.mobi_sh_ul} ${styles.ctn_mobi_sh_ul}`}>
-						<div id={styles.mobi_ul} className={`${styles.m_header_mobile} ${styles.displayblock}`}>
-							<div className={styles.mobi_form}>
-								<div className={styles.m_ul_container}>
-									<li>
-										<Link href="#" className={styles.ctn_mobi_sub1}>
-											<Image
-												src={'/images/before_login/exp_dangky.png'}
-												alt="exp_dangky"
-												width={20}
-												height={21}
-												className={styles.lazyloaded}
-											/>
-											<span>Đăng ký</span>
-										</Link>
-									</li>
-									<li>
-										<Link href="#" className={styles.ctn_mobi_sub1}>
-											<Image
-												src={'/images/before_login/exp_dangnhap.png'}
-												alt="exp_dangnhap"
-												width={20}
-												height={21}
-												className={styles.lazyloaded}
-											/>
-											<span>Đăng nhập</span>
-										</Link>
-									</li>
-									<li className={styles.mobile_dangtin}>
-										<Link href="#">
-											<Image
-												src={img_dangtin}
-												alt="img_dangtin"
-												width={20}
-												height={21}
-												className={styles.lazyloaded}
-											/>
-											<span>Đăng tin</span>
-										</Link>
-									</li>
-									<li className={styles.ctn_mobi_sub_domain}>
-										<Link href="#" className={`${styles.ctn_mobi_sub} ${styles.ctn_mobi_sub2}`}>
-											<Image
-												src={img_cv}
-												alt="img_cv"
-												width={20}
-												height={21}
-												className={styles.lazyloaded}
-											/>
-											<span>CV xin việc</span>
-										</Link>
-									</li>
-									<li className={styles.ctn_mobi_sub_domain}>
-										<Link
-											href="#"
-											className={`${styles.ctn_mobi_sub} ${styles.ctn_mobi_sub2} ${styles.m_box_hdsaudn}`}
-											onClick={(event) => {
-												event.preventDefault()
-												setChooseKhamPha(!chooseKhamPha)
-											}}
-										>
-											<div className={styles.box_hd_saudn}>
-												<Image
-													src={img_khampha}
-													alt="img_khampha"
-													width={20}
-													height={21}
-													className={styles.lazyloaded}
-												/>
-												<span>Khám phá</span>
-											</div>
-											<Image
-												src={img_so_xuong}
-												alt="mở rộng"
-												width={20}
-												height={21}
-												style={{
-													transform: `${chooseKhamPha ? 'rotate(180deg)' : 'rotate(0deg)'}`,
-													transition: '1s all',
-												}}
-											/>
-										</Link>
-										<ul
-											className={`${styles.ctn_mobi_sub_ul} ${
-												chooseKhamPha ? styles.show : styles.none
-											}`}
-										>
-											{dsKhamPha.map((item, index) => (
-												<li key={index} className={styles.ctn_box_ch}>
-													<Image
-														src={item.imageSrc}
-														alt={item.alt}
-														width={item.width}
-														height={item.height}
-														className={item.className}
-													/>
-													<Link className={item.menuClass} href={item.link}>
-														{item.text}
-													</Link>
-												</li>
-											))}
-										</ul>
-									</li>
-									<li className={styles.ctn_mobi_sub_domain}>
-										<Link
-											href="#"
-											className={`${styles.ctn_mobi_sub} ${styles.ctn_mobi_sub2} ${styles.m_box_hdsaudn}`}
-											onClick={(event) => {
-												event.preventDefault()
-												setChooseTienIch(!chooseTienIch)
-											}}
-										>
-											<div className={styles.box_hd_saudn}>
-												<Image
-													src={img_tienich}
-													alt="Tiện ích"
-													width={20}
-													height={21}
-													className={styles.lazyloaded}
-												/>
-												<span>Tiện ích</span>
-											</div>
-											<Image
-												src={img_so_xuong}
-												alt="mở rộng"
-												width={20}
-												height={21}
-												style={{
-													transform: `${chooseTienIch ? 'rotate(180deg)' : 'rotate(0deg)'}`,
-													transition: '1s all',
-												}}
-											/>
-										</Link>
-										<ul
-											className={`${styles.ctn_mobi_sub_ul} ${
-												chooseTienIch ? styles.show : styles.none
-											}`}
-										>
-											{dsTienIch.map((item, index) => (
-												<li key={index} className={styles.ctn_box_ch}>
-													<Image
-														src={item.imageSrc}
-														alt={item.alt}
-														width={item.width}
-														height={item.height}
-														className={item.className}
-													/>
-													<Link className={item.menuClass} href={item.link}>
-														{item.text}
-													</Link>
-												</li>
-											))}
-										</ul>
-									</li>
-									<li>
-										<Link href="#" className={styles.ctn_mobi_sub1}>
-											<Image
-												src={'/images/before_login/exp_tim_uvien.png'}
-												alt="exp_tim_uvien"
-												width={20}
-												height={21}
-												className={styles.lazyloaded}
-											/>
-											<span>Tìm ứng viên</span>
-										</Link>
-									</li>
-									<li>
-										<Link href="#" className={styles.ctn_mobi_sub1}>
-											<Image
-												src={'/images/before_login/exp_chuyendoiso.png'}
-												alt="exp_chuyendoiso"
-												width={20}
-												height={21}
-												className={styles.lazyloaded}
-											/>
-											<span>Chuyển đổi số</span>
-										</Link>
-									</li>
-								</div>
-							</div>
-						</div>
-					</div>
-				)}
+				{/* {!isToggle && (
+					<Mobile_form_after_login/>
+				)} */}
 			</header>
 		</>
 	)
