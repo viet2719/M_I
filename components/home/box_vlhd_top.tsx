@@ -11,7 +11,11 @@ const Box_vlhd_top = ({ jobData }: any) => {
 					<div className={`${styles.item_vl} ${styles.item_home_th}`} key={index}>
 						<div className={styles.in_vl}>
 							<div className={styles.img_item_vl}>
-								<Link href="#" className={styles.logo_user_th} title="[tuyen dung] nhan vien kinh doan">
+								<Link
+									href="/test"
+									className={styles.logo_user_th}
+									title="[tuyen dung] nhan vien kinh doan"
+								>
 									<Image
 										height={70}
 										width={70}
@@ -68,11 +72,11 @@ const Box_vlhd_top = ({ jobData }: any) => {
 							</div>
 							<div className={styles.right_item_vl}>
 								<h3>
-									<Link className={styles.tit_vip} href="#" title={job.title}>
+									<Link className={styles.tit_vip} href={job.link} title={job.title}>
 										{job.title}
 									</Link>
 								</h3>
-								<Link className={styles.name_com} href="#" title={job.company}>
+								<Link className={styles.name_com} href={job.link} title={job.company}>
 									{job.company}
 								</Link>
 								<p className={styles.job_local}>{job.location}</p>
