@@ -7,30 +7,32 @@ import Comment from '../comment/comment'
 import AI_365 from '../dexuat-AI365/AI_365'
 import All_content_post_sub from '../all_content_post_sub/all_content_post_sub'
 import Ctn_all_new from '../ctn_all_new/ctn_all_new'
-type Props = {}
+type Props = {
+	show: boolean
+}
 
-const Main_timviec = (props: Props) => {
+const Main_timviec = ({ show }: Props) => {
 	return (
-		<div  className={`${styles.main_timviec} ${styles.m_detail_city}`}>
+		<div className={`${styles.main_timviec} ${styles.m_detail_city}`}>
 			<div className={`${styles.nd_chitiettd}`}>
 				<div className={`${styles.chitiettd}`}>
 					<div className={`${styles.all_content_post}`}>
 						<div className={`${styles.all_content_post_main}`}>
-						<Chi_tiet_td/>
-							<Comment/>
+							<Chi_tiet_td show={show} />
+							<Comment />
 							<div className={`${styles.banner_timviec}`}>
-								<a href="/cv-xin-viec" className={`${styles.cv_xinviec}`} target="blank">
+								<Link href="/cv-xin-viec" className={`${styles.cv_xinviec}`} target="blank">
 									CV XIN VIỆC{' '}
 									<div>
 										<img src="https://timviec365.vn/images/detail/icon_go.svg" alt="icon cv" />
 									</div>
-								</a>
+								</Link>
 							</div>
-							<AI_365/>
+							<AI_365 />
 						</div>
-						<All_content_post_sub/>
+						<All_content_post_sub />
 					</div>
-					<Ctn_all_new/>
+					<Ctn_all_new />
 				</div>
 				<Footer />
 			</div>

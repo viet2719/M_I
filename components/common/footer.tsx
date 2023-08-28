@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Image from 'next/image'
 import styles from '@styles/common/footer.module.scss'
+import Link from 'next/link'
 const footerData = [
 	{
 		id: 1,
@@ -95,228 +96,228 @@ const Footer = () => {
 		<div className={styles.footer_main}>
 			<div className={styles.footer_content}>
 				<div className={styles.footer_block1}>
-					<a rel="dofollow" target="_blank" href="cv365/" className={styles.footer_block1_txt}>
+					<Link rel="dofollow" target="_blank" href="cv365/" className={styles.footer_block1_txt}>
 						Hồ sơ xin việc,
-					</a>
-					<a
+					</Link>
+					<Link
 						rel="dofollow"
 						target="_blank"
 						href="cv365/cv-tieng-anh"
 						className={styles.footer_block1_txt}
 					>
 						cv tiếng anh,
-					</a>
-					<a
+					</Link>
+					<Link
 						rel="dofollow"
 						target="_blank"
 						href="cv365/cv-tieng-viet"
 						className={styles.footer_block1_txt}
 					>
 						cv tiếng việt,
-					</a>
-					<a
+					</Link>
+					<Link
 						rel="dofollow"
 						target="_blank"
 						href="cv365/cv-tieng-han"
 						className={styles.footer_block1_txt}
 					>
 						cv tiếng hàn,
-					</a>
-					<a
+					</Link>
+					<Link
 						rel="dofollow"
 						target="_blank"
 						href="cv365/cv-tieng-nhat"
 						className={styles.footer_block1_txt}
 					>
 						cv tiếng nhật,
-					</a>
-					<a
+					</Link>
+					<Link
 						rel="dofollow"
 						target="_blank"
 						href="cv365/mau-don-xin-viec"
 						className={styles.footer_block1_txt}
 					>
 						đơn xin việc,
-					</a>
-					<a
+					</Link>
+					<Link
 						rel="dofollow"
 						target="_blank"
 						href="cv365/mau-cover-letter-thu-xin-viec"
 						className={styles.footer_block1_txt}
 					>
 						thư xin việc,
-					</a>
-					<a
+					</Link>
+					<Link
 						rel="dofollow"
 						target="_blank"
 						href="cv365/mau-so-yeu-ly-lich"
 						className={styles.footer_block1_txt}
 					>
 						sơ yếu lý lịch,
-					</a>
-					<a
+					</Link>
+					<Link
 						rel="dofollow"
 						target="_blank"
 						href="cv365/cv-viet-tat-cua-tu-gi-nhung-dieu-can-biet-khi-viet-cv.html"
 						className={styles.footer_block1_txt}
 					>
 						cv là gì,
-					</a>
-					<a
+					</Link>
+					<Link
 						rel="dofollow"
 						target="_blank"
 						href="cau-hoi-tuyen-dung"
 						className={styles.footer_block1_txt}
 					>
 						câu hỏi phỏng vấn,
-					</a>
-					<a
+					</Link>
+					<Link
 						rel="dofollow"
 						target="_blank"
 						href="cv365/cv-ke-toan"
 						className={styles.footer_block1_txt}
 					>
 						cv kế toán,
-					</a>
-					<a
+					</Link>
+					<Link
 						rel="dofollow"
 						target="_blank"
 						href="cv365/cv-kinh-doanh"
 						className={styles.footer_block1_txt}
 					>
 						cv kinh doanh,
-					</a>
-					<a rel="dofollow" target="_blank" href="cv365/cv-it" className={styles.footer_block1_txt}>
+					</Link>
+					<Link rel="dofollow" target="_blank" href="cv365/cv-it" className={styles.footer_block1_txt}>
 						cv IT,
-					</a>
-					<a
+					</Link>
+					<Link
 						rel="dofollow"
 						target="_blank"
 						href="cv365/cv-hanh-chinh-nhan-su"
 						className={styles.footer_block1_txt}
 					>
 						cv nhân sự,
-					</a>
-					<a
+					</Link>
+					<Link
 						rel="dofollow"
 						target="_blank"
 						href="cv365/cv-nhan-vien-ban-hang"
 						className={styles.footer_block1_txt}
 					>
 						cv bán hàng,
-					</a>
-					<a
+					</Link>
+					<Link
 						rel="dofollow"
 						target="_blank"
 						href="cv365/cv-marketing"
 						className={styles.footer_block1_txt}
 					>
 						CV marketing,
-					</a>
-					<a
+					</Link>
+					<Link
 						rel="dofollow"
 						target="_blank"
 						href="cv365/cv-xay-dung"
 						className={styles.footer_block1_txt}
 					>
 						cv xây dựng,
-					</a>
-					<a
+					</Link>
+					<Link
 						rel="dofollow"
 						target="_blank"
 						href="cv365/cv-co-khi"
 						className={styles.footer_block1_txt}
 					>
 						cv cơ khí,
-					</a>
-					<a
+					</Link>
+					<Link
 						rel="dofollow"
 						target="_blank"
 						href="cv365/cv-xuat-nhap-khau"
 						className={styles.footer_block1_txt}
 					>
 						cv xuất nhập khẩu,
-					</a>
-					<a
+					</Link>
+					<Link
 						rel="dofollow"
 						target="_blank"
 						href="cv365/cv-sinh-vien-moi-ra-truong"
 						className={styles.footer_block1_txt}
 					>
 						cv sinh viên mới ra trường,
-					</a>
-					<a
+					</Link>
+					<Link
 						rel="dofollow"
 						target="_blank"
 						href="cv365/cv-kien-truc-noi-that"
 						className={styles.footer_block1_txt}
 					>
 						cv kiến trúc nội thất,
-					</a>
-					<a
+					</Link>
+					<Link
 						rel="dofollow"
 						target="_blank"
 						href="cv365/cv-cham-soc-khach-hang"
 						className={styles.footer_block1_txt}
 					>
 						cv chăm sóc khách hàng,
-					</a>
-					<a
+					</Link>
+					<Link
 						rel="dofollow"
 						target="_blank"
 						href="cv365/cv-phat-trien-thi-truong"
 						className={styles.footer_block1_txt}
 					>
 						cv phát triển thị trường,
-					</a>
-					<a
+					</Link>
+					<Link
 						rel="dofollow"
 						target="_blank"
 						href="cv365/cv-du-lich"
 						className={styles.footer_block1_txt}
 					>
 						cv du lịch,
-					</a>
-					<a
+					</Link>
+					<Link
 						rel="dofollow"
 						target="_blank"
 						href="cv365/cv-thu-ngan"
 						className={styles.footer_block1_txt}
 					>
 						cv thu ngân,
-					</a>
-					<a
+					</Link>
+					<Link
 						rel="dofollow"
 						target="_blank"
 						href="cv365/cv-viec-lam-telesale"
 						className={styles.footer_block1_txt}
 					>
 						cv telesale,
-					</a>
-					<a
+					</Link>
+					<Link
 						rel="dofollow"
 						target="_blank"
 						href="cv365/cv-tai-chinh"
 						className={styles.footer_block1_txt}
 					>
 						cv tài chính,
-					</a>
-					<a
+					</Link>
+					<Link
 						rel="dofollow"
 						target="_blank"
 						href="cv365/cv-logistic"
 						className={styles.footer_block1_txt}
 					>
 						cv logistic,
-					</a>
-					<a
+					</Link>
+					<Link
 						rel="dofollow"
 						target="_blank"
 						href="cv365/cv-nha-hang-khach-san"
 						className={styles.footer_block1_txt}
 					>
 						cv nhà hàng khách sạn
-					</a>
+					</Link>
 				</div>
 				<div className={styles.gach_ngang} />
 				<div className={styles.footer_block2}>
@@ -355,48 +356,48 @@ const Footer = () => {
 						>
 							<div className={styles.timviec_item}>
 								<div className={styles.content_item}>
-									<a rel="nofollow" href="gioi-thieu-chung.html">
+									<Link rel="nofollow" href="gioi-thieu-chung.html">
 										Giới thiệu
-									</a>
-									<a rel="nofollow" href="thong-tin-can-biet.html">
+									</Link>
+									<Link rel="nofollow" href="thong-tin-can-biet.html">
 										Thông tin
-									</a>
-									<a
+									</Link>
+									<Link
 										rel="nofollow"
 										href="blog/hoi-va-dap-ve-timviec365vn-chat365-va-cac-ung-dung-chuyen-doi-so-new16648.html"
 									>
 										Hỏi đáp
-									</a>
-									<a rel="nofollow" href="blog">
+									</Link>
+									<Link rel="nofollow" href="blog">
 										Cẩm nang
-									</a>
-									<a rel="nofollow" href="thoa-thuan-su-dung.html">
+									</Link>
+									<Link rel="nofollow" href="thoa-thuan-su-dung.html">
 										Thỏa thuận
-									</a>
-									<a rel="nofollow" href="quy-dinh-bao-mat.html">
+									</Link>
+									<Link rel="nofollow" href="quy-dinh-bao-mat.html">
 										Bảo mật
-									</a>
+									</Link>
 								</div>
 								<div className={styles.content_item}>
-									<a rel="nofollow" href="giai-quyet-tranh-chap.html">
+									<Link rel="nofollow" href="giai-quyet-tranh-chap.html">
 										Giải quyết tranh chấp
-									</a>
-									<a rel="nofollow" href="so-do-trang-web.html">
+									</Link>
+									<Link rel="nofollow" href="so-do-trang-web.html">
 										Sơ đồ Website
-									</a>
-									<a
+									</Link>
+									<Link
 										rel="nofollow"
 										target="_blank"
 										href="https://www.youtube.com/watch?v=UssNzo6m1p8"
 									>
 										Video
-									</a>
-									<a rel="nofollow" href="blog/ung-dung-cua-trinh-sat-ai365-new16655.html">
+									</Link>
+									<Link rel="nofollow" href="blog/ung-dung-cua-trinh-sat-ai365-new16655.html">
 										AI365
-									</a>
-									<a rel="nofollow" href="blog/huy-hieu-tia-set-new16722.html">
+									</Link>
+									<Link rel="nofollow" href="blog/huy-hieu-tia-set-new16722.html">
 										Huy hiệu tia sét
-									</a>
+									</Link>
 								</div>
 							</div>
 						</div>
@@ -442,21 +443,21 @@ const Footer = () => {
 											{item.links
 												.slice(0, Math.ceil(item.links.length / 2))
 												.map((link, linkIndex) => (
-													<a key={linkIndex} href={link.url}>
+													<Link key={linkIndex} href={link.url}>
 														{link.label}
-													</a>
+													</Link>
 												))}
 										</div>
 										<div className={styles.content_item}>
 											{item.links.slice(Math.ceil(item.links.length / 2)).map((link, linkIndex) => (
-												<a key={`${linkIndex}_second`} href={link.url}>
+												<Link key={`${linkIndex}_second`} href={link.url}>
 													{link.label}
-												</a>
+												</Link>
 											))}
 										</div>
 									</div>
 									{item.other_list && (
-										<a
+										<Link
 											rel="nofollow"
 											href="danh-sach-viec-lam-theo-tags"
 											className={styles.seen_all}
@@ -469,7 +470,7 @@ const Footer = () => {
 												src="/images/before_login/2arr_right.svg"
 												alt="see_all"
 											/>
-										</a>
+										</Link>
 									)}
 								</div>
 							</div>
@@ -491,32 +492,32 @@ const Footer = () => {
 						<span className={styles.wrap_365_txt}>KẾT NỐI VỚI TIMVIEC365.VN</span>
 						<div className={styles.wrap_block_connect}>
 							<div className={styles.wrap_icon_connet}>
-								<a href="https://chat365.timviec365.vn/" rel="nofollow" target="_blank">
+								<Link href="https://chat365.timviec365.vn/" rel="nofollow" target="_blank">
 									<Image width={27} height={14} src="/images/before_login/icon365.svg" alt="chat" />
-								</a>
+								</Link>
 							</div>
 							<div className={styles.wrap_icon_connet}>
-								<a href="https://www.facebook.com/Timviec365.Vn/" rel="nofollow" target="_blank">
+								<Link href="https://www.facebook.com/Timviec365.Vn/" rel="nofollow" target="_blank">
 									<Image
 										width={9}
 										height={14}
 										src="/images/before_login/icon_fb.svg"
 										alt="facebook"
 									/>
-								</a>
+								</Link>
 							</div>
 							<div className={styles.wrap_icon_connet}>
-								<a href="https://twitter.com/timviec365vn" rel="nofollow" target="_blank">
+								<Link href="https://twitter.com/timviec365vn" rel="nofollow" target="_blank">
 									<Image
 										width={13}
 										height={11}
 										src="/images/before_login/icon_witter.svg"
 										alt="witter"
 									/>
-								</a>
+								</Link>
 							</div>
 							<div className={styles.wrap_icon_connet}>
-								<a
+								<Link
 									href="https://www.youtube.com/channel/UCI6_mZYL8exLuvmtipBFrkg/videos"
 									rel="nofollow"
 									target="_blank"
@@ -527,11 +528,11 @@ const Footer = () => {
 										src="/images/before_login/icon_youtube.svg"
 										alt="youtube"
 									/>
-								</a>
+								</Link>
 							</div>
 						</div>
 						<div className={styles.wrap_certify}>
-							<a rel="nofollow" href="http://online.gov.vn/Home/WebDetails/35979">
+							<Link rel="nofollow" href="http://online.gov.vn/Home/WebDetails/35979">
 								<Image
 									width={108}
 									height={40}
@@ -539,8 +540,8 @@ const Footer = () => {
 									src={'/images/before_login/DK_bocongthuong.png'}
 									alt="Đã đăng ký bộ công thương"
 								/>
-							</a>
-							<a
+							</Link>
+							<Link
 								rel="nofollow"
 								href="//www.dmca.com/Protection/Status.aspx?ID=5b1070f1-e6fb-4ba4-8283-84c7da8f8398"
 							>
@@ -551,19 +552,19 @@ const Footer = () => {
 									src={'/images/before_login/dmca.png'}
 									alt="DMCA.com Protection Status"
 								/>
-							</a>
+							</Link>
 						</div>
 					</div>
 					<div className={styles.wrap_address}>
 						<p className={styles.wrap_address_header}>CÔNG TY CỔ PHẦN THANH TOÁN HƯNG HÀ</p>
-						<a
+						<Link
 							href="https://goo.gl/maps/stYYuH5Ln5U2"
 							rel="nofollow"
 							target="_blank"
 							className={styles.wrap_address_txt}
 						>
 							VP 1: Tầng 4, B50, Lô 6, KĐT Định Công - Hoàng Mai - Hà Nội
-						</a>
+						</Link>
 						<p className={styles.wrap_address_txt}>
 							VP2: Thôn Thanh Miếu, Xã Việt Hưng, Huyện Văn Lâm, Tỉnh Hưng Yên
 						</p>
@@ -643,7 +644,7 @@ const Footer = () => {
 					</div>
 					<div className={`${styles.flex} ${styles.jtf_sb}`}>
 						<div className={`${styles.wrap_certify}`}>
-							<a
+							<Link
 								rel="nofollow"
 								target="_blank"
 								href="http://online.gov.vn/Home/WebDetails/35979?AspxAutoDetectCookieSupport=1"
@@ -655,8 +656,8 @@ const Footer = () => {
 									src={'/images/before_login/DK_bocongthuong.png'}
 									alt="Đã đăng ký bộ công thương"
 								/>
-							</a>
-							<a
+							</Link>
+							<Link
 								rel="nofollow"
 								href="//www.dmca.com/Protection/Status.aspx?ID=5b1070f1-e6fb-4ba4-8283-84c7da8f8398"
 							>
@@ -667,36 +668,36 @@ const Footer = () => {
 									src={'/images/before_login/dmca.png'}
 									alt="DMCA.com Protection Status"
 								/>
-							</a>
+							</Link>
 						</div>
 						<div className={`${styles.wrap_block_connect}`}>
 							<div className={`${styles.wrap_icon_connet}`}>
-								<a href="https://chat365.timviec365.vn/" rel="nofollow" target="_blank">
+								<Link href="https://chat365.timviec365.vn/" rel="nofollow" target="_blank">
 									<Image width={9} height={14} src="/images/before_login/icon365.svg" alt="chat" />
-								</a>
+								</Link>
 							</div>
 							<div className={`${styles.wrap_icon_connet}`}>
-								<a href="https://www.facebook.com/Timviec365.Vn/" rel="nofollow" target="_blank">
+								<Link href="https://www.facebook.com/Timviec365.Vn/" rel="nofollow" target="_blank">
 									<Image
 										width={9}
 										height={14}
 										src="/images/before_login/icon_fb.svg"
 										alt="facebook"
 									/>
-								</a>
+								</Link>
 							</div>
 							<div className={`${styles.wrap_icon_connet}`}>
-								<a href="https://twitter.com/timviec365vn" rel="nofollow" target="_blank">
+								<Link href="https://twitter.com/timviec365vn" rel="nofollow" target="_blank">
 									<Image
 										width={9}
 										height={14}
 										src="/images/before_login/icon_witter.svg"
 										alt="witter"
 									/>
-								</a>
+								</Link>
 							</div>
 							<div className={`${styles.wrap_icon_connet}`}>
-								<a
+								<Link
 									href="https://www.youtube.com/channel/UCI6_mZYL8exLuvmtipBFrkg/videos"
 									rel="nofollow"
 									target="_blank"
@@ -707,7 +708,7 @@ const Footer = () => {
 										src="/images/before_login/icon_youtube.svg"
 										alt="youtube"
 									/>
-								</a>
+								</Link>
 							</div>
 						</div>
 					</div>
@@ -719,7 +720,7 @@ const Footer = () => {
 					</p>
 					<div className={styles.wrap_qr_block}>
 						<button className={styles.wrap_qr_child}>
-							<a
+							<Link
 								href="https://play.google.com/store/apps/details?id=timviec365vn.timviec365_vn"
 								ios-href="https://apps.apple.com/vn/app/t%C3%ACm-vi%E1%BB%87c-365-t%C3%ACm-vi%E1%BB%87c-online/id1597712953?l=vi"
 								className={styles.ios_check}
@@ -734,10 +735,10 @@ const Footer = () => {
 									src="/images/before_login/download.svg"
 									alt="download"
 								/>
-							</a>
+							</Link>
 						</button>
 						<button className={styles.wrap_qr_child}>
-							<a
+							<Link
 								href="https://play.google.com/store/apps/details?id=vn.timviec365.company"
 								ios-href="https://apps.apple.com/vn/app/nh%C3%A0-tuy%E1%BB%83n-d%E1%BB%A5ng-timviec365-vn/id1606069668"
 								rel="nofollow"
@@ -752,10 +753,10 @@ const Footer = () => {
 									src="/images/before_login/download.svg"
 									alt="download"
 								/>
-							</a>
+							</Link>
 						</button>
 						<button className={styles.wrap_qr_child + ' ' + styles.wrap_qr_child_respon}>
-							<a
+							<Link
 								href="https://play.google.com/store/apps/details?id=vn.timviec365.cv.cv365_vn"
 								className={styles.ios_check}
 								ios-href="https://apps.apple.com/us/app/cv-xin-vi%E1%BB%87c-365-t%E1%BA%A1o-cv-%C4%91%E1%BA%B9p/id1631076979"
@@ -770,10 +771,10 @@ const Footer = () => {
 									src="/images/before_login/download.svg"
 									alt="download"
 								/>
-							</a>
+							</Link>
 						</button>
 						<button className={styles.wrap_qr_child + ' ' + styles.wrap_qr_child_respon}>
-							<a
+							<Link
 								href="https://play.google.com/store/apps/details?id=vn.timviec365.chat_365"
 								className={styles.ios_check}
 								ios-href="https://apps.apple.com/us/app/chat365-nh%E1%BA%AFn-tin-nhanh-ch%C3%B3ng/id1623353330"
@@ -788,7 +789,7 @@ const Footer = () => {
 									src="/images/before_login/download.svg"
 									alt="download"
 								/>
-							</a>
+							</Link>
 						</button>
 					</div>
 				</div>

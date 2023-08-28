@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import React from 'react'
 import styles from '@styles/home/box_vlth.module.scss'
+import Link from 'next/link'
 
 const Box_vlth = ({ jobList }: any) => {
 	return (
@@ -10,7 +11,7 @@ const Box_vlth = ({ jobList }: any) => {
 					<div key={index} className={`${styles.item_vl} ${styles.item_home_th}`}>
 						<div className={styles.in_vl}>
 							<div className={styles.img_item_vl}>
-								<a href="" className={styles.logo_user_th} title="[tuyen dung] nhan vien kinh doan">
+								<Link href="#" className={styles.logo_user_th} title="[tuyen dung] nhan vien kinh doan">
 									<Image
 										height={70}
 										width={70}
@@ -19,7 +20,7 @@ const Box_vlth = ({ jobList }: any) => {
 										alt="user_chat_off"
 									/>
 									<span className={styles.box_time_off}>1 ngay</span>
-								</a>
+								</Link>
 								<div className={styles.box_vote_new}>
 									<Image
 										className="icon_vote_new"
@@ -67,21 +68,21 @@ const Box_vlth = ({ jobList }: any) => {
 							</div>
 							<div className={styles.right_item_vl}>
 								<h3>
-									<a
+									<Link
 										className={styles.tit_vip}
 										href={`/tuyen-dung/${job.id}.html`}
 										title={job.title}
 									>
 										{job.title}
-									</a>
+									</Link>
 								</h3>
-								<a
+								<Link
 									className={styles.name_com}
 									href={`/cong-ty/${job.companyName}`}
 									title={job.companyName}
 								>
 									{job.companyName}
-								</a>
+								</Link>
 								<p className={styles.job_local}>{job.location}</p>
 								<p className={styles.job_chat} data-id={job.id} id-chat={job.chatId}>
 									Chat
@@ -90,7 +91,7 @@ const Box_vlth = ({ jobList }: any) => {
 								<p className={styles.job_money} title={job.salary}>
 									{job.salary}
 								</p>
-								<a href={`/lich-su/danh-sach-tong-u${job.id}t1`} className={styles.job_history}>
+								<Link href={`/lich-su/danh-sach-tong-u${job.id}t1`} className={styles.job_history}>
 									<Image
 										width={16}
 										height={16}
@@ -98,7 +99,7 @@ const Box_vlth = ({ jobList }: any) => {
 										alt="icon lịch sử"
 									/>
 									Lịch sử
-								</a>
+								</Link>
 							</div>
 						</div>
 					</div>

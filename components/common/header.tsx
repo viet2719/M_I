@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import React, { useState } from 'react'
 import styles from '@styles/common/header.module.scss'
+import Link from 'next/link'
 
 export interface HeaderProps {}
 
@@ -167,14 +168,14 @@ export default function Header({ children }: any, props: HeaderProps) {
 		<>
 			<header className={styles.new_header}>
 				<div className={styles.logo_header}>
-					<a href="">
+					<Link href="/">
 						<Image
 							src={'/images/timviec365-logo.png'}
 							alt="Tìm việc làm nhanh & Tuyển dụng hiệu quả"
 							width={137}
 							height={29}
 						/>
-					</a>
+					</Link>
 					<span
 						className={`${isToggle ? styles.mobi_sel : styles.close_mobi_sel}`}
 						onClick={() => {
@@ -197,21 +198,21 @@ export default function Header({ children }: any, props: HeaderProps) {
 						<div id={styles.mobi}>
 							<div className={styles.mobi_from}>
 								<div className={styles.box_btn} id={styles.box_dangnhap}>
-									<a href="" className={styles.ctn_chung_hr}>
+									<Link href="#" className={styles.ctn_chung_hr}>
 										<span>Đăng nhập</span>
-									</a>
+									</Link>
 								</div>
 								<div className={styles.box_btn} id={styles.box_dangky}>
-									<a href="" className={styles.ctn_chung_hr}>
+									<Link href="#" className={styles.ctn_chung_hr}>
 										<span>Đăng ký</span>
-									</a>
+									</Link>
 								</div>
 							</div>
 						</div>
 						<div className={styles.box_btn_dangtin}>
-							<a href="" className={styles.ctn_chung_hr}>
+							<Link href="#" className={styles.ctn_chung_hr}>
 								Đăng tin
-							</a>
+							</Link>
 						</div>
 						<div className={styles.ctn_menu_chat}>
 							<span className={styles.chat_notifice}>
@@ -223,37 +224,37 @@ export default function Header({ children }: any, props: HeaderProps) {
 					<div className={styles.m_hd_right}>
 						<div className={`${styles.menu_item} ${styles.ctn_menu_item}`}>
 							<div className={`${styles.sub_domain} ${styles.ctn_sub_domain}`}>
-								<a href="" className={styles.sub_domain_url}>
+								<Link href="#" className={styles.sub_domain_url}>
 									CV xin việc
-								</a>
+								</Link>
 							</div>
 						</div>
 						<div className={`${styles.menu_item} ${styles.ctn_menu_item}`}>
 							<li className={styles.sub_domain}>
-								<a href="" className={styles.sub_domain_url}>
+								<Link href="#" className={styles.sub_domain_url}>
 									Khám phá
-								</a>
+								</Link>
 								<div className={styles.ctn_up_box}>
 									<ul className={`${styles.box_sub} ${styles.hidden}`}>
 										<li className={styles.ctn_box_ch}>
-											<a href="" className={styles.menu_blog}>
+											<Link href="#" className={styles.menu_blog}>
 												Blog
-											</a>
+											</Link>
 										</li>
 										<li className={styles.ctn_box_ch}>
-											<a href="" className={styles.menu_bgia}>
+											<Link href="#" className={styles.menu_bgia}>
 												Bảng giá
-											</a>
+											</Link>
 										</li>
 										<li className={styles.ctn_box_ch}>
-											<a href="" className={styles.menu_tv}>
+											<Link href="#" className={styles.menu_tv}>
 												Trang vàng
-											</a>
+											</Link>
 										</li>
 										<li className={styles.ctn_box_ch}>
-											<a href="" className={styles.menu_ctv}>
+											<Link href="#" className={styles.menu_ctv}>
 												Cộng tác viên
-											</a>
+											</Link>
 										</li>
 									</ul>
 								</div>
@@ -261,74 +262,74 @@ export default function Header({ children }: any, props: HeaderProps) {
 						</div>
 						<div className={`${styles.menu_item} ${styles.ctn_menu_item}`}>
 							<div className={styles.sub_domain}>
-								<a href="" className={styles.sub_domain_url}>
+								<Link href="#" className={styles.sub_domain_url}>
 									Tiện ích
-								</a>
+								</Link>
 								<div className={styles.ctn_up_box}>
 									<ul className={`${styles.box_sub} ${styles.hidden}`}>
 										<li className={styles.ctn_box_ch}>
-											<a href="" className={styles.menu_tra_luong}>
+											<Link href="#" className={styles.menu_tra_luong}>
 												Tra cứu lương
-											</a>
+											</Link>
 										</li>
 										<li className={styles.ctn_box_ch}>
-											<a href="" className={styles.menu_luong_grn}>
+											<Link href="#" className={styles.menu_luong_grn}>
 												Lương GROSS - NET
-											</a>
+											</Link>
 										</li>
 										<li className={styles.ctn_box_ch}>
-											<a href="" className={styles.menu_email}>
+											<Link href="#" className={styles.menu_email}>
 												Email365
-											</a>
+											</Link>
 										</li>
 										<li className={styles.ctn_box_ch}>
-											<a href="" className={styles.menu_taiapp}>
+											<Link href="#" className={styles.menu_taiapp}>
 												Tải app
-											</a>
+											</Link>
 										</li>
 										<li className={styles.ctn_box_ch}>
-											<a href="" className={styles.menu_bhtn}>
+											<Link href="#" className={styles.menu_bhtn}>
 												Bảo hiểm thất nghiệp
-											</a>
+											</Link>
 										</li>
 										<li className={styles.ctn_box_ch}>
-											<a href="" className={styles.menu_mi}>
+											<Link href="#" className={styles.menu_mi}>
 												Trắc nghiệm MI
-											</a>
+											</Link>
 										</li>
 										<li className={styles.ctn_box_ch}>
-											<a href="" className={styles.menu_mbti}>
+											<Link href="#" className={styles.menu_mbti}>
 												Trắc nghiệm MBTI
-											</a>
+											</Link>
 										</li>
 										<li className={styles.ctn_box_ch}>
-											<a href="" className={styles.menu_eq}>
+											<Link href="#" className={styles.menu_eq}>
 												Trắc nghiệm EQ
-											</a>
+											</Link>
 										</li>
 										<li className={styles.ctn_box_ch}>
-											<a href="" className={styles.menu_en}>
+											<Link href="#" className={styles.menu_en}>
 												Trắc nghiệm Energram
-											</a>
+											</Link>
 										</li>
 										<li className={styles.ctn_box_ch}>
-											<a href="" className={styles.menu_ptcv}>
+											<Link href="#" className={styles.menu_ptcv}>
 												Phân tích CV
-											</a>
+											</Link>
 										</li>
 									</ul>
 								</div>
 							</div>
 						</div>
 						<div className={`${styles.menu_item} ${styles.ctn_menu_item}`}>
-							<a href="" className={styles.sub_domain_url}>
+							<Link href="#" className={styles.sub_domain_url}>
 								Tìm ứng viên
-							</a>
+							</Link>
 						</div>
 						<div className={`${styles.menu_item} ${styles.ctn_menu_item}`}>
-							<a href="" className={styles.sub_domain_url} target="_blank">
+							<Link href="#" className={styles.sub_domain_url} target="_blank">
 								Chuyển đổi số
-							</a>
+							</Link>
 						</div>
 					</div>
 				</div>
@@ -339,7 +340,7 @@ export default function Header({ children }: any, props: HeaderProps) {
 							<div className={styles.mobi_form}>
 								<div className={styles.m_ul_container}>
 									<li>
-										<a href="" className={styles.ctn_mobi_sub1}>
+										<Link href="#" className={styles.ctn_mobi_sub1}>
 											<Image
 												src={'/images/before_login/exp_dangky.png'}
 												alt="exp_dangky"
@@ -348,10 +349,10 @@ export default function Header({ children }: any, props: HeaderProps) {
 												className={styles.lazyloaded}
 											/>
 											<span>Đăng ký</span>
-										</a>
+										</Link>
 									</li>
 									<li>
-										<a href="" className={styles.ctn_mobi_sub1}>
+										<Link href="#" className={styles.ctn_mobi_sub1}>
 											<Image
 												src={'/images/before_login/exp_dangnhap.png'}
 												alt="exp_dangnhap"
@@ -360,10 +361,10 @@ export default function Header({ children }: any, props: HeaderProps) {
 												className={styles.lazyloaded}
 											/>
 											<span>Đăng nhập</span>
-										</a>
+										</Link>
 									</li>
 									<li className={styles.mobile_dangtin}>
-										<a href="">
+										<Link href="#">
 											<Image
 												src={img_dangtin}
 												alt="img_dangtin"
@@ -372,10 +373,10 @@ export default function Header({ children }: any, props: HeaderProps) {
 												className={styles.lazyloaded}
 											/>
 											<span>Đăng tin</span>
-										</a>
+										</Link>
 									</li>
 									<li className={styles.ctn_mobi_sub_domain}>
-										<a href="" className={`${styles.ctn_mobi_sub} ${styles.ctn_mobi_sub2}`}>
+										<Link href="#" className={`${styles.ctn_mobi_sub} ${styles.ctn_mobi_sub2}`}>
 											<Image
 												src={img_cv}
 												alt="img_cv"
@@ -384,11 +385,11 @@ export default function Header({ children }: any, props: HeaderProps) {
 												className={styles.lazyloaded}
 											/>
 											<span>CV xin việc</span>
-										</a>
+										</Link>
 									</li>
 									<li className={styles.ctn_mobi_sub_domain}>
-										<a
-											href=""
+										<Link
+											href="#"
 											className={`${styles.ctn_mobi_sub} ${styles.ctn_mobi_sub2} ${styles.m_box_hdsaudn}`}
 											onClick={(event) => {
 												event.preventDefault()
@@ -415,7 +416,7 @@ export default function Header({ children }: any, props: HeaderProps) {
 													transition: '1s all',
 												}}
 											/>
-										</a>
+										</Link>
 										<ul
 											className={`${styles.ctn_mobi_sub_ul} ${
 												chooseKhamPha ? styles.show : styles.none
@@ -430,16 +431,16 @@ export default function Header({ children }: any, props: HeaderProps) {
 														height={item.height}
 														className={item.className}
 													/>
-													<a className={item.menuClass} href={item.link}>
+													<Link className={item.menuClass} href={item.link}>
 														{item.text}
-													</a>
+													</Link>
 												</li>
 											))}
 										</ul>
 									</li>
 									<li className={styles.ctn_mobi_sub_domain}>
-										<a
-											href=""
+										<Link
+											href="#"
 											className={`${styles.ctn_mobi_sub} ${styles.ctn_mobi_sub2} ${styles.m_box_hdsaudn}`}
 											onClick={(event) => {
 												event.preventDefault()
@@ -466,7 +467,7 @@ export default function Header({ children }: any, props: HeaderProps) {
 													transition: '1s all',
 												}}
 											/>
-										</a>
+										</Link>
 										<ul
 											className={`${styles.ctn_mobi_sub_ul} ${
 												chooseTienIch ? styles.show : styles.none
@@ -481,15 +482,15 @@ export default function Header({ children }: any, props: HeaderProps) {
 														height={item.height}
 														className={item.className}
 													/>
-													<a className={item.menuClass} href={item.link}>
+													<Link className={item.menuClass} href={item.link}>
 														{item.text}
-													</a>
+													</Link>
 												</li>
 											))}
 										</ul>
 									</li>
 									<li>
-										<a href="" className={styles.ctn_mobi_sub1}>
+										<Link href="#" className={styles.ctn_mobi_sub1}>
 											<Image
 												src={'/images/before_login/exp_tim_uvien.png'}
 												alt="exp_tim_uvien"
@@ -498,10 +499,10 @@ export default function Header({ children }: any, props: HeaderProps) {
 												className={styles.lazyloaded}
 											/>
 											<span>Tìm ứng viên</span>
-										</a>
+										</Link>
 									</li>
 									<li>
-										<a href="" className={styles.ctn_mobi_sub1}>
+										<Link href="#" className={styles.ctn_mobi_sub1}>
 											<Image
 												src={'/images/before_login/exp_chuyendoiso.png'}
 												alt="exp_chuyendoiso"
@@ -510,7 +511,7 @@ export default function Header({ children }: any, props: HeaderProps) {
 												className={styles.lazyloaded}
 											/>
 											<span>Chuyển đổi số</span>
-										</a>
+										</Link>
 									</li>
 								</div>
 							</div>

@@ -3,6 +3,7 @@ import styles from '@styles/common/Box_search_details.module.scss'
 import Image from 'next/image'
 import Select from 'react-select'
 import BtnSelect from '../home/btnSelect'
+import Link from 'next/link'
 
 const Box_search_details = () => {
 	const cityOptions = [
@@ -12,11 +13,11 @@ const Box_search_details = () => {
 		{ value: 'hue', label: 'Huế' },
 	]
 	// Xử lý show-hide phần tìm kiếm theo tên
-	const [valueNameSearch, setValueNameSearch] = useState('')
-	const [checkSearchNameCity, setCheckSearchNameCity] = useState<any>(false)
+	const [valueNameSearch, setValueNameSearch] = useState<string>('')
+	const [checkSearchNameCity, setCheckSearchNameCity] = useState<boolean>(false)
 
 	// Xử lý tìm kiếm nâng cao
-	const [chooseSearchAdvanced, setChooseSearchAdvanced] = useState<any>(false)
+	const [chooseSearchAdvanced, setChooseSearchAdvanced] = useState<boolean>(false)
 	return (
 		<div className={styles.box_m_search} id={styles.search_new_ntd}>
 			<div className={styles.new_search}>
@@ -71,67 +72,67 @@ const Box_search_details = () => {
 							<div className={`${styles.kq_gy} ${styles.solid}`}>
 								<p className={styles.text_def}>Từ khóa phổ biến</p>
 								<span>
-									<a>Nhân viên kinh doanh</a>
+									<Link href={"#"} >Nhân viên kinh doanh</Link>
 								</span>
 								<span>
-									<a>IT phần mềm</a>
+									<Link href={"#"}>IT phần mềm</Link>
 								</span>
 								<span>
-									<a>Kế toán - Kiểm toán</a>
+									<Link href={"#"}>Kế toán - Kiểm toán</Link>
 								</span>
 								<span>
-									<a>KD bất động sản</a>
+									<Link href={"#"}>KD bất động sản</Link>
 								</span>
 								<span>
-									<a>IT Phần cứng - mạng</a>
+									<Link href={"#"}>IT Phần cứng - mạng</Link>
 								</span>
 								<span>
-									<a>Marketing - PR</a>
+									<Link href={"#"}>Marketing - PR</Link>
 								</span>
 								<span>
-									<a>Việc làm bán hàng</a>
+									<Link href={"#"}>Việc làm bán hàng</Link>
 								</span>
 								<span>
-									<a>Xây dựng</a>
+									<Link href={"#"}>Xây dựng</Link>
 								</span>
 								<span>
-									<a>Tiếp thị - Quảng cáo</a>
+									<Link href={"#"}>Tiếp thị - Quảng cáo</Link>
 								</span>
 								<span>
-									<a>Tư vấn</a>
+									<Link href={"#"}>Tư vấn</Link>
 								</span>
 								<span>
-									<a>Sản xuất - Vận hành sản xuất</a>
+									<Link href={"#"}>Sản xuất - Vận hành sản xuất</Link>
 								</span>
 								<span>
-									<a>Nhập liệu</a>
+									<Link href={"#"}>Nhập liệu</Link>
 								</span>
 								<span>
-									<a>Chăm sóc khách hàng</a>
+									<Link href={"#"}>Chăm sóc khách hàng</Link>
 								</span>
 								<span>
-									<a>Cơ khí - Chế tạo</a>
+									<Link href={"#"}>Cơ khí - Chế tạo</Link>
 								</span>
 								<span>
-									<a>Du lịch</a>
+									<Link href={"#"}>Du lịch</Link>
 								</span>
 								<span>
-									<a>Dịch vụ</a>
+									<Link href={"#"}>Dịch vụ</Link>
 								</span>
 								<span>
-									<a>Bưu chính viễn thông</a>
+									<Link href={"#"}>Bưu chính viễn thông</Link>
 								</span>
 								<span>
-									<a>Phát triển thị trường</a>
+									<Link href={"#"}>Phát triển thị trường</Link>
 								</span>
 								<span>
-									<a>Bảo hiểm</a>
+									<Link href={"#"}>Bảo hiểm</Link>
 								</span>
 								<span>
-									<a>Quản lý điều hành</a>
+									<Link href={"#"}>Quản lý điều hành</Link>
 								</span>
 								<span>
-									<a>Xuất - nhập khẩu</a>
+									<Link href={"#"}>Xuất - nhập khẩu</Link>
 								</span>
 							</div>
 						</div>
@@ -262,7 +263,7 @@ const Box_search_details = () => {
 					<Image
 						height={40}
 						width={40}
-						style={{marginTop:10}}
+						style={{marginTop:5}}
 						className={`${styles.show_nc} ${styles.nangcao}`}
 						src="/images/before_login/ic_show_nc.png"
 						alt="Tìm kiếm nâng cao"
@@ -314,7 +315,7 @@ const Box_search_details = () => {
 											</div>
 											<div className={styles['btn-pop']}>
 												<div className={styles['btn-pop-click']}>
-													<a id="btnsearchadvance">Tìm kiếm</a>
+													<Link href={"#"} id="btnsearchadvance">Tìm kiếm</Link>
 												</div>
 											</div>
 										</div>

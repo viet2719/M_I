@@ -135,7 +135,7 @@ const Model_noti = () => {
 							<p style={{ fontWeight: 'bold', marginBottom: 10 }} className={styles.gd_mobile}>
 								App CV365
 							</p>
-							<a
+							<Link
 								className={`${styles.link_dow_lg} ${styles.ios_check}`}
 								href="https://play.google.com/store/apps/details?id=vn.timviec365.cv.cv365_vn"
 								ios-href="https://apps.apple.com/us/app/cv-xin-vi%E1%BB%87c-365-t%E1%BA%A1o-cv-%C4%91%E1%BA%B9p/id1631076979"
@@ -143,13 +143,13 @@ const Model_noti = () => {
 								target="_blank"
 							>
 								Tải ngay
-							</a>
+							</Link>
 						</div>
 						<div style={{ float: 'left', width: '48%', marginTop: '2%' }}>
 							<p style={{ fontWeight: 'bold', marginBottom: 10 }} className={styles.gd_mobile}>
 								App UV
 							</p>
-							<a
+							<Link
 								className={`${styles.link_dow_lg} ${styles.ios_check}`}
 								href="https://play.google.com/store/apps/details?id=timviec365vn.timviec365_vn"
 								ios-href="https://apps.apple.com/vn/app/t%C3%ACm-vi%E1%BB%87c-365-t%C3%ACm-vi%E1%BB%87c-online/id1597712953?l=vi"
@@ -157,19 +157,19 @@ const Model_noti = () => {
 								target="_blank"
 							>
 								Tải ngay
-							</a>
+							</Link>
 						</div>
 					</div>
 					<div className={styles.box_qmk_do}>
 						<p className={styles.minitext}>
-							<a href="/quen-mat-khau-ung-vien.html">Quên mật khẩu?</a>
+							<Link href="/quen-mat-khau-ung-vien.html">Quên mật khẩu?</Link>
 						</p>
 						<p className={styles.centertext}>
 							Bạn chưa có tài khoản?{' '}
 							<span>
-								<a style={{ fontFamily: 'Roboto-Medium' }} href="/dang-ky-ung-vien.html">
+								<Link style={{ fontFamily: 'Roboto-Medium' }} href="/dang-ky-ung-vien.html">
 									Đăng ký ngay!
-								</a>
+								</Link>
 							</span>
 						</p>
 					</div>

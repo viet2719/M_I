@@ -1,21 +1,18 @@
 import React, { useState } from 'react'
-import styles from './mobile_form.module.css'
+import styles from './pc_form.module.css'
 import { Switch } from 'antd'
 import Link from 'next/link'
 type Props = {}
 
-const Mobile_form_after_login = (props: Props) => {
-	const [showChiTiet, setShowChiTiet] = useState<boolean>(false)
+const Pc_form_after_login = (props: Props) => {
 	const [showHsXv, setShowHsXv] = useState<boolean>(false)
 	const [showHths, setshowHths] = useState<boolean>(false)
 	const [showqlts, setshowqlts] = useState<boolean>(false)
-	const [showKhamPha, setshowKhamPha] = useState<boolean>(false)
-	const [showTienIch, setshowTienIch] = useState<boolean>(false)
 	return (
 		<div className={`${styles.mobi_sh_ul} ${styles.ctn_mobi_sh_ul}`} style={{ display: 'block' }}>
 			<div id="mobi_ul" className={`${styles.m_header_mobile} ${styles.displayblock}`}>
-				<div className={styles.mobi_from} >
-					<div className={styles.m_ul_container}>
+				<div className={styles.mobi_from}>
+					<div className={styles.m_ul_container} style={{ borderRadius: 20 }}>
 						<li className={`${styles.ctn_mobi_sub_domain} ${styles.m_mobile_menu}`}>
 							<div style={{ display: 'flex', gap: 10 }}>
 								<div>
@@ -51,360 +48,75 @@ const Mobile_form_after_login = (props: Props) => {
 								</div>
 							</div>
 						</li>
-						<div className={styles.container_menu_mobile}>
-							<li
-								onClick={() => setShowChiTiet(!showChiTiet)}
-								className={`${styles.menu_mobile_chung} ${styles.menu_mobile_qlct} ${styles.cursor_pt}`}
+
+						{/* ------- */}
+						<div className={`${styles.container_menu_mobile}`}>
+							<Link
+								href="https://truyenthongnoibo.timviec365.vn/"
+								target="_blank"
+								rel="nofollow"
+								className={`${styles.cursor_pt}`}
 							>
-								<div className={styles.box_quanlychitiet}>
-									<div className={styles.m_quanlychitiet}>
+								<li className={`${styles.menu_mobile_chung} ${styles.box_ic_menu}`}>
+									<div
+										style={{
+											display: 'flex',
+											gap: 10,
+											color: 'black',
+											fontSize: 14,
+											paddingLeft: 20,
+										}}
+									>
 										<img
-											className={styles.ic_menu_mobile}
-											src="https://timviec365.vn/images/New_images/ic_menu_qlct.svg"
-											alt="quản lý chi tiết"
+											className={`${styles.ic_menu}`}
+											src="https://timviec365.vn/images/New_images/ic_menu_btin.svg"
+											alt="bảng tin"
 										/>
 										<p
 											className={`${styles.txt_qlct} ${styles.txt_menu_mobile}`}
 											style={{ color: 'rgb(71, 71, 71)' }}
 										>
-											Quản lý chi tiết
+											&nbsp;Bảng tin
 										</p>
 									</div>
-									<img
-										className={`${styles.angle_menu_mobile} ${styles.ic_menu}`}
-										src="https://timviec365.vn/images/New_images/angle_bottom.svg"
-										alt="mở rộng"
-										style={{ transform: 'rotate(0deg)' }}
-									/>
-								</div>
-							</li>
-							{showChiTiet && (
-								<div
-									className={`${styles.more_infor_menu} `}
-									style={{ overflow: 'hidden', paddingLeft: 20 }}
-								>
-									<div className={styles.box_more_menu}>
-										<Link href="/quan-ly-ung-vien" rel="nofollow">
-											<li
-												className={`${styles.header_poppup_item} ${styles.box_ic_menu} ${styles.cursor_pt}`}
-											>
-												<div style={{ display: 'flex', gap: 10, color: 'black', fontSize: 14 }}>
-													<div>
-														<img
-															className={styles.ic_menu}
-															src="https://timviec365.vn/images/New_images/ic_menu_qlc.svg"
-															alt="quản lý chung"
-														/>
-													</div>
-													<div>
-														<p className={styles.txt_ic_menu}>Quản lý chung</p>
-													</div>
+								</li>
+							</Link>
+							<div
+								className={`${styles.more_infor_menu} `}
+								style={{ overflow: 'hidden', paddingLeft: 20 }}
+							>
+								<div className={styles.box_more_menu}>
+									<Link href="/quan-ly-ung-vien" rel="nofollow">
+										<li className={`${styles.menu_mobile_chung} ${styles.box_ic_menu}`}>
+											<div style={{ display: 'flex', gap: 10, color: 'black', fontSize: 14 }}>
+												<div>
+													<img
+														className={styles.ic_menu}
+														src="https://timviec365.vn/images/New_images/ic_menu_qlc.svg"
+														alt="quản lý chung"
+													/>
 												</div>
-											</li>
-										</Link>
-										<div className={styles.container_hosoxv + ' ' + styles.content_menu_chung}>
-											<li
-												className={`${styles.header_poppup_item} ${styles.box_ic_menu}${styles.cursor_pt}`}
-											>
-												<div
-													className={`${styles.container_hsxinviec} ${styles.container_menu_chung}`}
-												>
-													<div
-														onClick={() => setShowHsXv(!showHsXv)}
-														className={styles.content_hsxinviec}
-														style={{
-															display: 'flex',
-															justifyContent: 'space-between',
-															cursor: 'pointer',
-														}}
+												<div>
+													<p
+														className={`${styles.txt_qlct} ${styles.txt_menu_mobile}`}
+														style={{ color: 'rgb(71, 71, 71)' }}
 													>
-														<div style={{ display: 'flex', gap: 10, color: 'black', fontSize: 14 }}>
-															<div>
-																<img
-																	className={styles.ic_menu}
-																	src="https://timviec365.vn/images/New_images/ic_menu_hsxv.svg"
-																	alt="hồ sơ xin việc"
-																/>
-															</div>
-															<div>
-																<p
-																	className={styles.txt_ic_menu}
-																	style={{ color: 'rgb(71, 71, 71)' }}
-																>
-																	Hồ sơ xin việc
-																</p>
-															</div>
-														</div>
-														<div>
-															<img
-																className={`${styles.ic_menu} ${styles.ic_menu_angle} ${styles.angle_menu_hsxv}`}
-																src="https://timviec365.vn/images/New_images/angle_bottom.svg"
-																alt="mở rộng"
-																style={{ transform: 'rotate(0deg)' }}
-															/>
-														</div>
-													</div>
+														{' '}
+														Quản lý chung
+													</p>
 												</div>
-											</li>
-											{showHsXv && (
-												<div
-													className={`${styles.show_menu_more} ${styles.show_menu_more_hsxv}`}
-													style={{ overflow: 'hidden', cursor: 'pointer' }}
-												>
-													<div
-														style={{
-															display: 'flex',
-															justifyContent: 'space-around',
-															lineHeight: 3,
-															fontSize: 14,
-														}}
-													>
-														<div style={{ padding: 16, fontSize: 14 }}>
-															<div className={styles.menu_more}>
-																<Link
-																	href="/ung-vien/danh-sach-mau-cv"
-																	rel="nofollow"
-																	className={`${styles.txt_qlc_more}${styles.cursor_pt}`}
-																>
-																	<p>CV xin việc</p>
-																</Link>
-																<Link
-																	href="/ho-so-tai-len"
-																	rel="nofollow"
-																	className={`${styles.txt_qlc_more}${styles.cursor_pt}`}
-																>
-																	<p>File tải lên</p>
-																</Link>
-															</div>
-															<div className={styles.menu_more}>
-																<Link
-																	href="/ho-so-ung-vien?vdgt=1"
-																	rel="nofollow"
-																	className={`${styles.txt_qlc_more}${styles.cursor_pt}`}
-																>
-																	<p>Video tải lên</p>
-																</Link>
-																<Link
-																	href="/cv365/mau-don-xin-viec"
-																	rel="nofollow"
-																	className={`${styles.txt_qlc_more}${styles.cursor_pt}`}
-																>
-																	<p>Đơn xin việc</p>
-																</Link>
-															</div>
-														</div>
-														<div style={{ padding: 16, fontSize: 14 }}>
-															<div className={styles.menu_more}>
-																<Link
-																	href="/cv365/mau-cover-letter-thu-xin-viec"
-																	rel="nofollow"
-																	className={`${styles.txt_qlc_more}${styles.cursor_pt}`}
-																>
-																	<p>Thư xin việc</p>
-																</Link>
-																<Link
-																	href="/cv365/mau-so-yeu-ly-lich"
-																	rel="nofollow"
-																	className={`${styles.txt_qlc_more}${styles.cursor_pt}`}
-																>
-																	<p>Sơ yếu lý lịch</p>
-																</Link>
-															</div>
-															<div className={styles.menu_more}>
-																<Link
-																	href="/ho-so-ung-vien"
-																	rel="nofollow"
-																	className={`${styles.txt_qlc_more}${styles.cursor_pt}`}
-																>
-																	<p>Hồ sơ online</p>
-																</Link>
-																<Link
-																	href="/tai-ho-so.html"
-																	rel="nofollow"
-																	className={`${styles.txt_qlc_more}${styles.cursor_pt}`}
-																>
-																	<p>Upload CV</p>
-																</Link>
-															</div>
-														</div>
-														<div></div>
-													</div>
-												</div>
-											)}
-										</div>
-
-										<div className={styles.container_hosoxv + ' ' + styles.content_menu_chung}>
-											<li
-												className={`${styles.header_poppup_item} ${styles.box_ic_menu}${styles.cursor_pt}`}
+											</div>
+										</li>
+									</Link>
+									<div className={styles.container_hosoxv + ' ' + styles.content_menu_chung}>
+										<li
+											className={`${styles.header_poppup_item} ${styles.box_ic_menu}${styles.cursor_pt}`}
+										>
+											<div
+												className={`${styles.container_hsxinviec} ${styles.container_menu_chung}`}
 											>
 												<div
-													className={`${styles.container_hsxinviec} ${styles.container_menu_chung}`}
-												>
-													<div
-														onClick={() => setshowHths(!showHths)}
-														className={styles.content_hsxinviec}
-														style={{
-															display: 'flex',
-															justifyContent: 'space-between',
-															cursor: 'pointer',
-														}}
-													>
-														<div style={{ display: 'flex', gap: 10, color: 'black', fontSize: 14 }}>
-															<div>
-																<img
-																	className={styles.ic_menu}
-																	src="https://timviec365.vn/images/New_images/ic_menu_hths.svg"
-																	alt="hoàn thiện hồ sơ"
-																/>
-															</div>
-															<div>
-																<p
-																	className={`${styles.txt_ic_menu}`}
-																	style={{ color: 'rgb(71, 71, 71)' }}
-																>
-																	Hoàn thiện hồ sơ
-																</p>
-															</div>
-														</div>
-														<div>
-															<img
-																className={`${styles.ic_menu} ${styles.ic_menu_angle} ${styles.angle_menu_hsxv}`}
-																src="https://timviec365.vn/images/New_images/angle_bottom.svg"
-																alt="mở rộng"
-																style={{ transform: 'rotate(0deg)' }}
-															/>
-														</div>
-													</div>
-												</div>
-											</li>
-											{showHths && (
-												<div className={styles.content_menu_more}>
-													<Link href="/ho-so-ung-vien" rel="nofollow">
-														<div className={styles.menu_more}>
-															<p className={`${styles.txt_qlc_more}${styles.cursor_pt}`}>
-																<div style={{ padding: 16, fontSize: 14 }}>
-																	Tiến trình hoàn thiện hồ sơ{' '}
-																	<span
-																		style={{
-																			color: '#4C5BD4',
-																			fontFamily: 'Roboto-Medium',
-																		}}
-																	>
-																		12.5%
-																	</span>
-																</div>
-															</p>
-														</div>
-													</Link>
-													<div className={`${styles.menu_more}`}>
-														<p className={`${styles.txt_qlc_more}${styles.cursor_pt}`}>
-															<div style={{ paddingLeft: 16, fontSize: 14 }}>Làm mới hồ sơ</div>
-														</p>
-													</div>
-												</div>
-											)}
-										</div>
-										<Link href="/viec-lam-goi-y" rel="nofollow">
-											<li
-												className={`${styles.header_poppup_item} ${styles.box_ic_menu} ${styles.cursor_pt}`}
-											>
-												<div style={{ display: 'flex', gap: 10, color: 'black', fontSize: 14 }}>
-													<div>
-														<img
-															className={`${styles.ic_menu}`}
-															src="https://timviec365.vn/images/New_images/ic_menu_gyvlai.svg"
-															alt="việc làm gợi ý từ AI"
-														/>
-													</div>
-													<div>
-														<p className={`${styles.txt_ic_menu}`}>Việc làm gợi ý từ AI365</p>
-													</div>
-												</div>
-											</li>
-										</Link>
-
-										<Link href="/viec-lam-ung-tuyen" rel="nofollow">
-											<li
-												className={`${styles.header_poppup_item} ${styles.box_ic_menu} ${styles.cursor_pt}`}
-											>
-												<div style={{ display: 'flex', gap: 10, color: 'black', fontSize: 14 }}>
-													<div>
-														<img
-															className={`${styles.ic_menu}`}
-															src="https://timviec365.vn/images/New_images/ic_menu_vldut.png"
-															alt="việc làm đã ứng tuyển"
-														/>
-													</div>
-													<div>
-														<p className={`${styles.txt_ic_menu}`}>Việc làm đã ứng tuyển</p>
-													</div>
-												</div>
-											</li>
-										</Link>
-										<Link href="https://timviec365.vn/viec-lam-da-luu" rel="nofollow">
-											<li
-												className={`${styles.header_poppup_item} ${styles.box_ic_menu} ${styles.cursor_pt}`}
-											>
-												<div style={{ display: 'flex', gap: 10, color: 'black', fontSize: 14 }}>
-													<div>
-														<img
-															className={`${styles.ic_menu}`}
-															src="https://timviec365.vn/images/New_images/ic_menu_vldl.svg"
-															alt="việc làm đã lưu"
-														/>
-													</div>
-													<div>
-														<p className={`${styles.txt_ic_menu}`}>Việc làm đã lưu</p>
-													</div>
-												</div>
-											</li>
-										</Link>
-
-										{/* <Link href="https://chat365.timviec365.vn/" rel="nofollow" target="_blank"> */}
-
-										<Link href="#" rel="nofollow">
-											<li
-												className={`${styles.header_poppup_item} ${styles.box_ic_menu} ${styles.cursor_pt}`}
-											>
-												<div style={{ display: 'flex', gap: 10, color: 'black', fontSize: 14 }}>
-													<div>
-														<img
-															className={`${styles.ic_menu}`}
-															src="https://timviec365.vn/images/New_images/ic_menu_chat.svg"
-															alt="chat365"
-														/>
-													</div>
-													<div>
-														<p className={`${styles.txt_ic_menu}`}>Chat365</p>
-													</div>
-												</div>
-											</li>
-										</Link>
-										<Link href="/mail365/" rel="nofollow">
-											<li
-												className={`${styles.header_poppup_item} ${styles.box_ic_menu} ${styles.cursor_pt}`}
-											>
-												<div style={{ display: 'flex', gap: 10, color: 'black', fontSize: 14 }}>
-													<div>
-														<img
-															className={`${styles.ic_menu}`}
-															src="https://timviec365.vn/images/New_images/ic_menu_email.svg"
-															alt="email đã nhận"
-														/>
-													</div>
-													<div>
-														<p className={`${styles.txt_ic_menu}`}>Email đã nhận</p>
-													</div>
-												</div>
-											</li>
-										</Link>
-										<div className={`${styles.container_hsxinviec} ${styles.container_menu_chung}`}>
-											{' '}
-											<li
-												className={`${styles.header_poppup_item} ${styles.box_ic_menu}${styles.cursor_pt}`}
-											>
-												<div
-													onClick={() => setshowqlts(!showqlts)}
+													onClick={() => setShowHsXv(!showHsXv)}
 													className={styles.content_hsxinviec}
 													style={{
 														display: 'flex',
@@ -415,13 +127,18 @@ const Mobile_form_after_login = (props: Props) => {
 													<div style={{ display: 'flex', gap: 10, color: 'black', fontSize: 14 }}>
 														<div>
 															<img
-																className={`${styles.ic_menu}`}
-																src="https://timviec365.vn/images/New_images/ic_menu_qltk.svg"
-																alt="quản lý tài khoản"
+																className={styles.ic_menu}
+																src="https://timviec365.vn/images/New_images/ic_menu_hsxv.svg"
+																alt="hồ sơ xin việc"
 															/>
 														</div>
 														<div>
-															<p className={`${styles.txt_ic_menu}`}>Quản lý tài khoản</p>
+															<p
+																className={`${styles.txt_qlct} ${styles.txt_menu_mobile}`}
+																style={{ color: 'rgb(71, 71, 71)' }}
+															>
+																Hồ sơ xin việc
+															</p>
 														</div>
 													</div>
 													<div>
@@ -433,306 +150,410 @@ const Mobile_form_after_login = (props: Props) => {
 														/>
 													</div>
 												</div>
-											</li>
-											{showqlts && (
+											</div>
+										</li>
+										{showHsXv && (
+											<div
+												className={`${styles.show_menu_more} ${styles.show_menu_more_hsxv}`}
+												style={{ overflow: 'hidden', cursor: 'pointer' }}
+											>
 												<div
-													style={{ cursor: 'pointer' }}
-													className={`${styles.show_menu_more} ${styles.show_menu_more_qltk}`}
+													style={{
+														display: 'flex',
+														justifyContent: 'space-around',
+														lineHeight: 3,
+														fontSize: 14,
+													}}
 												>
-													<div
-														style={{
-															display: 'flex',
-															justifyContent: 'space-around',
-															lineHeight: 3,
-															fontSize: 14,
-														}}
-													>
-														<div className={`${styles.menu_more}`}>
+													<div style={{ padding: 16, fontSize: 14 }}>
+														<div className={styles.menu_more}>
 															<Link
-																href="/doi-mat-khau-ung-vien.html"
+																href="/ung-vien/danh-sach-mau-cv"
 																rel="nofollow"
-																className={`${styles.txt_qlc_more} ${styles.cursor_pt}`}
+																className={`${styles.txt_qlc_more}${styles.cursor_pt}`}
 															>
-																<p>Đổi mật khẩu</p>
-															</Link>
-															<div className={`${styles.menu_more}`}>
-																{/* <p className={`${styles.txt_qlc_more} ${styles.cursor_pt}`}>Thông tin chuyên viên hỗ trợ</p> */}
-																<Link
-																	href="/ung-vien/quan-ly-phan-quyen"
-																	rel="nofollow"
-																	className={`${styles.txt_qlc_more} ${styles.cursor_pt}`}
+																<p
+																	className={`${styles.txt_qlct} ${styles.txt_menu_mobile}`}
+																	style={{ color: 'rgb(71, 71, 71)' }}
 																>
-																	<p>Phân quyền</p>
-																</Link>
-																<p className={`${styles.txt_qlc_more} ${styles.cursor_pt}`}>
-																	QR tài khoản
+																	CV xin việc
 																</p>
-															</div>
+															</Link>
+															<Link
+																href="/ho-so-tai-len"
+																rel="nofollow"
+																className={`${styles.txt_qlc_more}${styles.cursor_pt}`}
+															>
+																<p>File tải lên</p>
+															</Link>
 														</div>
-														<div className={`${styles.menu_more}`}>
+														<div className={styles.menu_more}>
+															<Link
+																href="/ho-so-ung-vien?vdgt=1"
+																rel="nofollow"
+																className={`${styles.txt_qlc_more}${styles.cursor_pt}`}
+															>
+																<p>Video tải lên</p>
+															</Link>
+															<Link
+																href="/cv365/mau-don-xin-viec"
+																rel="nofollow"
+																className={`${styles.txt_qlc_more}${styles.cursor_pt}`}
+															>
+																<p>Đơn xin việc</p>
+															</Link>
+														</div>
+													</div>
+													<div style={{ padding: 16, fontSize: 14 }}>
+														<div className={styles.menu_more}>
+															<Link
+																href="/cv365/mau-cover-letter-thu-xin-viec"
+																rel="nofollow"
+																className={`${styles.txt_qlc_more}${styles.cursor_pt}`}
+															>
+																<p>Thư xin việc</p>
+															</Link>
+															<Link
+																href="/cv365/mau-so-yeu-ly-lich"
+																rel="nofollow"
+																className={`${styles.txt_qlc_more}${styles.cursor_pt}`}
+															>
+																<p>Sơ yếu lý lịch</p>
+															</Link>
+														</div>
+														<div className={styles.menu_more}>
 															<Link
 																href="/ho-so-ung-vien"
 																rel="nofollow"
-																className={`${styles.txt_qlc_more} ${styles.cursor_pt}`}
+																className={`${styles.txt_qlc_more}${styles.cursor_pt}`}
 															>
-																<p>Thông tin tài khoản</p>
+																<p>Hồ sơ online</p>
 															</Link>
 															<Link
-																href="/ung-vien/quan-ly-thong-bao"
+																href="/tai-ho-so.html"
+																rel="nofollow"
+																className={`${styles.txt_qlc_more}${styles.cursor_pt}`}
+															>
+																<p>Upload CV</p>
+															</Link>
+														</div>
+													</div>
+													<div></div>
+												</div>
+											</div>
+										)}
+									</div>
+
+									<div className={styles.container_hosoxv + ' ' + styles.content_menu_chung}>
+										<li
+											className={`${styles.header_poppup_item} ${styles.box_ic_menu}${styles.cursor_pt}`}
+										>
+											<div
+												className={`${styles.container_hsxinviec} ${styles.container_menu_chung}`}
+											>
+												<div
+													onClick={() => setshowHths(!showHths)}
+													className={styles.content_hsxinviec}
+													style={{
+														display: 'flex',
+														justifyContent: 'space-between',
+														cursor: 'pointer',
+													}}
+												>
+													<div style={{ display: 'flex', gap: 10, color: 'black', fontSize: 14 }}>
+														<div>
+															<img
+																className={styles.ic_menu}
+																src="https://timviec365.vn/images/New_images/ic_menu_hths.svg"
+																alt="hoàn thiện hồ sơ"
+															/>
+														</div>
+														<div>
+															<p
+																className={`${styles.txt_qlct} ${styles.txt_menu_mobile}`}
+																style={{ color: 'rgb(71, 71, 71)' }}
+															>
+																Hoàn thiện hồ sơ
+															</p>
+														</div>
+													</div>
+													<div>
+														<img
+															className={`${styles.ic_menu} ${styles.ic_menu_angle} ${styles.angle_menu_hsxv}`}
+															src="https://timviec365.vn/images/New_images/angle_bottom.svg"
+															alt="mở rộng"
+															style={{ transform: 'rotate(0deg)' }}
+														/>
+													</div>
+												</div>
+											</div>
+										</li>
+										{showHths && (
+											<div className={styles.content_menu_more}>
+												<Link href="/ho-so-ung-vien" rel="nofollow">
+													<div className={styles.menu_more}>
+														<p className={`${styles.txt_qlc_more}${styles.cursor_pt}`}>
+															<div style={{ padding: 16, fontSize: 14 }}>
+																Tiến trình hoàn thiện hồ sơ{' '}
+																<span
+																	style={{
+																		color: '#4C5BD4',
+																		fontFamily: 'Roboto-Medium',
+																	}}
+																>
+																	12.5%
+																</span>
+															</div>
+														</p>
+													</div>
+												</Link>
+												<div className={`${styles.menu_more}`}>
+													<p className={`${styles.txt_qlc_more}${styles.cursor_pt}`}>
+														<div style={{ paddingLeft: 16, fontSize: 14 }}>Làm mới hồ sơ</div>
+													</p>
+												</div>
+											</div>
+										)}
+									</div>
+									<Link href="/viec-lam-goi-y" rel="nofollow">
+										<li
+											className={`${styles.header_poppup_item} ${styles.box_ic_menu} ${styles.cursor_pt}`}
+										>
+											<div style={{ display: 'flex', gap: 10, color: 'black', fontSize: 14 }}>
+												<div>
+													<img
+														className={`${styles.ic_menu}`}
+														src="https://timviec365.vn/images/New_images/ic_menu_gyvlai.svg"
+														alt="việc làm gợi ý từ AI"
+													/>
+												</div>
+												<div>
+													<p
+														className={`${styles.txt_qlct} ${styles.txt_menu_mobile}`}
+														style={{ color: 'rgb(71, 71, 71)' }}
+													>
+														Việc làm gợi ý từ AI365
+													</p>
+												</div>
+											</div>
+										</li>
+									</Link>
+
+									<Link href="/viec-lam-ung-tuyen" rel="nofollow">
+										<li
+											className={`${styles.header_poppup_item} ${styles.box_ic_menu} ${styles.cursor_pt}`}
+										>
+											<div style={{ display: 'flex', gap: 10, color: 'black', fontSize: 14 }}>
+												<div>
+													<img
+														className={`${styles.ic_menu}`}
+														src="https://timviec365.vn/images/New_images/ic_menu_vldut.png"
+														alt="việc làm đã ứng tuyển"
+													/>
+												</div>
+												<div>
+													<p
+														className={`${styles.txt_qlct} ${styles.txt_menu_mobile}`}
+														style={{ color: 'rgb(71, 71, 71)' }}
+													>
+														Việc làm đã ứng tuyển
+													</p>
+												</div>
+											</div>
+										</li>
+									</Link>
+									<Link href="https://timviec365.vn/viec-lam-da-luu" rel="nofollow">
+										<li
+											className={`${styles.header_poppup_item} ${styles.box_ic_menu} ${styles.cursor_pt}`}
+										>
+											<div style={{ display: 'flex', gap: 10, color: 'black', fontSize: 14 }}>
+												<div>
+													<img
+														className={`${styles.ic_menu}`}
+														src="https://timviec365.vn/images/New_images/ic_menu_vldl.svg"
+														alt="việc làm đã lưu"
+													/>
+												</div>
+												<div>
+													<p className={`${styles.txt_ic_menu}`}>Việc làm đã lưu</p>
+												</div>
+											</div>
+										</li>
+									</Link>
+
+									{/* <Link href="https://chat365.timviec365.vn/" rel="nofollow" target="_blank"> */}
+
+									<Link href="#" rel="nofollow">
+										<li
+											className={`${styles.header_poppup_item} ${styles.box_ic_menu} ${styles.cursor_pt}`}
+										>
+											<div style={{ display: 'flex', gap: 10, color: 'black', fontSize: 14 }}>
+												<div>
+													<img
+														className={`${styles.ic_menu}`}
+														src="https://timviec365.vn/images/New_images/ic_menu_chat.svg"
+														alt="chat365"
+													/>
+												</div>
+												<div>
+													<p
+														className={`${styles.txt_qlct} ${styles.txt_menu_mobile}`}
+														style={{ color: 'rgb(71, 71, 71)' }}
+													>
+														Chat365
+													</p>
+												</div>
+											</div>
+										</li>
+									</Link>
+									<Link href="/mail365/" rel="nofollow">
+										<li
+											className={`${styles.header_poppup_item} ${styles.box_ic_menu} ${styles.cursor_pt}`}
+										>
+											<div style={{ display: 'flex', gap: 10, color: 'black', fontSize: 14 }}>
+												<div>
+													<img
+														className={`${styles.ic_menu}`}
+														src="https://timviec365.vn/images/New_images/ic_menu_email.svg"
+														alt="email đã nhận"
+													/>
+												</div>
+												<div>
+													<p
+														className={`${styles.txt_qlct} ${styles.txt_menu_mobile}`}
+														style={{ color: 'rgb(71, 71, 71)' }}
+													>
+														Email đã nhận
+													</p>
+												</div>
+											</div>
+										</li>
+									</Link>
+									<div className={`${styles.container_hsxinviec} ${styles.container_menu_chung}`}>
+										{' '}
+										<li
+											className={`${styles.header_poppup_item} ${styles.box_ic_menu}${styles.cursor_pt}`}
+										>
+											<div
+												onClick={() => setshowqlts(!showqlts)}
+												className={styles.content_hsxinviec}
+												style={{
+													display: 'flex',
+													justifyContent: 'space-between',
+													cursor: 'pointer',
+												}}
+											>
+												<div style={{ display: 'flex', gap: 10, color: 'black', fontSize: 14 }}>
+													<div>
+														<img
+															className={`${styles.ic_menu}`}
+															src="https://timviec365.vn/images/New_images/ic_menu_qltk.svg"
+															alt="quản lý tài khoản"
+														/>
+													</div>
+													<div>
+														<p
+															className={`${styles.txt_qlct} ${styles.txt_menu_mobile}`}
+															style={{ color: 'rgb(71, 71, 71)' }}
+														>
+															Quản lý tài khoản
+														</p>
+													</div>
+												</div>
+												<div>
+													<img
+														className={`${styles.ic_menu} ${styles.ic_menu_angle} ${styles.angle_menu_hsxv}`}
+														src="https://timviec365.vn/images/New_images/angle_bottom.svg"
+														alt="mở rộng"
+														style={{ transform: 'rotate(0deg)' }}
+													/>
+												</div>
+											</div>
+										</li>
+										{showqlts && (
+											<div
+												style={{ cursor: 'pointer' }}
+												className={`${styles.show_menu_more} ${styles.show_menu_more_qltk}`}
+											>
+												<div
+													style={{
+														display: 'flex',
+														justifyContent: 'space-around',
+														lineHeight: 3,
+														fontSize: 14,
+													}}
+												>
+													<div className={`${styles.menu_more}`}>
+														<Link
+															href="/doi-mat-khau-ung-vien.html"
+															rel="nofollow"
+															className={`${styles.txt_qlc_more} ${styles.cursor_pt}`}
+														>
+															<p>Đổi mật khẩu</p>
+														</Link>
+														<div className={`${styles.menu_more}`}>
+															{/* <p className={`${styles.txt_qlc_more} ${styles.cursor_pt}`}>Thông tin chuyên viên hỗ trợ</p> */}
+															<Link
+																href="/ung-vien/quan-ly-phan-quyen"
 																rel="nofollow"
 																className={`${styles.txt_qlc_more} ${styles.cursor_pt}`}
 															>
-																<p>Thông báo</p>
+																<p>Phân quyền</p>
 															</Link>
+															<p className={`${styles.txt_qlc_more} ${styles.cursor_pt}`}>
+																QR tài khoản
+															</p>
 														</div>
-														<div></div>
 													</div>
+													<div className={`${styles.menu_more}`}>
+														<Link
+															href="/ho-so-ung-vien"
+															rel="nofollow"
+															className={`${styles.txt_qlc_more} ${styles.cursor_pt}`}
+														>
+															<p>Thông tin tài khoản</p>
+														</Link>
+														<Link
+															href="/ung-vien/quan-ly-thong-bao"
+															rel="nofollow"
+															className={`${styles.txt_qlc_more} ${styles.cursor_pt}`}
+														>
+															<p>Thông báo</p>
+														</Link>
+													</div>
+													<div></div>
 												</div>
-											)}
-										</div>
-									</div>
-								</div>
-							)}
-						</div>
-						{/* ------- */}
-						<div className={`${styles.container_menu_mobile}`}>
-							<Link
-								href="https://truyenthongnoibo.timviec365.vn/"
-								target="_blank"
-								rel="nofollow"
-								className={`${styles.cursor_pt}`}
-							>
-								<li className={`${styles.menu_mobile_chung} ${styles.box_ic_menu}`}>
-									<img
-										className={`${styles.ic_menu}`}
-										src="https://timviec365.vn/images/New_images/ic_menu_btin.svg"
-										alt="bảng tin"
-									/>
-									<p
-										className={`${styles.txt_qlct} ${styles.txt_menu_mobile}`}
-										style={{ color: 'rgb(71, 71, 71)' }}
-									>
-										&nbsp;Bảng tin
-									</p>
-								</li>
-							</Link>
-						</div>
-						<div className={`${styles.container_menu_mobile}`}>
-							<Link href="/cv-xin-viec" rel="nofollow" className={`${styles.cursor_pt}`}>
-								<li className={`${styles.menu_mobile_chung} ${styles.box_ic_menu}`}>
-									<img
-										className={`${styles.ic_menu}`}
-										src="https://timviec365.vn/images/New_images/ic_menu_hsxv.svg"
-										alt="hồ sơ xin việc"
-									/>
-									<p
-										className={`${styles.txt_qlct} ${styles.txt_menu_mobile}`}
-										style={{ color: 'rgb(71, 71, 71)' }}
-									>
-										&nbsp;CV xin việc
-									</p>
-								</li>
-							</Link>
-						</div>
-						{/* chung giua menu ntd và menu ung vien */}
-						<div className={`${styles.container_menu_mobile}`}>
-							<div className={`${styles.container_khampha} ${styles.content_menu_chung}`}>
-								<li className={`${styles.box_ic_menu} ${styles.cursor_pt}`}>
-									<div
-										className={styles.box_quanlychitiet}
-										onClick={() => setshowKhamPha(!showKhamPha)}
-									>
-										<div className={styles.m_quanlychitiet}>
-											<img
-												className={`${styles.ic_menu}`}
-												src="https://timviec365.vn/images/New_images/ic_menu_khampha.svg"
-												alt="khám phá"
-											/>
-											<p
-												className={`${styles.txt_qlct} ${styles.txt_menu_mobile}`}
-												style={{ color: 'rgb(71, 71, 71)' }}
-											>
-												Khám phá
-											</p>
-										</div>
-										<img
-											className={`${styles.angle_menu_mobile} ${styles.ic_menu}`}
-											src="https://timviec365.vn/images/New_images/angle_bottom.svg"
-											alt="mở rộng"
-											style={{ transform: 'rotate(0deg)' }}
-										/>
-									</div>
-									<div className={`${styles.menu_item} ${styles.ctn_menu_item}`}>
-										{showKhamPha && (
-											<li className={styles.sub_domain}>
-												<div className={styles.ctn_up_box}>
-													<ul className={`${styles.box_sub} ${styles.hidden}`}>
-														<li className={styles.ctn_box_ch}>
-															<Link href="/blog" className={styles.menu_blog}>
-																Blog
-															</Link>
-														</li>
-														<li className={styles.ctn_box_ch}>
-															<Link href="/thong-tin-bang-gia.html" className={styles.menu_bgia}>
-																Bảng giá
-															</Link>
-														</li>
-														<li className={styles.ctn_box_ch}>
-															<Link href="/trang-vang-doanh-nghiep.html" className={styles.menu_tv}>
-																Trang vàng
-															</Link>
-														</li>
-														<li className={styles.ctn_box_ch}>
-															<Link href="/cong-tac-vien.html" className={styles.menu_ctv}>
-																Cộng tác viên
-															</Link>
-														</li>
-													</ul>
-												</div>
-											</li>
+											</div>
 										)}
 									</div>
-								</li>
+								</div>
 							</div>
 						</div>
+
 						<div className={`${styles.container_menu_mobile}`}>
-							<div className={`${styles.container_tienich} ${styles.content_menu_chung}`}>
-								<li className={`${styles.box_ic_menu} ${styles.cursor_pt}`}>
-									<div
-										className={styles.box_quanlychitiet}
-										onClick={() => setshowTienIch(!showTienIch)}
-									>
-										<div className={styles.m_quanlychitiet}>
+							<Link href="/dang-xuat-ung-vien" rel="nofollow">
+								<li
+									className={`${styles.header_poppup_item} ${styles.box_ic_menu} ${styles.cursor_pt}`}
+								>
+									<div style={{ display: 'flex', gap: 10, color: 'black', fontSize: 14,paddingLeft:20,paddingTop:10 }}>
+										<div>
 											<img
 												className={`${styles.ic_menu}`}
-												src="https://timviec365.vn/images/New_images/ic_menu_tienich.svg"
-												alt="tiện ích"
+												src="https://timviec365.vn/images/New_images/ic_menu_dxuat.svg"
+												alt="đăng xuất"
 											/>
+										</div>
+										<div>
 											<p
 												className={`${styles.txt_qlct} ${styles.txt_menu_mobile}`}
-												style={{ color: 'rgb(71, 71, 71)' }}
+												style={{ color: 'red' }}
 											>
-												Tiện ích
+												&nbsp;Đăng xuất
 											</p>
 										</div>
-										<img
-											className={`${styles.ic_menu} ${styles.ic_menu_angle} ${styles.angle_menu_hsxv}`}
-											src="https://timviec365.vn/images/New_images/angle_bottom.svg"
-											alt="mở rộng"
-											style={{ transform: 'rotate(0deg)' }}
-										/>
-									</div>
-								</li>
-								{showTienIch && (
-									<div className={styles.sub_domain}>
-										<div className={styles.ctn_up_box}>
-											<ul className={`${styles.box_sub} ${styles.hidden}`}>
-												<li className={styles.ctn_box_ch}>
-													<Link href="#" className={styles.menu_tra_luong}>
-														Tra cứu lương
-													</Link>
-												</li>
-												<li className={styles.ctn_box_ch}>
-													<Link href="#" className={styles.menu_luong_grn}>
-														Lương GROSS - NET
-													</Link>
-												</li>
-												<li className={styles.ctn_box_ch}>
-													<Link href="#" className={styles.menu_email}>
-														Email365
-													</Link>
-												</li>
-												<li className={styles.ctn_box_ch}>
-													<Link href="#" className={styles.menu_taiapp}>
-														Tải app
-													</Link>
-												</li>
-												<li className={styles.ctn_box_ch}>
-													<Link href="#" className={styles.menu_bhtn}>
-														Bảo hiểm thất nghiệp
-													</Link>
-												</li>
-												<li className={styles.ctn_box_ch}>
-													<Link href="#" className={styles.menu_mi}>
-														Trắc nghiệm MI
-													</Link>
-												</li>
-												<li className={styles.ctn_box_ch}>
-													<Link href="#" className={styles.menu_mbti}>
-														Trắc nghiệm MBTI
-													</Link>
-												</li>
-												<li className={styles.ctn_box_ch}>
-													<Link href="#" className={styles.menu_eq}>
-														Trắc nghiệm EQ
-													</Link>
-												</li>
-												<li className={styles.ctn_box_ch}>
-													<Link href="#" className={styles.menu_en}>
-														Trắc nghiệm Energram
-													</Link>
-												</li>
-												<li className={styles.ctn_box_ch}>
-													<Link href="#" className={styles.menu_ptcv}>
-														Phân tích CV
-													</Link>
-												</li>
-											</ul>
-										</div>
-									</div>
-								)}
-							</div>
-						</div>
-						<div className={`${styles.container_menu_mobile}`}>
-							<Link href="/quan-ly-ung-vien" rel="nofollow">
-								<li
-									className={`${styles.header_poppup_item} ${styles.box_ic_menu} ${styles.cursor_pt}`}
-								>
-									<div style={{ display: 'flex', gap: 10, color: 'black', fontSize: 14 }}>
-										<div>
-											<img
-												className={`${styles.ic_menu}`}
-												src="https://timviec365.vn/images/New_images/ic_menu_cds.svg"
-												alt="chuyển đổi số"
-											/>
-										</div>
-										<p
-											className={`${styles.txt_qlct} ${styles.txt_menu_mobile}`}
-											style={{ color: 'rgb(71, 71, 71)' }}
-										>
-											&nbsp;Chuyển đổi số
-										</p>
 									</div>
 								</li>
 							</Link>
-						</div>
-						<div className={`${styles.container_menu_mobile}`}>
-						<Link href="/dang-xuat-ung-vien" rel="nofollow">
-								<li
-									className={`${styles.header_poppup_item} ${styles.box_ic_menu} ${styles.cursor_pt}`}
-								>
-									<div style={{ display: 'flex', gap: 10, color: 'black', fontSize: 14 }}>
-										<div>
-										<img
-										className={`${styles.ic_menu}`}
-										src="https://timviec365.vn/images/New_images/ic_menu_dxuat.svg"
-										alt="đăng xuất"
-									/>
-										</div>
-										<div>
-										<p
-											className={`${styles.txt_qlct} ${styles.txt_menu_mobile}`}
-											style={{ color: 'red' }}
-										>
-											&nbsp;Đăng xuất
-										</p>
-										</div>
-										
-									</div>
-								</li>
-							</Link>
-
-
 						</div>
 					</div>
 					{/*  */}
@@ -1294,4 +1115,4 @@ const Mobile_form_after_login = (props: Props) => {
 		</div>
 	)
 }
-export default Mobile_form_after_login
+export default Pc_form_after_login

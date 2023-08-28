@@ -40,7 +40,7 @@
 	height: 100%;
 	background: #0000007a;
 	top: 0px;
-	left: 0px;
+	right: 0px;
 	z-index: 9;
 	display: none;
 }
@@ -463,12 +463,11 @@
 
 .m_header_mobile .m_ul_container {
 	height: 90vh;
-    background-color: rgb(252, 245, 245);
+    background-color: #fff;
 	overflow: auto;
 	padding: 10px 10px 100px 10px;
 	display: flex;
 	flex-direction: column;
-	gap: 25px;
 	width: 100%;
 }
 
@@ -726,7 +725,10 @@ li.ctn_box_ch {
 
 @media screen and (min-width: 1166px) {
 	.ctn_mobi_sh_ul {
-		display: none !important;
+		position: fixed;
+		right: 20px;
+		top: 100px;
+		width: 450px;
 	}
 
 	.popup_show_listnganhnghe {
