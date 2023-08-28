@@ -1,8 +1,6 @@
 .main_cate {
 	float: left;
 	width: 100%;
-	margin-bottom: 15px;
-
 	.item_cate {
 		padding-bottom: 0px;
 		background: #fff;
@@ -27,6 +25,16 @@
 				float: left;
 				position: relative;
 				display: inline-block;
+				.img_center_cate_mb {
+					float: left;
+					width: 60px;
+					height: 60px;
+					object-fit: cover;
+					border-radius: 50%;
+					border: 1px solid #f2f7fb;
+					margin-right: 10px;
+					display: none;
+				}
 				.box_time_off {
 					position: absolute;
 					padding: 5px 8px;
@@ -39,6 +47,16 @@
 					line-height: 14px;
 					color: #76b51b;
 				}
+			}
+			.icon_tiaset_new {
+				position: absolute;
+				width: 33px;
+				height: 33px;
+				border-radius: unset;
+				border: none;
+				margin: 0;
+				top: 0;
+				left: 9.5px;
 			}
 			.box_vote_new {
 				float: left;
@@ -85,6 +103,9 @@
 					.logo_user_th {
 						float: left;
 						position: relative;
+						.icon_tiaset_new {
+							display: none;
+						}
 						.img_center_cate_mb {
 							float: left;
 							width: 60px;
@@ -444,6 +465,35 @@
 									margin-right: 8px;
 								}
 							}
+							.none {
+								display: none;
+							}
+							.box_share,
+							.box_share_mxh {
+								position: absolute;
+								width: 254px;
+								background: #ffffff;
+								border-radius: 10px;
+								z-index: 10;
+								box-shadow: 0px 0px 4px rgb(0 0 0 / 25%);
+								top: 60px;
+								right: calc(50% - 135px);
+
+								.box_share_items {
+									display: flex;
+									font-weight: 400;
+									font-size: 12px;
+									line-height: 18px;
+									color: #282828;
+									padding: 7px 15px 7px 15px;
+									cursor: pointer;
+									img {
+										width: 24px;
+										height: 24px;
+										margin-right: 10px;
+									}
+								}
+							}
 						}
 						.show_ic {
 							position: absolute;
@@ -665,16 +715,221 @@
 		float: right;
 	}
 }
+@media screen and (max-width: 1519.98px) {
+	.main_cate {
+		.item_cate {
+			width: 100%;
+			.center_cate {
+				width: 70%;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 1300px) {
+	.main_cate {
+		.item_cate {
+			padding: 15px 10px 20px 10px;
+			.center_cate {
+				width: 78%;
+			}
+		}
+	}
+}
+@media screen and (max-width: 1165px) {
+	.main_cate {
+		.item_cate {
+			.img_cate {
+				width: 136px;
+				margin-left: 20px;
+			}
+			.center_cate {
+				width: 75%;
+			}
+		}
+	}
+}
+
 @media screen and (max-width: 767.98px) {
 	.main_cate {
 		.item_cate {
-			padding: 15px 10px 50px 10px;
+			.img_cate {
+				display: none;
+			}
+			.center_cate {
+				width: 100%;
+				position: relative;
+				.center_cate_l {
+					h2 {
+						width: 100%;
+						padding-left: 25px;
+						margin-bottom: 15px;
+						a {
+							-webkit-line-clamp: 3;
+							font-size: 14px;
+							line-height: 20px;
+							width: calc(100% - 95px);
+						}
+						.logo_user_th {
+							.img_center_cate_mb {
+								display: block;
+								position: relative;
+							}
+
+							.tia_set {
+							}
+							.box_time_off {
+								padding: 2px 5px;
+								font-size: 10px;
+								display: block;
+							}
+							.icon_tiaset_new {
+								position: absolute;
+								left: 0;
+								top: 0;
+								width: 26px;
+								height: 26px;
+								display: block;
+							}
+						}
+						.logo_user_th.m_online:before {
+							width: 15px;
+							height: 15px;
+							right: 5px;
+						}
+						.box_vote_new {
+						}
+					}
+					.box_new_left_mb {
+						position: relative;
+					}
+					p {
+						.cate_hn {
+							font-size: 13px;
+							max-width: 100%;
+							width: 100%;
+							overflow: hidden;
+							-webkit-line-clamp: 1;
+							-webkit-box-orient: vertical;
+						}
+					}
+					.con_tooltip {
+						.cate_ml {
+							font-size: 13px;
+							max-width: 100%;
+							width: 100%;
+							overflow: hidden;
+							-webkit-line-clamp: 1;
+							/* display: -webkit-box; */
+							-webkit-box-orient: vertical;
+						}
+
+						.cate_dd {
+							max-width: 40%;
+							font-size: 13px;
+						}
+					}
+					.job_chat {
+						position: absolute;
+						bottom: -40px;
+						top: unset;
+						right: unset;
+						left: 10px;
+						display: inline-block;
+						width: 100px;
+						text-align: center;
+						font-size: 13px;
+						z-index: 1;
+						&::before {
+							left: 25px;
+							background-image: url('/images/vl_chat_wt.png') !important;
+						}
+					}
+					.frame_txt {
+						width: 100%;
+						margin-top: 10px;
+						p.box_txt {
+							width: 100%;
+							max-width: 100%;
+							padding: 6px 0px 6px 10px;
+							font-size: 13px;
+						}
+					}
+				}
+
+				.xt_tag {
+					bottom: -35px;
+				}
+			}
+			.box_comment_chat {
+				.box_cm_vl {
+					padding-top: 48px !important;
+				}
+				.box_link_comment {
+					.box_cm_body {
+						.cm_list {
+							padding: 0;
+						}
+					}
+				}
+			}
+
+			.nd_xt {
+				margin-top: 56px;
+			}
+		}
+	}
+}
+@media screen and (max-width: 480px) {
+	.main_cate {
+		.item_cate {
 			.box_input {
 				position: absolute;
 				left: 10px;
 				top: 15px;
 				z-index: 1;
 			}
+			.box_link_comment {
+				.box_cm_body {
+					.order_cm {
+						.cm_input {
+							width: 110%;
+							.ct_cm {
+								padding: 0;
+							}
+						}
+					}
+				}
+			}
+			.center_cate_l {
+				.cpn_name {
+					a {
+						float: left;
+						width: 100%;
+						overflow: hidden;
+						text-overflow: ellipsis;
+						position: relative;
+						top: 0;
+					}
+				}
+			}
 		}
 	}
 }
+// @media only screen and (max-width: 414px) {
+// 	.main_cate {
+// 		.item_cate {
+// 			.center_cate {
+// 				position: relative;
+// 				.center_cate_l {
+// 					.job_chat {
+// 						bottom: 0;
+// 					}
+// 				}
+// 				.xt_tag {
+// 					bottom: 2px;
+// 				}
+// 			}
+// 		}
+// 	}
+// }

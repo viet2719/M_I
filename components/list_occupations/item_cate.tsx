@@ -1,16 +1,13 @@
+import { openModal } from '@/actions/actions'
 import styles from '@styles/list_occupations/item_cate.module.scss'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
 import Model_noti from './model_noti'
-import { useDispatch, useSelector } from 'react-redux'
-import { openModal } from '@/actions/actions'
-import { RootState } from '@/reducers'
-import { useState } from 'react'
-import { Pagination } from 'antd'
 
 const List_cate = () => {
 	const dispatch = useDispatch()
-
 	const listCate = [
 		{ id: 1, title: 'TUYỂN DỤNG TRƯỞNG NHÓM BÁN HÀNG' },
 		{ id: 2, title: 'TUYỂN DỤNG TRƯỞNG NHÓM BÁN HÀNG 2' },
@@ -47,15 +44,18 @@ const List_cate = () => {
 		}
 	}
 	const handleOpenModal = (obj: any) => {
-		if (true) {
-			dispatch(openModal())
+		dispatch(openModal())
+	}
+	//  Xử lý share
+	const [modalShare, setModalShare] = useState(false)
+	const [modalSocial, setModalSocial] = useState(false)
+	// Lấy ra item share
+	const [stateItemShare, setStateItemShare] = useState<any>(null)
+	const toggleIdItemShare = (id: any) => {
+		if (stateItemShare === id) {
+			setStateItemShare(null)
 		} else {
-			if (obj) {
-				setStatus(null)
-			} else {
-				const foundItem = listIconStatus.find((item) => item.id === 1)
-				setStatus(foundItem)
-			}
+			setStateItemShare(id)
 		}
 	}
 	return (
@@ -120,25 +120,25 @@ const List_cate = () => {
 								<h2 className={`${styles.box_mb} ${styles.box_new_left_mb}`}>
 									<Link
 										style={{ width: 70, overflow: 'unset' }}
-										className={`${styles.logo_user_th}`}
+										className={`${styles.logo_user_th} ${styles}`}
 										href="/tuyen-dung-truong-nhom-ban-hang-p866842.html"
 										title="TUYỂN DỤNG TRƯỞNG NHÓM BÁN HÀNG"
 									>
-										{/* <Image
-										height={142}
-										width={142}
-										className={`${styles.tia_set} lazyload ${styles.img_center_cate_mb} ${styles.no_logo_chat}`}
-										src="/images/load.gif"
-										alt="Công Ty Cổ Phần Dược Phẩm Việt ( Đông Dược Viêt)"
-									/> */}
+										<Image
+											height={142}
+											width={142}
+											className={`${styles.tia_set} lazyload ${styles.img_center_cate_mb} ${styles.no_logo_chat}`}
+											src="/images/load.gif"
+											alt="Công Ty Cổ Phần Dược Phẩm Việt ( Đông Dược Viêt)"
+										/>
 										<span className={styles.box_time_off}>3 ngày</span>{' '}
-										{/* <Image
-										height={33}
-										width={33}
-										className={styles.icon_tiaset_new}
-										alt=""
-										src="/images/before_login/icon_tiaset.svg"
-									></Image> */}
+										<Image
+											height={33}
+											width={33}
+											className={styles.icon_tiaset_new}
+											alt=""
+											src="/images/before_login/icon_tiaset.svg"
+										></Image>
 									</Link>
 									<Link
 										style={{ color: '#4C5BD4' }}
@@ -150,6 +150,7 @@ const List_cate = () => {
 									</Link>
 									<div className={styles.box_vote_new}>{/* Your icon_vote_new images */}</div>
 								</h2>
+
 								<div className="">
 									<p className={styles.cpn_name}>
 										<Link
@@ -206,7 +207,7 @@ const List_cate = () => {
 										hưởng đầy đủ các chế độ phúc lợi của công ty : BHXH, BHYT, BHTN... Thời gian làm
 										việc: 08h00 - 17h30 Thứ 2 đến sáng Thứ 7
 									</p>
-									{/* <span className={styles.tooltip}>
+									<span className={styles.tooltip}>
 										<span>
 											Lương khởi điểm 7.000.000đ + thưởng doanh số tháng/quý/năm, thu nhập bình quân
 											tháng từ 15.000.000đ + Được xem xét điều chỉnh chế độ đãi ngộ 2 lần/ năm Được
@@ -215,7 +216,7 @@ const List_cate = () => {
 											đầy đủ các chế độ phúc lợi của công ty : BHXH, BHYT, BHTN... Thời gian làm
 											việc: 08h00 - 17h30 Thứ 2 đến sáng Thứ 7
 										</span>
-									</span> */}
+									</span>
 								</div>
 								<div
 									className={`${styles.con_tooltip} ${styles.top} ${styles.frame_txt} ${styles.ctn_frame_txt}`}
@@ -360,8 +361,20 @@ const List_cate = () => {
 												Bình luận
 											</span>
 										</div>
-										<div className={styles.cm_ev_div}>
-											<span className={styles.share_event}>
+										<div
+											className={styles.cm_ev_div}
+											id="share"
+											onClick={() => {
+												setModalShare(true)
+												setModalSocial(false)
+											}}
+										>
+											<span
+												className={styles.share_event}
+												onClick={() => {
+													toggleIdItemShare(cate.id)
+												}}
+											>
 												<svg
 													width={19}
 													height={18}
@@ -376,6 +389,104 @@ const List_cate = () => {
 												</svg>
 												Chia sẻ
 											</span>
+											<div
+												className={
+													modalShare && stateItemShare !== null && stateItemShare === cate.id
+														? styles.box_share
+														: styles.none
+												}
+											>
+												{/* <div className={`${styles.box_share_items} ${styles.hidden}`}>
+													<img
+														src="/images/img_comment/sh_ic1.png"
+														alt="Chia sẻ trang cá nhân của bạn"
+													/>
+													Chia sẻ lên trang cá nhân (Của bạn)
+												</div>
+												<div className={`${styles.box_share_items} ${styles.hidden}`}>
+													<img
+														src="/images/img_comment/sh_ic2.png"
+														alt="Chia sẻ trang cá nhân bạn bè"
+													/>
+													Chia sẻ lên trang cá nhân (Bạn bè)
+												</div> */}
+												<div className={`${styles.box_share_items} ${styles.share_items_chat365}`}>
+													<Image
+														height={24}
+														width={24}
+														src="/images/img_comment/sh_ic3.png"
+														alt="Gửi bằng Chat365"
+													/>
+													Gửi bằng Chat365
+												</div>
+												<div className={`${styles.box_share_items} ${styles.share_group_chat365}`}>
+													<Image
+														height={24}
+														width={24}
+														src="/images/img_comment/sh_ic4.png"
+														alt="Gửi lên nhóm Chat365"
+													/>
+													Gửi lên nhóm Chat365
+												</div>
+												<div
+													className={`${styles.box_share_items} ${styles.share_items_mxh}`}
+													onClick={() => {
+														setModalSocial(!modalSocial)
+													}}
+												>
+													<Image
+														height={24}
+														width={24}
+														src="/images/img_comment/sh_ic5.png"
+														alt="Khác"
+													/>
+													Khác
+												</div>
+											</div>
+											<div
+												className={
+													stateItemShare !== null && stateItemShare === cate.id && modalSocial
+														? styles.box_share_mxh
+														: styles.none
+												}
+											>
+												<div className={styles.box_share_items}>
+													<Image
+														height={24}
+														width={24}
+														src="/images/img_comment/iic_f.png"
+														alt="Facebook"
+													/>
+													Facebook
+												</div>
+												<div className={styles.box_share_items}>
+													<Image
+														height={24}
+														width={24}
+														src="/images/img_comment/iic_t.png"
+														alt="Twitter"
+													/>
+													Twitter
+												</div>
+												<div className={styles.box_share_items}>
+													<Image
+														height={24}
+														width={24}
+														src="/images/img_comment/iic_v.png"
+														alt="Vkontakte"
+													/>
+													Vkontakte
+												</div>
+												<div className={styles.box_share_items}>
+													<Image
+														height={24}
+														width={24}
+														src="/images/img_comment/iic_l.png"
+														alt="Linked In"
+													/>
+													Linked In
+												</div>
+											</div>
 										</div>
 									</div>
 									<div className={styles.order_cm}>

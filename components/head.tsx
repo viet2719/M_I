@@ -1,6 +1,8 @@
 /* eslint-disable @next/next/no-css-tags */
 /* eslint-disable @next/next/next-script-for-ga */
 import Head from 'next/head'
+
+import Script from 'next/script'
 // import { Helmet } from 'react-helmet'
 const Head_common = ({
 	title,
@@ -57,7 +59,7 @@ const Head_common = ({
 							'https://timviec365.vn/blog/tac-gia/truong-van-trac-tg242',
 							'https://docs.google.com/spreadsheets/d/12ehkpV4TTAyxXapITR2Mf6GpIfvj49Yl-ckFqf_rrYQ/edit#gid=0',
 						],
-						image: 'https://timviec365.vn/pictures/images/Truong-van-trac.jpg',
+						image: '/images/Truong-van-trac.jpg',
 						jobTitle: 'CHỦ TỊCH HĐQT – TỔNG GIÁM ĐỐC',
 						worksFor: {
 							'@type': 'Organization',
@@ -137,8 +139,7 @@ const Head_common = ({
 
 				{/* <!-- End Google Tag Manager -->	<!-- End Google Tag Manager -->
     <!-- Global site tag (gtag.js) - Google Ads: 934002795 --> */}
-				<script async src="https://www.googletagmanager.com/gtag/js?id=AW-934002795"></script>
-
+				<script async src="https://www.googletagmanager.com/gtag/js?id=AW-934002795" />
 				{/* </Helmet> */}
 			</Head>
 		</>

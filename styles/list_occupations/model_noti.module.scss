@@ -143,3 +143,71 @@
 		}
 	}
 }
+@media screen and (max-width: 767.98px) {
+	.overlay {
+		.wapper {
+			.auth_form {
+				width: calc(100% - 30px);
+				.form_btn_app {
+					.gd_pc {
+						display: none;
+					}
+					.gd_mobile {
+						display: inline-block;
+					}
+				}
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 600px) {
+	.overlay {
+		.wapper {
+			margin: 50px auto;
+			.auth_form {
+				float: left;
+				margin-left: 10px;
+				width: calc(100% - 20px);
+				.post_title {
+					padding: 14px 14px;
+					font-size: 14px;
+					line-height: 24px;
+					.close_pop_login {
+					}
+				}
+				.form_btn_do {
+					padding: 0 30px;
+					width: 100%;
+					.form_login {
+						margin-bottom: 40px;
+					}
+				}
+				.form_btn_app {
+					float: left;
+					width: 100%;
+					padding: 15px 30px;
+				}
+				.box_qmk_do {
+					float: left;
+				}
+			}
+		}
+	}
+}
+@media screen and (max-width: 376px) {
+	.overlay {
+		.wapper {
+			.auth_form {
+				.box_qmk_do {
+					padding: 18px;
+				}
+				.form_btn_do {
+					.form_login {
+						margin-bottom: 35px;
+					}
+				}
+			}
+		}
+	}
+}
