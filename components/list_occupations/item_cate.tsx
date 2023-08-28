@@ -1,16 +1,13 @@
+import { openModal } from '@/actions/actions'
 import styles from '@styles/list_occupations/item_cate.module.scss'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
 import Model_noti from './model_noti'
-import { useDispatch, useSelector } from 'react-redux'
-import { openModal } from '@/actions/actions'
-import { RootState } from '@/reducers'
-import { useState } from 'react'
-import { Pagination } from 'antd'
 
 const List_cate = () => {
 	const dispatch = useDispatch()
-
 	const listCate = [
 		{ id: 1, title: 'TUYỂN DỤNG TRƯỞNG NHÓM BÁN HÀNG' },
 		{ id: 2, title: 'TUYỂN DỤNG TRƯỞNG NHÓM BÁN HÀNG 2' },
@@ -47,15 +44,18 @@ const List_cate = () => {
 		}
 	}
 	const handleOpenModal = (obj: any) => {
-		if (true) {
-			dispatch(openModal())
+		dispatch(openModal())
+	}
+	//  Xử lý share
+	const [modalShare, setModalShare] = useState(false)
+	const [modalSocial, setModalSocial] = useState(false)
+	// Lấy ra item share
+	const [stateItemShare, setStateItemShare] = useState<any>(null)
+	const toggleIdItemShare = (id: any) => {
+		if (stateItemShare === id) {
+			setStateItemShare(null)
 		} else {
-			if (obj) {
-				setStatus(null)
-			} else {
-				const foundItem = listIconStatus.find((item) => item.id === 1)
-				setStatus(foundItem)
-			}
+			setStateItemShare(id)
 		}
 	}
 	return (
@@ -360,8 +360,19 @@ const List_cate = () => {
 												Bình luận
 											</span>
 										</div>
-										<div className={styles.cm_ev_div}>
-											<span className={styles.share_event}>
+										<div
+											className={styles.cm_ev_div}
+											id="share"
+											onClick={() => {
+												setModalShare(true)
+											}}
+										>
+											<span
+												className={styles.share_event}
+												onClick={() => {
+													toggleIdItemShare(cate.id)
+												}}
+											>
 												<svg
 													width={19}
 													height={18}
@@ -376,6 +387,98 @@ const List_cate = () => {
 												</svg>
 												Chia sẻ
 											</span>
+											<div
+												className={
+													modalShare && stateItemShare !== null && stateItemShare === cate.id
+														? styles.box_share
+														: styles.none
+												}
+											>
+												{/* <div className={`${styles.box_share_items} ${styles.hidden}`}>
+													<img
+														src="/images/img_comment/sh_ic1.png"
+														alt="Chia sẻ trang cá nhân của bạn"
+													/>
+													Chia sẻ lên trang cá nhân (Của bạn)
+												</div>
+												<div className={`${styles.box_share_items} ${styles.hidden}`}>
+													<img
+														src="/images/img_comment/sh_ic2.png"
+														alt="Chia sẻ trang cá nhân bạn bè"
+													/>
+													Chia sẻ lên trang cá nhân (Bạn bè)
+												</div> */}
+												<div className={`${styles.box_share_items} ${styles.share_items_chat365}`}>
+													<Image
+														height={24}
+														width={24}
+														src="/images/img_comment/sh_ic3.png"
+														alt="Gửi bằng Chat365"
+													/>
+													Gửi bằng Chat365
+												</div>
+												<div className={`${styles.box_share_items} ${styles.share_group_chat365}`}>
+													<Image
+														height={24}
+														width={24}
+														src="/images/img_comment/sh_ic4.png"
+														alt="Gửi lên nhóm Chat365"
+													/>
+													Gửi lên nhóm Chat365
+												</div>
+												<div
+													className={`${styles.box_share_items} ${styles.share_items_mxh}`}
+													onClick={() => {
+														setModalSocial(!modalSocial)
+													}}
+												>
+													<Image
+														height={24}
+														width={24}
+														src="/images/img_comment/sh_ic5.png"
+														alt="Khác"
+													/>
+													Khác
+												</div>
+											</div>
+											<div className={modalSocial ? styles.box_share_mxh : styles.none}>
+												<div className={styles.box_share_items}>
+													<Image
+														height={24}
+														width={24}
+														src="/images/img_comment/iic_f.png"
+														alt="Facebook"
+													/>
+													Facebook
+												</div>
+												<div className={styles.box_share_items}>
+													<Image
+														height={24}
+														width={24}
+														src="/images/img_comment/iic_t.png"
+														alt="Twitter"
+													/>
+													Twitter
+												</div>
+												<div className={styles.box_share_items}>
+													<Image
+														height={24}
+														width={24}
+														src="/images/img_comment/iic_v.png"
+														alt="Vkontakte"
+													/>
+													Vkontakte
+												</div>
+												<div className={styles.box_share_items}>
+													<Image
+														height={24}
+														width={24}
+														src="/images/img_comment/iic_l.png"
+														alt="Linked In"
+													/>
+													Linked In
+												</div>
+											</div>
 										</div>
 									</div>
 									<div className={styles.order_cm}>
