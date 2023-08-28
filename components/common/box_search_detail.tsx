@@ -13,11 +13,11 @@ const Box_search_details = () => {
 		{ value: 'hue', label: 'Huế' },
 	]
 	// Xử lý show-hide phần tìm kiếm theo tên
-	const [valueNameSearch, setValueNameSearch] = useState('')
-	const [checkSearchNameCity, setCheckSearchNameCity] = useState<any>(false)
+	const [valueNameSearch, setValueNameSearch] = useState<string>('')
+	const [checkSearchNameCity, setCheckSearchNameCity] = useState<boolean>(false)
 
 	// Xử lý tìm kiếm nâng cao
-	const [chooseSearchAdvanced, setChooseSearchAdvanced] = useState<any>(false)
+	const [chooseSearchAdvanced, setChooseSearchAdvanced] = useState<boolean>(false)
 	return (
 		<div className={styles.box_m_search} id={styles.search_new_ntd}>
 			<div className={styles.new_search}>
@@ -263,7 +263,7 @@ const Box_search_details = () => {
 					<Image
 						height={40}
 						width={40}
-						style={{marginTop:10}}
+						style={{marginTop:5}}
 						className={`${styles.show_nc} ${styles.nangcao}`}
 						src="/images/before_login/ic_show_nc.png"
 						alt="Tìm kiếm nâng cao"

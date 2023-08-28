@@ -1,23 +1,33 @@
-import React from 'react'
-import Head_common from '../head'
-import Header from '../common/header'
-import Box_search from '../common/box_search'
-import New_banner from '../common/new_banner'
+import React, { useEffect, useState } from 'react'
 import New_banner_detail from '../common/new_banner_details'
 import Main_breadcrumb from './main_breadcrumb/main_breadcrumb'
 import Main_timviec from './main_timviec/main_timviec'
-import HeaderAfterLogin from '../common/header_after_login'
-import Notify_after_login from './main_timviec/notify_after_login'
 import Footer_chat from './footer_chat/footer_chat'
 
 type Props = {}
 
 const Detail = (props: Props) => {
+	const [show, setShow] = useState<boolean>(false)
+	const handleScroll = () => {
+		const scrollY = window.scrollY
+		if (scrollY > 0 && scrollY < 1600) {
+			setShow(true)
+		} else {
+			setShow(false)
+		}
+	}
+
+	useEffect(() => {
+		window.addEventListener('scroll', handleScroll)
+		return () => {
+			window.removeEventListener('scroll', handleScroll)
+		}
+	}, [])
 	return (
 		<div>
-			<New_banner_detail />
+			{!show && <New_banner_detail />}
 			<Main_breadcrumb />
-			<Main_timviec />
+			<Main_timviec show={show} />
 			<Footer_chat />
 		</div>
 	)

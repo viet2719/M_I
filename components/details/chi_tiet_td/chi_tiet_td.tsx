@@ -1,10 +1,14 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from '../main_timviec/main_timviec.module.css'
 import Link from 'next/link'
 
-type Props = {}
+type Props = {
+	show: boolean
+}
 
-const Chi_tiet_td = (props: Props) => {
+const Chi_tiet_td = ({ show }: Props) => {
+	const [showChiTiet, setshowChiTiet] = useState<boolean>(false)
+
 	return (
 		<>
 			<div className={`${styles.chitiettd_head}`}>
@@ -27,15 +31,15 @@ const Chi_tiet_td = (props: Props) => {
 							</Link>
 						</div>
 					</div>
-					<div className={`${styles.com_info}`} >
-						<h1 data-id={868030} className={`${styles.com_post}`} >
+					<div className={`${styles.com_info}`}>
+						<h1 data-id={868030} className={`${styles.com_post}`}>
 							Nhân viên Kỹ thuật Điện Tử
 						</h1>
 
-						<div className={`${styles.mobi_ctiet}`} style={{marginLeft:-5}}>
+						<div className={`${styles.mobi_ctiet}`} style={{ marginLeft: -5 }}>
 							<span className={`${styles.tag_red}`}>Thỏa thuận</span>
 
-							<p style={{marginLeft:-15}} className={`${styles.diachi_ctiet}`}>
+							<p style={{ marginLeft: -15 }} className={`${styles.diachi_ctiet}`}>
 								{' '}
 								<img src="https://timviec365.vn/images/img_new/exp_ddien.png" alt="" /> Quận Cầu
 								Giấy ,Hà Nội
@@ -82,7 +86,7 @@ const Chi_tiet_td = (props: Props) => {
 									<div className={`${styles.logo_com}`}>
 										<div className={`${styles.img_detail}`}>
 											<Link
-                                             href={"#"}
+												href={'#'}
 												className={`${styles.logo_user_th} ${styles.logo_user_th_new} ${styles.show_avt}`}
 												data-id={206405}
 												id-chat={1361929}
@@ -135,7 +139,7 @@ const Chi_tiet_td = (props: Props) => {
 						<div className={`${styles.ctn_chat_utuyen_luu}`}>
 							<div className={`${styles.ctn_chatcall} ${styles.ctn_chung_moi}`}>
 								<Link
-                                href={"#"}
+									href={'#'}
 									rel="nofollow"
 									target="_blank"
 									className={`${styles.chat_call} ${styles.job_chat}`}
@@ -151,7 +155,7 @@ const Chi_tiet_td = (props: Props) => {
 							</div>
 							<div className={`${styles.ungtuyen} ${styles.ctn_chung_moi}`}>
 								<Link
-                                 href={"#"}
+									href={'#'}
 									className={`${styles.btn_ungtuyen} ${styles.btn_ut}`}
 									data-id={1333676}
 									data-alert=""
@@ -181,43 +185,54 @@ const Chi_tiet_td = (props: Props) => {
 			</div>
 
 			<div className={`${styles.content_info}`}>
-				<div className={`${styles.scroll_option} ${styles.active}`}>
-					<div className={`${styles.option} ${styles.list_option}`}>
-						<Link
-                         href={"#"}
-							className={`${styles.option_post} ${styles.ctn_opa} ${styles.m_active}`}
-							data-tab="tab_ttin"
-						>
-							Chi tiết <span />
-						</Link>
-						<div className={`${styles.pos_ttin_all}`}>
-							<p className={`${styles.tca_ttin_chung} ${styles.ctn_opt_post}`} data-tab="tab_ttin">
-								Thông tin
-							</p>
-							<p className={`${styles.tca_ttin_chung}`}>
-								<Link href="/cong-ty-co-phan-viet-hung-viet-nam-co206405">Công ty</Link>
-							</p>
-							<p className={`${styles.tca_ttin_chung} ${styles.vlam_goiy}`}>
-								Việc làm đề xuất bởi AI365
-							</p>
-						</div>
-						<Link
-							className={`${styles.option_post}`}
-							href="/lich-su/danh-sach-tong-u206405t1"
-							rel="nofollow"
-							target="_blank"
-						>
-							Lịch sử
-						</Link>
-						<Link
-                         href={"#"}
-							className={`${styles.option_post} ${styles.ctn_opt_post} ${styles.mucdo_phhop_ctn}`}
-							data-tab="tab_phhop"
-							data-use={1333676}
-						>
-							Phù hợp
-						</Link>
-						<div className={`${styles.hidden_mobi}`}>
+				{show && (
+					<div className={`${styles.scroll_option} ${styles.active}`}>
+						<div className={`${styles.option} ${styles.list_option} `} id="floatingDiv">
+							<div
+								onClick={() => setshowChiTiet(!showChiTiet)}
+								className={`${styles.option_post} ${styles.ctn_opa} ${styles.m_active}`}
+								data-tab="tab_ttin"
+							>
+								<div>
+									Chi tiết
+									{showChiTiet && (
+										<div className={`${styles.pos_ttin_all}`}>
+											<p
+												className={`${styles.tca_ttin_chung} ${styles.ctn_opt_post}`}
+												data-tab="tab_ttin"
+											>
+												Thông tin
+											</p>
+											<p className={`${styles.tca_ttin_chung}`}>
+												<Link href="/cong-ty-co-phan-viet-hung-viet-nam-co206405">Công ty</Link>
+											</p>
+											<p className={`${styles.tca_ttin_chung} ${styles.vlam_goiy}`}>
+												<a href="#title_all">Việc làm đề xuất bởi AI365</a>
+											</p>
+										</div>
+									)}
+								</div>
+
+								<span />
+							</div>
+
+							<Link
+								className={`${styles.option_post}`}
+								href="/lich-su/danh-sach-tong-u206405t1"
+								rel="nofollow"
+								target="_blank"
+							>
+								Lịch sử
+							</Link>
+							<Link
+								href={'#'}
+								className={`${styles.option_post} ${styles.ctn_opt_post} ${styles.mucdo_phhop_ctn}`}
+								data-tab="tab_phhop"
+								data-use={1333676}
+							>
+								Tường
+							</Link>
+							{/* <div className={`${styles.hidden_mobi}`}>
 							{' '}
 							<Link
 								className={`${styles.ption_post} ${styles.option_dtg}`}
@@ -227,20 +242,21 @@ const Chi_tiet_td = (props: Props) => {
 							>
 								Tường
 							</Link>
-						</div>
-						<div className={`${styles.mobi_ctiet}`}>
-							{' '}
-							<Link
-								className={`${styles.option_post} ${styles.option_dtg}`}
-								href="https://truyenthongnoibo.timviec365.vn/trang-ca-nhan-c18162"
-								rel="nofollow"
-								target="_blank"
-							>
-								Tường
-							</Link>
+						</div> */}
+							<div className={`${styles.mobi_ctiet}`}>
+								{' '}
+								<Link
+									className={`${styles.option_post} ${styles.option_dtg}`}
+									href="https://truyenthongnoibo.timviec365.vn/trang-ca-nhan-c18162"
+									rel="nofollow"
+									target="_blank"
+								>
+									Tường
+								</Link>
+							</div>
 						</div>
 					</div>
-				</div>
+				)}
 				<div className={`${styles.ctn_tab_ttin} ${styles.w_100} ${styles.active}`} id="tab_ttin">
 					<div className={`${styles.info_window}`}>
 						<p className={`${styles.info_title}`}>Thông tin chung</p>

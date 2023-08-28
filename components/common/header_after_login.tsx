@@ -4,11 +4,12 @@ import styles from '@/styles/common/header_affter_login.module.scss'
 import Notify_after_login from '../details/main_timviec/notify_after_login'
 import Mobile_form_after_login from '../details/molbile_form_after_login/mobile_form_after_login'
 import Link from 'next/link'
+import Pc_form_after_login from '../details/pc_form_after_login/pc_form_after_login'
 
 export interface HeaderProps {}
 
 export default function HeaderAfterLogin({ children }: any, props: HeaderProps) {
-	const [isToggle, setIsToggle] = useState(true)
+	const [isToggle, setIsToggle] = useState<boolean>(true)
 	const img_so_xuong = '/images/angle_bottom.svg'
 	const img_cv = '/images/banner/exp_cv_xviec_hso.png'
 	const img_khampha = '/images/banner/exp_khampha.png'
@@ -164,14 +165,12 @@ export default function HeaderAfterLogin({ children }: any, props: HeaderProps) 
 			menuClass: styles.menu_ptcv,
 		},
 	]
-	const [chooseKhamPha, setChooseKhamPha] = useState(false)
-	const [chooseTienIch, setChooseTienIch] = useState(false)
 	const [showAvatar,setShowAvatar] = useState(false)
 	return (
 		<>
 			<header className={styles.new_header}>
 				<Notify_after_login />
-				
+				{/* {showAvatar && <Pc_form_after_login/>} */}
 				<div className={styles.logo_header}>
 
 					<Link href="/">
@@ -229,8 +228,7 @@ export default function HeaderAfterLogin({ children }: any, props: HeaderProps) 
 											data-src="/images/dk_s.png"
 											alt="Nguyễn Quang Trường"
 										/>
-																	
-
+												333						
 									</div>
 								</div>
 						
@@ -252,12 +250,122 @@ export default function HeaderAfterLogin({ children }: any, props: HeaderProps) 
 							<span className={styles.txt_chat}>Chat</span>
 						</div>
 					</div>
-				
+					<div className={styles.m_hd_right}>
+						<div className={`${styles.menu_item} ${styles.ctn_menu_item}`}>
+							<div className={`${styles.sub_domain} ${styles.ctn_sub_domain}`}>
+								<Link href={"#"} className={styles.sub_domain_url}>
+									CV xin việc
+								</Link>
+							</div>
+						</div>
+						<div className={`${styles.menu_item} ${styles.ctn_menu_item}`}>
+							<li className={styles.sub_domain}>
+								<Link href="#" className={styles.sub_domain_url}>
+									Khám phá
+								</Link>
+								<div className={styles.ctn_up_box}>
+									<ul className={`${styles.box_sub} ${styles.hidden}`}>
+										<li className={styles.ctn_box_ch}>
+											<Link href="#" className={styles.menu_blog}>
+												Blog
+											</Link>
+										</li>
+										<li className={styles.ctn_box_ch}>
+											<Link href="#" className={styles.menu_bgia}>
+												Bảng giá
+											</Link>
+										</li>
+										<li className={styles.ctn_box_ch}>
+											<Link href={"#"} className={styles.menu_tv}>
+												Trang vàng
+											</Link>
+										</li>
+										<li className={styles.ctn_box_ch}>
+											<Link href={"#"} className={styles.menu_ctv}>
+												Cộng tác viên
+											</Link>
+										</li>
+									</ul>
+								</div>
+							</li>
+						</div>
+						<div className={`${styles.menu_item} ${styles.ctn_menu_item}`}>
+							<div className={styles.sub_domain}>
+								<Link href={"#"} className={styles.sub_domain_url}>
+									Tiện ích
+								</Link>
+								<div className={styles.ctn_up_box}>
+									<ul className={`${styles.box_sub} ${styles.hidden}`}>
+										<li className={styles.ctn_box_ch}>
+											<Link href={"#"} className={styles.menu_tra_luong}>
+												Tra cứu lương
+											</Link>
+										</li>
+										<li className={styles.ctn_box_ch}>
+											<Link href={"#"} className={styles.menu_luong_grn}>
+												Lương GROSS - NET
+											</Link>
+										</li>
+										<li className={styles.ctn_box_ch}>
+											<Link href={"#"} className={styles.menu_email}>
+												Email365
+											</Link>
+										</li>
+										<li className={styles.ctn_box_ch}>
+											<Link href={"#"} className={styles.menu_taiapp}>
+												Tải app
+											</Link>
+										</li>
+										<li className={styles.ctn_box_ch}>
+											<Link href={"#"} className={styles.menu_bhtn}>
+												Bảo hiểm thất nghiệp
+											</Link>
+										</li>
+										<li className={styles.ctn_box_ch}>
+											<Link href={"#"} className={styles.menu_mi}>
+												Trắc nghiệm MI
+											</Link>
+										</li>
+										<li className={styles.ctn_box_ch}>
+											<Link href={"#"} className={styles.menu_mbti}>
+												Trắc nghiệm MBTI
+											</Link>
+										</li>
+										<li className={styles.ctn_box_ch}>
+											<Link href={"#"} className={styles.menu_eq}>
+												Trắc nghiệm EQ
+											</Link>
+										</li>
+										<li className={styles.ctn_box_ch}>
+											<Link href={"#"} className={styles.menu_en}>
+												Trắc nghiệm Energram
+											</Link>
+										</li>
+										<li className={styles.ctn_box_ch}>
+											<Link href={"#"} className={styles.menu_ptcv}>
+												Phân tích CV
+											</Link>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div className={`${styles.menu_item} ${styles.ctn_menu_item}`}>
+							<Link href={"#"} className={styles.sub_domain_url}>
+								Tìm ứng viên
+							</Link>
+						</div>
+						<div className={`${styles.menu_item} ${styles.ctn_menu_item}`}>
+							<Link href={"#"} className={styles.sub_domain_url} target="_blank">
+								Chuyển đổi số
+							</Link>
+						</div>
+					</div>
 				</div>
 				{/* Màn nhỏ hơn */}
-				{!isToggle && (
+				{/* {!isToggle && (
 					<Mobile_form_after_login/>
-				)}
+				)} */}
 			</header>
 		</>
 	)

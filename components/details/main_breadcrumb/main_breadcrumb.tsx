@@ -40,8 +40,10 @@ const Main_breadcrumb = (props: Props) => {
 							itemType="http://schema.org/ListItem"
 							className={`${styles.br_clr}`}
 						>
-							<Link href={"#"} itemProp="item">
-								<span className={styles.namePage} itemProp="name">Nhân viên sale game online</span>
+							<Link href={'#'} itemProp="item">
+								<span className={styles.namePage} itemProp="name">
+									Nhân viên sale game online
+								</span>
 							</Link>
 							<meta itemProp="position" content={'3'} />
 						</li>

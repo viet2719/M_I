@@ -1534,14 +1534,16 @@
 	background: #f7f9ff;
 }
 
-.nd_chitiettd.scroll_option.active {
+.nd_chitiettd .scroll_option.active {
 	width: 865px;
 	position: fixed;
 	top: 0px;
-	z-index: 1;
+	z-index: 1000;
+	opacity: 1; /* Bắt đầu ẩn thẻ */
+	
 }
 
-.nd_chitiettd.scroll_option.active .option_post {
+.nd_chitiettd .scroll_option .active.option_post {
 	margin-right: 0;
 }
 
@@ -1557,13 +1559,13 @@
 	min-width: max-content;
 }
 
-.nd_chitiettd .scroll_option.active.option_post.ctn_opa {
+.nd_chitiettd .scroll_option .active.option_post .ctn_opa {
 	/* width: 120px; */
 	text-align: center;
 	/* gap: 7px; */
 }
 
-.nd_chitiettd .scroll_option.active.option_post.m_active {
+.nd_chitiettd .scroll_option .active.option_post .m_active {
 	background: #4c5bd4;
 	border-radius: 40px;
 	color: #ffffff;
@@ -1606,7 +1608,7 @@
 .box_share_mxh {
 	/* display: none; */
 	position: absolute;
-	width: 254px;
+	width: 265px;
 	background: #ffffff;
 	border-radius: 10px;
 	z-index: 10;
@@ -1912,19 +1914,19 @@
 	color: #0f21b4;
 }
 .noti_percents {
-    color: white;
-    background-color: red;
-    text-align: center;
-    font-size: 15px;
-    line-height: 40px;
+	color: white;
+	background-color: red;
+	text-align: center;
+	font-size: 15px;
+	line-height: 40px;
 }
 
 .noti_percents a {
-    font-size: 17px;
-    font-weight: 700;
-    color: white;
-    text-decoration-line: underline;
-    text-transform: uppercase;
+	font-size: 17px;
+	font-weight: 700;
+	color: white;
+	text-decoration-line: underline;
+	text-transform: uppercase;
 }
 .qr_apply {
 	width: 100%;
@@ -2236,16 +2238,14 @@
 }
 
 .pos_ttin_all {
-	position: absolute;
+	position: fixed;
 	background: #ffffff;
 	width: 220px;
 	padding: 5px 5px;
-	top: 51px;
-	left: 23px;
+	top:55px;
 	z-index: 3;
 	box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.25);
 	border-radius: 8px;
-	display: none;
 }
 
 .pos_ttin_all p {
@@ -2294,7 +2294,14 @@
 .pos_ttin_all a {
 	color: #474747 !important;
 }
-
+.pos_ttin_all p {
+    width: 100%;
+    padding: 10px 10px;
+    font-size: 16px;
+    line-height: 19px;
+    color: #474747;
+    cursor: pointer;
+}	
 .title_all.box_img .image_video .video blockquote {
 	height: 386px;
 	overflow: auto;
@@ -4380,11 +4387,17 @@
 .cm_like_ic img {
 	width: 20px;
 	height: 20px;
+	z-index: 999;
 }
 .item_like_ic {
 	display: none;
 }
+
 .count_ic {
+	display: flex;
+	justify-content: center;
+	flex-direction: row;
+	align-items: center;
 	font-size: 16px;
 	font-weight: 400;
 	line-height: 19px;
@@ -4922,15 +4935,14 @@
 
 .box_share,
 .box_share_mxh {
-	display: none;
 	position: absolute;
-	width: 254px;
+	width: 260px;
 	background: #ffffff;
 	border-radius: 10px;
 	z-index: 10;
 	box-shadow: 0px 0px 4px rgb(0 0 0 / 25%);
 	top: 60px;
-	right: calc(50% - 135px);
+	right: calc(50% - 185px);
 }
 .box_share_items {
 	display: flex;

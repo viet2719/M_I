@@ -26,7 +26,7 @@ const List_cate = () => {
 		{ id: 6, img: '/images/img_comment/Ic_6.png', alt: 'Buồn' },
 		{ id: 7, img: '/images/img_comment/Ic_7.png', alt: 'Haha' },
 	]
-	const [stateSeenAll, setStateSeenAll] = useState<Linkny>(null)
+	const [stateSeenAll, setStateSeenAll] = useState<any>(null)
 	const toggleIdSeenAll = (id: any) => {
 		if (stateSeenAll === id) {
 			setStateSeenAll(null)
@@ -38,8 +38,8 @@ const List_cate = () => {
 	const [hoveredItemId, setHoveredItemId] = useState<number | null>(null)
 	const [hoveredItemIdBottom, setHoveredItemIdBottom] = useState<number | null>(null)
 	// Lưu id của item được chọn
-	const [stateIconState, setStateIconState] = useState<Linkny>(null)
-	const [status, setStatus] = useState<Linkny>(null)
+	const [stateIconState, setStateIconState] = useState<any>(null)
+	const [status, setStatus] = useState<any>(null)
 	const handleChooseIconStatus = (itemId: any, cateId: any) => {
 		const foundItem = listIconStatus.find((item) => item.id === itemId)
 		setStatus(foundItem)
