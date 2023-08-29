@@ -187,7 +187,12 @@ const Footer = () => {
 					>
 						cv kinh doanh,
 					</Link>
-					<Link rel="dofollow" target="_blank" href="cv365/cv-it" className={styles.footer_block1_txt}>
+					<Link
+						rel="dofollow"
+						target="_blank"
+						href="cv365/cv-it"
+						className={styles.footer_block1_txt}
+					>
 						cv IT,
 					</Link>
 					<Link
@@ -541,10 +546,7 @@ const Footer = () => {
 									alt="Đã đăng ký bộ công thương"
 								/>
 							</Link>
-							<Link
-								rel="nofollow"
-								href="//www.dmca.com/Protection/Status.aspx?ID=5b1070f1-e6fb-4ba4-8283-84c7da8f8398"
-							>
+							<Link rel="nofollow" href="">
 								<Image
 									width={40}
 									height={40}
@@ -657,10 +659,7 @@ const Footer = () => {
 									alt="Đã đăng ký bộ công thương"
 								/>
 							</Link>
-							<Link
-								rel="nofollow"
-								href="//www.dmca.com/Protection/Status.aspx?ID=5b1070f1-e6fb-4ba4-8283-84c7da8f8398"
-							>
+							<Link rel="nofollow" href="">
 								<Image
 									width={37}
 									height={40}

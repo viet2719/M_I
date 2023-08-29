@@ -21,7 +21,7 @@ const Home: NextPageWithLayout = () => {
 			company: 'Công Ty TNHH Chung Anh Logistics',
 			location: 'Hà Nội',
 			date: '25/08/2023',
-			link: convertToSlug('[Tuyển dụng] Nhân viên Kinh doanh', '23'),
+			link: convertToSlug('[Tuyển dụng] Nhân viên Kinh doanh'),
 			salary: 'Từ 7.5 triệu',
 		},
 		{
@@ -29,7 +29,7 @@ const Home: NextPageWithLayout = () => {
 			company: 'Công Ty TNHH Chung Anh Logistics',
 			location: 'Hà Nội',
 			date: '25/08/2023',
-			link: convertToSlug('[Tuyển dụng] Nhân viên Kinh doanh', 23),
+			link: convertToSlug('[Tuyển dụng] Nhân viên Kinh doanh'),
 			salary: 'Từ 7.5 triệu',
 		},
 		{
@@ -37,7 +37,7 @@ const Home: NextPageWithLayout = () => {
 			company: 'Công Ty TNHH Chung Anh Logistics',
 			location: 'Hà Nội',
 			date: '25/08/2023',
-			link: convertToSlug('[Tuyển dụng] Nhân viên Kinh doanh', '24'),
+			link: convertToSlug('[Tuyển dụng] Nhân viên Kinh doanh'),
 			salary: 'Từ 7.5 triệu',
 		},
 		{
@@ -45,7 +45,7 @@ const Home: NextPageWithLayout = () => {
 			company: 'Công Ty TNHH Chung Anh Logistics',
 			location: 'Hà Nội',
 			date: '25/08/2023',
-			link: convertToSlug('[Tuyển dụng] Nhân viên Kinh doanh', '24'),
+			link: convertToSlug('[Tuyển dụng] Nhân viên Kinh doanh'),
 			salary: 'Từ 7.5 triệu',
 		},
 		{
@@ -53,7 +53,7 @@ const Home: NextPageWithLayout = () => {
 			company: 'Công Ty TNHH Chung Anh Logistics',
 			location: 'Hà Nội',
 			date: '25/08/2023',
-			link: convertToSlug('[Tuyển dụng] Nhân viên Kinh doanh', '24'),
+			link: convertToSlug('[Tuyển dụng] Nhân viên Kinh doanh'),
 			salary: 'Từ 7.5 triệu',
 		},
 	]
