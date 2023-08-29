@@ -1536,12 +1536,11 @@
 
 .nd_chitiettd .scroll_option.active {
 	width: 865px;
-	position: absolute;
+	position: relative;
 	top: 0;
-	z-index: 1000;
 	opacity: 1;
+	width: 100%;
 	/* Bắt đầu ẩn thẻ */
-
 }
 
 .nd_chitiettd .scroll_option .active.option_post {
@@ -2245,7 +2244,7 @@
 	background: #ffffff;
 	width: 220px;
 	padding: 5px 5px;
-	top: 55px;
+	top: 100px;
 	z-index: 3;
 	box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.25);
 	border-radius: 8px;
@@ -2578,7 +2577,7 @@
 
 /* ====================popup_thuungtuyen============================ */
 
-#m_thuut {
+.m_thuut {
 	position: fixed;
 	top: 0px;
 	left: 0px;
@@ -2589,7 +2588,7 @@
 	display: none;
 }
 
-#m_thuut .container_thuut {
+.m_thuut .container_thuut {
 	width: 100%;
 	height: 100%;
 	display: flex;
@@ -2597,7 +2596,7 @@
 	align-items: center;
 }
 
-#m_thuut .box_thuut {
+.m_thuut .box_thuut {
 	max-width: 813px;
 	width: 100%;
 	max-height: 550px;
@@ -2609,9 +2608,10 @@
 	display: flex;
 	flex-direction: column;
 	gap: 16px;
+
 }
 
-#m_thuut .header_thuut {
+.m_thuut .header_thuut {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -2621,21 +2621,23 @@
 	gap: 10px;
 }
 
-#m_thuut .footer_thuut {
+.m_thuut .footer_thuut {
 	display: flex;
 	gap: 10px;
 	width: 100%;
 	justify-content: flex-end;
+	
 }
 
-#m_thuut .title_thuut {
+.m_thuut .title_thuut {
 	font-size: 18px;
 	line-height: 24px;
 	color: #474747;
 	font-family: Roboto-Medium;
+	
 }
 
-#m_thuut .txta_ct_thuut {
+.m_thuut .txta_ct_thuut {
 	width: 100%;
 	height: 100%;
 	border: none;
@@ -2646,7 +2648,7 @@
 	font-family: 'roboto';
 }
 
-#m_thuut .txt_ct_thuut {
+.m_thuut .txt_ct_thuut {
 	font-family: Roboto-Medium;
 	font-style: normal;
 	font-size: 24px;
@@ -2656,7 +2658,7 @@
 	text-align: center;
 }
 
-#m_thuut .ft_btn_utuyen {
+.m_thuut .ft_btn_utuyen {
 	width: 161px;
 	height: 35px;
 	background: #4c5bd4;
@@ -2670,7 +2672,7 @@
 	font-weight: 400;
 }
 
-#m_thuut .ft_btn_huy {
+.m_thuut .ft_btn_huy {
 	width: 75px;
 	height: 35px;
 	background: #d9d9d9;
@@ -2684,18 +2686,18 @@
 	color: #595959;
 }
 
-#m_thuut .content_thuut {
+.m_thuut .content_thuut {
 	width: 100%;
 	padding: 28px 18px;
 	height: 100%;
 	display: flex;
 	flex-direction: column;
 	gap: 16px;
-	background: url(/images/New_images/ic_vienthuut.png) no-repeat;
+	background-image: url(/images/ic_vienthuut.png);
 	background-size: 100% 100%;
 }
 
-#m_thuut .frame_ct_thuut {
+.m_thuut .frame_ct_thuut {
 	width: 100%;
 	height: 100%;
 }
@@ -3082,7 +3084,7 @@
 		padding-right: 5px;
 	}
 
-	.div_bre .breadcrumb>li a,
+	.div_bre .breadcrumb > li a,
 	.div_bre .breadcrumb li:not(.first)::before {
 		line-height: 24px;
 	}
@@ -3382,7 +3384,7 @@
 	}
 
 	/* thu ung tuyen */
-	#m_thuut .box_thuut {
+	.m_thuut .box_thuut {
 		max-height: unset;
 	}
 }
@@ -3746,7 +3748,8 @@
 		margin-top: 10px;
 	}
 
-	#m_pop_dangnhap .ft_txt_taingay {}
+	#m_pop_dangnhap .ft_txt_taingay {
+	}
 
 	#m_pop_dangnhap :is(.input_matkhau, .input_taikhoan) {
 		padding: 8px 8px 8px 16px;
@@ -4202,27 +4205,27 @@
 	font-size: 18px;
 	font-weight: 600;
 }
-.savet_1{
+.savet_1 {
 	display: flex;
 	justify-content: center;
 	font-weight: 700;
-    font-size: 16px;
-    color: #4C5BD4;
-    margin-bottom: 10px;
+	font-size: 16px;
+	color: #4c5bd4;
+	margin-bottom: 10px;
 }
-.savet_2{
+.savet_2 {
 	display: flex;
 	justify-content: center;
 	font-size: 16px;
-    color: #4C5BD4;
-    margin-bottom: 15px;
+	color: #4c5bd4;
+	margin-bottom: 15px;
 }
-.savet_3{
+.savet_3 {
 	font-style: italic;
-    color: #4C5BD4;
-    text-align: left;
-    font-size: 15px;
-    line-height: 20px;
+	color: #4c5bd4;
+	text-align: left;
+	font-size: 15px;
+	line-height: 20px;
 }
 .popup_hths .content_hths .block1 {
 	display: flex;
@@ -4414,15 +4417,20 @@
 
 .cm_like {
 	position: relative;
-	padding: 10px 30px;
+	height: 50px;
+	padding-top: 1%;
 }
 
 .cm_like_ic,
 .frame_cm_like,
 .box_items_like_ic {
-	float: left;
 }
-
+.box_items_like_ic {
+	position: absolute;
+	background: #f3eeee;
+	border-radius: 10px;
+	z-index: 99;
+}
 .cm_like_ic img {
 	width: 20px;
 	height: 20px;
@@ -4434,10 +4442,6 @@
 }
 
 .count_ic {
-	display: flex;
-	justify-content: center;
-	flex-direction: row;
-	align-items: center;
 	font-size: 16px;
 	font-weight: 400;
 	line-height: 19px;
@@ -4857,17 +4861,22 @@
 	left: 0;
 	right: 0;
 	bottom: 0;
-	z-index: 999999;
+	z-index: 9999;
 	background: rgba(0, 0, 0, 0.5);
-	display: none;
 	line-height: unset !important;
 }
 
 .popup_items_sh,
 .popup_items_icon,
 .popup_share_chat365 {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
 	margin: 40px auto 10px;
 	width: 412px;
+	z-index: 9999;
 	background: #ffffff;
 	border-radius: 10px;
 	max-height: 463px;
@@ -5013,7 +5022,6 @@
 }
 
 .more_icon {
-	display: none;
 	position: absolute;
 	background: #ffffff;
 	box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
@@ -5286,6 +5294,7 @@
 
 	.cm_like {
 		padding: 8px 15px;
+		height: 90px;
 	}
 
 	.box_cm_head {

@@ -8,7 +8,7 @@ type Props = {}
 
 const Detail = (props: Props) => {
 	const [show, setShow] = useState<boolean>(false)
-	
+
 	const handleScroll = () => {
 		const scrollY = window.scrollY
 		if (scrollY > 0 && scrollY < 1600) {
@@ -19,14 +19,14 @@ const Detail = (props: Props) => {
 	}
 
 	useEffect(() => {
-		// window.addEventListener('scroll', handleScroll)
-		// return () => {
-		// 	window.removeEventListener('scroll', handleScroll)
-		// }
+		window.addEventListener('scroll', handleScroll)
+		return () => {
+			window.removeEventListener('scroll', handleScroll)
+		}
 	}, [])
 	return (
 		<div>
-			<New_banner_detail />
+			 <New_banner_detail />
 			<Main_breadcrumb />
 			<Main_timviec show={show} />
 			<Footer_chat />

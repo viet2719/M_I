@@ -1,70 +1,104 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from '@/components/details/main_timviec/main_timviec.module.css'
 import Image from 'next/image'
 import { Button, Modal } from 'antd'
 
 type Props = {
-	showLuuTin: boolean
-	setLuuTin: (value: boolean) => void
+	showPhanAnhNTD: boolean
+	setShowPhanAnhNTD: (value: boolean) => void
 }
 
-const Model_Phan_Anh_NTD = ({ showLuuTin, setLuuTin }: Props) => {
+const Model_Phan_Anh_NTD = ({ showPhanAnhNTD, setShowPhanAnhNTD }: Props) => {
+	const [contents, setContents] = useState<string>()
+
+	const handleSendPhanAnh: () => void = () => {
+		if (contents) {
+			alert('Gửi phản ánh thành công')
+			setShowPhanAnhNTD(false)
+		}
+	}
 	return (
 		<Modal
-			footer={false}
-			cancelText={false}
-			open={showLuuTin}
 			closable={false}
+			footer={
+				<div style={{ display: 'flex', justifyContent: 'center', gap: 20 }}>
+					<Button
+						onClick={() => setShowPhanAnhNTD(false)}
+						style={{ width: 100, border: '1px solid #4C5BD4', color: '#4C5BD4' }}
+					>
+						Hủy
+					</Button>
+					<Button
+						onClick={() => handleSendPhanAnh()}
+						style={{ width: 100, background: '#4C5BD4', color: '#fff' }}
+					>
+						Gửi
+					</Button>
+				</div>
+			}
+			cancelText={false}
+			open={showPhanAnhNTD}
 			title={
 				<p
 					style={{
 						display: 'flex',
 						justifyContent: 'center',
 						flexDirection: 'column',
-						alignItems: 'center',
-						background: 'blue',
+						background: '#4C5BD4',
 						margin: '-20px -24px',
 					}}
 				>
-					<p style={{ paddingTop: 8 }}>
-						<Image
-							width={31}
-							height={31}
-							src="https://timviec365.vn/images/loc/tick.png"
-							alt="Done"
-						/>
-					</p>
+					<div
+						style={{
+							paddingLeft: '5px',
+							display: 'flex',
+							justifyContent: 'space-between',
+							flexDirection: 'row',
+							alignItems: 'center',
+							gap: 15,
+						}}
+					>
+						<p style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+							<p style={{ paddingTop: 8 }}>
+								<Image
+									width={37}
+									height={39}
+									src="https://timviec365.vn/images/loc/mail.png"
+									alt="Done"
+								/>
+							</p>
+							<p style={{ color: '#fff' }}>Phản ánh chất lượng nhà tuyển dụng</p>
+						</p>
+
+						<p
+							onClick={() => setShowPhanAnhNTD(false)}
+							style={{ color: '#fff', cursor: 'pointer', paddingRight: 15 }}
+						>
+							X
+						</p>
+					</div>
 				</p>
 			}
 		>
 			<div className={`${styles.over_savet}`} style={{ display: 'block', paddingTop: 20 }}>
-				<div className={styles.wapper}>
-					<div className={`${styles.auth_form} ${styles.form_savet}`}>
-						<div className={styles.box_savet}>
-							<p className={styles.savet_1}>Tuyệt vời!</p>
-							<p className={styles.savet_2}>Bạn đã lưu tin tuyển dụng thành công</p>
-							<p className={styles.savet_2}>
-								{' '}
-								<Button
-                                onClick={()=>setLuuTin(false)}
-									style={{
-										display: 'flex',
-										justifyContent: 'center',
-										alignItems: 'center',
-										color: '#fff',
-										background: '#4C5BD4',
-									}}
-								>
-									Hoàn thành
-								</Button>
-							</p>
-						</div>
-						<div className={styles.savet_3}>
-							<p>Bạn gặp khó khăn?</p>
-							<p>Hotline: 1900633682 ấn phím 1</p>
-						</div>
-					</div>
-				</div>
+				<textarea
+					onChange={(e) => setContents(e.target.value)}
+					style={{
+						width: '100%',
+						border: '1px solid rgb(229 231 242)',
+						padding: 5,
+						height: '250px',
+					}}
+					name=""
+					id=""
+					placeholder={
+						'Vui lòng ghi rõ lý do để Timviec365 hỗ trợ bạn                   VD: Nhà tuyển dụng thông tin mập mờ, có dấu hiệu lừa đảo v.v..'
+					}
+				>
+					{contents}
+				</textarea>
+
+				{!contents && <i>Vui lòng nhập phản ánh của bạn !</i>}
 			</div>
 		</Modal>
 	)

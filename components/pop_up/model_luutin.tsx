@@ -22,7 +22,7 @@ const Model_luutin = ({ showLuuTin, setLuuTin }: Props) => {
 						justifyContent: 'center',
 						flexDirection: 'column',
 						alignItems: 'center',
-						background: 'blue',
+						background: '#4C5BD4',
 						margin: '-20px -24px',
 					}}
 				>
