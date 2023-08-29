@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import styles from '../main_timviec/main_timviec.module.css'
 import Link from 'next/link'
 import Image from 'next/image'
+import Model_ungtuyen from '@/components/pop_up/model_ungtuyen'
+import Model_luutin from '@/components/pop_up/model_luutin'
 
 type Props = {
 	show: boolean
@@ -9,9 +11,39 @@ type Props = {
 
 const Chi_tiet_td = ({ show }: Props) => {
 	const [showChiTiet, setshowChiTiet] = useState<boolean>(false)
-
+	const [showModelUngTuyen, setShowModelUngTuyen] = useState<boolean>(false)
+	const [showLuuTin, setLuuTin] = useState<boolean>(false)
+	const [stt_luutin, setStt_luutin] = useState<string>('Lưu tin')
+	const [stt_luuCongViec, setStt_luuCongViec] = useState<string>('Lưu công việc')
+	const [showPhanAnhNTD, setShowPhanAnhNTD] = useState<boolean>(false)
+	const handleLuuTin = () => {
+		if (!showLuuTin && stt_luutin == 'Lưu tin') {
+			setStt_luutin('Đã Lưu tin')
+			setLuuTin(true)
+		}
+		if (!showLuuTin && stt_luutin != 'Lưu tin') {
+			setStt_luutin('Lưu tin')
+			setLuuTin(false)
+		}
+	}
+	const handleLuuCongViec = () => {
+		if (!showLuuTin && stt_luuCongViec == 'Lưu công việc') {
+			setStt_luuCongViec('Đã lưu công việc')
+			setLuuTin(true)
+		}
+		if (!showLuuTin && stt_luuCongViec != 'Lưu công việc') {
+			setStt_luuCongViec('Lưu công việc')
+			setLuuTin(false)
+		}
+	}
+	
 	return (
 		<>
+			<Model_ungtuyen
+				setShowModelUngTuyen={setShowModelUngTuyen}
+				showModelUngTuyen={showModelUngTuyen}
+			/>
+			<Model_luutin showLuuTin={showLuuTin} setLuuTin={setLuuTin} />
 			<div className={`${styles.chitiettd_head}`}>
 				<div className={`${styles.mb_top}`}>
 					<div className={`${styles.logo_com} ${styles.hidden_mobi}`}>
@@ -166,14 +198,13 @@ const Chi_tiet_td = ({ show }: Props) => {
 									Chat ngay
 								</Link>
 							</div>
-							<div className={`${styles.ungtuyen} ${styles.ctn_chung_moi}`}>
-								<Link
-									href={'#'}
+							<div
+								onClick={() => setShowModelUngTuyen(true)}
+								className={`${styles.ungtuyen} ${styles.ctn_chung_moi}`}
+							>
+								<div
+									style={{ cursor: 'pointer' }}
 									className={`${styles.btn_ungtuyen} ${styles.btn_ut}`}
-									data-id={1333676}
-									data-alert=""
-									data-nc={0}
-									point-hths="12.5"
 								>
 									<Image
 										width={17}
@@ -182,16 +213,16 @@ const Chi_tiet_td = ({ show }: Props) => {
 										alt="ứng tuyển"
 									/>
 									Ứng tuyển
-								</Link>
+								</div>
 							</div>
-							<div className={`${styles.luu_tdang} ${styles.ctn_chung_moi}`}>
-								<Link
-									href={'#'}
+							<div
+								className={`${styles.luu_tdang} ${styles.ctn_chung_moi}`}
+								onClick={() => handleLuuTin()}
+							>
+								<div
+									style={{ cursor: 'pointer' }}
 									className={`${styles.save_job} ${styles.btn_love}`}
 									title="Lưu công việc"
-									data-id={868030}
-									data-use={1333676}
-									data-uid={1333676}
 								>
 									<Image
 										width={17}
@@ -199,8 +230,8 @@ const Chi_tiet_td = ({ show }: Props) => {
 										src="https://timviec365.vn/images/detail/love.svg"
 										alt="lưu công việc"
 									/>
-									<span>Lưu tin</span>
-								</Link>
+									<span>{stt_luutin}</span>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -208,62 +239,61 @@ const Chi_tiet_td = ({ show }: Props) => {
 			</div>
 
 			<div className={`${styles.content_info}`}>
-				{show && (
-					<div className={`${styles.scroll_option} ${styles.active}`}>
-						<div className={`${styles.option} ${styles.list_option} `} id="floatingDiv">
-							<div
-								onClick={() => setshowChiTiet(!showChiTiet)}
-								className={`${styles.option_post} ${styles.ctn_opa} ${styles.m_active}`}
-								data-tab="tab_ttin"
-							>
-								<div>
-									Chi tiết
-									{showChiTiet && (
-										<div className={`${styles.pos_ttin_all}`}>
-											<p
-												className={`${styles.tca_ttin_chung} ${styles.ctn_opt_post}`}
-												data-tab="tab_ttin"
-											>
-												Thông tin
-											</p>
-											<p className={`${styles.tca_ttin_chung}`}>
-												<Link href="/cong-ty-co-phan-viet-hung-viet-nam-co206405">Công ty</Link>
-											</p>
-											<p className={`${styles.tca_ttin_chung} ${styles.vlam_goiy}`}>
-												<a href="#title_all">Việc làm đề xuất bởi AI365</a>
-											</p>
-										</div>
-									)}
-								</div>
-
-								<span />
+				<div className={`${styles.scroll_option} ${styles.active}`}>
+					<div className={`${styles.option} ${styles.list_option} `} id="floatingDiv">
+						<div
+							onClick={() => setshowChiTiet(!showChiTiet)}
+							className={`${styles.option_post} ${styles.ctn_opa} ${styles.m_active}`}
+							data-tab="tab_ttin"
+						>
+							<div>
+								Chi tiết
+								{showChiTiet && (
+									<div className={`${styles.pos_ttin_all}`}>
+										<p
+											className={`${styles.tca_ttin_chung} ${styles.ctn_opt_post}`}
+											data-tab="tab_ttin"
+										>
+											Thông tin
+										</p>
+										<p className={`${styles.tca_ttin_chung}`}>
+											<Link href="/cong-ty-co-phan-viet-hung-viet-nam-co206405">Công ty</Link>
+										</p>
+										<p className={`${styles.tca_ttin_chung} ${styles.vlam_goiy}`}>
+											<a href="#title_all">Việc làm đề xuất bởi AI365</a>
+										</p>
+									</div>
+								)}
 							</div>
 
-							<Link
-								className={`${styles.option_post}`}
-								href="/lich-su/danh-sach-tong-u206405t1"
-								rel="nofollow"
-								target="_blank"
-							>
-								Lịch sử
-							</Link>
-							<Link
-								className={`${styles.option_post}`}
-								href="/phu-hop/danh-sach-tong-u206405t1"
-								rel="nofollow"
-								target="_blank"
-							>
-								Phù hợp
-							</Link>
-							<Link
-								href={'#'}
-								className={`${styles.option_post} ${styles.ctn_opt_post} ${styles.mucdo_phhop_ctn}`}
-								data-tab="tab_phhop"
-								data-use={1333676}
-							>
-								Tường
-							</Link>
-							{/* <div className={`${styles.hidden_mobi}`}>
+							<span />
+						</div>
+
+						<Link
+							className={`${styles.option_post}`}
+							href="/lich-su/danh-sach-tong-u206405t1"
+							rel="nofollow"
+							target="_blank"
+						>
+							Lịch sử
+						</Link>
+						<Link
+							className={`${styles.option_post}`}
+							href="/phu-hop/danh-sach-tong-u206405t1"
+							rel="nofollow"
+							target="_blank"
+						>
+							Phù hợp
+						</Link>
+						<Link
+							href={'#'}
+							className={`${styles.option_post} ${styles.ctn_opt_post} ${styles.mucdo_phhop_ctn}`}
+							data-tab="tab_phhop"
+							data-use={1333676}
+						>
+							Tường
+						</Link>
+						{/* <div className={`${styles.hidden_mobi}`}>
 							{' '}
 							<Link
 								className={`${styles.ption_post} ${styles.option_dtg}`}
@@ -274,20 +304,20 @@ const Chi_tiet_td = ({ show }: Props) => {
 								Tường
 							</Link>
 						</div> */}
-							<div className={`${styles.mobi_ctiet}`}>
-								{' '}
-								<Link
-									className={`${styles.option_post} ${styles.option_dtg}`}
-									href="https://truyenthongnoibo.timviec365.vn/trang-ca-nhan-c18162"
-									rel="nofollow"
-									target="_blank"
-								>
-									Tường
-								</Link>
-							</div>
+						<div className={`${styles.mobi_ctiet}`}>
+							{' '}
+							<Link
+								className={`${styles.option_post} ${styles.option_dtg}`}
+								href="https://truyenthongnoibo.timviec365.vn/trang-ca-nhan-c18162"
+								rel="nofollow"
+								target="_blank"
+							>
+								Tường
+							</Link>
 						</div>
 					</div>
-				)}
+				</div>
+
 				<div className={`${styles.ctn_tab_ttin} ${styles.w_100} ${styles.active}`} id="tab_ttin">
 					<div className={`${styles.info_window}`}>
 						<p className={`${styles.info_title}`}>Thông tin chung</p>
@@ -448,8 +478,9 @@ const Chi_tiet_td = ({ show }: Props) => {
 							data-use={1333676}
 							data-uid={1333676}
 							className={`${styles.btn_tt} ${styles.save_job}`}
+							onClick={() => handleLuuCongViec()}
 						>
-							Lưu công việc
+							{stt_luuCongViec}
 						</button>
 						<button className={`${styles.bcuv} ${styles.btn_tt} `} data-use={1333676}>
 							Phản ánh NTD
