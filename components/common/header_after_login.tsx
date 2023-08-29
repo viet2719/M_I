@@ -170,7 +170,7 @@ export default function HeaderAfterLogin({ children }: any, props: HeaderProps) 
 		<>
 			<header className={styles.new_header}>
 				<Notify_after_login />
-				{/* {showAvatar && <Pc_form_after_login/>} */}
+				{showAvatar && <Pc_form_after_login/>}
 				<div className={styles.logo_header}>
 					<Link href="/">
 						<Image
@@ -359,9 +359,9 @@ export default function HeaderAfterLogin({ children }: any, props: HeaderProps) 
 					</div>
 				</div>
 				{/* Màn nhỏ hơn */}
-				{/* {!isToggle && (
+				{!isToggle && (
 					<Mobile_form_after_login/>
-				)} */}
+				)}
 			</header>
 		</>
 	)
