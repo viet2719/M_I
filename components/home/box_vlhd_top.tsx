@@ -12,7 +12,8 @@ const Box_vlhd_top = ({ jobData }: any) => {
 						<div className={styles.in_vl}>
 							<div className={styles.img_item_vl}>
 								<Link
-									href="/test"
+									href={`/[slug]-p[id].html?slug=${job.link}&id=123`}
+									as={`/${job.link}-p123.html`}
 									className={styles.logo_user_th}
 									title="[tuyen dung] nhan vien kinh doan"
 								>
@@ -72,11 +73,21 @@ const Box_vlhd_top = ({ jobData }: any) => {
 							</div>
 							<div className={styles.right_item_vl}>
 								<h3>
-									<Link className={styles.tit_vip} href={job.link} title={job.title}>
+									<Link
+										className={styles.tit_vip}
+										href={`/[slug]-p[id].html?slug=${job.link}&id=123`}
+										as={`/${job.link}-p123.html`}
+										title={job.title}
+									>
 										{job.title}
 									</Link>
 								</h3>
-								<Link className={styles.name_com} href={job.link} title={job.company}>
+								<Link
+									className={styles.name_com}
+									href={`/[slug]-p[id].html?slug=${job.link}&id=123`}
+									as={`/${job.link}-p123.html`}
+									title={job.company}
+								>
 									{job.company}
 								</Link>
 								<p className={styles.job_local}>{job.location}</p>
@@ -87,7 +98,11 @@ const Box_vlhd_top = ({ jobData }: any) => {
 								<p className={styles.job_money} title={job.salary}>
 									{job.salary}
 								</p>
-								<Link href="/lich-su/danh-sach-tong-u243931t1" className={styles.job_history}>
+								<Link
+									href={`/[slug]-p[id].html?slug=${job.link}&id=123`}
+									as={`/${job.link}-p123.html`}
+									className={styles.job_history}
+								>
 									<Image
 										width={16}
 										height={16}
