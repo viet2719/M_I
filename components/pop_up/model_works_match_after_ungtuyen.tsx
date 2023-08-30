@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react'
 import styles from '@/components/details/details.module.css'
 import Link from 'next/link'
 import Image from 'next/image'
-import { Divider } from 'antd'
-interface IWorks {
+export interface IWorks {
 	src: string
 	name_work: string
 	name_com: string
@@ -35,15 +34,18 @@ const Model_works_match_after_ungtuyen = ({ showWorkMatch, setShowWorkMatch }: P
 	return (
 		<div >
 			{showWorkMatch && (
-				<div className={styles.overlay_nhs} style={{ display: 'block' }}>
+				<div className={styles.overlay_nhs} style={{ width: 'block' }}>
 					<div className={styles.wapper + styles.wapper_nhs}>
 						<div className={styles.auth_form + styles.form_vltt}>
-							<div className={styles.nhs_header} style={{display:"flex",justifyContent:"space-between"}}> 
-                            <p>
-                            <img className={styles.nhs_bag} src="/images/bag.png" />
-								<p className={styles.nhs_title_2}>Timviec365.vn Thông báo</p>
-                            </p>
-							
+							<div
+								className={styles.nhs_header}
+								style={{ display: 'flex', justifyContent: 'space-between' }}
+							>
+								<p>
+									<Image width={23} height={24} className={styles.nhs_bag} src="/images/bag.png" alt={''} />
+									<p className={styles.nhs_title_2}>Timviec365.vn Thông báo</p>
+								</p>
+
 								<Image
 									onClick={() => setShowWorkMatch(false)}
 									width={15}
@@ -72,10 +74,10 @@ const Model_works_match_after_ungtuyen = ({ showWorkMatch, setShowWorkMatch }: P
 									{listWorksMatch?.map((item: IWorks, index: number) => {
 										return (
 											<div key={index}>
-                                                	<div className={styles['input-checkbox']}>
-														<input type="checkbox" className={styles.check_vl} name="fieldset" />
-														<label htmlFor="checkbox2-864135" />
-													</div>
+												<div className={styles['input-checkbox']}>
+													<input checked type="checkbox" className={styles.check_vl} name="fieldset" />
+													<label htmlFor="checkbox2-864135" />
+												</div>
 												<div className={styles.img_cate}>
 													<Image
 														width={120}
@@ -107,8 +109,20 @@ const Model_works_match_after_ungtuyen = ({ showWorkMatch, setShowWorkMatch }: P
 														</p>
 														<p style={{ color: '#6F6F6F' }}>Hạn nộp: 05/09/2023</p>
 														<p>
-															<span className="cate_dd">{item.address}</span>
-															<span className="cate_ml">{item.monney} triệu</span>
+															<Image
+																width={16}
+																height={16}
+																src={'/images/location.svg'}
+																alt=""
+															></Image>
+															&nbsp; <span className="cate_dd">{item.address}</span>&nbsp;
+															<Image
+																width={16}
+																height={16}
+																src={'/images/dola.svg'}
+																alt=""
+															></Image>
+															&nbsp; <span className="cate_ml">{item.monney} triệu</span>
 														</p>
 													</div>
 												</div>
@@ -116,6 +130,24 @@ const Model_works_match_after_ungtuyen = ({ showWorkMatch, setShowWorkMatch }: P
 										)
 									})}
 								</div>
+							</div>
+							<div className={`${styles.pop_footer}`}>
+								<div className={`${styles.pop_tf}`}>
+									<p>
+										Click <Image width={16} height={16} alt="" src="/images/tick_2.png" /> để bỏ
+										chọn công việc bạn không mong muốn
+									</p>
+									<p>
+										Bạn muốn ứng tuyển{' '}
+										<span style={{ color: '#FF490F' }} className={`${styles.soluongcv}`}>
+											5
+										</span>{' '}
+										vị trí ở trên
+									</p>
+								</div>
+								<span className={`${styles.btn_ungtuyen_nvt}`} data-id={1333676}>
+									Nộp hồ sơ
+								</span>
 							</div>
 						</div>
 					</div>

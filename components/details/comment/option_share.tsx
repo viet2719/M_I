@@ -61,19 +61,19 @@ const Option_share = ({ showBox_share, show_Box_Share_Mxh, setShow_Box_Share_Mxh
 					}}
 				>
 					<div className={`${styles.box_share_items}`}>
-						<img src="https://timviec365.vn/images/img_comment/iic_f.png" alt="Facebook" />
+						<Image width={24} height={24} src="/images/iic_f.png" alt="Facebook" />
 						Facebook
 					</div>
 					<div className={`${styles.box_share_items}`}>
-						<img src="https://timviec365.vn/images/img_comment/iic_t.png" alt="Twitter" />
+					<Image width={24} height={24} src="/images/iic_t.png" alt="Twitter" />
 						Twitter
 					</div>
 					<div className={`${styles.box_share_items}`}>
-						<img src="https://timviec365.vn/images/img_comment/iic_v.png" alt="Vkontakte" />
+					<Image width={24} height={24} src="/images/iic_v.png" alt="Vkontakte" />
 						Vkontakte
 					</div>
 					<div className={`${styles.box_share_items}`}>
-						<img src="https://timviec365.vn/images/img_comment/iic_l.png" alt="Linked In" />
+					<Image width={24} height={24} src="/images/iic_l.png" alt="Linked In" />
 						Linked In
 					</div>
 				</div>

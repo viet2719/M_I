@@ -5,12 +5,15 @@ type Props = {
     handleComment:()=>void
     setcontent_comment:(value:string) => void
     content_comment:string
+    showInput:boolean
+    setShowInput:(value:boolean) => void
 }
 
-const Input_comment = ({handleComment,setcontent_comment,content_comment}: Props) => {
+const Input_Rep_comment = ({handleComment,setcontent_comment,content_comment,showInput}: Props) => {
 
   return (
-    <div className={`${styles.cm_input} ${styles.input_comment}`}>
+    <div>
+ <div className={`${styles.cm_input} ${styles.input_comment}`}>
     <Image
         width={36}
         height={36}
@@ -89,6 +92,8 @@ const Input_comment = ({handleComment,setcontent_comment,content_comment}: Props
     />
     <div id="tag_friend" style={{ display: 'none' }} />
 </div>
+    </div>
+ 
   )
 }
-export default Input_comment;
+export default Input_Rep_comment;

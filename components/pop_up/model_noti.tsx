@@ -57,7 +57,7 @@ const Model_noti = () => {
 							height={16}
 							width={16}
 							className={styles.close_pop_login}
-							src="/images/close_btndo.png"
+							src="/images/close_while.png"
 							alt="close"
 						/>
 					</p>

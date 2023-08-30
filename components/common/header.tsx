@@ -2,10 +2,15 @@ import Image from 'next/image'
 import React, { useState } from 'react'
 import styles from '@styles/common/header.module.scss'
 import Link from 'next/link'
+import { openModal } from '@/actions/actions'
+import { useDispatch } from 'react-redux'
+import Model_noti from '../pop_up/model_noti'
 
-export interface HeaderProps {}
+export interface HeaderProps {
+	isLogin:boolean
+}
 
-export default function Header({ children }: any, props: HeaderProps) {
+export default function Header({ children }: any, {isLogin}: HeaderProps) {
 	const [isToggle, setIsToggle] = useState(true)
 	const img_so_xuong = '/images/angle_bottom.svg'
 	const img_cv = '/images/banner/exp_cv_xviec_hso.png'
@@ -164,9 +169,16 @@ export default function Header({ children }: any, props: HeaderProps) {
 	]
 	const [chooseKhamPha, setChooseKhamPha] = useState(false)
 	const [chooseTienIch, setChooseTienIch] = useState(false)
+	const dispatch = useDispatch()
+	const handleChat = () =>{
+		if (!isLogin) {
+			dispatch(openModal())
+		}
+	}
 	return (
 		<>
 			<header className={styles.new_header}>
+				<Model_noti/>
 				<div className={styles.logo_header}>
 					<Link href="/">
 						<Image
@@ -182,7 +194,7 @@ export default function Header({ children }: any, props: HeaderProps) {
 							setIsToggle(!isToggle)
 						}}
 					></span>
-					<div className={styles.ctn_noti_chat}>
+					<div  className={styles.ctn_noti_chat}>
 						<div className={styles.chat_tt}>
 							<div className={styles.ctn_menu_chat}>
 								<span className={styles.chat_notifice}>
@@ -214,7 +226,7 @@ export default function Header({ children }: any, props: HeaderProps) {
 								Đăng tin
 							</Link>
 						</div>
-						<div className={styles.ctn_menu_chat}>
+						<div onClick={()=>handleChat()} className={styles.ctn_menu_chat}>
 							<span className={styles.chat_notifice}>
 								<i className={styles.num_tb}>0</i>
 							</span>
