@@ -8,6 +8,7 @@ type Props = {}
 
 const Detail = (props: Props) => {
 	const [show, setShow] = useState<boolean>(false)
+
 	const handleScroll = () => {
 		const scrollY = window.scrollY
 		if (scrollY > 0 && scrollY < 1600) {
@@ -25,7 +26,7 @@ const Detail = (props: Props) => {
 	}, [])
 	return (
 		<div>
-			{!show && <New_banner_detail />}
+			 <New_banner_detail />
 			<Main_breadcrumb />
 			<Main_timviec show={show} />
 			<Footer_chat />

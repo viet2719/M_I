@@ -1,8 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import styles from '../main_timviec/main_timviec.module.css'
-import { Badge, Image } from 'antd'
-import Item from 'antd/es/list/Item'
+import { Image } from 'antd'
 import Respones_comment from './respones_comment'
+import Input_comment from './input_comment'
+import Option_share from './option_share'
+import Action_chat365 from './action_share/action_chat365'
+import Action_Gr_Chat365 from './action_share/action_gr_chat365'
+import Danh_gia from './danh_gia'
+import Model_History_comment from '@/components/pop_up/model_history_comment'
 
 type Props = {}
 export interface Iicons {
@@ -25,9 +30,10 @@ const Comment = (props: Props) => {
 	const [name_active, setName_active] = useState<string>('')
 	const [name_comment, setName_comemnt] = useState<string>('')
 	const [listComment, setlistComment] = useState<Icomment[]>([])
-	const [content_comment_demo, setcontent_comment_demo] = useState<string>('')
 	const [content_comment, setcontent_comment] = useState<string>('')
-	const [count_comment, setCount_comment] = useState<number>(0)
+	const [showChat365, setShowChat365] = useState<boolean>(false)
+	const [showGrChat365, setShowGrChat365] = useState<boolean>(false)
+	const [showHistoryComemnt, setShowHistoryComemnt] = useState<boolean>(false)
 	const [changeIcon, setchangeIcon] = useState<string>(
 		'https://timviec365.vn/images/img_comment/Ic_color_2.png'
 	)
@@ -74,7 +80,6 @@ const Comment = (props: Props) => {
 		{ id: 6, img: 'https://timviec365.vn/images/img_comment/Ic_6.png', alt: 'Buồn', count: count6 },
 		{ id: 7, img: 'https://timviec365.vn/images/img_comment/Ic_7.png', alt: 'Haha', count: count7 },
 	]
-	const [showComment, setshowComment] = useState<boolean>(false)
 	// Thay đổi icons và nội dung
 	const handleActionIcon = (icon: Iicons) => {
 		setchangeIcon(icon?.img)
@@ -84,7 +89,7 @@ const Comment = (props: Props) => {
 			setcount1(count1 + 1)
 		}
 		if (icon.id == 2) {
-			setcount1(count2 + 1)
+			setcount2(count2 + 1)
 		}
 		if (icon.id == 3) {
 			setcount3(count3 + 1)
@@ -109,16 +114,14 @@ const Comment = (props: Props) => {
 	// Ẩn share khi click ra ngoài
 	const handleOutsideClick = (event: any) => {
 		const detailsIcon: HTMLElement | any = document.getElementById('share')
+
 		if (!detailsIcon?.contains(event.target)) {
 			setShowBox_share(false)
 			setShow_Box_Share_Mxh(false)
 		}
 	}
-	// Thêm sự kiện click cho cả màn hình
-	useEffect(() => {
-		document?.addEventListener('click', handleOutsideClick)
-	}, [])
-	const handleComment = async () => {
+
+	const handleComment = async (): Promise<void> => {
 		if (content_comment) {
 			setlistComment([...listComment, { name: name_comment, content: content_comment }])
 			listComment.shift()
@@ -127,13 +130,12 @@ const Comment = (props: Props) => {
 			alert('Vui lòng nhập bình luận')
 		}
 	}
+	// Thêm sự kiện click cho cả màn hình
+	useEffect(() => {
+		document?.addEventListener('click', handleOutsideClick)
+	}, [])
 	return (
-		<div
-			className={`${styles.title_all} ${styles.content_cmt_vote}`}
-			data-new={868030}
-			data-uid={1333676}
-			data-type={0}
-		>
+		<div className={`${styles.title_all} ${styles.content_cmt_vote}`}>
 			<div className={`${styles.box_cmt_vote}`}>
 				<div className={`${styles.tab_cmt_vote}`}>
 					<button
@@ -173,10 +175,7 @@ const Comment = (props: Props) => {
 											<div className={`${styles.frame_cm_like}`}>
 												<div className={`${styles.frame_cm_like}`}>
 													{showIcon && (
-														<div
-															className={`${styles.box_items_like_ic}`}
-															style={{ paddingLeft: '80px' }}
-														>
+														<div className={`${styles.box_items_like_ic}`}>
 															{listIconStatus?.map((icon, index) => {
 																return (
 																	<span
@@ -199,24 +198,26 @@ const Comment = (props: Props) => {
 														</div>
 													)}
 												</div>
+											</div>	
+											<span className={`${styles.count_ic}`}>
+												{icons_used?.map((icon: Iicons, index: number) => {
+													// if()
+													return (
+														<span key={index}>
+															<Image
+																onClick={() => setShowHistoryComemnt(true)}
+																preview={false}
+																width={25}
+																height={25}
+																src={icon?.img}
+																alt={icon?.alt}
+															/>
+														</span>
+													)
+												})}
 
-												<span className={`${styles.count_ic}`} data-like={0}>
-													{icons_used?.map((icon: Iicons, index: number) => {
-														// if()
-														return (
-															<span key={index} style={{ gap: 10 }}>
-																<img
-																	style={{ width: 25, height: 25 }}
-																	src={icon?.img}
-																	alt={icon?.alt}
-																/>
-															</span>
-														)
-													})}
-
-													<span style={{ paddingLeft: 10 }}> {name_active}</span>
-												</span>
-											</div>
+												<span> {name_active}</span>
+											</span>
 											<span className={`${styles.cm_sh_ic}`}>
 												<b>•</b> 0 chia sẻ{' '}
 											</span>
@@ -236,6 +237,7 @@ const Comment = (props: Props) => {
 												</div>
 											</div>
 										</div>
+
 										<div className={`${styles.cm_event}`}>
 											<div className={`${styles.cm_ev_div}`}>
 												<span
@@ -335,98 +337,15 @@ const Comment = (props: Props) => {
 													</svg>
 													Chia sẻ
 												</span>
-												{showBox_share && (
-													<div className={`${styles.box_share}`}>
-														<div
-															className={`${styles.box_share_items}`}
-															style={{ display: 'none!important' }}
-														>
-															<img
-																src="https://timviec365.vn/images/img_comment/sh_ic1.png"
-																alt="Chia sẻ trang cá nhân của bạn"
-															/>
-															Chia sẻ lên trang cá nhân (Của bạn)
-														</div>
-														<div
-															className={`${styles.box_share_items}`}
-															style={{ display: 'none!important' }}
-														>
-															<img
-																src="https://timviec365.vn/images/img_comment/sh_ic2.png"
-																alt="Chia sẻ trang cá nhân bạn bè"
-															/>
-															Chia sẻ lên trang cá nhân (Bạn bè)
-														</div>
-														<div
-															className={`${styles.box_share_items} ${styles.share_items_chat365}`}
-														>
-															<img
-																src="https://timviec365.vn/images/img_comment/sh_ic3.png"
-																alt="Gửi bằng Chat365"
-															/>
-															Gửi bằng Chat365
-														</div>
-														<div
-															className={`${styles.box_share_items} ${styles.share_group_chat365}`}
-														>
-															<img
-																src="https://timviec365.vn/images/img_comment/sh_ic4.png"
-																alt="Gửi lên nhóm Chat365"
-															/>
-															Gửi lên nhóm Chat365
-														</div>
-														<div
-															onClick={() => setShow_Box_Share_Mxh(!show_Box_Share_Mxh)}
-															onMouseLeave={() => {
-																setShow_Box_Share_Mxh(false)
-															}}
-															className={`${styles.box_share_items} ${styles.share_items_mxh}`}
-														>
-															<img
-																src="https://timviec365.vn/images/img_comment/sh_ic5.png"
-																alt="Khác"
-															/>
-															Khác
-														</div>
-													</div>
-												)}
-												{show_Box_Share_Mxh && (
-													<div
-														className={`${styles.box_share_mxh}`}
-														onMouseOver={() => {
-															setShow_Box_Share_Mxh(true)
-														}}
-													>
-														<div className={`${styles.box_share_items}`}>
-															<img
-																src="https://timviec365.vn/images/img_comment/iic_f.png"
-																alt="Facebook"
-															/>
-															Facebook
-														</div>
-														<div className={`${styles.box_share_items}`}>
-															<img
-																src="https://timviec365.vn/images/img_comment/iic_t.png"
-																alt="Twitter"
-															/>
-															Twitter
-														</div>
-														<div className={`${styles.box_share_items}`}>
-															<img
-																src="https://timviec365.vn/images/img_comment/iic_v.png"
-																alt="Vkontakte"
-															/>
-															Vkontakte
-														</div>
-														<div className={`${styles.box_share_items}`}>
-															<img
-																src="https://timviec365.vn/images/img_comment/iic_l.png"
-																alt="Linked In"
-															/>
-															Linked In
-														</div>
-													</div>
-												)}
+
+												{/* option_share */}
+												<Option_share
+													showBox_share={showBox_share}
+													show_Box_Share_Mxh={show_Box_Share_Mxh}
+													setShow_Box_Share_Mxh={setShow_Box_Share_Mxh}
+													setShowChat365={setShowChat365}
+													setShowGrChat365={setShowGrChat365}
+												/>
 											</div>
 										</div>
 										<div className={`${styles.order_cm}`}>
@@ -434,88 +353,16 @@ const Comment = (props: Props) => {
 												<option value={1}> Mới nhất</option>
 												<option value={2}>Cũ nhất</option>
 											</select>
-											<div className={`${styles.cm_input} ${styles.input_comment}`}>
-												<Image
-													preview={false}
-													width={36}
-													height={36}
-													className={`${styles.img_user}`}
-													src={'/images/638286918069380000_1404156.jpg'}
-													alt="Nguyễn Quang Trường"
-												/>
-												<textarea
-													onKeyDown={(e: React.KeyboardEvent<HTMLTextAreaElement>) => {
-														if (e.code === 'Enter' || e.code === 'NumpadEnter') {
-															handleComment()
-														}
-													}}
-													className={`${styles.ct_cm}`}
-													id="ct_cm"
-													maxLength={250}
-													onChange={(e) => {
-														setcontent_comment(e.target.value.trim()),
-															setName_comemnt('Nguyễn Quang Trường')
-													}}
-													placeholder="Viết bình luận"
-													value={content_comment}
-												/>
-												<svg
-													onClick={() => handleComment()}
-													className={`${styles.ic_send_cm}`}
-													width={32}
-													height={32}
-													viewBox="0 0 32 32"
-													fill="none"
-													xmlns="http://www.w3.org/2000/svg"
-												>
-													<rect width={32} height={32} rx={16} fill="#4C5BD4" />
-													<path
-														d="M24.7922 8.21841C24.6908 8.11767 24.5628 8.04793 24.4231 8.01737C24.2835 7.98681 24.138 7.99672 24.0037 8.04592L7.48458 14.0456C7.34211 14.0996 7.21946 14.1956 7.13291 14.3208C7.04635 14.4461 7 14.5946 7 14.7468C7 14.899 7.04635 15.0476 7.13291 15.1728C7.21946 15.2981 7.34211 15.3941 7.48458 15.448L13.9346 18.0204L18.6951 13.2507L19.7538 14.3081L14.9708 19.0854L17.5538 25.5275C17.6094 25.6671 17.7057 25.7867 17.8302 25.8709C17.9547 25.9552 18.1017 26.0001 18.2521 26C18.4038 25.9969 18.551 25.9479 18.6744 25.8596C18.7977 25.7712 18.8913 25.6476 18.9429 25.505L24.9498 9.00587C25.001 8.87319 25.0133 8.72871 24.9854 8.58929C24.9575 8.44987 24.8905 8.32124 24.7922 8.21841Z"
-														fill="white"
-													/>
-												</svg>
-												<svg
-													className={`${styles.cm_img_ct}`}
-													id="cm_img_ct"
-													width={24}
-													height={24}
-													viewBox="0 0 24 24"
-													fill="none"
-													xmlns="http://www.w3.org/2000/svg"
-												>
-													<path
-														d="M6.76017 22H17.2402C20.0002 22 21.1002 20.31 21.2302 18.25L21.7502 9.99C21.8902 7.83 20.1702 6 18.0002 6C17.3902 6 16.8302 5.65 16.5502 5.11L15.8302 3.66C15.3702 2.75 14.1702 2 13.1502 2H10.8602C9.83017 2 8.63017 2.75 8.17017 3.66L7.45017 5.11C7.17017 5.65 6.61017 6 6.00017 6C3.83017 6 2.11017 7.83 2.25017 9.99L2.77017 18.25C2.89017 20.31 4.00017 22 6.76017 22Z"
-														stroke="#999999"
-														strokeWidth="1.5"
-														strokeLinecap="round"
-														strokeLinejoin="round"
-													/>
-													<path
-														d="M10.5 8H13.5"
-														stroke="#999999"
-														strokeWidth="1.5"
-														strokeLinecap="round"
-														strokeLinejoin="round"
-													/>
-													<path
-														d="M12 18C13.79 18 15.25 16.54 15.25 14.75C15.25 12.96 13.79 11.5 12 11.5C10.21 11.5 8.75 12.96 8.75 14.75C8.75 16.54 10.21 18 12 18Z"
-														stroke="#999999"
-														strokeWidth="1.5"
-														strokeLinecap="round"
-														strokeLinejoin="round"
-													/>
-												</svg>
-												<input
-													style={{ display: 'none' }}
-													id="secleimg"
-													name="listimg"
-													className={`${styles.fileupload}`}
-													type="file"
-												/>
-												<div id="tag_friend" style={{ display: 'none' }} />
-											</div>
-										</div>
 
+											{/* {comment_accion} */}
+											<Input_comment
+												handleComment={handleComment}
+												setcontent_comment={setcontent_comment}
+												setName_comemnt={setName_comemnt}
+												content_comment={content_comment}
+											/>
+										</div>
+										{/* Phản  hồi comment */}
 										<Respones_comment listComment={listComment} />
 									</div>
 								</div>
@@ -536,392 +383,34 @@ const Comment = (props: Props) => {
 										<div className={`${styles.frame_items}`}></div>
 									</div>
 								</div>
-								<div
-									className={`${styles.popup_comment}`}
-									id="popup_items_icon"
-									style={{ display: 'none' }}
-								>
-									<div className={`${styles.popup_items_icon}`}>
-										<div className={`${styles.box_header}`}>
-											<div className={`${styles.title}`}>
-												<span className={`${styles.items_ic} ${styles.all} ${styles.active}`}>
-													Tất cả
-												</span>
-												<span className={`${styles.items_ic} ${styles.icon} ${styles.ic1}`}>
-													<img src="https://timviec365.vn/images/img_comment/Ic_1.png" alt="Icon" />
-													0
-												</span>
-												<span className={`${styles.items_ic} ${styles.icon} ${styles.ic2}`}>
-													<img src="https://timviec365.vn/images/img_comment/Ic_2.png" alt="Icon" />
-													0
-												</span>
-												<span className={`${styles.items_ic} ${styles.icon} ${styles.ic3}`}>
-													<img src="https://timviec365.vn/images/img_comment/Ic_3.png" alt="Icon" />
-													0
-												</span>
-												<span className={`${styles.items_ic} ${styles.icon} ${styles.ic4}`}>
-													<img src="https://timviec365.vn/images/img_comment/Ic_4.png" alt="Icon" />
-													0
-												</span>
-												<span className={`${styles.items_ic} ${styles.icon} ${styles.ic5}`}>
-													<img src="https://timviec365.vn/images/img_comment/Ic_5.png" alt="Icon" />
-													0
-												</span>
-												<span className={`${styles.more}`}>
-													Xem thêm{' '}
-													<img
-														src="https://timviec365.vn/images/img_comment/ic_down.png"
-														alt="Xem thêm"
-													/>
-												</span>
-												<div className={`${styles.more_icon}`}>
-													<div className={`${styles.title}`}>Xem thêm</div>
-													<div className={`${styles.items_ic} ${styles.icon} ${styles.ic4}`}>
-														<img
-															src="https://timviec365.vn/images/img_comment/Ic_4.png"
-															alt="Icon"
-														/>
-														0
-													</div>
-													<div className={`${styles.items_ic} ${styles.icon} ${styles.ic5}`}>
-														<img
-															src="https://timviec365.vn/images/img_comment/Ic_5.png"
-															alt="Icon"
-														/>
-														0
-													</div>
-													<div className={`${styles.items_ic} ${styles.icon} ${styles.ic6}`}>
-														<img
-															src="https://timviec365.vn/images/img_comment/Ic_6.png"
-															alt="Icon"
-														/>
-														0
-													</div>
-													<div className={`${styles.items_ic} ${styles.icon} ${styles.ic7}`}>
-														<img
-															src="https://timviec365.vn/images/img_comment/Ic_7.png"
-															alt="Icon"
-														/>
-														0
-													</div>
-												</div>
-											</div>
-										</div>
-										<div className={`${styles.box_icon} ${styles.icon_show_0} ${styles.show}`}>
-											<div className={`${styles.frame_items}`}></div>
-										</div>
-										<div className={`${styles.box_icon} ${styles.icon_show_1}`}>
-											<div className={`${styles.frame_items}`}></div>
-										</div>
-										<div className={`${styles.box_icon} ${styles.icon_show_2}`}>
-											<div className={`${styles.frame_items}`}></div>
-										</div>
-										<div className={`${styles.box_icon} ${styles.icon_show_3}`}>
-											<div className={`${styles.frame_items}`}></div>
-										</div>
-										<div className={`${styles.box_icon} ${styles.icon_show_4}`}>
-											<div className={`${styles.frame_items}`}></div>
-										</div>
-										<div className={`${styles.box_icon} ${styles.icon_show_5}`}>
-											<div className={`${styles.frame_items}`}></div>
-										</div>
-										<div className={`${styles.box_icon} ${styles.icon_show_6}`}>
-											<div className={`${styles.frame_items}`}></div>
-										</div>
-										<div className={`${styles.box_icon} ${styles.icon_show_7}`}>
-											<div className={`${styles.frame_items}`}></div>
-										</div>
-									</div>
-								</div>
-								{/* {modal chat 365} */}
-								<div
-									className={`${styles.popup_comment1}`}
-									id="popup_share_chat365"
-									style={{ display: 'none' }}
-								>
-									<div className={`${styles.popup_share_chat365}`}>
-										<div className={`${styles.box_header}`}>
-											<div className={`${styles.title}`}>Gửi bằng chat365</div>
-											<img
-												src="https:timviec365.vn/images/img_comment/close.png"
-												alt="close"
-												className={`${styles.close_cm}`}
-											/>
-										</div>
-										<div className={`${styles.box_header} ${styles.cm_input}`}>
-											<img
-												className={`${styles.img_user}`}
-												src="https://ht.timviec365.vn:9002/avatarUser/1404156/638281025109010000_1404156.jpg"
-												alt="Logo"
-											/>
-											<textarea
-												className={`${styles.ct_cm}`}
-												id="ct_cm"
-												maxLength={250}
-												placeholder="Hãy nói gì đó về nội dung này"
-												defaultValue={''}
-											/>
-										</div>
-										<div className={`${styles.frame_items}`} id="list_friend_chat">
-											<div className={`${styles.items}`}>
-												<div className={`${styles.items_u}`}>
-													<img
-														data-id={167565}
-														src="https://ht.timviec365.vn:9002/avatarUser/167565/638263324081900000_167565.jpg"
-														alt="Đỗ Văn Hoàng"
-													/>
-													<span className={`${styles.name}`}>Đỗ Văn Hoàng</span>
-												</div>
-												<div
-													className={`${styles.btn_buttom_send} ${styles.bg_send}`}
-													data-id={167565}
-												>
-													Gửi
-												</div>
-											</div>
-											<div className={`${styles.items}`}>
-												<div className={`${styles.items_u}`}>
-													<img
-														data-id={1342764}
-														src="https://ht.timviec365.vn:9002/avatarUser/1342764/638276783687290000_1342764.jpg"
-														alt="Tran Quang Duc Dung"
-													/>
-													<span className={`${styles.name}`}>Tran Quang Duc Dung</span>
-												</div>
-												<div
-													className={`${styles.btn_buttom_send} ${styles.bg_send}`}
-													data-id={1342764}
-												>
-													Gửi
-												</div>
-											</div>
-											<div className={`${styles.items}`}>
-												<div className={`${styles.items_u}`}>
-													<img
-														data-id={1404155}
-														src="https://ht.timviec365.vn:9002/avatarUser/1404155/638280918515770000_1404155.jpg"
-														alt="Nguyễn An Quân"
-													/>
-													<span className={`${styles.name}`}>Nguyễn An Quân</span>
-												</div>
-												<div
-													className={`${styles.btn_buttom_send} ${styles.bg_send}`}
-													data-id={1404155}
-												>
-													Gửi
-												</div>
-											</div>
-											<div className={`${styles.items}`}>
-												<div className={`${styles.items_u}`}>
-													<img
-														data-id={1216972}
-														src="https://ht.timviec365.vn:9002/avatarUser/1216972/638231704233150000_1216972.jpg"
-														alt="Lưu trữ cá nhân"
-													/>
-													<span className={`${styles.name}`}>Lưu trữ cá nhân</span>
-												</div>
-												<div
-													className={`${styles.btn_buttom_send} ${styles.bg_send}`}
-													data-id={1216972}
-												>
-													Gửi
-												</div>
-											</div>
-											<div className={`${styles.items}`}>
-												<div className={`${styles.items_u}`}>
-													<img
-														data-id={701526}
-														src="https://timviec365.vn/images/user_no.png"
-														alt="CÔNG TY MINH DƯƠNG MEDIA"
-													/>
-													<span className={`${styles.name}`}>CÔNG TY MINH DƯƠNG MEDIA</span>
-												</div>
-												<div
-													className={`${styles.btn_buttom_send} ${styles.bg_send}`}
-													data-id={701526}
-												>
-													Gửi
-												</div>
-											</div>
-											<div className={`${styles.items}`}>
-												<div className={`${styles.items_u}`}>
-													<img
-														data-id={56387}
-														src="https://ht.timviec365.vn:9002/avatarUser/56387/637995265018771766_56387.jpg"
-														alt="HHP"
-													/>
-													<span className={`${styles.name}`}>HHP</span>
-												</div>
-												<div
-													className={`${styles.btn_buttom_send} ${styles.bg_send}`}
-													data-id={56387}
-												>
-													Gửi
-												</div>
-											</div>
-											<div className={`${styles.items}`}>
-												<div className={`${styles.items_u}`}>
-													<img
-														data-id={573341}
-														src="https://ht.timviec365.vn:9002/avatarUser/573341/638285308661400000_573341.jpg"
-														alt="Lê Thu Hà"
-													/>
-													<span className={`${styles.name}`}>Lê Thu Hà</span>
-												</div>
-												<div
-													className={`${styles.btn_buttom_send} ${styles.bg_send}`}
-													data-id={573341}
-												>
-													Gửi
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div className={`${styles.popup_comment}`} id="popup_share_gr">
-									<div className={`${styles.popup_share_chat365}`}>
-										<div className={`${styles.box_header}`}>
-											<div className={`${styles.title}`}>Gửi cho nhóm tại chat365</div>
-											<img
-												src="https://ht.timviec365.vn/images/img_comment/close.png"
-												alt="close"
-												className={`${styles.close_cm}`}
-											/>
-										</div>
-										<div className={`${styles.box_header} ${styles.cm_input}`}>
-											<img
-												className={`${styles.img_user}`}
-												src="https://ht.timviec365.vn:9002/avatarUser/1404156/638281025109010000_1404156.jpg"
-												alt="Logo"
-											/>
-											<textarea
-												className={`${styles.img_user}`}
-												maxLength={100}
-												id="nd_gr_share"
-												placeholder="Hãy nói gì đó về nội dung này"
-												defaultValue={''}
-											/>
-										</div>
-										<div className={`${styles.frame_items}`}>
-											<div className={`${styles.items}`}>
-												<p>Bạn chưa có nhóm để chia sẻ</p>
-											</div>{' '}
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					)}
+								{/* Xem những ai đã thả tym */}
+								<Model_History_comment
+									showHistoryComemnt={showHistoryComemnt}
+									setShowHistoryComemnt={setShowHistoryComemnt}
+									count1={count1}
+									count2={count2}
+									count3={count3}
+									count4={count4}
+									count5={count5}
+									count6={count6}
+									count7={count7}
+								/>
 
-					{showDanhGia && (
-						<div className={`${styles.item_cmt_vote}`} id="box_contain_vote">
-							<div className={`${styles.box_show_star}`}>
-								<div className={`${styles.box_show_star_left}`}>
-									<p className={`${styles.txt_count_star}`}>
-										<span className={`${styles.number_star}`}>0</span>/5
-									</p>
-									<div className={`${styles.box_lst_star}`}>
-										<img
-											className={`${styles.icon_vote_new}`}
-											src="https://timviec365.vn/images/tia_set/icon_star_gray.svg"
-											alt="star grey"
+								{/* Action_share */}
+								{(showChat365 || showGrChat365) && (
+									<div className={`${styles.popup_comment}`} id="popup_share_gr">
+										{/* {Gửi bằng chát 365} */}
+										<Action_chat365 showChat365={showChat365} setShowChat365={setShowChat365} />
+										<Action_Gr_Chat365
+											showGrChat365={showGrChat365}
+											setShowGrChat365={setShowGrChat365}
 										/>
-										<img
-											className={`${styles.icon_vote_new}`}
-											src="https://timviec365.vn/images/tia_set/icon_star_gray.svg"
-											alt="star grey"
-										/>
-										<img
-											className={`${styles.icon_vote_new}`}
-											src="https://timviec365.vn/images/tia_set/icon_star_gray.svg"
-											alt="star grey"
-										/>
-										<img
-											className={`${styles.icon_vote_new}`}
-											src="https://timviec365.vn/images/tia_set/icon_star_gray.svg"
-											alt="star grey"
-										/>
-										<img
-											className={`${styles.icon_vote_new}`}
-											src="https://timviec365.vn/images/tia_set/icon_star_gray.svg"
-											alt="star grey"
-										/>{' '}
 									</div>
-									<p className={`${styles.txt_note_vote}`}>
-										<span className={`${styles.note_vote}`}>0</span> đánh giá
-									</p>
-								</div>
-								<div className={`${styles.box_show_star_right}`}>
-									<div className={`${styles.item_process_vote}`}>
-										<div className={`${styles.box_number_star}`}>
-											<p className={`${styles.number_star_process}`}>5</p>
-											<img
-												className={`${styles.icon_star_process}`}
-												src="https://timviec365.vn/images/tia_set/icon_star_yellow.svg"
-												alt="5 sao"
-											/>
-										</div>
-										<progress className={`${styles.progress_vote}`} max={100} value={0} />
-										<p className={`${styles.pecent_process}`}>0</p>
-									</div>
-									<div className={`${styles.item_process_vote}`}>
-										<div className={`${styles.box_number_star}`}>
-											<p className={`${styles.number_star_process}`}>4</p>
-											<img
-												className={`${styles.icon_star_process}`}
-												src="https://timviec365.vn/images/tia_set/icon_star_yellow.svg"
-												alt="4 sao"
-											/>
-										</div>
-										<progress className={`${styles.progress_vote}`} max={100} value={0} />
-										<p className={`${styles.pecent_process}`}>0</p>
-									</div>
-									<div className={`${styles.item_process_vote}`}>
-										<div className={`${styles.box_number_star}`}>
-											<p className={`${styles.number_star_process}`}>3</p>
-											<img
-												className={`${styles.icon_star_process}`}
-												src="https://timviec365.vn/images/tia_set/icon_star_yellow.svg"
-												alt="3 sao"
-											/>
-										</div>
-										<progress className={`${styles.progress_vote}`} max={100} value={0} />
-										<p className={`${styles.pecent_process}`}>0</p>
-									</div>
-									<div className={`${styles.item_process_vote}`}>
-										<div className={`${styles.box_number_star}`}>
-											<p className={`${styles.number_star_process}`}>2</p>
-											<img
-												className={`${styles.icon_star_process}`}
-												src="https://timviec365.vn/images/tia_set/icon_star_yellow.svg"
-												alt="2 sao"
-											/>
-										</div>
-										<progress className={`${styles.progress_vote}`} max={100} value={0} />
-										<p className={`${styles.pecent_process}`}>0</p>
-									</div>
-									<div className={`${styles.item_process_vote}`}>
-										<div className={`${styles.box_number_star}`}>
-											<p className={`${styles.number_star_process}`}>1</p>
-											<img
-												className={`${styles.icon_star_process}`}
-												src="https://timviec365.vn/images/tia_set/icon_star_yellow.svg"
-												alt="1 sao"
-											/>
-										</div>
-										<progress className={`${styles.progress_vote}`} max={100} value={0} />
-										<p className={`${styles.pecent_process}`}>0</p>
-									</div>
-								</div>
-							</div>
-							<div className={`${styles.box_btn_vote}`}>
-								<p className={`${styles.txt_btn_vote}`}>Bạn đánh giá sao tin tuyển dụng này</p>
-								<button className={`${styles.btn_vote}`} data-voted={0} data-user={1333676}>
-									Đánh giá ngay
-								</button>
+								)}
 							</div>
 						</div>
 					)}
+					<Danh_gia showDanhGia={showDanhGia} />
 				</div>
 			</div>
 		</div>

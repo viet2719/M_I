@@ -4,7 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
-import Model_noti from './model_noti'
+import Model_noti from '../pop_up/model_noti'
 
 const List_cate = () => {
 	const dispatch = useDispatch()
