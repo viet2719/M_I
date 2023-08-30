@@ -2685,7 +2685,15 @@
 	line-height: 19px;
 	color: #595959;
 }
-
+.red{
+	color: red;
+}
+.blue{
+	color: blue;
+}
+.cam{
+	color: rgb(241, 165, 13);
+}
 .m_thuut .content_thuut {
 	width: 100%;
 	padding: 28px 18px;

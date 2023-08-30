@@ -7,13 +7,17 @@ import Model_luutin from '@/components/pop_up/model_luutin'
 import Model_Phan_Anh_NTD from '@/components/pop_up/model_phan_anh_NTD'
 import Model_ungtuyen_sendmail_NTD from '@/components/pop_up/model_ungtuyen_sendmail_NTD'
 import Model_works_match_after_ungtuyen from '@/components/pop_up/model_works_match_after_ungtuyen'
+import { useDispatch } from 'react-redux'
+import { openModal } from '@/actions/actions'
+import Info from './info'
+import Scroll_option from './scroll_option'
 
 type Props = {
 	show: boolean
+	isLogin: boolean
 }
 
-const Chi_tiet_td = ({ show }: Props) => {
-	const [showChiTiet, setshowChiTiet] = useState<boolean>(false)
+const Chi_tiet_td = ({ show, isLogin }: Props) => {
 	const [showModelUngTuyen, setShowModelUngTuyen] = useState<boolean>(false)
 	const [showLuuTin, setLuuTin] = useState<boolean>(false)
 	const [stt_luutin, setStt_luutin] = useState<string>('Lưu tin')
@@ -21,58 +25,80 @@ const Chi_tiet_td = ({ show }: Props) => {
 	const [showPhanAnhNTD, setShowPhanAnhNTD] = useState<boolean>(false)
 	const [showMailUngTuyen, setshowMailUngTuyen] = useState<boolean>(false)
 	const [showWorkMatch, setShowWorkMatch] = useState<boolean>(false)
+	const [isCv, setisCv] = useState<boolean>(false)
 
-	const handleLuuTin = () => {
-		if (!showLuuTin && stt_luutin == 'Lưu tin') {
-			setStt_luutin('Đã Lưu tin')
-			setLuuTin(true)
-		}
-		if (!showLuuTin && stt_luutin != 'Lưu tin') {
-			setStt_luutin('Lưu tin')
-			setLuuTin(false)
-		}
-	}
-	const handleLuuCongViec = () => {
-		if (!showLuuTin && stt_luuCongViec == 'Lưu công việc') {
-			setStt_luuCongViec('Đã lưu công việc')
-			setLuuTin(true)
-		}
-		if (!showLuuTin && stt_luuCongViec != 'Lưu công việc') {
-			setStt_luuCongViec('Lưu công việc')
-			setLuuTin(false)
+	const dispatch = useDispatch()
+	const handleLuuTin: () => void = () => {
+		if (!isLogin) {
+			dispatch(openModal())
+		} else {
+			if (!showLuuTin && stt_luutin == 'Lưu tin') {
+				setStt_luutin('Đã Lưu tin')
+				setLuuTin(true)
+			}
+			if (!showLuuTin && stt_luutin != 'Lưu tin') {
+				setStt_luutin('Lưu tin')
+				setLuuTin(false)
+			}
 		}
 	}
-	const handleUngTuyen = () => {
-		setShowModelUngTuyen(true)
-		setshowMailUngTuyen(true)
+	const handleLuuCongViec: () => void = () => {
+		if (!isLogin) {
+			dispatch(openModal())
+		} else {
+			if (!showLuuTin && stt_luuCongViec == 'Lưu công việc') {
+				setStt_luuCongViec('Đã lưu công việc')
+				setLuuTin(true)
+			}
+			if (!showLuuTin && stt_luuCongViec != 'Lưu công việc') {
+				setStt_luuCongViec('Lưu công việc')
+				setLuuTin(false)
+			}
+		}
+	}
+	const handleUngTuyen: () => void = () => {
+		if (!isLogin) {
+			dispatch(openModal())
+		} else {
+			if (isCv) {
+				setshowMailUngTuyen(true)
+			} else {
+				setShowModelUngTuyen(true)
+			}
+		}
+	}
+	const handlePhanAnhNTD: () => void = () => {
+		if (!isLogin) {
+			dispatch(openModal())
+		} else {
+			setShowPhanAnhNTD(true)
+		}
 	}
 	return (
 		<>
-		
 			{/* Ấn nút ứng tuyển trước khi có cv */}
 			<Model_ungtuyen
 				setShowModelUngTuyen={setShowModelUngTuyen}
 				showModelUngTuyen={showModelUngTuyen}
 			/>
-			
+
 			{/* Ấn nút lưu tin */}
 			<Model_luutin showLuuTin={showLuuTin} setLuuTin={setLuuTin} />
 
 			{/* Ấn nút phản ánh NTD */}
 			<Model_Phan_Anh_NTD showPhanAnhNTD={showPhanAnhNTD} setShowPhanAnhNTD={setShowPhanAnhNTD} />
-			
+
 			{/* Ấn nút ứng tuyển sau khi có CV */}
 			<Model_ungtuyen_sendmail_NTD
 				showMailUngTuyen={showMailUngTuyen}
 				setshowMailUngTuyen={setshowMailUngTuyen}
 				setShowWorkMatch={setShowWorkMatch}
-
 			/>
-			
+
 			{/* Sau khi thoát model sendmail */}
 			<Model_works_match_after_ungtuyen
-			showWorkMatch={showWorkMatch}
-			setShowWorkMatch={setShowWorkMatch}
+				showWorkMatch={showWorkMatch}
+				setShowWorkMatch={setShowWorkMatch}
 			/>
 
 			<div className={`${styles.chitiettd_head}`}>
@@ -82,7 +108,6 @@ const Chi_tiet_td = ({ show }: Props) => {
 							<Link
 								href={'#'}
 								className={`${styles.logo_user_th} ${styles.logo_user_th_new} ${styles.show_avt}`}
-
 							>
 								<Image
 									width={130}
@@ -97,9 +122,7 @@ const Chi_tiet_td = ({ show }: Props) => {
 						</div>
 					</div>
 					<div className={`${styles.com_info}`}>
-						<h1 className={`${styles.com_post}`}>
-							Nhân viên Kỹ thuật Điện Tử
-						</h1>
+						<h1 className={`${styles.com_post}`}>Nhân viên Kỹ thuật Điện Tử</h1>
 
 						<div className={`${styles.mobi_ctiet}`} style={{ marginLeft: -5 }}>
 							<span className={`${styles.tag_red}`}>Thỏa thuận</span>
@@ -264,245 +287,33 @@ const Chi_tiet_td = ({ show }: Props) => {
 			</div>
 
 			<div className={`${styles.content_info}`}>
-				{show && (
-					<div className={`${styles.scroll_option} ${styles.active}`}>
-						<div className={`${styles.option} ${styles.list_option} `} id="floatingDiv">
-							<div
-								onClick={() => setshowChiTiet(!showChiTiet)}
-								className={`${styles.option_post} ${styles.ctn_opa} ${styles.m_active}`}
-								data-tab="tab_ttin"
-							>
-								<div>
-									Chi tiết
-									{showChiTiet && (
-										<div className={`${styles.pos_ttin_all}`}>
-											<p
-												className={`${styles.tca_ttin_chung} ${styles.ctn_opt_post}`}
-												data-tab="tab_ttin"
-											>
-												Thông tin
-											</p>
-											<p className={`${styles.tca_ttin_chung}`}>
-												<Link href="/cong-ty-co-phan-viet-hung-viet-nam-co206405">Công ty</Link>
-											</p>
-											<p className={`${styles.tca_ttin_chung} ${styles.vlam_goiy}`}>
-												<a href="#title_all">Việc làm đề xuất bởi AI365</a>
-											</p>
-										</div>
-									)}
-								</div>
+				<Scroll_option show={show} />
 
-								<span />
-							</div>
-
-							<Link
-								className={`${styles.option_post}`}
-								href="/lich-su/danh-sach-tong-u206405t1"
-								rel="nofollow"
-								target="_blank"
-							>
-								Lịch sử
-							</Link>
-							<Link
-								className={`${styles.option_post}`}
-								href="/phu-hop/danh-sach-tong-u206405t1"
-								rel="nofollow"
-								target="_blank"
-							>
-								Phù hợp
-							</Link>
-							<Link
-								href={'#'}
-								className={`${styles.option_post} ${styles.ctn_opt_post} ${styles.mucdo_phhop_ctn}`}
-								data-tab="tab_phhop"
-							>
-								Tường
-							</Link>
-							<div className={`${styles.mobi_ctiet}`}>
-								{' '}
-								<Link
-									className={`${styles.option_post} ${styles.option_dtg}`}
-									href="https://truyenthongnoibo.timviec365.vn/trang-ca-nhan-c18162"
-									rel="nofollow"
-									target="_blank"
-								>
-									Tường
-								</Link>
-							</div>
-						</div>
-					</div>
-				)}
 				<div className={`${styles.ctn_tab_ttin} ${styles.w_100} ${styles.active}`} id="tab_ttin">
-					<div className={`${styles.info_window}`}>
-						<p className={`${styles.info_title}`}>Thông tin chung</p>
-						<div className={`${styles.d_flex} ${styles.all_stat}`}>
-							<div className={`${styles.info_window_stat}`}>
-								<div className={`${styles.detail_if}`}>
-									<p className={`${styles.item_if}`}>Chức vụ</p>{' '}
-									<span className={`${styles.tag_none}`}>Nhân viên</span>
-								</div>
-								<div className={`${styles.detail_if}`}>
-									<p className={`${styles.item_if}`}>Hình thức làm việc</p>{' '}
-									<span className={`${styles.tag_none}`}>Toàn thời gian cố định</span>
-								</div>
-							</div>
-							<div className={`${styles.info_window_stat}`}>
-								<div className={`${styles.detail_if}`}>
-									<p className={`${styles.item_if}`}>Số lượng cần tuyển</p>{' '}
-									<span className={`${styles.tag_none}`}>1 người</span>
-								</div>
-								<div className={`${styles.detail_if}`}>
-									<p className={`${styles.item_if}`}>Thời gian thử việc</p>{' '}
-									<span className={`${styles.tag_none}`}>2 tháng</span>
-								</div>
-								<div className={`${styles.detail_if}`}>
-									<p className={`${styles.item_if}`}>Hạn nộp hồ sơ</p>
-									<span className={`${styles.tag_none}`}>
-										02/10/2023 <span className={`${styles.tgian_clai}`}>( 1 tháng)</span>{' '}
-									</span>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div className={`${styles.info_window}`}>
-						<p className={`${styles.info_title}`}>Địa điểm làm việc</p>
-						<div className={`${styles.d_flex} ${styles.ctn_moi_ddiemlv}`}>
-							<div className={`${styles.info_window_stat}`}>
-								<div className={`${styles.detail_if}`}>
-									<p style={{ marginRight: 10 }}>Tỉnh thành</p>
-									<Link
-										className={`${styles.tag}`}
-										target="blank"
-										href="/tim-viec-lam-tai-ha-noi.html"
-										title="Việc làm tại Hà Nội"
-									>
-										Hà Nội
-									</Link>
-								</div>
-							</div>
-							<div className={`${styles.info_window_stat}`}>
-								<div className={`${styles.detail_if}`}>
-									<p style={{ marginRight: 10 }}>Quận huyện</p>
-									<Link
-										className={`${styles.tag}`}
-										target="blank"
-										href="/tag1/viec-lam-tai-quan-cau-giay-ha-noi-31"
-										title="việc làm Quận Cầu Giấy"
-									>
-										Quận Cầu Giấy
-									</Link>{' '}
-								</div>
-							</div>
-							<div className={`${styles.detail_if} ${styles.w_100}`}>
-								<p className={`${styles.item_if}`}>Địa chỉ chi tiết</p>
-								<span className={`${styles.diachi}`}>
-									Số 8c ngách 189/14, ngõ 189 đường nguyễn ngọc vũ
-								</span>
-							</div>
-						</div>
-					</div>
-					<div className={`${styles.mt_20}`}>
-						<div className={`${styles.tit_detail_post_a}`}>
-							<h2 className={`${styles.tit_detail_post}`}>MÔ TẢ CÔNG VIỆC</h2>
-						</div>
-						<p className={`${styles.text_content} ${styles.ctn_chung_pd}`}>
-							- sản xuất, sửa chữa, bảo hành bo mạch điện tử và thiết bị điện tử do công ty sản xuất
-							và cung cấp và lắp đặt cho khách hàng. Thiết bị điện tử do cty sản xuất liên quan đến
-							âm thanh và kết nối mạng internet ( wifi, 3g/4g) <br /> - phối hợp triển khai lắp đặt,
-							hỗ trợ tư vấn kỹ thuật, hỗ trợ theo dõi quản lý thiết bị bằng phần mềm quản lý trên
-							điện thoại và máy tính <br />{' '}
-						</p>
-					</div>
-					<div className={`${styles.mt_20}`}>
-						<div className={`${styles.tit_detail_post_a}`}>
-							<h2 className={`${styles.tit_detail_post}`}>YÊU CẦU</h2>
-						</div>
-						<div
-							className={`${styles.ctn_moi_ycau} ${styles.d_flex} ${styles.w_100} ${styles.ctn_chung_pd}`}
-						>
-							<div className={`${styles.info_window_stat}`}>
-								<div className={`${styles.detail_if}`}>
-									<p className={`${styles.item_if}`}>Kinh nghiệm</p>{' '}
-									<span className={`${styles.tag_none}`}>0 - 1 năm kinh nghiệm</span>
-								</div>
-							</div>
-							<div className={`${styles.info_window_stat}`}>
-								<div className={`${styles.detail_if}`}>
-									<p className={`${styles.item_if}`}>Bằng cấp</p>{' '}
-									<span className={`${styles.tag_none}`}>Cao đẳng trở lên</span>
-								</div>
-							</div>
-							<div className={`${styles.detail_if} ${styles.w_100}`}>
-								<p className={`${styles.item_if}`}>Giới tính</p>{' '}
-								<span className={`${styles.tag_none}`}>Nam</span>
-							</div>
-							<p className={`${styles.text_content} ${styles.w_100} ${styles.ycau_tdung}`}>
-								- ưu tiên ứng viên có kinh nghiệm đã từng làm về mạch điện tử <br /> - Thỉnh thoảng
-								đi công tác tỉnh trong thời gian ngắn{' '}
-							</p>
-						</div>
-					</div>
-					<div className={`${styles.mt_20}`}>
-						<div className={`${styles.tit_detail_post_a}`}>
-							<h2 className={`${styles.tit_detail_post}`}>QUYỀN LỢI</h2>
-						</div>
-						<p className={`${styles.text_content} ${styles.ctn_chung_pd}`}>
-							- Thời gian làm việc cố định 6 ngày/tuần <br /> - Lương thử việc 2 tháng đầu 5-6
-							triệu, hết thử việc thỏa thuận theo khả năng đáp ứng công việc <br /> - Được hướng
-							dẫn, theo sát suốt quá trình làm việc{' '}
-						</p>
-					</div>
-					<div className={`${styles.mt_20}`}>
-						<div className={`${styles.tit_detail_post_a}`}>
-							<h2 className={`${styles.tit_detail_post}`}>HỒ SƠ BAO GỒM</h2>
-						</div>
-						<p className={`${styles.text_content} ${styles.ctn_chung_pd}`}>
-							- Đơn xin việc. <br /> - Sơ yếu lý lịch. <br /> - Hộ khẩu, chứng minh nhân dân và giấy
-							khám sức khoẻ. <br /> - Các bằng cấp có liên quan.{' '}
-						</p>
-					</div>
-					<div className={`${styles.mt_20}`}>
-						<div className={`${styles.tit_detail_post_a}`}>
-							<h2 className={`${styles.tit_detail_post}`}>Thông tin liên hệ</h2>
-						</div>
-						<div
-							className={`${styles.ctn_moi_ycau} ${styles.d_flex} ${styles.w_100} ${styles.ctn_chung_pd} ${styles.ctn_ttin_lhe}`}
-						>
-							<p className={`${styles.text_content} ${styles.text_ttlhe}`}>
-								Tên người liên hệ: <span>Công ty cổ phần việt hưng việt nam</span>
-							</p>
-							<p className={`${styles.text_content} ${styles.text_ttlhe}`}>
-								Địa chỉ liên hệ:{' '}
-								<span>
-									Số 16, ngõ 271, phố Yên Hoà, Phường Yên Hoà, Quận Cầu Giấy, Thành phố Hà Nội, Việt
-									Nam
-								</span>
-							</p>
-							<p className={`${styles.text_content} ${styles.text_ttlhe}`}>
-								Số điện thoại liên hệ: <span>*********</span>
-							</p>
-							<p className={`${styles.text_content} ${styles.text_ttlhe}`}>
-								Email liên hệ: <span>*********</span>
-							</p>
-						</div>
-					</div>
+					<Info />
 					<div className={`${styles.btn_tt_all}`}>
 						<button
-							data-id={868030}
-							data-use={1333676}
-							data-uid={1333676}
 							className={`${styles.btn_tt} ${styles.save_job}`}
 							onClick={() => handleLuuCongViec()}
 						>
 							{stt_luuCongViec}
 						</button>
 						<button
-							onClick={() => setShowPhanAnhNTD(true)}
+							onClick={() => handlePhanAnhNTD()}
 							className={`${styles.bcuv} ${styles.btn_tt} `}
 							data-use={1333676}
 						>
 							Phản ánh NTD
 						</button>
+						{!isLogin && (
+							<Link
+								href={'https://timviec365.vn/tai-ho-so.html?id=871080'}
+								className={`${styles.bcuv} ${styles.btn_tt} `}
+							>
+								Ứng tuyển nhanh
+							</Link>
+						)}
+
 						<Link
 							rel="nofollow"
 							href="/ssl/so-sanh-luong.html"
@@ -513,7 +324,7 @@ const Chi_tiet_td = ({ show }: Props) => {
 						</Link>
 					</div>
 				</div>
-				<div className={`${styles.ctn_tab_ttin}`} id="tab_phhop">
+				{/* <div className={`${styles.ctn_tab_ttin}`} id="tab_phhop">
 					<div className={`${styles.mucdo_phhop}`}>
 						<div className={`${styles.phhop_phtich}`}>
 							<p className={`${styles.tde_phuhop}`}>Phân tích chi tiết ứng viên</p>
@@ -610,7 +421,7 @@ const Chi_tiet_td = ({ show }: Props) => {
 							</div>
 						</div>
 					</div>
-				</div>
+				</div> */}
 			</div>
 		</>
 	)

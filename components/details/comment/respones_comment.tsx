@@ -3,30 +3,29 @@ import styles from '../main_timviec/main_timviec.module.css'
 import Rep_comment from './rep_comment'
 import Image from 'next/image'
 import { Icomment, Iicons } from './comment'
+import Input_Rep_comment from './input_rep_rep_comment'
 
 type Props = {
 	listComment: Icomment[]
 }
 
 const Respones_comment = ({ listComment }: Props) => {
+	// Lấy ở reduce or api
+	const name_comment = 'Nguyễn Quang Trường'
+
 	const [showIcons, setshowIcons] = useState<boolean>(false)
-	const [showBinhLuan, setShowBinhLuan] = useState<boolean>(true)
-	const [showDanhGia, setShowDanhGia] = useState<boolean>(false)
+	const [showRes_Response, setshowRes_Response] = useState<boolean>(false)
 	const [showIcon, setshowIcon] = useState<boolean>(false)
-	const [showBox_share, setShowBox_share] = useState<boolean>(false)
-	const [show_Box_Share_Mxh, setShow_Box_Share_Mxh] = useState<boolean>(false)
-	const [icons_used, setIcons_used] = useState<Iicons[]>([])
-	const [name_active, setName_active] = useState<string>('')
-	const [name_comment, setName_comemnt] = useState<string>('')
-	const [content_comment_demo, setcontent_comment_demo] = useState<string>('')
 	const [content_comment, setcontent_comment] = useState<string>('')
-	const [count_comment, setCount_comment] = useState<number>(0)
+	const [listCommentRes, setlistCommentRes] = useState<Icomment[]>([])
+	const [showInput, setShowInput] = useState<boolean>(false)
+	const [icons_used, setIcons_used] = useState<Iicons[]>([])
 	const [totalIconsUsed, settotalIconsUsed] = useState<number>(0)
 	const [changeIcon, setchangeIcon] = useState<string>(
 		'https://timviec365.vn/images/img_comment/Ic_color_2.png'
 	)
 
-	const [name_icon, setName_Icon] = useState<string>('thích')
+	const [name_icon, setName_Icon] = useState<string>('Thích')
 	const [count1, setcount1] = useState<number>(0)
 	const [count2, setcount2] = useState<number>(0)
 
@@ -71,7 +70,6 @@ const Respones_comment = ({ listComment }: Props) => {
 	const handleActionIcon = (icon: Iicons) => {
 		setchangeIcon(icon?.img)
 		setName_Icon(icon?.alt)
-		setName_active('Nguyễn Quang Trường')
 		settotalIconsUsed(totalIconsUsed + 1)
 		// if (icon.id == 1) {
 		// 	setcount1(count1 + 1)
@@ -98,6 +96,18 @@ const Respones_comment = ({ listComment }: Props) => {
 		if (!isExis) {
 			icons_used.push(icon)
 		}
+	}
+	const handleComment = async (): Promise<void> => {
+		if (content_comment) {
+			setlistCommentRes([...listCommentRes, { name: name_comment, content: content_comment }])
+			listCommentRes.shift()
+			setcontent_comment('')
+		} else {
+			alert('Vui lòng nhập bình luận')
+		}
+	}
+	const handleShowResResPonse = () => {
+		setShowInput(!showInput)
 	}
 	return (
 		<div>
@@ -134,9 +144,31 @@ const Respones_comment = ({ listComment }: Props) => {
 													onMouseOver={() => setshowIcons(true)}
 													onMouseLeave={() => setshowIcons(false)}
 												>
-													<span className={`${styles.like_cm_txt}`}>Thích</span> |
+													<span
+														className={`${styles.like_cm_txt} 
+													${name_icon === 'Thích' ? styles.blue : ''}
+													${name_icon === 'Yêu thích' ? styles.red : ''}
+													${name_icon === 'Wow' ? styles.cam : ''}
+													${name_icon === 'Thương thương' ? styles.cam : ''}
+													${name_icon === 'Phẫn nộ' ? styles.cam : ''}
+													${name_icon === 'Buồn' ? styles.cam : ''}
+													${name_icon === 'Haha' ? styles.cam : ''}
+													`}
+													>
+														{name_icon}
+													</span>
+													|
 												</span>
-												<span className={`${styles.reply_cm}`}>Phản hồi |</span>
+												<span
+													onClick={() => handleShowResResPonse()}
+													className={`${styles.reply_cm}`}
+												>
+													Phản hồi |
+												</span>
+												<span style={{ color: 'red' }} className={`${styles.reply_cm}`}>
+													Xóa |
+												</span>
+
 												<span
 													className={`${styles.time_cm}`}
 													title="Thứ bảy, 26 - Tháng 08, 2023 lúc 08:52"
@@ -191,7 +223,20 @@ const Respones_comment = ({ listComment }: Props) => {
 												</div>
 											</span>
 										</div>
-										{/* <Rep_comment name_comment={name_comment} /> */}
+
+										{/* Phản hồi của phản hồi tin tuyển dụng */}
+										<Input_Rep_comment
+											handleComment={handleComment}
+											setcontent_comment={setcontent_comment}
+											content_comment={content_comment}
+											showInput={showInput}
+											setShowInput={setShowInput}
+										/>
+										<Rep_comment
+											showRes_Response={showRes_Response}
+											setshowRes_Response={setshowRes_Response}
+											listCommentRes={listCommentRes}
+										/>
 									</div>
 								</div>
 							</div>

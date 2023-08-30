@@ -8,8 +8,12 @@ import Action_chat365 from './action_share/action_chat365'
 import Action_Gr_Chat365 from './action_share/action_gr_chat365'
 import Danh_gia from './danh_gia'
 import Model_History_comment from '@/components/pop_up/model_history_comment'
+import { useDispatch } from 'react-redux'
+import { openModal } from '@/actions/actions'
 
-type Props = {}
+type Props = {
+	isLogin: boolean
+}
 export interface Iicons {
 	id: number
 	img: string
@@ -20,7 +24,9 @@ export interface Icomment {
 	name: string
 	content: string
 }
-const Comment = (props: Props) => {
+const Comment = ({ isLogin }: Props) => {
+	const dispatch = useDispatch()
+	const name_comment = 'Nguyễn Quang Trường'
 	const [showBinhLuan, setShowBinhLuan] = useState<boolean>(true)
 	const [showDanhGia, setShowDanhGia] = useState<boolean>(false)
 	const [showIcon, setshowIcon] = useState<boolean>(false)
@@ -28,7 +34,6 @@ const Comment = (props: Props) => {
 	const [show_Box_Share_Mxh, setShow_Box_Share_Mxh] = useState<boolean>(false)
 	const [icons_used, setIcons_used] = useState<Iicons[]>([])
 	const [name_active, setName_active] = useState<string>('')
-	const [name_comment, setName_comemnt] = useState<string>('')
 	const [listComment, setlistComment] = useState<Icomment[]>([])
 	const [content_comment, setcontent_comment] = useState<string>('')
 	const [showChat365, setShowChat365] = useState<boolean>(false)
@@ -37,7 +42,7 @@ const Comment = (props: Props) => {
 	const [changeIcon, setchangeIcon] = useState<string>(
 		'https://timviec365.vn/images/img_comment/Ic_color_2.png'
 	)
-	const [name_icon, setName_Icon] = useState<string>('thích')
+	const [name_icon, setName_Icon] = useState<string>('Thích')
 	const [count1, setcount1] = useState<number>(0)
 	const [count2, setcount2] = useState<number>(0)
 
@@ -82,33 +87,37 @@ const Comment = (props: Props) => {
 	]
 	// Thay đổi icons và nội dung
 	const handleActionIcon = (icon: Iicons) => {
-		setchangeIcon(icon?.img)
-		setName_Icon(icon?.alt)
-		setName_active('Nguyễn Quang Trường')
-		if (icon.id == 1) {
-			setcount1(count1 + 1)
-		}
-		if (icon.id == 2) {
-			setcount2(count2 + 1)
-		}
-		if (icon.id == 3) {
-			setcount3(count3 + 1)
-		}
-		if (icon.id == 4) {
-			setcount4(count4 + 1)
-		}
-		if (icon.id == 5) {
-			setcount5(count5 + 1)
-		}
-		if (icon.id == 6) {
-			setcount6(count6 + 1)
-		}
-		if (icon.id == 7) {
-			setcount7(count7 + 1)
-		}
-		let isExis: any = icons_used.find((item: Iicons) => item.id === icon.id)
-		if (!isExis) {
-			icons_used.push(icon)
+		if (!isLogin) {
+			dispatch(openModal())
+		} else {
+			setchangeIcon(icon?.img)
+			setName_Icon(icon?.alt)
+			setName_active(name_comment)
+			if (icon.id == 1) {
+				setcount1(count1 + 1)
+			}
+			if (icon.id == 2) {
+				setcount2(count2 + 1)
+			}
+			if (icon.id == 3) {
+				setcount3(count3 + 1)
+			}
+			if (icon.id == 4) {
+				setcount4(count4 + 1)
+			}
+			if (icon.id == 5) {
+				setcount5(count5 + 1)
+			}
+			if (icon.id == 6) {
+				setcount6(count6 + 1)
+			}
+			if (icon.id == 7) {
+				setcount7(count7 + 1)
+			}
+			let isExis: any = icons_used.find((item: Iicons) => item.id === icon.id)
+			if (!isExis) {
+				icons_used.push(icon)
+			}
 		}
 	}
 	// Ẩn share khi click ra ngoài
@@ -130,12 +139,21 @@ const Comment = (props: Props) => {
 			alert('Vui lòng nhập bình luận')
 		}
 	}
+	const handleActionBeforLogin = () => {
+		if (!isLogin) {
+			dispatch(openModal())
+		}
+	}
+
 	// Thêm sự kiện click cho cả màn hình
 	useEffect(() => {
 		document?.addEventListener('click', handleOutsideClick)
 	}, [])
 	return (
-		<div className={`${styles.title_all} ${styles.content_cmt_vote}`}>
+		<div
+			onClick={() => handleActionBeforLogin()}
+			className={`${styles.title_all} ${styles.content_cmt_vote}`}
+		>
 			<div className={`${styles.box_cmt_vote}`}>
 				<div className={`${styles.tab_cmt_vote}`}>
 					<button
@@ -198,7 +216,7 @@ const Comment = (props: Props) => {
 														</div>
 													)}
 												</div>
-											</div>	
+											</div>
 											<span className={`${styles.count_ic}`}>
 												{icons_used?.map((icon: Iicons, index: number) => {
 													// if()
@@ -254,50 +272,6 @@ const Comment = (props: Props) => {
 														{name_icon}
 													</span>
 												</span>
-												<div className={`${styles.show_ic}`} style={{ display: 'none' }}>
-													<span className={`${styles.cm_like_ic}`}>
-														<img
-															src="https://timviec365.vn/images/img_comment/Ic_1.png"
-															alt="icon1"
-														/>
-													</span>
-													<span className={`${styles.cm_like_ic}`}>
-														<img
-															src="https://timviec365.vn/images/img_comment/Ic_2.png"
-															alt="icon2"
-														/>
-													</span>
-													<span className={`${styles.cm_like_ic}`}>
-														<img
-															src="https://timviec365.vn/images/img_comment/Ic_3.png"
-															alt="icon3"
-														/>
-													</span>
-													<span className={`${styles.cm_like_ic}`}>
-														<img
-															src="https://timviec365.vn/images/img_comment/Ic_4.png"
-															alt="icon4"
-														/>
-													</span>
-													<span className={`${styles.cm_like_ic}`}>
-														<img
-															src="https://timviec365.vn/images/img_comment/Ic_5.png"
-															alt="icon5"
-														/>
-													</span>
-													<span className={`${styles.cm_like_ic}`}>
-														<img
-															src="https://timviec365.vn/images/img_comment/Ic_6.png"
-															alt="icon6"
-														/>
-													</span>
-													<span className={`${styles.cm_like_ic}`}>
-														<img
-															src="https://timviec365.vn/images/img_comment/Ic_7.png"
-															alt="icon7"
-														/>
-													</span>
-												</div>
 											</div>
 											<div className={`${styles.cm_ev_div}`}>
 												<span className={`${styles.comment_event}`}>
@@ -358,11 +332,10 @@ const Comment = (props: Props) => {
 											<Input_comment
 												handleComment={handleComment}
 												setcontent_comment={setcontent_comment}
-												setName_comemnt={setName_comemnt}
 												content_comment={content_comment}
 											/>
 										</div>
-										{/* Phản  hồi comment */}
+										{/* Phản  hồi tin tuyển dụng  */}
 										<Respones_comment listComment={listComment} />
 									</div>
 								</div>
