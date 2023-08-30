@@ -1,6 +1,7 @@
 import React from 'react'
 import styles from '../main_timviec/main_timviec.module.css'
 import Link from 'next/link'
+import Image from 'next/image'
 
 type Props = {}
 
@@ -83,7 +84,7 @@ const Ctn_all_new = (props: Props) => {
 							Việc làm tại Thị xã Sơn Tây Hà Nội
 						</Link>
 					</div>
-					<img
+					<Image width={25} height={25}
 						className={`${styles.show_tg}`}
 						src="	https://timviec365.vn/images/detail/add_tag.svg"
 						alt="địa điểm"
@@ -217,7 +218,7 @@ const Ctn_all_new = (props: Props) => {
 							Việc làm nhân viên lắp đặt tại Quận Thanh Xuân Hà Nội{' '}
 						</Link>
 					</div>
-					<img
+					<Image width={25} height={25}
 						className={`${styles.show_tg}`}
 						src="	https://timviec365.vn/images/detail/add_tag.svg"
 						alt="chức danh"
@@ -345,7 +346,7 @@ const Ctn_all_new = (props: Props) => {
 							Việc làm kỹ thuật viên tin học
 						</Link>
 					</div>
-					<img
+					<Image width={25} height={25}
 						className={`${styles.show_tg}`}
 						src="	https://timviec365.vn/images/detail/add_tag.svg"
 						alt="từ khóa liên quan"
@@ -359,10 +360,9 @@ const Ctn_all_new = (props: Props) => {
 				<div className={`${styles.hd} ${styles.content_padding}`}>
 					<div className={`${styles.hd_tin}`}>
 						<Link target="blank" href="/blog/chay-tiep-suc-la-gi-new16926.html">
-							<img
+							<Image width={25} height={25}
 								className={`${styles.lazyloaded}`}
 								src="https://timviec365.vn/pictures/news/2023/08/17/wal1692269700.jpg"
-								data-src="/pictures/news/2023/08/17/wal1692269700.jpg"
 								alt="Hành trình đồng đội trong bộ môn điền kinh - chạy tiếp sức là gì"
 							/>
 						</Link>
@@ -374,7 +374,7 @@ const Ctn_all_new = (props: Props) => {
 					</div>
 					<div className={`${styles.hd_tin}`}>
 						<Link target="blank" href="/blog/ky-nang-dien-dat-la-gi-new16908.html">
-							<img
+							<Image width={25} height={25}
 								className={`${styles.lazyloaded}`}
 								src="https://timviec365.vn/pictures/news/2023/08/12/idg1691830468.jpg"
 								data-src="/pictures/news/2023/08/12/idg1691830468.jpg"
@@ -389,7 +389,7 @@ const Ctn_all_new = (props: Props) => {
 					</div>
 					<div className={`${styles.hd_tin}`}>
 						<Link target="blank" href="/blog/phong-cach-wabi-sabi-la-gi-new16847.html">
-							<img
+							<Image width={25} height={25}
 								className={`${styles.lazyloaded}`}
 								src="https://timviec365.vn/pictures/news/2023/07/24/yjb1690193831.jpg"
 								data-src="/pictures/news/2023/07/24/yjb1690193831.jpg"
@@ -404,7 +404,7 @@ const Ctn_all_new = (props: Props) => {
 					</div>
 					<div className={`${styles.hd_tin}`}>
 						<Link target="blank" href="/blog/dich-thuat-ha-noi-new16736.html">
-							<img
+							<Image width={25} height={25}
 								className={`${styles.lazyloaded}`}
 								src="https://timviec365.vn/pictures/news/2023/06/16/umh1686898711.jpg"
 								data-src="/pictures/news/2023/06/16/umh1686898711.jpg"
@@ -429,7 +429,7 @@ const Ctn_all_new = (props: Props) => {
 						href="/viec-lam-ky-thuat-c18v0"
 						title="Việc làm Kỹ thuật"
 					>
-						<img src="https://timviec365.vn/images/detail/icon_ut.svg" alt="icon vl" /> Tìm việc làm
+						<Image width={25} height={25} src="https://timviec365.vn/images/detail/icon_ut.svg" alt="icon vl" /> Tìm việc làm
 						Kỹ thuật
 					</Link>
 					<Link
@@ -437,11 +437,11 @@ const Ctn_all_new = (props: Props) => {
 						href="/viec-lam-ky-thuat-ung-dung-c47v0"
 						title="Việc làm Kỹ thuật ứng dụng"
 					>
-						<img src="https://timviec365.vn/images/detail/icon_ut.svg" alt="icon vl" /> Tìm việc làm
+						<Image width={25} height={25} src="https://timviec365.vn/images/detail/icon_ut.svg" alt="icon vl" /> Tìm việc làm
 						Kỹ thuật ứng dụng
 					</Link>
 					<p className={`${styles.city_dof} ${styles.btn_s_j}`}>
-						<img src="https://timviec365.vn/images/detail/icon_ut.svg" alt="icon vl" /> Tìm việc làm
+						<Image width={25} height={25} src="https://timviec365.vn/images/detail/icon_ut.svg" alt="icon vl" /> Tìm việc làm
 						liên quan:
 						<Link target="_blank" style={{ color: '#FFF600' }} href="/">
 							{' '}

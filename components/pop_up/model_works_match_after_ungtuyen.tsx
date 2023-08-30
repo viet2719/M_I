@@ -42,7 +42,7 @@ const Model_works_match_after_ungtuyen = ({ showWorkMatch, setShowWorkMatch }: P
 								style={{ display: 'flex', justifyContent: 'space-between' }}
 							>
 								<p>
-									<img className={styles.nhs_bag} src="/images/bag.png" />
+									<Image width={23} height={24} className={styles.nhs_bag} src="/images/bag.png" alt={''} />
 									<p className={styles.nhs_title_2}>Timviec365.vn Thông báo</p>
 								</p>
 

@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import styles from './mobile_form.module.css'
 import { Switch } from 'antd'
 import Link from 'next/link'
+import Image from 'next/image'
 type Props = {}
 
 const Mobile_form_after_login = (props: Props) => {
@@ -14,12 +15,14 @@ const Mobile_form_after_login = (props: Props) => {
 	return (
 		<div className={`${styles.mobi_sh_ul} ${styles.ctn_mobi_sh_ul}`} style={{ display: 'block' }}>
 			<div id="mobi_ul" className={`${styles.m_header_mobile} ${styles.displayblock}`}>
-				<div className={styles.mobi_from} >
+				<div className={styles.mobi_from}>
 					<div className={styles.m_ul_container}>
 						<li className={`${styles.ctn_mobi_sub_domain} ${styles.m_mobile_menu}`}>
 							<div style={{ display: 'flex', gap: 10 }}>
 								<div>
-									<img
+									<Image
+										width={36}
+										height={36}
 										className={`${styles.ctn_avt_us} + ${styles.lazyloaded}`}
 										src="https://timviec365.vn/images/dk_s.png"
 										data-src="/images/dk_s.png"
@@ -58,7 +61,9 @@ const Mobile_form_after_login = (props: Props) => {
 							>
 								<div className={styles.box_quanlychitiet}>
 									<div className={styles.m_quanlychitiet}>
-										<img
+										<Image
+											width={20}
+											height={21}
 											className={styles.ic_menu_mobile}
 											src="https://timviec365.vn/images/New_images/ic_menu_qlct.svg"
 											alt="quản lý chi tiết"
@@ -70,7 +75,9 @@ const Mobile_form_after_login = (props: Props) => {
 											Quản lý chi tiết
 										</p>
 									</div>
-									<img
+									<Image
+										width={24}
+										height={24}
 										className={`${styles.angle_menu_mobile} ${styles.ic_menu}`}
 										src="https://timviec365.vn/images/New_images/angle_bottom.svg"
 										alt="mở rộng"
@@ -90,7 +97,9 @@ const Mobile_form_after_login = (props: Props) => {
 											>
 												<div style={{ display: 'flex', gap: 10, color: 'black', fontSize: 14 }}>
 													<div>
-														<img
+														<Image
+															width={36}
+															height={36}
 															className={styles.ic_menu}
 															src="https://timviec365.vn/images/New_images/ic_menu_qlc.svg"
 															alt="quản lý chung"
@@ -120,7 +129,9 @@ const Mobile_form_after_login = (props: Props) => {
 													>
 														<div style={{ display: 'flex', gap: 10, color: 'black', fontSize: 14 }}>
 															<div>
-																<img
+																<Image
+																	width={36}
+																	height={36}
 																	className={styles.ic_menu}
 																	src="https://timviec365.vn/images/New_images/ic_menu_hsxv.svg"
 																	alt="hồ sơ xin việc"
@@ -136,7 +147,9 @@ const Mobile_form_after_login = (props: Props) => {
 															</div>
 														</div>
 														<div>
-															<img
+															<Image
+																width={36}
+																height={36}
 																className={`${styles.ic_menu} ${styles.ic_menu_angle} ${styles.angle_menu_hsxv}`}
 																src="https://timviec365.vn/images/New_images/angle_bottom.svg"
 																alt="mở rộng"
@@ -251,7 +264,9 @@ const Mobile_form_after_login = (props: Props) => {
 													>
 														<div style={{ display: 'flex', gap: 10, color: 'black', fontSize: 14 }}>
 															<div>
-																<img
+																<Image
+																	width={36}
+																	height={36}
 																	className={styles.ic_menu}
 																	src="https://timviec365.vn/images/New_images/ic_menu_hths.svg"
 																	alt="hoàn thiện hồ sơ"
@@ -267,7 +282,9 @@ const Mobile_form_after_login = (props: Props) => {
 															</div>
 														</div>
 														<div>
-															<img
+															<Image
+																width={36}
+																height={36}
 																className={`${styles.ic_menu} ${styles.ic_menu_angle} ${styles.angle_menu_hsxv}`}
 																src="https://timviec365.vn/images/New_images/angle_bottom.svg"
 																alt="mở rộng"
@@ -310,7 +327,9 @@ const Mobile_form_after_login = (props: Props) => {
 											>
 												<div style={{ display: 'flex', gap: 10, color: 'black', fontSize: 14 }}>
 													<div>
-														<img
+														<Image
+															width={36}
+															height={36}
 															className={`${styles.ic_menu}`}
 															src="https://timviec365.vn/images/New_images/ic_menu_gyvlai.svg"
 															alt="việc làm gợi ý từ AI"
@@ -329,7 +348,9 @@ const Mobile_form_after_login = (props: Props) => {
 											>
 												<div style={{ display: 'flex', gap: 10, color: 'black', fontSize: 14 }}>
 													<div>
-														<img
+														<Image
+															width={36}
+															height={36}
 															className={`${styles.ic_menu}`}
 															src="https://timviec365.vn/images/New_images/ic_menu_vldut.png"
 															alt="việc làm đã ứng tuyển"
@@ -347,7 +368,9 @@ const Mobile_form_after_login = (props: Props) => {
 											>
 												<div style={{ display: 'flex', gap: 10, color: 'black', fontSize: 14 }}>
 													<div>
-														<img
+														<Image
+															width={36}
+															height={36}
 															className={`${styles.ic_menu}`}
 															src="https://timviec365.vn/images/New_images/ic_menu_vldl.svg"
 															alt="việc làm đã lưu"
@@ -368,7 +391,9 @@ const Mobile_form_after_login = (props: Props) => {
 											>
 												<div style={{ display: 'flex', gap: 10, color: 'black', fontSize: 14 }}>
 													<div>
-														<img
+														<Image
+															width={36}
+															height={36}
 															className={`${styles.ic_menu}`}
 															src="https://timviec365.vn/images/New_images/ic_menu_chat.svg"
 															alt="chat365"
@@ -386,7 +411,9 @@ const Mobile_form_after_login = (props: Props) => {
 											>
 												<div style={{ display: 'flex', gap: 10, color: 'black', fontSize: 14 }}>
 													<div>
-														<img
+														<Image
+															width={36}
+															height={36}
 															className={`${styles.ic_menu}`}
 															src="https://timviec365.vn/images/New_images/ic_menu_email.svg"
 															alt="email đã nhận"
@@ -414,7 +441,9 @@ const Mobile_form_after_login = (props: Props) => {
 												>
 													<div style={{ display: 'flex', gap: 10, color: 'black', fontSize: 14 }}>
 														<div>
-															<img
+															<Image
+																width={36}
+																height={36}
 																className={`${styles.ic_menu}`}
 																src="https://timviec365.vn/images/New_images/ic_menu_qltk.svg"
 																alt="quản lý tài khoản"
@@ -425,7 +454,9 @@ const Mobile_form_after_login = (props: Props) => {
 														</div>
 													</div>
 													<div>
-														<img
+														<Image
+															width={36}
+															height={36}
 															className={`${styles.ic_menu} ${styles.ic_menu_angle} ${styles.angle_menu_hsxv}`}
 															src="https://timviec365.vn/images/New_images/angle_bottom.svg"
 															alt="mở rộng"
@@ -503,7 +534,9 @@ const Mobile_form_after_login = (props: Props) => {
 								className={`${styles.cursor_pt}`}
 							>
 								<li className={`${styles.menu_mobile_chung} ${styles.box_ic_menu}`}>
-									<img
+									<Image
+										width={20}
+										height={21}
 										className={`${styles.ic_menu}`}
 										src="https://timviec365.vn/images/New_images/ic_menu_btin.svg"
 										alt="bảng tin"
@@ -520,7 +553,9 @@ const Mobile_form_after_login = (props: Props) => {
 						<div className={`${styles.container_menu_mobile}`}>
 							<Link href="/cv-xin-viec" rel="nofollow" className={`${styles.cursor_pt}`}>
 								<li className={`${styles.menu_mobile_chung} ${styles.box_ic_menu}`}>
-									<img
+									<Image
+										width={20}
+										height={21}
 										className={`${styles.ic_menu}`}
 										src="https://timviec365.vn/images/New_images/ic_menu_hsxv.svg"
 										alt="hồ sơ xin việc"
@@ -543,7 +578,9 @@ const Mobile_form_after_login = (props: Props) => {
 										onClick={() => setshowKhamPha(!showKhamPha)}
 									>
 										<div className={styles.m_quanlychitiet}>
-											<img
+											<Image
+												width={20}
+												height={21}
 												className={`${styles.ic_menu}`}
 												src="https://timviec365.vn/images/New_images/ic_menu_khampha.svg"
 												alt="khám phá"
@@ -555,7 +592,9 @@ const Mobile_form_after_login = (props: Props) => {
 												Khám phá
 											</p>
 										</div>
-										<img
+										<Image
+											width={24}
+											height={24}
 											className={`${styles.angle_menu_mobile} ${styles.ic_menu}`}
 											src="https://timviec365.vn/images/New_images/angle_bottom.svg"
 											alt="mở rộng"
@@ -603,7 +642,9 @@ const Mobile_form_after_login = (props: Props) => {
 										onClick={() => setshowTienIch(!showTienIch)}
 									>
 										<div className={styles.m_quanlychitiet}>
-											<img
+											<Image
+												width={20}
+												height={21}
 												className={`${styles.ic_menu}`}
 												src="https://timviec365.vn/images/New_images/ic_menu_tienich.svg"
 												alt="tiện ích"
@@ -615,7 +656,9 @@ const Mobile_form_after_login = (props: Props) => {
 												Tiện ích
 											</p>
 										</div>
-										<img
+										<Image
+											width={24}
+											height={24}
 											className={`${styles.ic_menu} ${styles.ic_menu_angle} ${styles.angle_menu_hsxv}`}
 											src="https://timviec365.vn/images/New_images/angle_bottom.svg"
 											alt="mở rộng"
@@ -690,7 +733,9 @@ const Mobile_form_after_login = (props: Props) => {
 								>
 									<div style={{ display: 'flex', gap: 10, color: 'black', fontSize: 14 }}>
 										<div>
-											<img
+											<Image
+												width={20}
+												height={21}
 												className={`${styles.ic_menu}`}
 												src="https://timviec365.vn/images/New_images/ic_menu_cds.svg"
 												alt="chuyển đổi số"
@@ -707,41 +752,43 @@ const Mobile_form_after_login = (props: Props) => {
 							</Link>
 						</div>
 						<div className={`${styles.container_menu_mobile}`}>
-						<Link href="/dang-xuat-ung-vien" rel="nofollow">
+							<Link href="/dang-xuat-ung-vien" rel="nofollow">
 								<li
 									className={`${styles.header_poppup_item} ${styles.box_ic_menu} ${styles.cursor_pt}`}
 								>
 									<div style={{ display: 'flex', gap: 10, color: 'black', fontSize: 14 }}>
 										<div>
-										<img
-										className={`${styles.ic_menu}`}
-										src="https://timviec365.vn/images/New_images/ic_menu_dxuat.svg"
-										alt="đăng xuất"
-									/>
+											<Image
+												width={20}
+												height={21}
+												className={`${styles.ic_menu}`}
+												src="https://timviec365.vn/images/New_images/ic_menu_dxuat.svg"
+												alt="đăng xuất"
+											/>
 										</div>
 										<div>
-										<p
-											className={`${styles.txt_qlct} ${styles.txt_menu_mobile}`}
-											style={{ color: 'red' }}
-										>
-											&nbsp;Đăng xuất
-										</p>
+											<p
+												className={`${styles.txt_qlct} ${styles.txt_menu_mobile}`}
+												style={{ color: 'red' }}
+											>
+												&nbsp;Đăng xuất
+											</p>
 										</div>
-										
 									</div>
 								</li>
 							</Link>
-
-
 						</div>
 					</div>
 					{/*  */}
 					<div className={`${styles.popup_show_listnganhnghe} ${styles.d_none}`}>
 						<div className={`${styles.container_list}`}>
 							<div className={`${styles.header_list} ${styles.cursor_pt}`}>
-								<img
+								<Image
+									width={36}
+									height={36}
 									className={`${styles.ic_menu}`}
 									src="https://timviec365.vn/images/New_images/ic_menu_angle_left.svg"
+									alt={''}
 								/>
 								<p className={`${styles.txt_list_header} ${styles.cursor_pt}`}>
 									CV theo ngành nghề
@@ -1251,7 +1298,9 @@ const Mobile_form_after_login = (props: Props) => {
 					<div className={`${styles.popup_show_listngongu} ${styles.d_none}`}>
 						<div className={`${styles.container_list}`}>
 							<div className={`${styles.header_list} ${styles.cursor_pt}`}>
-								<img
+								<Image
+									width={36}
+									height={36}
 									className={`${styles.ic_menu}`}
 									src="/images/New_images/ic_menu_angle_left.svg"
 									alt="cv theo ngôn ngữ"

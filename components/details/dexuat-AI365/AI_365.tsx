@@ -47,31 +47,36 @@ const AI_365 = (props: Props) => {
 									<span className={`${styles.box_time_off}`}>2 giờ</span>{' '}
 								</Link>
 								<div className={`${styles.box_vote_new}`}>
-									<img
+									<Image
+									width={13} height={13}
 										className={`${styles.icon_vote_new}`}
-										src="https://timviec365.vn/images/tia_set/icon_star_gray.svg"
+										src="/images/icon_star_gray.svg"
 										alt="star grey"
 									/>
-									<img
+										<Image
+									width={13} height={13}
 										className={`${styles.icon_vote_new}`}
-										src="https://timviec365.vn/images/tia_set/icon_star_gray.svg"
+										src="/images/icon_star_gray.svg"
 										alt="star grey"
 									/>
-									<img
+									<Image
+									width={13} height={13}
 										className={`${styles.icon_vote_new}`}
-										src="https://timviec365.vn/images/tia_set/icon_star_gray.svg"
+										src="/images/icon_star_gray.svg"
 										alt="star grey"
 									/>
-									<img
+										<Image
+									width={13} height={13}
 										className={`${styles.icon_vote_new}`}
-										src="https://timviec365.vn/images/tia_set/icon_star_gray.svg"
+										src="/images/icon_star_gray.svg"
 										alt="star grey"
 									/>
-									<img
+										<Image
+									width={13} height={13}
 										className={`${styles.icon_vote_new}`}
-										src="https://timviec365.vn/images/tia_set/icon_star_gray.svg"
+										src="/images/icon_star_gray.svg"
 										alt="star grey"
-									/>{' '}
+									/>
 								</div>
 							</div>
 							<div className={`${styles.info_same_job}`}>
@@ -91,8 +96,10 @@ const AI_365 = (props: Props) => {
 								</Link>
 								<div className={`${styles.detail_info}`}>
 									<p className={`${styles.detail_info_l}`}>
-										<img
-											src="https://timviec365.vn/images/detail/calendar.svg"
+										<Image
+										width={16}
+										height={16}
+											src="/images/calendar.svg"
 											alt=""
 											style={{ width: 16 }}
 										/>
@@ -100,24 +107,30 @@ const AI_365 = (props: Props) => {
 										<span> 31/12/2024</span>
 									</p>
 									<p className={`${styles.detail_info_l}`}>
-										<img
-											src="https://timviec365.vn/images/detail/location.svg"
+										<Image
+										width={16}
+										height={16}
+											src="/images/location.svg"
 											alt=""
 											style={{ width: 16 }}
 										/>
 										<span>{item.address}</span>
 									</p>
 									<p className={`${styles.detail_info_r} ${styles.openApp}`} id-chat={30825}>
-										<img
-											src="https://timviec365.vn/images/detail/icon_chat.svg"
+										<Image
+										width={16}
+										height={16}
+											src="/images/icon_chat.svg"
 											alt=""
 											style={{ width: 16 }}
 										/>
 										<span>Chat</span>
 									</p>
 									<p className={`${styles.detail_info_all}`}>
-										<img
-											src="https://timviec365.vn/images/detail/dola.svg"
+										<Image
+										width={16}
+										height={16}
+											src="/images/dola.svg"
 											alt=""
 											style={{ width: 16 }}
 										/>

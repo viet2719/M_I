@@ -13,7 +13,7 @@ const Input_Rep_comment = ({handleComment,setcontent_comment,content_comment,sho
 
   return (
     <div>
-        {  showInput && <div className={`${styles.cm_input} ${styles.input_comment}`}>
+ <div className={`${styles.cm_input} ${styles.input_comment}`}>
     <Image
         width={36}
         height={36}
@@ -91,7 +91,7 @@ const Input_Rep_comment = ({handleComment,setcontent_comment,content_comment,sho
         type="file"
     />
     <div id="tag_friend" style={{ display: 'none' }} />
-</div>}
+</div>
     </div>
  
   )

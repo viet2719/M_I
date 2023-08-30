@@ -2608,7 +2608,6 @@
 	display: flex;
 	flex-direction: column;
 	gap: 16px;
-
 }
 
 .m_thuut .header_thuut {
@@ -2626,7 +2625,6 @@
 	gap: 10px;
 	width: 100%;
 	justify-content: flex-end;
-	
 }
 
 .m_thuut .title_thuut {
@@ -2634,7 +2632,6 @@
 	line-height: 24px;
 	color: #474747;
 	font-family: Roboto-Medium;
-	
 }
 
 .m_thuut .txta_ct_thuut {
@@ -2685,13 +2682,13 @@
 	line-height: 19px;
 	color: #595959;
 }
-.red{
+.red {
 	color: red;
 }
-.blue{
+.blue {
 	color: blue;
 }
-.cam{
+.cam {
 	color: rgb(241, 165, 13);
 }
 .m_thuut .content_thuut {
@@ -4347,7 +4344,7 @@
 	border-bottom: 1px solid #ddd;
 }
 
-#box_comment_chat {
+.box_comment_chat {
 	float: left;
 	width: 100%;
 	border: none !important;
@@ -4439,6 +4436,12 @@
 	border-radius: 10px;
 	z-index: 99;
 }
+.box_items_like_ic2 {
+	position: absolute;
+	background: #f3eeee;
+	border-radius: 10px;
+	z-index: 99;
+}
 .cm_like_ic img {
 	width: 20px;
 	height: 20px;
@@ -4461,6 +4464,7 @@
 .cm_sh_ic {
 	float: right;
 	margin-left: 15px;
+	padding-top: 10px;
 }
 
 .cm_cm_ic b,
@@ -4722,10 +4726,11 @@
 }
 
 .cm_has_reply {
-	background: linear-gradient(#aeb4c1 0 0) 12px;
+	background: linear-gradient(#aeb4c1 0 0) 37px -95px;
 	background-size: 1px 95%;
 	background-repeat: no-repeat;
 	position: relative;
+	padding-left: 25px;
 }
 
 .line_reply2 {

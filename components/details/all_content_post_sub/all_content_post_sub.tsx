@@ -251,7 +251,6 @@ const All_content_post_sub = (props: Props) => {
 								<div
 									className={`${styles.item} ${styles.slick_slide} ${styles.slick_cloned}`}
 									tabIndex={-1}
-									role="option"
 									aria-describedby="slick_slide01"
 									style={{ width: 238 }}
 									data-slick-index={-1}
@@ -260,7 +259,6 @@ const All_content_post_sub = (props: Props) => {
 								<div
 									className={`${styles.item} ${styles.slick_slide} ${styles.slick_current} ${styles.slick_active}`}
 									tabIndex={-1}
-									role="option"
 									aria-describedby="slick_slide00"
 									style={{ width: 238 }}
 									data-slick-index={0}

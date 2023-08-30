@@ -10,7 +10,7 @@ import { useRouter } from 'next/router'
 type Props = {}
 
 const Detail = (props: Props) => {
-	const [isLogin, setIsLogin] = useState<boolean>(false)
+	const [isLogin, setIsLogin] = useState<boolean>(true)
 
 	const [show, setShow] = useState<boolean>(false)
 	const router = useRouter()
