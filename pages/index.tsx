@@ -87,7 +87,7 @@ const Home: NextPageWithLayout = () => {
 				cano={cano}
 				abstract={abstract}
 			/>
-
+			<Link href={'/about'}>About</Link>
 			<New_banner />
 			<section className={styles.section_home}>
 				<div className={styles.vieclam_container}>
