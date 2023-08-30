@@ -7,9 +7,10 @@ import Input_Rep_comment from './input_rep_rep_comment'
 
 type Props = {
 	listComment: Icomment[]
+	setlistComment:(value:Icomment[])=>void
 }
 
-const Respones_comment = ({ listComment }: Props) => {
+const Respones_comment = ({ listComment,setlistComment }: Props) => {
 	// Lấy ở reduce or api
 	const name_comment = 'Nguyễn Quang Trường'
 
@@ -109,6 +110,9 @@ const Respones_comment = ({ listComment }: Props) => {
 	const handleShowResResPonse = () => {
 		setShowInput(!showInput)
 	}
+	const handleDeleteComment=()=>{
+		setlistComment([])
+	}
 	return (
 		<div>
 			{listComment?.length > 0 &&
@@ -165,7 +169,7 @@ const Respones_comment = ({ listComment }: Props) => {
 												>
 													Phản hồi |
 												</span>
-												<span style={{ color: 'red' }} className={`${styles.reply_cm}`}>
+												<span onClick={()=>handleDeleteComment()} style={{ color: 'red' }} className={`${styles.reply_cm}`}>
 													Xóa |
 												</span>
 
@@ -236,6 +240,7 @@ const Respones_comment = ({ listComment }: Props) => {
 											showRes_Response={showRes_Response}
 											setshowRes_Response={setshowRes_Response}
 											listCommentRes={listCommentRes}
+											setlistCommentRes={setlistCommentRes}
 										/>
 									</div>
 								</div>

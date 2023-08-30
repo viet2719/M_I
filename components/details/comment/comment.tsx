@@ -336,7 +336,9 @@ const Comment = ({ isLogin }: Props) => {
 											/>
 										</div>
 										{/* Phản  hồi tin tuyển dụng  */}
-										<Respones_comment listComment={listComment} />
+										<Respones_comment listComment={listComment}
+										setlistComment={setlistComment}
+										/>
 									</div>
 								</div>
 								<div

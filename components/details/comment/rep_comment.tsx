@@ -9,17 +9,22 @@ type Props = {
 	showRes_Response: boolean
 	setshowRes_Response: (value: boolean) => void
 	listCommentRes: Icomment[]
+	setlistCommentRes: (value: Icomment[]) => void
 }
 
-const Rep_comment = ({ showRes_Response, setshowRes_Response, listCommentRes }: Props) => {
-	const name_comment = "Nguyễn Quang Trường"
+const Rep_comment = ({
+	showRes_Response,
+	setshowRes_Response,
+	listCommentRes,
+	setlistCommentRes,
+}: Props) => {
+	const name_comment = 'Nguyễn Quang Trường'
 	const [showIcons, setshowIcons] = useState<boolean>(false)
 	const [showIcon, setshowIcon] = useState<boolean>(false)
 	const [content_comment, setcontent_comment] = useState<string>('')
 	const [name_icon, setName_Icon] = useState<string>('thích')
 	const [icons_used, setIcons_used] = useState<Iicons[]>([])
 	const [totalIconsUsed, settotalIconsUsed] = useState<number>(0)
-	const [ listCommentResRes,setListCommentResRes] = useState<Icomment[]>([])
 	const [changeIcon, setchangeIcon] = useState<string>(
 		'https://timviec365.vn/images/img_comment/Ic_color_2.png'
 	)
@@ -100,12 +105,15 @@ const Rep_comment = ({ showRes_Response, setshowRes_Response, listCommentRes }: 
 	}
 	const handleComment = async (): Promise<void> => {
 		if (content_comment) {
-			setListCommentResRes([...listCommentResRes, { name: name_comment, content: content_comment }])
-			listCommentResRes.shift()
+			setlistCommentRes([...listCommentRes, { name: name_comment, content: content_comment }])
+			listCommentRes.shift()
 			setcontent_comment('')
 		} else {
 			alert('Vui lòng nhập bình luận')
 		}
+	}
+	const handleDeleteRepComment = () => {
+		setlistCommentRes([])
 	}
 	return (
 		<div className={`${styles.cm_content} ${styles.cm_8143} ${styles.cm_reply_box}`}>
@@ -165,7 +173,11 @@ const Rep_comment = ({ showRes_Response, setshowRes_Response, listCommentRes }: 
 												>
 													Phản hồi |
 												</span>
-												<span style={{ color: 'red' }} className={`${styles.reply_cm}`}>
+												<span
+													onClick={() => handleDeleteRepComment()}
+													style={{ color: 'red' }}
+													className={`${styles.reply_cm}`}
+												>
 													Xóa |
 												</span>
 

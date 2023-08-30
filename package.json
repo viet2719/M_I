@@ -6,7 +6,7 @@
 		"dev": "nodemon server.js",
 		"build": "next build",
 		"start": "NODE_ENV=production node server.js"
-	},
+		},
 	"dependencies": {
 		"@ant-design/icons": "^5.2.5",
 		"@types/node": "20.5.0",

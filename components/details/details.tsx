@@ -10,7 +10,7 @@ import { useRouter } from 'next/router'
 type Props = {}
 
 const Detail = (props: Props) => {
-	const [isLogin, setIsLogin] = useState<boolean>(true)
+	const [isLogin, setIsLogin] = useState<boolean>(false)
 
 	const [show, setShow] = useState<boolean>(false)
 	const router = useRouter()
@@ -29,16 +29,16 @@ const Detail = (props: Props) => {
 			window.removeEventListener('scroll', handleScroll)
 		}
 	}, [])
-	useEffect(()=>{
+	useEffect(() => {
 		// router.push(router.pathname)
 		// router.pathname="love-love-p1312312.html"
-	},[])
+	}, [])
 	return (
 		<div>
 			{/* ModelLogin */}
 			<Model_noti />
 			{isLogin ? <New_banner_detail /> : <New_banner_detai_befor isLogin={isLogin} />}
-			{!isLogin && <div style={{ color: '#fff' }}>helo</div>}
+			{!isLogin && <div style={{ color: '#fff', height: 30 }}></div>}
 			<Main_breadcrumb />
 			<Main_timviec show={show} isLogin={isLogin} />
 			<Footer_chat />
