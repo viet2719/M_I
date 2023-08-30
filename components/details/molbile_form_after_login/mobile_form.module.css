@@ -596,7 +596,7 @@ li.ctn_mobi_sub_domain {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 10px;
-	justify-content: start;
+	justify-content: flex-start;
 	max-height: 89%;
 	overflow: scroll;
 	margin-top: 15px;
