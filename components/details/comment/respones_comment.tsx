@@ -134,7 +134,7 @@ const Respones_comment = ({ listComment, setlistComment }: Props) => {
 										src={
 											`${item.cm_sender_avatar}` == ''
 												? 'https://timviec365.vn/images/user_no.png'
-												: `${`https://ht.timviec365.vn:9002/avatarUser/${item.cm_sender_avatar}`}`
+												: `${`/${item.cm_sender_avatar}`}`
 										}
 									/>
 									<div className={`${styles.cm_box} ${styles.frame_cm_box}`}>
