@@ -1,6 +1,6 @@
 .new_banner {
 	background: url('https://timviec365.vn/images/loc/th_banner_tin_13.png') bottom;
-	background-size: 100% 76%;
+	background-size: 100% 85%;
 	width: 100%;
 	position: relative;
 	.box_search {
@@ -108,7 +108,21 @@
 			width: 100%;
 			.main_search {
 				display: flex;
-				top: 140px;
+				top: 120px;
+				justify-content: center;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 480px) {
+	.new_banner {
+		height: 335px;
+		.box_search {
+			width: 100%;
+			.main_search {
+				display: flex;
+				top: 80px;
 				justify-content: center;
 			}
 		}

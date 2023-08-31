@@ -13,13 +13,8 @@ type Props = {
 const Respones_comment = ({ listComment, setlistComment }: Props) => {
 	// Lấy ở reduce or api
 	const name_comment = 'Nguyễn Quang Trường'
-
-	const [showIcons, setshowIcons] = useState<boolean>(false)
-	const [showRes_Response, setshowRes_Response] = useState<boolean>(false)
-	const [showIcon, setshowIcon] = useState<boolean>(false)
 	const [content_comment, setcontent_comment] = useState<string>('')
 	const [listCommentRes, setlistCommentRes] = useState<Icomment[]>([])
-	const [showInput, setShowInput] = useState<boolean>(false)
 	const [icons_used, setIcons_used] = useState<Iicons[]>([])
 	const [changeIcon, setchangeIcon] = useState<string>(
 		'https://timviec365.vn/images/img_comment/Ic_color_2.png'
@@ -27,57 +22,96 @@ const Respones_comment = ({ listComment, setlistComment }: Props) => {
 	const [selectedCommentId, setSelectedCommentId] = useState<any>(null)
 	const [selectedCommentIdShowIcon, setSelectedCommentIdShowIcon] = useState<any>(null)
 	const [name_icon, setName_Icon] = useState<string>('Thích')
-
 	const listIconStatus: Iicons[] = [
 		{
 			id: 1,
 			img: 'https://timviec365.vn/images/img_comment/Ic_1.png',
 			alt: 'Thích',
+			style: 'blue',
 		},
 		{
 			id: 2,
 			img: 'https://timviec365.vn/images/img_comment/Ic_2.png',
 			alt: 'Yêu thích',
+			style: 'red',
 		},
-		{ id: 3, img: 'https://timviec365.vn/images/img_comment/Ic_3.png', alt: 'Wow' },
+		{
+			id: 3,
+			img: 'https://timviec365.vn/images/img_comment/Ic_3.png',
+			alt: 'Wow',
+			style: 'orange',
+		},
 		{
 			id: 4,
 			img: 'https://timviec365.vn/images/img_comment/Ic_4.png',
 			alt: 'Thương thương',
+			style: 'orange',
 		},
 		{
 			id: 5,
 			img: 'https://timviec365.vn/images/img_comment/Ic_5.png',
 			alt: 'Phẫn nộ',
+			style: 'orange',
 		},
-		{ id: 6, img: 'https://timviec365.vn/images/img_comment/Ic_6.png', alt: 'Buồn' },
-		{ id: 7, img: 'https://timviec365.vn/images/img_comment/Ic_7.png', alt: 'Haha' },
+		{
+			id: 6,
+			img: 'https://timviec365.vn/images/img_comment/Ic_6.png',
+			alt: 'Buồn',
+			style: 'orange',
+		},
+		{
+			id: 7,
+			img: 'https://timviec365.vn/images/img_comment/Ic_7.png',
+			alt: 'Haha',
+			style: 'orange',
+		},
 	]
-	const [selectedIconId, setSelectedIconId] = useState<number>() // State để lưu trạng thái của icon được chọn
 
 	const handleActionIcon = (icon: Iicons, item: Icomment) => {
-		let name: any = document.getElementById(`${item.cm_id}`)
-		setchangeIcon(icon?.img)
-		name.innerHTML = icon?.alt
-		setName_Icon(icon?.alt)
-		setSelectedIconId(item.cm_id)
+		let name: any = document.getElementById(`likeText_${item.cm_id}`)
+		if (name) {
+			setchangeIcon(icon?.img)
+			name.innerHTML = icon?.alt + ' |'
+			setName_Icon(icon?.alt)
+		}
+
+		// Tìm phần chữ 'Thích' trong phần comment và thay đổi màu chữ
+		const likeText = document.getElementById(`likeText_${item.cm_id}`)
+		if (likeText) {
+			likeText.style.color = icon.style
+		}
 	}
 	const handleComment = async (): Promise<void> => {
-	//Api bình luận
+		try {
+			if (content_comment) {
+				await fetch(`http://210.245.108.202:3001/api/timviec/new/comment`, {
+					headers: {
+						'Content-Type': 'application/json',
+						Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6MTQwNDE1NiwiaWRUaW1WaWVjMzY1IjoxMzMzNjc2LCJpZFFMQyI6OTcwODU5LCJpZFJhb05oYW5oMzY1IjowLCJlbWFpbCI6bnVsbCwicGhvbmVUSyI6IjAzNjc2NDg5MDciLCJjcmVhdGVkQXQiOjE2OTA0MjEwODUsInR5cGUiOjB9LCJpYXQiOjE2OTMzNjk3MDcsImV4cCI6MTY5MzQ1NjEwN30.hB8R4lGMIFDE0birZpTnjmcKDLdt5geN1uLDwPTQg3Q`,
+					},
+					method: 'POST',
+					body: JSON.stringify({
+						cm_comment: content_comment,
+						cm_new_id: 870398,
+						cm_parent_id: selectedCommentId,
+					}),
+				})
+			} else {
+				alert('Vui lòng nhập bình luận')
+			}
+		} catch (error) {}
 	}
 	const handleShowResResPonse = (item: Icomment) => {
-		if(selectedCommentId){
+		if (selectedCommentId) {
 			setSelectedCommentId(null)
-
-		}else{
+		} else {
 			setSelectedCommentId(item.cm_id)
-
 		}
 
 		// setShowInput(!showInput)
 	}
 	const handleDeleteComment = () => {
-		setlistComment([])
+		// setlistComment([])
 	}
 	return (
 		<>
@@ -92,14 +126,15 @@ const Respones_comment = ({ listComment, setlistComment }: Props) => {
 								}}
 							>
 								<div className={`${styles.cm_content} ${styles.cm_8142}`}>
-									<img
-										width={36}
-										height={36}
+									<Image 
+									alt=''
+										width={54}
+										height={54}
 										className={`${styles.ava_cm}`}
 										src={
 											`${item.cm_sender_avatar}` == ''
 												? 'https://timviec365.vn/images/user_no.png'
-												: item.cm_sender_avatar
+												: `${`/${item.cm_sender_avatar}`}`
 										}
 									/>
 									<div className={`${styles.cm_box} ${styles.frame_cm_box}`}>
@@ -124,17 +159,10 @@ const Respones_comment = ({ listComment, setlistComment }: Props) => {
 													<span>
 														<div
 															className={`${styles.like_cm_txt}   
-													${selectedIconId === item?.cm_id && name_icon === 'Thích' ? styles.blue : ''}
-													${selectedIconId === item?.cm_id && name_icon === 'Yêu thích' ? styles.red : ''}
-													${selectedIconId === item?.cm_id && name_icon === 'Wow' ? styles.cam : ''}
-													${selectedIconId === item?.cm_id && name_icon === 'Thương thương' ? styles.cam : ''}
-													${selectedIconId === item?.cm_id && name_icon === 'Phẫn nộ' ? styles.cam : ''}
-													${selectedIconId === item?.cm_id && name_icon === 'Buồn' ? styles.cam : ''}
-													${selectedIconId === item?.cm_id && name_icon === 'Haha' ? styles.cam : ''}
 													`}
-															id={`${item?.cm_id}`}
+															id={`likeText_${item.cm_id}`}
 														>
-															Thích
+															Thích |
 														</div>
 													</span>
 												</span>
@@ -144,14 +172,14 @@ const Respones_comment = ({ listComment, setlistComment }: Props) => {
 												>
 													Phản hồi |
 												</span>
-												
-												<span
+
+												{/* <span
 													onClick={() => handleDeleteComment()}
 													style={{ color: 'red' }}
 													className={`${styles.reply_cm}`}
 												>
 													Xóa |
-												</span>
+												</span> */}
 
 												<span
 													className={`${styles.time_cm}`}
@@ -159,11 +187,17 @@ const Respones_comment = ({ listComment, setlistComment }: Props) => {
 												>
 													now
 												</span>
+
+											
+
 												{selectedCommentIdShowIcon === item?.cm_id && (
+													
 													<div
 														onMouseLeave={() => setSelectedCommentIdShowIcon(null)}
+														onClick={() => setSelectedCommentIdShowIcon(null)}
 														className={`${styles.box_items_like_ic2}`}
 													>
+														
 														{listIconStatus?.map((icon, index) => {
 															return (
 																<span
@@ -183,6 +217,7 @@ const Respones_comment = ({ listComment, setlistComment }: Props) => {
 														})}
 													</div>
 												)}
+												
 											</div>
 											<span
 												className={`${styles.cm_list_like}`}
@@ -191,7 +226,7 @@ const Respones_comment = ({ listComment, setlistComment }: Props) => {
 											>
 												<div style={{ display: 'flex', paddingRight: 10 }}>
 													{' '}
-													{item.arr_likes.length}
+													{item.arr_likes.length > 0 && item.arr_likes.length}
 												</div>
 												<div>
 													{icons_used?.map((icon: Iicons, index: number) => {
@@ -210,25 +245,22 @@ const Respones_comment = ({ listComment, setlistComment }: Props) => {
 													})}
 												</div>
 											</span>
+												{/* Nút gửi phản hồi */}
+												{selectedCommentId === item?.cm_id && (
+													<Input_Rep_comment
+														handleComment={handleComment}
+														setcontent_comment={setcontent_comment}
+														content_comment={content_comment}
+													/>
+												)}
 											{item?.arr_reply && (
 												<Rep_comment
-													showRes_Response={showRes_Response}
-													setshowRes_Response={setshowRes_Response}
 													listCommentRes={item?.arr_reply}
+													cm_id={item.cm_id}
 													setlistCommentRes={setlistCommentRes}
 												/>
 											)}
 											{/* Phản hồi của phản hồi tin tuyển dụng */}
-
-											{selectedCommentId === item?.cm_id && (
-												<Input_Rep_comment
-													handleComment={handleComment}
-													setcontent_comment={setcontent_comment}
-													content_comment={content_comment}
-													showInput={showInput}
-													setShowInput={setShowInput}
-												/>
-											)}
 										</div>
 									</div>
 								</div>

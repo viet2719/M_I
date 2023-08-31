@@ -14,7 +14,18 @@
 .search_1 {
 	height: 330px;
 }
-
+.overlay_nhs1{
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 999999;
+	margin: 0 auto;
+	background: rgba(0, 0, 0, .5);
+}	
 .overlay,
 .overlay_taiapp,
 .tb_chat365,
@@ -36,6 +47,7 @@
 	margin: 0 auto;
 	
 }
+
 .search_uv.new_banner_th {
 	background: url(/images/loc/th_banner_uv.png) no-repeat;
 	background-size: 100% 100%;

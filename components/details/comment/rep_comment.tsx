@@ -6,29 +6,20 @@ import Input_Rep_comment from './input_rep_rep_comment'
 import Input_Rep_Rep_comment from './input_rep_rep_rep_comment'
 
 type Props = {
-	showRes_Response: boolean
-	setshowRes_Response: (value: boolean) => void
 	listCommentRes: Icomment[]
 	setlistCommentRes: (value: Icomment[]) => void
+	cm_id: number
 }
 
-const Rep_comment = ({
-	showRes_Response,
-	setshowRes_Response,
-	listCommentRes,
-	setlistCommentRes,
-}: Props) => {
+const Rep_comment = ({ listCommentRes, setlistCommentRes, cm_id }: Props) => {
 	const name_comment = 'Nguyễn Quang Trường'
-	const [showIcons, setshowIcons] = useState<boolean>(false)
 	const [showIcon, setshowIcon] = useState<boolean>(false)
 	const [content_comment, setcontent_comment] = useState<string>('')
 	const [name_icon, setName_Icon] = useState<string>('Thích')
 	const [icons_used, setIcons_used] = useState<Iicons[]>([])
-	const [totalIconsUsed, settotalIconsUsed] = useState<number>(0)
 	const [changeIcon, setchangeIcon] = useState<string>(
 		'https://timviec365.vn/images/img_comment/Ic_color_2.png'
 	)
-	const [showInput, setShowInput] = useState<boolean>(false)
 	const [selectedCommentId, setSelectedCommentId] = useState<any>(null)
 	const [selectedCommentIdShowIcon, setSelectedCommentIdShowIcon] = useState<any>(null)
 	const listIconStatus: Iicons[] = [
@@ -36,34 +27,59 @@ const Rep_comment = ({
 			id: 1,
 			img: 'https://timviec365.vn/images/img_comment/Ic_1.png',
 			alt: 'Thích',
+			style: 'blue',
 		},
 		{
 			id: 2,
 			img: 'https://timviec365.vn/images/img_comment/Ic_2.png',
 			alt: 'Yêu thích',
+			style: 'red',
 		},
-		{ id: 3, img: 'https://timviec365.vn/images/img_comment/Ic_3.png', alt: 'Wow' },
+		{
+			id: 3,
+			img: 'https://timviec365.vn/images/img_comment/Ic_3.png',
+			alt: 'Wow',
+			style: 'orange',
+		},
 		{
 			id: 4,
 			img: 'https://timviec365.vn/images/img_comment/Ic_4.png',
 			alt: 'Thương thương',
+			style: 'orange',
 		},
 		{
 			id: 5,
 			img: 'https://timviec365.vn/images/img_comment/Ic_5.png',
 			alt: 'Phẫn nộ',
+			style: 'orange',
 		},
-		{ id: 6, img: 'https://timviec365.vn/images/img_comment/Ic_6.png', alt: 'Buồn' },
-		{ id: 7, img: 'https://timviec365.vn/images/img_comment/Ic_7.png', alt: 'Haha' },
+		{
+			id: 6,
+			img: 'https://timviec365.vn/images/img_comment/Ic_6.png',
+			alt: 'Buồn',
+			style: 'orange',
+		},
+		{
+			id: 7,
+			img: 'https://timviec365.vn/images/img_comment/Ic_7.png',
+			alt: 'Haha',
+			style: 'orange',
+		},
 	]
-	const [selectedIconId, setSelectedIconId] = useState<number>() // State để lưu trạng thái của icon được chọn
 
 	const handleActionIcon = (icon: Iicons, item: Icomment) => {
-		let name: any = document.getElementById(`${item.cm_id}`)
-		setchangeIcon(icon?.img)
-		name.innerHTML = icon?.alt
-		setName_Icon(icon?.alt)
-		setSelectedIconId(item?.cm_id)
+		let name: any = document.getElementById(`likeText_${item.cm_id}`)
+		if (name) {
+			setchangeIcon(icon?.img)
+			name.innerHTML = icon?.alt + ' |'
+			setName_Icon(icon?.alt)
+		}
+
+		// Tìm phần chữ 'Thích' trong phần comment và thay đổi màu chữ
+		const likeText = document.getElementById(`likeText_${item.cm_id}`)
+		if (likeText) {
+			likeText.style.color = icon.style
+		}
 	}
 
 	const handleShowResResPonse = (item: Icomment) => {
@@ -74,7 +90,24 @@ const Rep_comment = ({
 		}
 	}
 	const handleComment = async (): Promise<void> => {
-		//Api bình luận
+		try {
+			if (content_comment) {
+				await fetch(`http://210.245.108.202:3001/api/timviec/new/comment`, {
+					headers: {
+						'Content-Type': 'application/json',
+						Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6MTQwNDE1NiwiaWRUaW1WaWVjMzY1IjoxMzMzNjc2LCJpZFFMQyI6OTcwODU5LCJpZFJhb05oYW5oMzY1IjowLCJlbWFpbCI6bnVsbCwicGhvbmVUSyI6IjAzNjc2NDg5MDciLCJjcmVhdGVkQXQiOjE2OTA0MjEwODUsInR5cGUiOjB9LCJpYXQiOjE2OTMzNjk3MDcsImV4cCI6MTY5MzQ1NjEwN30.hB8R4lGMIFDE0birZpTnjmcKDLdt5geN1uLDwPTQg3Q`,
+					},
+					method: 'POST',
+					body: JSON.stringify({
+						cm_comment: content_comment,
+						cm_new_id: 870398,
+						cm_parent_id: cm_id,
+					}),
+				})
+			} else {
+				alert('Vui lòng nhập bình luận')
+			}
+		} catch (error) {}
 	}
 	const handleDeleteRepComment = () => {
 		setlistCommentRes([])
@@ -100,11 +133,7 @@ const Rep_comment = ({
 							<div className={`${styles.cm_box} ${styles.frame_cm_box}`}>
 								<div className={`${styles.cm_cm_ct}`}>
 									<p className={`${styles.cm_content_user}`}>
-										<a
-											target="_blank"
-											rel="nofollow"
-											href="https://chat365.timviec365.vn/chat-MTQ2MjM3MA=="
-										>
+										<a target="_blank" rel="nofollow">
 											{item?.cm_sender_name}
 										</a>
 									</p>
@@ -116,18 +145,14 @@ const Rep_comment = ({
 											className={`${styles.like_cm}`}
 											onMouseOver={() => setSelectedCommentIdShowIcon(item.cm_id)}
 										>
-											<span
-												className={`${styles.like_cm_txt} 
-												${selectedIconId === item?.cm_id && name_icon === 'Thích' ? styles.blue : ''}
-												${selectedIconId === item?.cm_id && name_icon === 'Yêu thích' ? styles.red : ''}
-												${selectedIconId === item?.cm_id && name_icon === 'Wow' ? styles.cam : ''}
-												${selectedIconId === item?.cm_id && name_icon === 'Thương thương' ? styles.cam : ''}
-												${selectedIconId === item?.cm_id && name_icon === 'Phẫn nộ' ? styles.cam : ''}
-												${selectedIconId === item?.cm_id && name_icon === 'Buồn' ? styles.cam : ''}
-												${selectedIconId === item?.cm_id && name_icon === 'Haha' ? styles.cam : ''}
+											<span>
+												<div
+													className={`${styles.like_cm_txt}   
 													`}
-											>
-												<div id={`${item?.cm_id}`}>Thích</div>
+													id={`likeText_${item.cm_id}`}
+												>
+													Thích |
+												</div>
 											</span>
 										</span>
 										<span
@@ -136,13 +161,13 @@ const Rep_comment = ({
 										>
 											Phản hồi |
 										</span>
-										<span
+										{/* <span
 											onClick={() => handleDeleteRepComment()}
 											style={{ color: 'red' }}
 											className={`${styles.reply_cm}`}
 										>
 											Xóa |
-										</span>
+										</span> */}
 
 										<span
 											className={`${styles.time_cm}`}
@@ -153,6 +178,7 @@ const Rep_comment = ({
 										{selectedCommentIdShowIcon === item?.cm_id && (
 											<div
 												onMouseLeave={() => setSelectedCommentIdShowIcon(null)}
+												onClick={() => setSelectedCommentIdShowIcon(null)}
 												className={`${styles.box_items_like_ic2}`}
 											>
 												{listIconStatus?.map((icon, index) => {
@@ -182,7 +208,10 @@ const Rep_comment = ({
 										data-like={0}
 										style={{ display: 'flex' }}
 									>
-										<div style={{ display: 'flex', paddingRight: 10 }}> {totalIconsUsed}</div>
+										<div style={{ display: 'flex', paddingRight: 10 }}>
+											{' '}
+											{item?.arr_likes?.length}
+										</div>
 										<div>
 											{icons_used?.map((icon: Iicons, index: number) => {
 												return (
@@ -204,7 +233,6 @@ const Rep_comment = ({
 											handleComment={handleComment}
 											setcontent_comment={setcontent_comment}
 											content_comment={content_comment}
-											setShowInput={setShowInput}
 										/>
 									)}
 								</div>

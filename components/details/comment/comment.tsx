@@ -10,6 +10,7 @@ import Danh_gia from './danh_gia'
 import Model_History_comment from '@/components/pop_up/model_history_comment'
 import { useDispatch } from 'react-redux'
 import { openModal } from '@/actions/actions'
+import Model_Danhgia_details from '@/components/pop_up/model_danhgia_details'
 
 type Props = {
 	isLogin: boolean
@@ -18,6 +19,7 @@ export interface Iicons {
 	id: number
 	img: string
 	alt: string
+	style: string
 }
 export interface Icomment {
 	arr_likes: []
@@ -43,46 +45,63 @@ const Comment = ({ isLogin }: Props) => {
 	const [showIcon, setshowIcon] = useState<boolean>(false)
 	const [showBox_share, setShowBox_share] = useState<boolean>(false)
 	const [show_Box_Share_Mxh, setShow_Box_Share_Mxh] = useState<boolean>(false)
-	const [icons_used, setIcons_used] = useState<Iicons[]>([])
+	const [icons_used, setIcons_used] = useState<Iicons>()
 	const [name_active, setName_active] = useState<string>('')
 	const [listComment, setlistComment] = useState<Icomment[]>([])
 	const [content_comment, setcontent_comment] = useState<string>('')
 	const [showChat365, setShowChat365] = useState<boolean>(false)
 	const [showGrChat365, setShowGrChat365] = useState<boolean>(false)
 	const [showHistoryComemnt, setShowHistoryComemnt] = useState<boolean>(false)
+	const [showHisShare, setShowHisShare] = useState<boolean>(false)
+	const [nameDanhGia, setnameDanhGia] = useState<string>('Đánh giá ngay')
 	const [changeIcon, setchangeIcon] = useState<string>(
 		'https://timviec365.vn/images/img_comment/Ic_color_2.png'
 	)
 	const [name_icon, setName_Icon] = useState<string>('Thích')
-
 
 	const listIconStatus: Iicons[] = [
 		{
 			id: 1,
 			img: 'https://timviec365.vn/images/img_comment/Ic_1.png',
 			alt: 'Thích',
-			
+			style: 'blue',
 		},
 		{
 			id: 2,
 			img: 'https://timviec365.vn/images/img_comment/Ic_2.png',
 			alt: 'Yêu thích',
-		
+			style: 'red',
 		},
-		{ id: 3, img: 'https://timviec365.vn/images/img_comment/Ic_3.png', alt: 'Wow'},
+		{
+			id: 3,
+			img: 'https://timviec365.vn/images/img_comment/Ic_3.png',
+			alt: 'Wow',
+			style: 'orange',
+		},
 		{
 			id: 4,
 			img: 'https://timviec365.vn/images/img_comment/Ic_4.png',
 			alt: 'Thương thương',
+			style: 'orange',
 		},
 		{
 			id: 5,
 			img: 'https://timviec365.vn/images/img_comment/Ic_5.png',
 			alt: 'Phẫn nộ',
-			
+			style: 'orange',
 		},
-		{ id: 6, img: 'https://timviec365.vn/images/img_comment/Ic_6.png', alt: 'Buồn'},
-		{ id: 7, img: 'https://timviec365.vn/images/img_comment/Ic_7.png', alt: 'Haha'},
+		{
+			id: 6,
+			img: 'https://timviec365.vn/images/img_comment/Ic_6.png',
+			alt: 'Buồn',
+			style: 'orange',
+		},
+		{
+			id: 7,
+			img: 'https://timviec365.vn/images/img_comment/Ic_7.png',
+			alt: 'Haha',
+			style: 'orange',
+		},
 	]
 	// Thay đổi icons và nội dung
 	const handleActionIcon = (icon: Iicons) => {
@@ -92,10 +111,8 @@ const Comment = ({ isLogin }: Props) => {
 			setchangeIcon(icon?.img)
 			setName_Icon(icon?.alt)
 			setName_active(name_comment)
-			let isExis: any = icons_used.find((item: Iicons) => item.id === icon.id)
-			if (!isExis) {
-				icons_used.push(icon)
-			}
+			setIcons_used({ img: icon.img, alt: icon.alt, id: icon.id, style: 'orange' })
+			setshowIcon(false)
 		}
 	}
 	// Ẩn share khi click ra ngoài
@@ -111,15 +128,18 @@ const Comment = ({ isLogin }: Props) => {
 	const handleComment = async (): Promise<void> => {
 		try {
 			if (content_comment) {
+				await fetch(`http://210.245.108.202:3001/api/timviec/new/comment`, {
+					headers: {
+						'Content-Type': 'application/json',
+						Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6MTQwNDE1NiwiaWRUaW1WaWVjMzY1IjoxMzMzNjc2LCJpZFFMQyI6OTcwODU5LCJpZFJhb05oYW5oMzY1IjowLCJlbWFpbCI6bnVsbCwicGhvbmVUSyI6IjAzNjc2NDg5MDciLCJjcmVhdGVkQXQiOjE2OTA0MjEwODUsInR5cGUiOjB9LCJpYXQiOjE2OTMzNjk3MDcsImV4cCI6MTY5MzQ1NjEwN30.hB8R4lGMIFDE0birZpTnjmcKDLdt5geN1uLDwPTQg3Q`,
+					},
+					method: 'POST',
+					body: JSON.stringify({ cm_comment: content_comment, cm_new_id: 863612 }),
+				})
+			} else {
+				alert('Vui lòng nhập bình luận')
 			}
 		} catch (error) {}
-		// if (content_comment) {
-		// 	setlistComment([...listComment, { cm_sender_name: name_comment, cm_comment: content_comment }])
-		// 	listComment.shift()
-		// 	setcontent_comment('')
-		// } else {
-		// 	alert('Vui lòng nhập bình luận')
-		// }
 	}
 	const handleActionBeforLogin = () => {
 		if (!isLogin) {
@@ -131,7 +151,6 @@ const Comment = ({ isLogin }: Props) => {
 	useEffect(() => {
 		document?.addEventListener('click', handleOutsideClick)
 	}, [])
-
 	const handleGetComment = async () => {
 		try {
 			const res = await fetch(`http://210.245.108.202:3001/api/timviec/new/listComment`, {
@@ -145,19 +164,21 @@ const Comment = ({ isLogin }: Props) => {
 			const data = await res.json()
 			setlistComment(data?.data?.arr_comments)
 		} catch (error) {
-				console.log(error)
+			console.log(error)
 		}
-	
 	}
 	useEffect(() => {
 		handleGetComment()
 	}, [])
-	console.log(listComment)
+	const [showModelDanhGia, setshowModelDanhgia] = useState<boolean>(false)
 	return (
 		<div
 			onClick={() => handleActionBeforLogin()}
 			className={`${styles.title_all} ${styles.content_cmt_vote}`}
 		>
+			<Model_Danhgia_details showDanhgia={showModelDanhGia} setshowDanhgia={setshowModelDanhgia}
+			setnameDanhGia={setnameDanhGia}
+			/>
 			<div className={`${styles.box_cmt_vote}`}>
 				<div className={`${styles.tab_cmt_vote}`}>
 					<button
@@ -222,29 +243,23 @@ const Comment = ({ isLogin }: Props) => {
 												</div>
 											</div>
 											<span className={`${styles.count_ic}`}>
-												{icons_used?.map((icon: Iicons, index: number) => {
-													// if()
-													return (
-														<span key={index}>
-															<Image
-																onClick={() => setShowHistoryComemnt(true)}
-																preview={false}
-																width={25}
-																height={25}
-																src={icon?.img}
-																alt={icon?.alt}
-															/>
-														</span>
-													)
-												})}
-
+												{icons_used && (
+													<Image
+														onClick={() => setShowHistoryComemnt(true)}
+														preview={false}
+														width={25}
+														height={25}
+														src={icons_used?.img}
+														alt={icons_used?.alt}
+													/>
+												)}
 												<span> {name_active}</span>
 											</span>
-											<span className={`${styles.cm_sh_ic}`}>
-												<b>•</b> 0 chia sẻ{' '}
+											<span onClick={() => setShowHisShare(true)} className={`${styles.cm_sh_ic}`}>
+												<b>•</b> 0 chia sẻ
 											</span>
 											<span className={`${styles.cm_cm_ic}`}>
-												<b>•</b> <span>0</span> bình luận{' '}
+												<b>•</b> <span>0</span> bình luận
 											</span>
 
 											<span className={`${styles.cm_view_ic}`}>516 lượt xem</span>
@@ -268,6 +283,7 @@ const Comment = ({ isLogin }: Props) => {
 												>
 													<Image
 														width={26}
+														preview={false}
 														height={26}
 														id="action_icon"
 														className={`${styles.like_event_img}`}
@@ -341,37 +357,35 @@ const Comment = ({ isLogin }: Props) => {
 												content_comment={content_comment}
 											/>
 										</div>
-										
+
 										<Respones_comment listComment={listComment} setlistComment={setlistComment} />
 
-								
 										{/* Phản  hồi tin tuyển dụng  */}
 									</div>
 								</div>
-								<div
-									className={`${styles.popup_comment}`}
-									id="popup_items_sh"
-									style={{ display: 'none' }}
-								>
-									<div className={`${styles.popup_items_sh}`}>
-										<div className={`${styles.box_header}`}>
-											<div className={`${styles.title}`}>Những người đã chia sẻ tin này</div>
-											<Image
-												width={16}
-												height={16}
-												src="/images/close.png"
-												alt="close"
-												className={`${styles.close_cm}`}
-											/>
+								{showHisShare && (
+									<div className={`${styles.popup_comment}`} id="popup_items_sh">
+										<div className={`${styles.popup_items_sh}`}>
+											<div className={`${styles.box_header}`}>
+												<div className={`${styles.title}`}>Những người đã chia sẻ tin này</div>
+												<Image
+													onClick={() => setShowHisShare(false)}
+													preview={false}
+													width={16}
+													height={16}
+													src="/images/close.png"
+													alt="close"
+													className={`${styles.close_cm}`}
+												/>
+											</div>
+											<div className={`${styles.frame_items}`}></div>
 										</div>
-										<div className={`${styles.frame_items}`}></div>
 									</div>
-								</div>
+								)}
 								{/* Xem những ai đã thả tym */}
 								<Model_History_comment
 									showHistoryComemnt={showHistoryComemnt}
 									setShowHistoryComemnt={setShowHistoryComemnt}
-
 								/>
 
 								{/* Action_share */}
@@ -388,7 +402,11 @@ const Comment = ({ isLogin }: Props) => {
 							</div>
 						</div>
 					)}
-					<Danh_gia showDanhGia={showDanhGia} />
+					{/* tab Đánh giá */}
+					<Danh_gia showDanhGia={showDanhGia} 
+					setshowDanhgia={setshowModelDanhgia}
+					nameDanhGia={nameDanhGia}
+					/>
 				</div>
 			</div>
 		</div>
