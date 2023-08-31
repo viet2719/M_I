@@ -10,6 +10,18 @@ const nextConfig = {
     config.resolve.alias['@styles'] = path.join(__dirname, '/styles');
     return config;
   },
+  async rewrites() {
+    return [
+      {
+        source: '/:title-p:id.html',
+        destination: '/chi_tiet_nganh_nghe',
+      },
+      {
+        source: '/tim-viec-tai-:title-c0v:id',
+        destination: '/tim_kiem_tinh_thanh',
+      },
+    ];
+  },
 }
 
 module.exports = nextConfig
