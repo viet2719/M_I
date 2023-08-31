@@ -126,7 +126,8 @@ const Respones_comment = ({ listComment, setlistComment }: Props) => {
 								}}
 							>
 								<div className={`${styles.cm_content} ${styles.cm_8142}`}>
-									<img
+									<Image 
+									alt=''
 										width={54}
 										height={54}
 										className={`${styles.ava_cm}`}
