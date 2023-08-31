@@ -4,9 +4,12 @@ import Image from 'next/image'
 
 type Props = {
 	showDanhGia: boolean
+	setshowDanhgia:(value:boolean)=>void
+	nameDanhGia:string
 }
 
-const Danh_gia = ({ showDanhGia }: Props) => {
+const Danh_gia = ({ showDanhGia,setshowDanhgia,nameDanhGia }: Props) => {
+	
 	return (
 		<div>
 			{showDanhGia && (
@@ -130,10 +133,10 @@ const Danh_gia = ({ showDanhGia }: Props) => {
 							</div>
 						</div>
 					</div>
-					<div className={`${styles.box_btn_vote}`}>
+					<div className={`${styles.box_btn_vote}`} style={{paddingBottom:20}}>
 						<p className={`${styles.txt_btn_vote}`}>Bạn đánh giá sao tin tuyển dụng này</p>
-						<button className={`${styles.btn_vote}`} data-voted={0} data-user={1333676}>
-							Đánh giá ngay
+						<button  onClick={()=>setshowDanhgia(true)} className={`${styles.btn_vote}`} data-voted={0} data-user={1333676}>
+						{nameDanhGia}
 						</button>
 					</div>
 				</div>

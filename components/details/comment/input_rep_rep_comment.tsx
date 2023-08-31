@@ -1,15 +1,14 @@
 import Image from 'next/image'
 import React, { useState } from 'react'
 import styles from '../main_timviec/main_timviec.module.css'
+import { Input } from 'antd'
 type Props = {
     handleComment:()=>void
     setcontent_comment:(value:string) => void
     content_comment:string
-    showInput:boolean
-    setShowInput:(value:boolean) => void
 }
 
-const Input_Rep_comment = ({handleComment,setcontent_comment,content_comment,showInput}: Props) => {
+const Input_Rep_comment = ({handleComment,setcontent_comment,content_comment}: Props) => {
 
   return (
     <div>
@@ -21,24 +20,26 @@ const Input_Rep_comment = ({handleComment,setcontent_comment,content_comment,sho
         src={'/images/638286918069380000_1404156.jpg'}
         alt="Nguyễn Quang Trường"
     />
-    <textarea
-        onKeyDown={(e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    <Input
+        onKeyDown={(e:React.KeyboardEvent<HTMLInputElement>) => {
             if (e.code === 'Enter' || e.code === 'NumpadEnter') {
-                handleComment()
+              { handleComment(), setcontent_comment('')}
             }
         }}
         className={`${styles.ct_cm}`}
         id="ct_cm"
         maxLength={250}
         onChange={(e) => {
-            setcontent_comment(e.target.value.trim())
+            setcontent_comment(e.target.value)
               
         }}
         placeholder="Viết bình luận"
         value={content_comment}
     />
     <svg
-        onClick={() => handleComment()}
+        	onClick={() => {
+                handleComment(), setcontent_comment('')
+            }}
         className={`${styles.ic_send_cm}`}
         width={32}
         height={32}

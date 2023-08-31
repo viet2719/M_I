@@ -13,11 +13,10 @@ import Info from './info'
 import Scroll_option from './scroll_option'
 
 type Props = {
-	show: boolean
 	isLogin: boolean
 }
 
-const Chi_tiet_td = ({ show, isLogin }: Props) => {
+const Chi_tiet_td = ({ isLogin }: Props) => {
 	const [showModelUngTuyen, setShowModelUngTuyen] = useState<boolean>(false)
 	const [showLuuTin, setLuuTin] = useState<boolean>(false)
 	const [stt_luutin, setStt_luutin] = useState<string>('Lưu tin')
@@ -25,8 +24,8 @@ const Chi_tiet_td = ({ show, isLogin }: Props) => {
 	const [showPhanAnhNTD, setShowPhanAnhNTD] = useState<boolean>(false)
 	const [showMailUngTuyen, setshowMailUngTuyen] = useState<boolean>(false)
 	const [showWorkMatch, setShowWorkMatch] = useState<boolean>(false)
-	const [isCv, setisCv] = useState<boolean>(false)
-
+	const [isCv, setisCv] = useState<boolean>(true)
+	const [showUserCallGiongNoi, setshowUserCallGiongNoi] = useState<boolean>(false)
 	const dispatch = useDispatch()
 	const handleLuuTin: () => void = () => {
 		if (!isLogin) {
@@ -287,8 +286,45 @@ const Chi_tiet_td = ({ show, isLogin }: Props) => {
 			</div>
 
 			<div className={`${styles.content_info}`}>
-				<Scroll_option show={show} />
-
+				<Scroll_option />
+				{/* audio */}
+				<div className={`${styles.audio_tindang}`}>
+					<div className={`${styles.audio_news}`}>
+						<div className={`${styles.ctn_audio}`}>
+							<audio
+								controls
+								title="Audio : Cán Bộ Kỹ Thuật Hiện Trường Khu Vực Miền Tây"
+								preload="none"
+							>
+								<source
+									src="https://timviec365.vn/dowload/new/new_871458/audio_871458_4.wav"
+									type="audio/wav"
+								/>
+							</audio>
+						</div>
+						<div className={`${styles.chuyen_giong}`}>
+							<Image
+								style={{ cursor: 'pointer' }}
+								onClick={() => setshowUserCallGiongNoi(!showUserCallGiongNoi)}
+								alt="Chọn người đọc"
+								title='Chọn người đọc'
+								width={20}
+								height={30}
+								src="https://timviec365.vn/images/img_new/exp_chuyengiong.png"
+								className={`${styles.chongiong}`}
+							/>
+							{/* Chọn người đọc audio */}
+							{showUserCallGiongNoi && (
+								<div className={`${styles.tca_giong}`}>
+									<p className={`${styles.giong_moi}`}>1. Triệu Thảo</p>
+									<p className={`${styles.giong_moi}`}>2. Đình Kiên</p>
+									<p className={`${styles.giong_moi}`}>3. Lại Trang</p>
+									<p className={`${styles.giong_moi}`}>4. Phương Anh</p>
+								</div>
+							)}
+						</div>
+					</div>
+				</div>
 				<div className={`${styles.ctn_tab_ttin} ${styles.w_100} ${styles.active}`} id="tab_ttin">
 					<Info />
 					<div className={`${styles.btn_tt_all}`}>

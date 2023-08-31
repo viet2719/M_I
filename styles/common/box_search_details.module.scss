@@ -10,7 +10,7 @@
 			float: left;
 			width: 100%;
 			&::before {
-				content: url('/images/before_login/ic_search_indx.png');
+				content: url('/images/ic_search_indx.png');
 				position: absolute;
 				width: 16px;
 				height: 16px;
@@ -295,6 +295,7 @@
 	.box_m_search {
 		width: 100%;
 		float: unset;
+
 		.new_search {
 			width: 100%;
 			float: left;
