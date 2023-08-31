@@ -1,4 +1,5 @@
 import { toggleSidebar } from '@/actions/actions'
+import Box_comment from '@/components/common/box_comment'
 import Header from '@/components/common/header'
 import { AdminLayout } from '@/components/layout'
 import { RootState } from '@/reducers'
@@ -37,10 +38,7 @@ export default function AboutPage(props: AboutPageProps) {
 	return (
 		<>
 			{isOpen ? 'test' : 'k test'}
-			<h1>About Page</h1>
-			<div onClick={handleToggleSidebar}>click</div>
-			<Header />
-			<Button className="bg-blue-500 text-white">Ant Design Button with Tailwind</Button>
+			<Box_comment />
 		</>
 	)
 }

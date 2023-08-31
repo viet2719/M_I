@@ -1,0 +1,61 @@
+// Imput reply
+.cm_input {
+	position: relative;
+	float: left;
+	width: 100%;
+	clear: both;
+	margin: 15px 0;
+	.img_user {
+		float: left;
+		width: 38px;
+		height: 38px;
+		vertical-align: middle;
+		border-radius: 50%;
+		border: 1px solid #e1e1e1;
+		background-color: #fff;
+	}
+}
+.cm_input {
+	.ct_cm {
+		min-height: 48px;
+		border: 1px solid #d1d4dc;
+		border-radius: 28px;
+		vertical-align: top;
+		height: 48px;
+		padding: 10px 20px;
+		float: right;
+		font-size: 14px;
+		line-height: 25px;
+		overflow: hidden;
+		outline: unset;
+		resize: none;
+		padding-right: 75px;
+		width: calc(100% - 60px);
+		background: #fff;
+	}
+	.ic_send_cm {
+		position: absolute;
+		top: 8px;
+		right: 2px;
+		cursor: pointer;
+	}
+	.cm_img_ct {
+		position: absolute;
+		top: 12px;
+		right: 45px;
+		cursor: pointer;
+		width: 20px;
+	}
+	svg {
+		vertical-align: middle;
+		margin-right: 8px;
+	}
+	.line_reply1 {
+		position: absolute;
+		top: -15px;
+		bottom: 0;
+		width: 5px;
+		background-color: #fff;
+		left: -50px;
+	}
+}
