@@ -21,6 +21,7 @@ const Chi_tiet_td = ({ isLogin }: Props) => {
 	const [showLuuTin, setLuuTin] = useState<boolean>(false)
 	const [stt_luutin, setStt_luutin] = useState<string>('Lưu tin')
 	const [stt_luuCongViec, setStt_luuCongViec] = useState<string>('Lưu công việc')
+	const [name_UT, setname_UT] = useState<string>('Ứng tuyển')
 	const [showPhanAnhNTD, setShowPhanAnhNTD] = useState<boolean>(false)
 	const [showMailUngTuyen, setshowMailUngTuyen] = useState<boolean>(false)
 	const [showWorkMatch, setShowWorkMatch] = useState<boolean>(false)
@@ -60,7 +61,12 @@ const Chi_tiet_td = ({ isLogin }: Props) => {
 			dispatch(openModal())
 		} else {
 			if (isCv) {
-				setshowMailUngTuyen(true)
+if(name_UT==="Ứng tuyển"){
+	setshowMailUngTuyen(true)
+	setname_UT("Đã ứng tuyển")
+}else{
+	alert("Bạn đã ứng tuyển rồi")
+}
 			} else {
 				setShowModelUngTuyen(true)
 			}
@@ -259,7 +265,7 @@ const Chi_tiet_td = ({ isLogin }: Props) => {
 										src="https://timviec365.vn/images/detail/icon_ut.svg"
 										alt="ứng tuyển"
 									/>
-									Ứng tuyển
+								{name_UT}
 								</div>
 							</div>
 							<div

@@ -8,9 +8,10 @@ import Input_Rep_comment from './input_rep_rep_comment'
 type Props = {
 	listComment: Icomment[]
 	setlistComment: (value: Icomment[]) => void
+	handleGetComment:()=>void
 }
 
-const Respones_comment = ({ listComment, setlistComment }: Props) => {
+const Respones_comment = ({ listComment, setlistComment,handleGetComment }: Props) => {
 	// Lấy ở reduce or api
 	const name_comment = 'Nguyễn Quang Trường'
 	const [content_comment, setcontent_comment] = useState<string>('')
@@ -119,15 +120,16 @@ const Respones_comment = ({ listComment, setlistComment }: Props) => {
 				await fetch(`http://210.245.108.202:3001/api/timviec/new/comment`, {
 					headers: {
 						'Content-Type': 'application/json',
-						Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6MTQwNDE1NiwiaWRUaW1WaWVjMzY1IjoxMzMzNjc2LCJpZFFMQyI6OTcwODU5LCJpZFJhb05oYW5oMzY1IjowLCJlbWFpbCI6bnVsbCwicGhvbmVUSyI6IjAzNjc2NDg5MDciLCJjcmVhdGVkQXQiOjE2OTA0MjEwODUsInR5cGUiOjB9LCJpYXQiOjE2OTMzNjk3MDcsImV4cCI6MTY5MzQ1NjEwN30.hB8R4lGMIFDE0birZpTnjmcKDLdt5geN1uLDwPTQg3Q`,
+						Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6MTQwNDE1NiwiaWRUaW1WaWVjMzY1IjoxMzMzNjc2LCJpZFFMQyI6OTcwODU5LCJpZFJhb05oYW5oMzY1IjowLCJlbWFpbCI6bnVsbCwicGhvbmVUSyI6IjAzNjc2NDg5MDciLCJjcmVhdGVkQXQiOjE2OTA0MjEwODUsInR5cGUiOjB9LCJpYXQiOjE2OTM0NjcyNjgsImV4cCI6MTY5MzU1MzY2OH0.A3-8if-PGjG7WxigIX5qDaaHqFHL-6jKZT3FzTZyBI8`,
 					},
 					method: 'POST',
 					body: JSON.stringify({
 						cm_comment: content_comment,
-						cm_new_id: 870398,
+						cm_new_id: 860696,
 						cm_parent_id: selectedCommentId,
 					}),
 				})
+				handleGetComment()
 			} else {
 				alert('Vui lòng nhập bình luận')
 			}
@@ -272,6 +274,7 @@ const Respones_comment = ({ listComment, setlistComment }: Props) => {
 											)}
 											{item?.arr_reply && (
 												<Rep_comment
+												handleGetComment={handleGetComment}
 													listCommentRes={item?.arr_reply}
 													cm_id={item.cm_id}
 													setlistCommentRes={setlistCommentRes}

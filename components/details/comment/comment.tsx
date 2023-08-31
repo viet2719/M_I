@@ -40,6 +40,7 @@ const Comment = ({ isLogin }: Props) => {
 	const dispatch = useDispatch()
 
 	const name_comment = 'Nguyễn Quang Trường'
+	const [showModelDanhGia, setshowModelDanhgia] = useState<boolean>(false)
 	const [showBinhLuan, setShowBinhLuan] = useState<boolean>(true)
 	const [showDanhGia, setShowDanhGia] = useState<boolean>(false)
 	const [showIcon, setshowIcon] = useState<boolean>(false)
@@ -154,11 +155,12 @@ const Comment = ({ isLogin }: Props) => {
 				await fetch(`http://210.245.108.202:3001/api/timviec/new/comment`, {
 					headers: {
 						'Content-Type': 'application/json',
-						Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6MTQwNDE1NiwiaWRUaW1WaWVjMzY1IjoxMzMzNjc2LCJpZFFMQyI6OTcwODU5LCJpZFJhb05oYW5oMzY1IjowLCJlbWFpbCI6bnVsbCwicGhvbmVUSyI6IjAzNjc2NDg5MDciLCJjcmVhdGVkQXQiOjE2OTA0MjEwODUsInR5cGUiOjB9LCJpYXQiOjE2OTMzNjk3MDcsImV4cCI6MTY5MzQ1NjEwN30.hB8R4lGMIFDE0birZpTnjmcKDLdt5geN1uLDwPTQg3Q`,
+						Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6MTQwNDE1NiwiaWRUaW1WaWVjMzY1IjoxMzMzNjc2LCJpZFFMQyI6OTcwODU5LCJpZFJhb05oYW5oMzY1IjowLCJlbWFpbCI6bnVsbCwicGhvbmVUSyI6IjAzNjc2NDg5MDciLCJjcmVhdGVkQXQiOjE2OTA0MjEwODUsInR5cGUiOjB9LCJpYXQiOjE2OTM0NjcyNjgsImV4cCI6MTY5MzU1MzY2OH0.A3-8if-PGjG7WxigIX5qDaaHqFHL-6jKZT3FzTZyBI8`,
 					},
 					method: 'POST',
-					body: JSON.stringify({ cm_comment: content_comment, cm_new_id: 863612 }),
+					body: JSON.stringify({ cm_comment: content_comment, cm_new_id: 860696 }),
 				})
+				handleGetComment()
 			} else {
 				alert('Vui lòng nhập bình luận')
 			}
@@ -174,7 +176,10 @@ const Comment = ({ isLogin }: Props) => {
 	useEffect(() => {
 		document?.addEventListener('click', handleOutsideClick)
 	}, [])
+
+	const [arr_likes_new, setArr_likes_new] = useState<[]>()
 	// Comment vào tin
+	console.log(arr_likes_new)
 	const handleGetComment = async () => {
 		try {
 			const res = await fetch(`http://210.245.108.202:3001/api/timviec/new/listComment`, {
@@ -183,9 +188,11 @@ const Comment = ({ isLogin }: Props) => {
 					Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6MTQwNDE1NiwiaWRUaW1WaWVjMzY1IjoxMzMzNjc2LCJpZFFMQyI6OTcwODU5LCJpZFJhb05oYW5oMzY1IjowLCJlbWFpbCI6bnVsbCwicGhvbmVUSyI6IjAzNjc2NDg5MDciLCJjcmVhdGVkQXQiOjE2OTA0MjEwODUsInR5cGUiOjB9LCJpYXQiOjE2OTMzNjk3MDcsImV4cCI6MTY5MzQ1NjEwN30.hB8R4lGMIFDE0birZpTnjmcKDLdt5geN1uLDwPTQg3Q`,
 				},
 				method: 'POST',
-				body: JSON.stringify({ new_id: 863612 }),
+				body: JSON.stringify({ new_id: 860696 }),
 			})
 			const data = await res.json()
+			// console.log("checl data",data.data)
+			setArr_likes_new(data?.data?.arr_likes_new)
 			setlistComment(data?.data?.arr_comments)
 		} catch (error) {
 			console.log(error)
@@ -194,7 +201,6 @@ const Comment = ({ isLogin }: Props) => {
 	useEffect(() => {
 		handleGetComment()
 	}, [])
-	const [showModelDanhGia, setshowModelDanhgia] = useState<boolean>(false)
 	return (
 		<div
 			onClick={() => handleActionBeforLogin()}
@@ -268,7 +274,7 @@ const Comment = ({ isLogin }: Props) => {
 													)}
 												</div>
 											</div>
-											<span className={`${styles.count_ic}`}>
+											<span className={`${styles.count_ic}`}>{arr_likes_new?.length}
 												{icons_used && (
 													<Image
 														onClick={() => setShowHistoryComemnt(true)}
@@ -280,7 +286,7 @@ const Comment = ({ isLogin }: Props) => {
 													/>
 												)}
 
-												<span> {name_active}</span>
+												 <span> {name_active}</span>
 											</span>
 											<span onClick={() => setShowHisShare(true)} className={`${styles.cm_sh_ic}`}>
 												<b>•</b> 0 chia sẻ
@@ -391,7 +397,11 @@ const Comment = ({ isLogin }: Props) => {
 											/>
 										</div>
 
-										<Respones_comment listComment={listComment} setlistComment={setlistComment} />
+										<Respones_comment
+											handleGetComment={handleGetComment}
+											listComment={listComment}
+											setlistComment={setlistComment}
+										/>
 
 										{/* Phản  hồi tin tuyển dụng  */}
 									</div>
