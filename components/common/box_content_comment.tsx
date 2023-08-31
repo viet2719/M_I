@@ -3,7 +3,7 @@ import React, { ReactNode, useState } from 'react'
 import styles from '@styles/common/box_content_comment.module.scss'
 import Item_comment from './item_comment'
 
-const Content_Component = ({ checkCon, prop2, children, id, dataCha, containerClassName }: any) => {
+const Content_Component = ({ children, id, dataCha, containerClassName }: any) => {
 	const [hoveredItemId, setHoveredItemId] = useState<number | null>(null)
 	const [hoveredItemIdBottom, setHoveredItemIdBottom] = useState<number | null>(null)
 	const listIconStatus = [
@@ -24,12 +24,12 @@ const Content_Component = ({ checkCon, prop2, children, id, dataCha, containerCl
 					width={48}
 					className={styles.ava_cm}
 					src="/images/user_no.png"
-					alt={dataCha.userName}
+					alt={dataCha?.cm_sender_name}
 				/>
 				<div className={`${styles.cm_box} ${styles.frame_cm_box}`}>
 					<div className={styles.cm_cm_ct}>
-						<p className={styles.cm_content_user}>{dataCha.userName}</p>
-						<p className={styles.cm_nd}>{dataCha.comment}</p>
+						<p className={styles.cm_content_user}>{dataCha?.cm_sender_name}</p>
+						<p className={styles.cm_nd}>{dataCha?.cm_comment}</p>
 					</div>
 					<div className={styles.cm_cm_ev}>
 						<div
@@ -74,7 +74,6 @@ const Content_Component = ({ checkCon, prop2, children, id, dataCha, containerCl
 							</span>
 						</span>
 					</div>
-
 					{children}
 				</div>
 			</div>

@@ -1,13 +1,43 @@
 import Image from 'next/image'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from '@styles/common/box_comment.module.scss'
 import { useDispatch } from 'react-redux'
 import { openModal } from '@/actions/actions'
 import Input_reply from './input_reply'
 import Content_Component from './box_content_comment'
 import Item_comment from './item_comment'
+import axios from 'axios'
+import { arr_comments } from './datafake'
 
 const Box_comment = (id: any) => {
+	const [apiDataID, setApiDataID] = useState<any[]>(arr_comments)
+	const [loading, setLoading] = useState<boolean>(true)
+	// useEffect(() => {
+	// 	if (id) {
+	// 		const fetchData1 = async () => {
+	// 			const token =
+	// 				'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6MjA4NTEzLCJpZFRpbVZpZWMzNjUiOjExNzgzODQsImlkUUxDIjoxNzAzODAsImlkUmFvTmhhbmgzNjUiOjAsImVtYWlsIjoiIiwicGhvbmVUSyI6IjA4Njk1MTY5NzgiLCJjcmVhdGVkQXQiOjE2ODQyMjc1NDcsInR5cGUiOjB9LCJpYXQiOjE2OTM0NDYyNTAsImV4cCI6MTY5MzUzMjY1MH0.3UwrRDW3F-TQbYecgwYuedNaTLepj4kInZDb_UL5dQA'
+	// 			try {
+	// 				const response = await axios.post(
+	// 					'http://210.245.108.202:3001/api/timviec/new/listComment',
+	// 					{ new_id: 860696 },
+	// 					{
+	// 						headers: {
+	// 							'Content-Type': 'application/json',
+	// 							Authorization: `Bearer ${token}`,
+	// 						},
+	// 					}
+	// 				)
+	// 				setApiDataID(response?.data?.data?.arr_comments || [])
+	// 				setLoading(false)
+	// 			} catch (error) {
+	// 				console.error(error)
+	// 				setLoading(false)
+	// 			}
+	// 		}
+	// 		fetchData1()
+	// 	}
+	// }, [id])
 	const dispatch = useDispatch()
 	const listIconStatus = [
 		{ id: 1, img: '/images/img_comment/Ic_1.png', alt: 'Thích' },
@@ -39,7 +69,6 @@ const Box_comment = (id: any) => {
 			if (status == null) {
 				const foundItem = listIconStatus.find((item) => item.id === 1)
 				setStatus(foundItem)
-				console.log(foundItem)
 			} else {
 				setStatus(null)
 			}
@@ -101,14 +130,14 @@ const Box_comment = (id: any) => {
 		},
 	]
 	const dataCha = [
-		{ id: 1, userName: 'Test Cha nè', comment: ' Comment dạo cha 1' },
-		{ id: 1, userName: 'Hoàng', comment: ' Comment dạo 2' },
-		{ id: 1, userName: 'Hoàng nè', comment: ' Comment dạo 3' },
+		{ id: 1, cm_sender_name: 'Test Cha nè', cm_comment: ' Comment dạo cha 1' },
+		{ id: 1, cm_sender_name: 'Hoàng', cm_comment: ' Comment dạo 2' },
+		{ id: 1, cm_sender_name: 'Hoàng nè', cm_comment: ' Comment dạo 3' },
 	]
 	const data = [
-		{ id: 1, name: 'Test', comment: ' Comment dạo 1' },
-		{ id: 1, name: 'Hoàng', comment: ' Comment dạo 2' },
-		{ id: 1, name: 'Hoàng nè', comment: ' Comment dạo 3' },
+		{ id: 1, cm_sender_name: 'Test', cm_comment: ' Comment dạo 1' },
+		{ id: 1, cm_sender_name: 'Hoàng 1', cm_comment: ' Comment dạo 2' },
+		{ id: 1, cm_sender_name: 'Hoàng nè 3', cm_comment: ' Comment dạo 3' },
 	]
 	return (
 		<div className={`${styles.box_comment_chat} ${styles.not_login}`}>
@@ -575,6 +604,36 @@ const Box_comment = (id: any) => {
 									</div>
 								</div>
 							</div>
+
+							{apiDataID?.map((item, index) => {
+								const hasReplyArray = item?.arr_reply.length > 0 && Array.isArray(item?.arr_reply)
+								const isLastItem = index === apiDataID.length - 1
+								return (
+									<Content_Component
+										key={index}
+										dataCha={item}
+										containerClassName={hasReplyArray ? styles.cm_has_reply : ''}
+									>
+										{hasReplyArray && (
+											<>
+												{item?.arr_reply.map((item_rep: any, index_rep: any) => (
+													<Item_comment data={item_rep} key={index_rep}></Item_comment>
+												))}
+												{isLastItem && (
+													<>
+														<Item_comment
+															data={item?.arr_reply[item?.arr_reply.length - 1]}
+															key="last-item"
+														>
+															<span className={styles.line_reply1}></span>
+														</Item_comment>
+													</>
+												)}
+											</>
+										)}
+									</Content_Component>
+								)
+							})}
 							<Content_Component dataCha={dataCha[0]}></Content_Component>
 							<Content_Component
 								dataCha={dataCha[0]}

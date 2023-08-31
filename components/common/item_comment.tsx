@@ -12,12 +12,12 @@ const Item_comment = ({ data, children }: any) => {
 				width={48}
 				className={styles.ava_cm}
 				src="/images/user_no.png"
-				alt={data.name}
+				alt={data?.cm_ip}
 			/>
 			<div className={styles.cm_box}>
 				<div className={styles.cm_cm_ct}>
-					<p className={styles.cm_content_user}>{data.name}</p>
-					<p className={styles.cm_nd}>{data.comment}</p>
+					<p className={styles.cm_content_user}>{data?.cm_ip}</p>
+					<p className={styles.cm_nd}>{data?.cm_comment}</p>
 				</div>
 				<div className={styles.cm_cm_ev}>
 					<div className={styles.cm_list_ev}>
@@ -33,7 +33,20 @@ const Item_comment = ({ data, children }: any) => {
 							{/* Các biểu tượng ic tương ứng */}
 						</div>
 					</div>
-					<span className={`${styles.cm_list_like} ${styles.cm_count_like} count_ic`} />
+					<span className={styles.cm_list_like}>
+						<span className={`${styles.cm_count_like} ${styles.count_ic}`} />
+						<span className={styles.box_items_like_ic}>
+							<span className={`${styles.cm_like_ic}`}>
+								<Image
+									height={20}
+									width={20}
+									className={`${styles.item_like_ic} ${styles.ic1}`}
+									src="/images/img_comment/Ic_1.png"
+									alt="Thích"
+								/>
+							</span>
+						</span>
+					</span>
 				</div>
 			</div>
 		</div>
