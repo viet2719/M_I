@@ -9,7 +9,7 @@ const Scroll_option = ({}: Props) => {
 	const [isFixed, setIsFixed] = useState(false)
 
 	const handleScroll = () => {
-		if (window.scrollY >= 450) {
+		if (window.scrollY >= 600) {
 			setIsFixed(true)
 		} else {
 			setIsFixed(false)
@@ -34,22 +34,7 @@ const Scroll_option = ({}: Props) => {
 					>
 						<div>
 							Chi tiết
-							{showChiTiet && (
-								<div className={`${styles.pos_ttin_all}`}>
-									<p
-										className={`${styles.tca_ttin_chung} ${styles.ctn_opt_post}`}
-										data-tab="tab_ttin"
-									>
-										Thông tin
-									</p>
-									<p className={`${styles.tca_ttin_chung}`}>
-										<Link href="/cong-ty-co-phan-viet-hung-viet-nam-co206405">Công ty</Link>
-									</p>
-									<p className={`${styles.tca_ttin_chung} ${styles.vlam_goiy}`}>
-										<a href="#title_all">Việc làm đề xuất bởi AI365</a>
-									</p>
-								</div>
-							)}
+						
 						</div>
 
 						<span />
@@ -72,17 +57,32 @@ const Scroll_option = ({}: Props) => {
 						Phù hợp
 					</Link>
 					<Link
-						href={"https://truyenthongnoibo.timviec365.vn/trang-ca-nhan-c221927"}
+						href={'https://truyenthongnoibo.timviec365.vn/trang-ca-nhan-c221927'}
 						className={`${styles.option_post} ${styles.ctn_opt_post} ${styles.mucdo_phhop_ctn}`}
 						data-tab="tab_phhop"
 						target="_blank"
 					>
 						Tường
 					</Link>
+					{showChiTiet && (
+								<div className={`${styles.pos_ttin_all}`}>
+									<p
+										className={`${styles.tca_ttin_chung} ${styles.ctn_opt_post}`}
+										data-tab="tab_ttin"
+									>
+										Thông tin
+									</p>
+									<p className={`${styles.tca_ttin_chung}`}>
+										<Link href="/cong-ty-co-phan-viet-hung-viet-nam-co206405">Công ty</Link>
+									</p>
+									<p className={`${styles.tca_ttin_chung} ${styles.vlam_goiy}`}>
+										<a href="#title_all">Việc làm đề xuất bởi AI365</a>
+									</p>
+								</div>
+							)}
 					<div className={`${styles.mobi_ctiet}`}>
 						{' '}
 						<Link
-
 							className={`${styles.option_post} ${styles.option_dtg}`}
 							href="https://truyenthongnoibo.timviec365.vn/trang-ca-nhan-c18162"
 							rel="nofollow"
@@ -90,8 +90,11 @@ const Scroll_option = ({}: Props) => {
 						>
 							Tường
 						</Link>
+						
 					</div>
+					
 				</div>
+				
 			</div>
 		</div>
 	)

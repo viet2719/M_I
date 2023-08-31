@@ -45,7 +45,7 @@ const Comment = ({ isLogin }: Props) => {
 	const [showIcon, setshowIcon] = useState<boolean>(false)
 	const [showBox_share, setShowBox_share] = useState<boolean>(false)
 	const [show_Box_Share_Mxh, setShow_Box_Share_Mxh] = useState<boolean>(false)
-	const [icons_used, setIcons_used] = useState<Iicons>()
+	const [icons_used, setIcons_used] = useState<Iicons | null>()
 	const [name_active, setName_active] = useState<string>('')
 	const [listComment, setlistComment] = useState<Icomment[]>([])
 	const [content_comment, setcontent_comment] = useState<string>('')
@@ -115,6 +115,29 @@ const Comment = ({ isLogin }: Props) => {
 			setshowIcon(false)
 		}
 	}
+
+	// Nhấn vào nút like mặc định
+	const handleLikeDefault = () => {
+		if (name_icon === 'Thích') {
+			setName_Icon('Đã thích')
+			setchangeIcon('https://timviec365.vn/images/img_comment/Ic_1.png')
+			setIcons_used({
+				img: 'https://timviec365.vn/images/img_comment/Ic_1.png',
+				alt: 'icon.alt',
+				id: 1,
+				style: 'orange',
+			})
+			setName_active(name_comment)
+			setshowIcon(false)
+		} else {
+			setName_Icon('Thích')
+			setchangeIcon('https://timviec365.vn/images/img_comment/Ic_color_2.png')
+			setName_active('')
+			setIcons_used(null)
+			setshowIcon(false)
+		}
+	}
+
 	// Ẩn share khi click ra ngoài
 	const handleOutsideClick = (event: any) => {
 		const detailsIcon: HTMLElement | any = document.getElementById('share')
@@ -124,7 +147,7 @@ const Comment = ({ isLogin }: Props) => {
 			setShow_Box_Share_Mxh(false)
 		}
 	}
-
+	// Lấy danh sách comment của tin
 	const handleComment = async (): Promise<void> => {
 		try {
 			if (content_comment) {
@@ -151,6 +174,7 @@ const Comment = ({ isLogin }: Props) => {
 	useEffect(() => {
 		document?.addEventListener('click', handleOutsideClick)
 	}, [])
+	// Comment vào tin
 	const handleGetComment = async () => {
 		try {
 			const res = await fetch(`http://210.245.108.202:3001/api/timviec/new/listComment`, {
@@ -176,8 +200,10 @@ const Comment = ({ isLogin }: Props) => {
 			onClick={() => handleActionBeforLogin()}
 			className={`${styles.title_all} ${styles.content_cmt_vote}`}
 		>
-			<Model_Danhgia_details showDanhgia={showModelDanhGia} setshowDanhgia={setshowModelDanhgia}
-			setnameDanhGia={setnameDanhGia}
+			<Model_Danhgia_details
+				showDanhgia={showModelDanhGia}
+				setshowDanhgia={setshowModelDanhgia}
+				setnameDanhGia={setnameDanhGia}
 			/>
 			<div className={`${styles.box_cmt_vote}`}>
 				<div className={`${styles.tab_cmt_vote}`}>
@@ -253,6 +279,7 @@ const Comment = ({ isLogin }: Props) => {
 														alt={icons_used?.alt}
 													/>
 												)}
+
 												<span> {name_active}</span>
 											</span>
 											<span onClick={() => setShowHisShare(true)} className={`${styles.cm_sh_ic}`}>
@@ -279,9 +306,10 @@ const Comment = ({ isLogin }: Props) => {
 											<div className={`${styles.cm_ev_div}`}>
 												<span
 													className={`${styles.like_event}`}
-													onMouseOver={() => setshowIcon(true)}
+													onClick={() => handleLikeDefault()}
 												>
 													<Image
+														style={{ marginTop: -5 }}
 														width={26}
 														preview={false}
 														height={26}
@@ -290,7 +318,12 @@ const Comment = ({ isLogin }: Props) => {
 														src={changeIcon}
 														alt="Icon"
 													/>
-													<span id="details_icon" className={`${styles.like_event_txt}`}>
+													<span
+														style={{ paddingLeft: 5 }}
+														onMouseOver={() => setshowIcon(true)}
+														id="details_icon"
+														className={`${styles.like_event_txt}`}
+													>
 														{name_icon}
 													</span>
 												</span>
@@ -403,9 +436,10 @@ const Comment = ({ isLogin }: Props) => {
 						</div>
 					)}
 					{/* tab Đánh giá */}
-					<Danh_gia showDanhGia={showDanhGia} 
-					setshowDanhgia={setshowModelDanhgia}
-					nameDanhGia={nameDanhGia}
+					<Danh_gia
+						showDanhGia={showDanhGia}
+						setshowDanhgia={setshowModelDanhgia}
+						nameDanhGia={nameDanhGia}
 					/>
 				</div>
 			</div>

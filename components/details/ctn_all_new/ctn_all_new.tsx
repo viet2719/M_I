@@ -230,8 +230,8 @@ const Ctn_all_new = (props: Props) => {
 						</Link>
 					</div>
 					<Image
-						width={25}
-						height={25}
+						width={179}
+						height={108}
 						className={`${styles.show_tg}`}
 						onClick={() => setShowChucDanh(!showChucDanh)}
 						src={
@@ -365,8 +365,8 @@ const Ctn_all_new = (props: Props) => {
 						</Link>
 					</div>
 					<Image
-						width={25}
-						height={25}
+						width={179}
+						height={108}
 						onClick={() => setShowTuKhoa(!showTuKhoa)}
 						className={`${styles.show_tg}`}
 						src={
@@ -386,8 +386,8 @@ const Ctn_all_new = (props: Props) => {
 					<div className={`${styles.hd_tin}`}>
 						<Link target="blank" href="/blog/chay-tiep-suc-la-gi-new16926.html">
 							<Image
-								width={25}
-								height={25}
+								width={179}
+								height={108}
 								className={`${styles.lazyloaded}`}
 								src="https://timviec365.vn/pictures/news/2023/08/17/wal1692269700.jpg"
 								alt="Hành trình đồng đội trong bộ môn điền kinh - chạy tiếp sức là gì"
@@ -402,8 +402,8 @@ const Ctn_all_new = (props: Props) => {
 					<div className={`${styles.hd_tin}`}>
 						<Link target="blank" href="/blog/ky-nang-dien-dat-la-gi-new16908.html">
 							<Image
-								width={25}
-								height={25}
+								width={179}
+								height={108}
 								className={`${styles.lazyloaded}`}
 								src="https://timviec365.vn/pictures/news/2023/08/12/idg1691830468.jpg"
 								data-src="/pictures/news/2023/08/12/idg1691830468.jpg"
@@ -419,8 +419,8 @@ const Ctn_all_new = (props: Props) => {
 					<div className={`${styles.hd_tin}`}>
 						<Link target="blank" href="/blog/phong-cach-wabi-sabi-la-gi-new16847.html">
 							<Image
-								width={25}
-								height={25}
+								width={179}
+								height={108}
 								className={`${styles.lazyloaded}`}
 								src="https://timviec365.vn/pictures/news/2023/07/24/yjb1690193831.jpg"
 								data-src="/pictures/news/2023/07/24/yjb1690193831.jpg"
@@ -436,8 +436,8 @@ const Ctn_all_new = (props: Props) => {
 					<div className={`${styles.hd_tin}`}>
 						<Link target="blank" href="/blog/dich-thuat-ha-noi-new16736.html">
 							<Image
-								width={25}
-								height={25}
+								width={179}
+								height={108}
 								className={`${styles.lazyloaded}`}
 								src="https://timviec365.vn/pictures/news/2023/06/16/umh1686898711.jpg"
 								data-src="/pictures/news/2023/06/16/umh1686898711.jpg"

@@ -12,7 +12,7 @@ const Detail = (props: Props) => {
 	const [isFixedHeader, setIsFixedHeader] = useState(false)
 
 	const handleScroll = () => {
-		if (window.scrollY >= 450) {
+		if (window.scrollY >= 600) {
 			setIsFixedHeader(false)
 		} else {
 			setIsFixedHeader(true)

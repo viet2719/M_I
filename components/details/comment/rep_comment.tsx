@@ -17,6 +17,8 @@ const Rep_comment = ({ listCommentRes, setlistCommentRes, cm_id }: Props) => {
 	const [content_comment, setcontent_comment] = useState<string>('')
 	const [name_icon, setName_Icon] = useState<string>('Thích')
 	const [icons_used, setIcons_used] = useState<Iicons[]>([])
+	const [selectedCommentIconUsed, setSelectedCommentIIconUsed] = useState<any>(null)
+
 	const [changeIcon, setchangeIcon] = useState<string>(
 		'https://timviec365.vn/images/img_comment/Ic_color_2.png'
 	)
@@ -68,11 +70,15 @@ const Rep_comment = ({ listCommentRes, setlistCommentRes, cm_id }: Props) => {
 	]
 
 	const handleActionIcon = (icon: Iicons, item: Icomment) => {
+		setSelectedCommentIIconUsed(item.cm_id)
+
 		let name: any = document.getElementById(`likeText_${item.cm_id}`)
 		if (name) {
 			setchangeIcon(icon?.img)
 			name.innerHTML = icon?.alt + ' |'
 			setName_Icon(icon?.alt)
+			setIcons_used([icon])
+
 		}
 
 		// Tìm phần chữ 'Thích' trong phần comment và thay đổi màu chữ
@@ -81,7 +87,25 @@ const Rep_comment = ({ listCommentRes, setlistCommentRes, cm_id }: Props) => {
 			likeText.style.color = icon.style
 		}
 	}
+	const handleLikeDefault = (item: Icomment) => {
+		setSelectedCommentIIconUsed(item.cm_id)
 
+		let likeText: any = document.getElementById(`likeText_${item.cm_id}`)
+		setSelectedCommentIdShowIcon(null)
+		if (likeText) {
+			if (likeText.innerHTML === 'Thích |') {
+				likeText.innerHTML = 'Đã thích |'
+				likeText.style.color = 'blue'
+				setIcons_used([
+					{ img: 'https://timviec365.vn/images/img_comment/Ic_1.png', alt: '', style: '', id: 1 },
+				])
+			} else {
+				likeText.innerHTML = 'Thích |'
+				likeText.style.color = 'black'
+				setIcons_used([])
+			}
+		}
+	}
 	const handleShowResResPonse = (item: Icomment) => {
 		if (selectedCommentId) {
 			setSelectedCommentId(null)
@@ -141,12 +165,10 @@ const Rep_comment = ({ listCommentRes, setlistCommentRes, cm_id }: Props) => {
 								</div>
 								<div className={`${styles.cm_cm_ev}`}>
 									<div className={`${styles.cm_list_ev}`}>
-										<span
-											className={`${styles.like_cm}`}
-											onMouseOver={() => setSelectedCommentIdShowIcon(item.cm_id)}
-										>
+										<span className={`${styles.like_cm}`} onClick={() => handleLikeDefault(item)}>
 											<span>
 												<div
+													onMouseOver={() => setSelectedCommentIdShowIcon(item.cm_id)}
 													className={`${styles.like_cm_txt}   
 													`}
 													id={`likeText_${item.cm_id}`}
@@ -212,7 +234,8 @@ const Rep_comment = ({ listCommentRes, setlistCommentRes, cm_id }: Props) => {
 											{' '}
 											{item?.arr_likes?.length}
 										</div>
-										<div>
+
+										{selectedCommentIconUsed == item.cm_id &&<div>
 											{icons_used?.map((icon: Iicons, index: number) => {
 												return (
 													<span key={index} style={{ gap: 10 }}>
@@ -226,7 +249,7 @@ const Rep_comment = ({ listCommentRes, setlistCommentRes, cm_id }: Props) => {
 													</span>
 												)
 											})}
-										</div>
+										</div>}
 									</span>
 									{selectedCommentId === item?.cm_id && (
 										<Input_Rep_Rep_comment
