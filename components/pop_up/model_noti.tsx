@@ -7,7 +7,7 @@ import { RootState } from '@/reducers'
 import { closeModal } from '@/actions/actions'
 import Link from 'next/link'
 type Props = {
-	title:string
+	title?:string
 }
 const Model_noti = ({title}:Props) => {
 	const [inputValue, setInputValue] = useState('')
