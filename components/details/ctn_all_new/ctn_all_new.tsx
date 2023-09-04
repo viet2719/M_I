@@ -230,8 +230,8 @@ const Ctn_all_new = (props: Props) => {
 						</Link>
 					</div>
 					<Image
-						width={179}
-						height={108}
+						width={25}
+						height={25}
 						className={`${styles.show_tg}`}
 						onClick={() => setShowChucDanh(!showChucDanh)}
 						src={
@@ -365,8 +365,8 @@ const Ctn_all_new = (props: Props) => {
 						</Link>
 					</div>
 					<Image
-						width={179}
-						height={108}
+						width={25}
+						height={25}
 						onClick={() => setShowTuKhoa(!showTuKhoa)}
 						className={`${styles.show_tg}`}
 						src={

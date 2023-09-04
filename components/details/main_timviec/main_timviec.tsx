@@ -19,7 +19,11 @@ const Main_timviec = ({isLogin }: Props) => {
 				<div className={`${styles.chitiettd}`}>
 					<div className={`${styles.all_content_post}`}>
 						<div className={`${styles.all_content_post_main}`}>
+
+							{/* Chi tiết tin  */}
 							<Chi_tiet_td isLogin={isLogin}/>
+
+							{/* Phần bình luận */}
 							<Comment isLogin={isLogin}/>
 							<div className={`${styles.banner_timviec}`}>
 								<Link href="/cv-xin-viec" className={`${styles.cv_xinviec}`} target="blank">
@@ -29,8 +33,11 @@ const Main_timviec = ({isLogin }: Props) => {
 									</div>
 								</Link>
 							</div>
+
+							{/* Việc làm đề xuất bời AI */}
 							<AI_365 />
 						</div>
+						
 						<All_content_post_sub />
 					</div>
 					<Ctn_all_new />

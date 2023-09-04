@@ -11,7 +11,7 @@ import Model_History_comment from '@/components/pop_up/model_history_comment'
 import { useDispatch } from 'react-redux'
 import { openModal } from '@/actions/actions'
 import Model_Danhgia_details from '@/components/pop_up/model_danhgia_details'
-
+import { listIconStatus } from '@/utils/constants'
 type Props = {
 	isLogin: boolean
 }
@@ -49,6 +49,7 @@ const Comment = ({ isLogin }: Props) => {
 	const [icons_used, setIcons_used] = useState<Iicons | null>()
 	const [name_active, setName_active] = useState<string>('')
 	const [listComment, setlistComment] = useState<Icomment[]>([])
+	const [arr_likes_new, setArr_likes_new] = useState<[]>()
 	const [content_comment, setcontent_comment] = useState<string>('')
 	const [showChat365, setShowChat365] = useState<boolean>(false)
 	const [showGrChat365, setShowGrChat365] = useState<boolean>(false)
@@ -60,50 +61,6 @@ const Comment = ({ isLogin }: Props) => {
 	)
 	const [name_icon, setName_Icon] = useState<string>('Thích')
 
-	const listIconStatus: Iicons[] = [
-		{
-			id: 1,
-			img: 'https://timviec365.vn/images/img_comment/Ic_1.png',
-			alt: 'Thích',
-			style: 'blue',
-		},
-		{
-			id: 2,
-			img: 'https://timviec365.vn/images/img_comment/Ic_2.png',
-			alt: 'Yêu thích',
-			style: 'red',
-		},
-		{
-			id: 3,
-			img: 'https://timviec365.vn/images/img_comment/Ic_3.png',
-			alt: 'Wow',
-			style: 'orange',
-		},
-		{
-			id: 4,
-			img: 'https://timviec365.vn/images/img_comment/Ic_4.png',
-			alt: 'Thương thương',
-			style: 'orange',
-		},
-		{
-			id: 5,
-			img: 'https://timviec365.vn/images/img_comment/Ic_5.png',
-			alt: 'Phẫn nộ',
-			style: 'orange',
-		},
-		{
-			id: 6,
-			img: 'https://timviec365.vn/images/img_comment/Ic_6.png',
-			alt: 'Buồn',
-			style: 'orange',
-		},
-		{
-			id: 7,
-			img: 'https://timviec365.vn/images/img_comment/Ic_7.png',
-			alt: 'Haha',
-			style: 'orange',
-		},
-	]
 	// Thay đổi icons và nội dung
 	const handleActionIcon = (icon: Iicons) => {
 		if (!isLogin) {
@@ -139,16 +96,7 @@ const Comment = ({ isLogin }: Props) => {
 		}
 	}
 
-	// Ẩn share khi click ra ngoài
-	const handleOutsideClick = (event: any) => {
-		const detailsIcon: HTMLElement | any = document.getElementById('share')
-
-		if (!detailsIcon?.contains(event.target)) {
-			setShowBox_share(false)
-			setShow_Box_Share_Mxh(false)
-		}
-	}
-	// Lấy danh sách comment của tin
+	// Comment vào tin
 	const handleComment = async (): Promise<void> => {
 		try {
 			if (content_comment) {
@@ -158,7 +106,7 @@ const Comment = ({ isLogin }: Props) => {
 						Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6MTQwNDE1NiwiaWRUaW1WaWVjMzY1IjoxMzMzNjc2LCJpZFFMQyI6OTcwODU5LCJpZFJhb05oYW5oMzY1IjowLCJlbWFpbCI6bnVsbCwicGhvbmVUSyI6IjAzNjc2NDg5MDciLCJjcmVhdGVkQXQiOjE2OTA0MjEwODUsInR5cGUiOjB9LCJpYXQiOjE2OTM0NjcyNjgsImV4cCI6MTY5MzU1MzY2OH0.A3-8if-PGjG7WxigIX5qDaaHqFHL-6jKZT3FzTZyBI8`,
 					},
 					method: 'POST',
-					body: JSON.stringify({ cm_comment: content_comment, cm_new_id: 860696 }),
+					body: JSON.stringify({ cm_comment: content_comment, cm_new_id: 871632 }),
 				})
 				handleGetComment()
 			} else {
@@ -172,14 +120,7 @@ const Comment = ({ isLogin }: Props) => {
 		}
 	}
 
-	// Thêm sự kiện click cho cả màn hình
-	useEffect(() => {
-		document?.addEventListener('click', handleOutsideClick)
-	}, [])
-
-	const [arr_likes_new, setArr_likes_new] = useState<[]>()
-	// Comment vào tin
-	console.log(arr_likes_new)
+	// Lấy danh sách comment của tin
 	const handleGetComment = async () => {
 		try {
 			const res = await fetch(`http://210.245.108.202:3001/api/timviec/new/listComment`, {
@@ -188,7 +129,7 @@ const Comment = ({ isLogin }: Props) => {
 					Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6MTQwNDE1NiwiaWRUaW1WaWVjMzY1IjoxMzMzNjc2LCJpZFFMQyI6OTcwODU5LCJpZFJhb05oYW5oMzY1IjowLCJlbWFpbCI6bnVsbCwicGhvbmVUSyI6IjAzNjc2NDg5MDciLCJjcmVhdGVkQXQiOjE2OTA0MjEwODUsInR5cGUiOjB9LCJpYXQiOjE2OTMzNjk3MDcsImV4cCI6MTY5MzQ1NjEwN30.hB8R4lGMIFDE0birZpTnjmcKDLdt5geN1uLDwPTQg3Q`,
 				},
 				method: 'POST',
-				body: JSON.stringify({ new_id: 860696 }),
+				body: JSON.stringify({ new_id: 871632 }),
 			})
 			const data = await res.json()
 			// console.log("checl data",data.data)
@@ -198,19 +139,33 @@ const Comment = ({ isLogin }: Props) => {
 			console.log(error)
 		}
 	}
+
+	// Ẩn share khi click ra ngoài
+	const handleOutsideClick = (event: any) => {
+		const detailsIcon: HTMLElement | any = document.getElementById('share')
+
+		if (!detailsIcon?.contains(event.target)) {
+			setShowBox_share(false)
+			setShow_Box_Share_Mxh(false)
+		}
+	}
+
 	useEffect(() => {
 		handleGetComment()
+		document?.addEventListener('click', handleOutsideClick)
 	}, [])
 	return (
 		<div
 			onClick={() => handleActionBeforLogin()}
 			className={`${styles.title_all} ${styles.content_cmt_vote}`}
 		>
+			{/* BTN đánh giá */}
 			<Model_Danhgia_details
 				showDanhgia={showModelDanhGia}
 				setshowDanhgia={setshowModelDanhgia}
 				setnameDanhGia={setnameDanhGia}
 			/>
+
 			<div className={`${styles.box_cmt_vote}`}>
 				<div className={`${styles.tab_cmt_vote}`}>
 					<button
@@ -234,6 +189,7 @@ const Comment = ({ isLogin }: Props) => {
 						ĐÁNH GIÁ
 					</button>
 				</div>
+
 				<div className={`${styles.tab_content}`}>
 					{showBinhLuan && (
 						<div className={`${styles.item_cmt_vote}`} id="box_contain_cmt">
@@ -274,7 +230,8 @@ const Comment = ({ isLogin }: Props) => {
 													)}
 												</div>
 											</div>
-											<span className={`${styles.count_ic}`}>{arr_likes_new?.length}
+											<span className={`${styles.count_ic}`}>
+												{arr_likes_new?.length}
 												{icons_used && (
 													<Image
 														onClick={() => setShowHistoryComemnt(true)}
@@ -286,7 +243,7 @@ const Comment = ({ isLogin }: Props) => {
 													/>
 												)}
 
-												 <span> {name_active}</span>
+												<span> {name_active}</span>
 											</span>
 											<span onClick={() => setShowHisShare(true)} className={`${styles.cm_sh_ic}`}>
 												<b>•</b> 0 chia sẻ

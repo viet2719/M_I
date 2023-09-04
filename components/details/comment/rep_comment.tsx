@@ -3,6 +3,7 @@ import styles from '../main_timviec/main_timviec.module.css'
 import Image from 'next/image'
 import { Icomment, Iicons } from './comment'
 import Input_Rep_Rep_comment from './input_rep_rep_rep_comment'
+import { listIconStatus } from '@/utils/constants'
 
 type Props = {
 	listCommentRes: Icomment[]
@@ -24,50 +25,6 @@ const Rep_comment = ({ listCommentRes, setlistCommentRes, cm_id, handleGetCommen
 	)
 	const [selectedCommentId, setSelectedCommentId] = useState<any>(null)
 	const [selectedCommentIdShowIcon, setSelectedCommentIdShowIcon] = useState<any>(null)
-	const listIconStatus: Iicons[] = [
-		{
-			id: 1,
-			img: 'https://timviec365.vn/images/img_comment/Ic_1.png',
-			alt: 'Thích',
-			style: 'blue',
-		},
-		{
-			id: 2,
-			img: 'https://timviec365.vn/images/img_comment/Ic_2.png',
-			alt: 'Yêu thích',
-			style: 'red',
-		},
-		{
-			id: 3,
-			img: 'https://timviec365.vn/images/img_comment/Ic_3.png',
-			alt: 'Wow',
-			style: 'orange',
-		},
-		{
-			id: 4,
-			img: 'https://timviec365.vn/images/img_comment/Ic_4.png',
-			alt: 'Thương thương',
-			style: 'orange',
-		},
-		{
-			id: 5,
-			img: 'https://timviec365.vn/images/img_comment/Ic_5.png',
-			alt: 'Phẫn nộ',
-			style: 'orange',
-		},
-		{
-			id: 6,
-			img: 'https://timviec365.vn/images/img_comment/Ic_6.png',
-			alt: 'Buồn',
-			style: 'orange',
-		},
-		{
-			id: 7,
-			img: 'https://timviec365.vn/images/img_comment/Ic_7.png',
-			alt: 'Haha',
-			style: 'orange',
-		},
-	]
 
 	const handleActionIcon = (icon: Iicons, item: Icomment) => {
 		setSelectedCommentIIconUsed(item.cm_id)
@@ -86,9 +43,10 @@ const Rep_comment = ({ listCommentRes, setlistCommentRes, cm_id, handleGetCommen
 			likeText.style.color = icon.style
 		}
 	}
+
+	// Thao tác nút like mặc định
 	const handleLikeDefault = (item: Icomment) => {
 		setSelectedCommentIIconUsed(item.cm_id)
-
 		let likeText: any = document.getElementById(`likeText_${item.cm_id}`)
 		setSelectedCommentIdShowIcon(null)
 		if (likeText) {
@@ -105,6 +63,8 @@ const Rep_comment = ({ listCommentRes, setlistCommentRes, cm_id, handleGetCommen
 			}
 		}
 	}
+
+	//Show Input
 	const handleShowResResPonse = (item: Icomment) => {
 		if (selectedCommentId) {
 			setSelectedCommentId(null)
@@ -112,6 +72,8 @@ const Rep_comment = ({ listCommentRes, setlistCommentRes, cm_id, handleGetCommen
 			setSelectedCommentId(item.cm_id)
 		}
 	}
+
+	//Comment
 	const handleComment = async (): Promise<void> => {
 		try {
 			if (content_comment) {
@@ -123,7 +85,7 @@ const Rep_comment = ({ listCommentRes, setlistCommentRes, cm_id, handleGetCommen
 					method: 'POST',
 					body: JSON.stringify({
 						cm_comment: content_comment,
-						cm_new_id: 860696,
+						cm_new_id: 871632,
 						cm_parent_id: cm_id,
 					}),
 				})
@@ -133,6 +95,7 @@ const Rep_comment = ({ listCommentRes, setlistCommentRes, cm_id, handleGetCommen
 			}
 		} catch (error) {}
 	}
+
 	const handleDeleteRepComment = () => {
 		setlistCommentRes([])
 	}

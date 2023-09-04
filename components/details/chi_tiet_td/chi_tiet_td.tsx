@@ -28,6 +28,8 @@ const Chi_tiet_td = ({ isLogin }: Props) => {
 	const [isCv, setisCv] = useState<boolean>(true)
 	const [showUserCallGiongNoi, setshowUserCallGiongNoi] = useState<boolean>(false)
 	const dispatch = useDispatch()
+
+	//BTN Lưu tin
 	const handleLuuTin: () => void = () => {
 		if (!isLogin) {
 			dispatch(openModal())
@@ -42,6 +44,7 @@ const Chi_tiet_td = ({ isLogin }: Props) => {
 			}
 		}
 	}
+	//BTN Lưu công việc
 	const handleLuuCongViec: () => void = () => {
 		if (!isLogin) {
 			dispatch(openModal())
@@ -56,22 +59,24 @@ const Chi_tiet_td = ({ isLogin }: Props) => {
 			}
 		}
 	}
+	//BTN Ứng tuyển
 	const handleUngTuyen: () => void = () => {
 		if (!isLogin) {
 			dispatch(openModal())
 		} else {
 			if (isCv) {
-if(name_UT==="Ứng tuyển"){
-	setshowMailUngTuyen(true)
-	setname_UT("Đã ứng tuyển")
-}else{
-	alert("Bạn đã ứng tuyển rồi")
-}
+				if (name_UT === 'Ứng tuyển') {
+					setshowMailUngTuyen(true)
+					setname_UT('Đã ứng tuyển')
+				} else {
+					alert('Bạn đã ứng tuyển rồi')
+				}
 			} else {
 				setShowModelUngTuyen(true)
 			}
 		}
 	}
+	//BTN Phản ánh NTD
 	const handlePhanAnhNTD: () => void = () => {
 		if (!isLogin) {
 			dispatch(openModal())
@@ -265,7 +270,7 @@ if(name_UT==="Ứng tuyển"){
 										src="https://timviec365.vn/images/detail/icon_ut.svg"
 										alt="ứng tuyển"
 									/>
-								{name_UT}
+									{name_UT}
 								</div>
 							</div>
 							<div
@@ -293,6 +298,7 @@ if(name_UT==="Ứng tuyển"){
 
 			<div className={`${styles.content_info}`}>
 				<Scroll_option />
+
 				{/* audio */}
 				<div className={`${styles.audio_tindang}`}>
 					<div className={`${styles.audio_news}`}>
@@ -313,7 +319,7 @@ if(name_UT==="Ứng tuyển"){
 								style={{ cursor: 'pointer' }}
 								onClick={() => setshowUserCallGiongNoi(!showUserCallGiongNoi)}
 								alt="Chọn người đọc"
-								title='Chọn người đọc'
+								title="Chọn người đọc"
 								width={20}
 								height={30}
 								src="https://timviec365.vn/images/img_new/exp_chuyengiong.png"
