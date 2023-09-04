@@ -2,77 +2,39 @@ import React, { useState } from 'react'
 import styles from '../main_timviec/main_timviec.module.css'
 import Image from 'next/image'
 import { Icomment, Iicons } from './comment'
-import Input_Rep_comment from './input_rep_rep_comment'
 import Input_Rep_Rep_comment from './input_rep_rep_rep_comment'
+import { listIconStatus } from '@/utils/constants'
 
 type Props = {
 	listCommentRes: Icomment[]
 	setlistCommentRes: (value: Icomment[]) => void
 	cm_id: number
+	handleGetComment: () => void
 }
 
-const Rep_comment = ({ listCommentRes, setlistCommentRes, cm_id }: Props) => {
+const Rep_comment = ({ listCommentRes, setlistCommentRes, cm_id, handleGetComment }: Props) => {
 	const name_comment = 'Nguyễn Quang Trường'
 	const [showIcon, setshowIcon] = useState<boolean>(false)
 	const [content_comment, setcontent_comment] = useState<string>('')
 	const [name_icon, setName_Icon] = useState<string>('Thích')
 	const [icons_used, setIcons_used] = useState<Iicons[]>([])
+	const [selectedCommentIconUsed, setSelectedCommentIIconUsed] = useState<any>(null)
+
 	const [changeIcon, setchangeIcon] = useState<string>(
 		'https://timviec365.vn/images/img_comment/Ic_color_2.png'
 	)
 	const [selectedCommentId, setSelectedCommentId] = useState<any>(null)
 	const [selectedCommentIdShowIcon, setSelectedCommentIdShowIcon] = useState<any>(null)
-	const listIconStatus: Iicons[] = [
-		{
-			id: 1,
-			img: 'https://timviec365.vn/images/img_comment/Ic_1.png',
-			alt: 'Thích',
-			style: 'blue',
-		},
-		{
-			id: 2,
-			img: 'https://timviec365.vn/images/img_comment/Ic_2.png',
-			alt: 'Yêu thích',
-			style: 'red',
-		},
-		{
-			id: 3,
-			img: 'https://timviec365.vn/images/img_comment/Ic_3.png',
-			alt: 'Wow',
-			style: 'orange',
-		},
-		{
-			id: 4,
-			img: 'https://timviec365.vn/images/img_comment/Ic_4.png',
-			alt: 'Thương thương',
-			style: 'orange',
-		},
-		{
-			id: 5,
-			img: 'https://timviec365.vn/images/img_comment/Ic_5.png',
-			alt: 'Phẫn nộ',
-			style: 'orange',
-		},
-		{
-			id: 6,
-			img: 'https://timviec365.vn/images/img_comment/Ic_6.png',
-			alt: 'Buồn',
-			style: 'orange',
-		},
-		{
-			id: 7,
-			img: 'https://timviec365.vn/images/img_comment/Ic_7.png',
-			alt: 'Haha',
-			style: 'orange',
-		},
-	]
 
 	const handleActionIcon = (icon: Iicons, item: Icomment) => {
+		setSelectedCommentIIconUsed(item.cm_id)
+
 		let name: any = document.getElementById(`likeText_${item.cm_id}`)
 		if (name) {
 			setchangeIcon(icon?.img)
 			name.innerHTML = icon?.alt + ' |'
 			setName_Icon(icon?.alt)
+			setIcons_used([icon])
 		}
 
 		// Tìm phần chữ 'Thích' trong phần comment và thay đổi màu chữ
@@ -82,6 +44,27 @@ const Rep_comment = ({ listCommentRes, setlistCommentRes, cm_id }: Props) => {
 		}
 	}
 
+	// Thao tác nút like mặc định
+	const handleLikeDefault = (item: Icomment) => {
+		setSelectedCommentIIconUsed(item.cm_id)
+		let likeText: any = document.getElementById(`likeText_${item.cm_id}`)
+		setSelectedCommentIdShowIcon(null)
+		if (likeText) {
+			if (likeText.innerHTML === 'Thích |') {
+				likeText.innerHTML = 'Đã thích |'
+				likeText.style.color = 'blue'
+				setIcons_used([
+					{ img: 'https://timviec365.vn/images/img_comment/Ic_1.png', alt: '', style: '', id: 1 },
+				])
+			} else {
+				likeText.innerHTML = 'Thích |'
+				likeText.style.color = 'black'
+				setIcons_used([])
+			}
+		}
+	}
+
+	//Show Input
 	const handleShowResResPonse = (item: Icomment) => {
 		if (selectedCommentId) {
 			setSelectedCommentId(null)
@@ -89,26 +72,30 @@ const Rep_comment = ({ listCommentRes, setlistCommentRes, cm_id }: Props) => {
 			setSelectedCommentId(item.cm_id)
 		}
 	}
+
+	//Comment
 	const handleComment = async (): Promise<void> => {
 		try {
 			if (content_comment) {
 				await fetch(`http://210.245.108.202:3001/api/timviec/new/comment`, {
 					headers: {
 						'Content-Type': 'application/json',
-						Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6MTQwNDE1NiwiaWRUaW1WaWVjMzY1IjoxMzMzNjc2LCJpZFFMQyI6OTcwODU5LCJpZFJhb05oYW5oMzY1IjowLCJlbWFpbCI6bnVsbCwicGhvbmVUSyI6IjAzNjc2NDg5MDciLCJjcmVhdGVkQXQiOjE2OTA0MjEwODUsInR5cGUiOjB9LCJpYXQiOjE2OTMzNjk3MDcsImV4cCI6MTY5MzQ1NjEwN30.hB8R4lGMIFDE0birZpTnjmcKDLdt5geN1uLDwPTQg3Q`,
+						Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6MTQwNDE1NiwiaWRUaW1WaWVjMzY1IjoxMzMzNjc2LCJpZFFMQyI6OTcwODU5LCJpZFJhb05oYW5oMzY1IjowLCJlbWFpbCI6bnVsbCwicGhvbmVUSyI6IjAzNjc2NDg5MDciLCJjcmVhdGVkQXQiOjE2OTA0MjEwODUsInR5cGUiOjB9LCJpYXQiOjE2OTM0NjcyNjgsImV4cCI6MTY5MzU1MzY2OH0.A3-8if-PGjG7WxigIX5qDaaHqFHL-6jKZT3FzTZyBI8`,
 					},
 					method: 'POST',
 					body: JSON.stringify({
 						cm_comment: content_comment,
-						cm_new_id: 870398,
+						cm_new_id: 871632,
 						cm_parent_id: cm_id,
 					}),
 				})
+				handleGetComment()
 			} else {
 				alert('Vui lòng nhập bình luận')
 			}
 		} catch (error) {}
 	}
+
 	const handleDeleteRepComment = () => {
 		setlistCommentRes([])
 	}
@@ -141,12 +128,10 @@ const Rep_comment = ({ listCommentRes, setlistCommentRes, cm_id }: Props) => {
 								</div>
 								<div className={`${styles.cm_cm_ev}`}>
 									<div className={`${styles.cm_list_ev}`}>
-										<span
-											className={`${styles.like_cm}`}
-											onMouseOver={() => setSelectedCommentIdShowIcon(item.cm_id)}
-										>
+										<span className={`${styles.like_cm}`} onClick={() => handleLikeDefault(item)}>
 											<span>
 												<div
+													onMouseOver={() => setSelectedCommentIdShowIcon(item.cm_id)}
 													className={`${styles.like_cm_txt}   
 													`}
 													id={`likeText_${item.cm_id}`}
@@ -212,21 +197,24 @@ const Rep_comment = ({ listCommentRes, setlistCommentRes, cm_id }: Props) => {
 											{' '}
 											{item?.arr_likes?.length}
 										</div>
-										<div>
-											{icons_used?.map((icon: Iicons, index: number) => {
-												return (
-													<span key={index} style={{ gap: 10 }}>
-														<Image
-															width={25}
-															height={25}
-															style={{ cursor: 'pointer' }}
-															src={icon?.img}
-															alt={icon?.alt}
-														/>
-													</span>
-												)
-											})}
-										</div>
+
+										{selectedCommentIconUsed == item.cm_id && (
+											<div>
+												{icons_used?.map((icon: Iicons, index: number) => {
+													return (
+														<span key={index} style={{ gap: 10 }}>
+															<Image
+																width={25}
+																height={25}
+																style={{ cursor: 'pointer' }}
+																src={icon?.img}
+																alt={icon?.alt}
+															/>
+														</span>
+													)
+												})}
+											</div>
+										)}
 									</span>
 									{selectedCommentId === item?.cm_id && (
 										<Input_Rep_Rep_comment

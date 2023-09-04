@@ -6,7 +6,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '@/reducers'
 import { closeModal } from '@/actions/actions'
 import Link from 'next/link'
-const Model_noti = () => {
+type Props = {
+	title?:string
+}
+const Model_noti = ({title}:Props) => {
 	const [inputValue, setInputValue] = useState('')
 	const [isValidSDT_Email, setIsValidSDT_Email] = useState(true)
 
@@ -51,7 +54,7 @@ const Model_noti = () => {
 			<div className={styles.wapper}>
 				<div className={styles.auth_form}>
 					<p className={styles.post_title}>
-						Đăng nhập Ứng viên để Ứng tuyển và Chat với nhà tuyển dụng
+						{title?title:"Đăng nhập Ứng viên để Ứng tuyển và Chat với nhà tuyển dụng" } 
 						<Image
 							onClick={handleCloseModal}
 							height={16}

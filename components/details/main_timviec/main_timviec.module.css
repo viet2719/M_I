@@ -2246,7 +2246,7 @@
 }
 
 .pos_ttin_all {
-	position: fixed;
+	position: absolute;
 	background: #ffffff;
 	width: 220px;
 	padding: 5px 5px;

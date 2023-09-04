@@ -21,12 +21,15 @@ const Chi_tiet_td = ({ isLogin }: Props) => {
 	const [showLuuTin, setLuuTin] = useState<boolean>(false)
 	const [stt_luutin, setStt_luutin] = useState<string>('Lưu tin')
 	const [stt_luuCongViec, setStt_luuCongViec] = useState<string>('Lưu công việc')
+	const [name_UT, setname_UT] = useState<string>('Ứng tuyển')
 	const [showPhanAnhNTD, setShowPhanAnhNTD] = useState<boolean>(false)
 	const [showMailUngTuyen, setshowMailUngTuyen] = useState<boolean>(false)
 	const [showWorkMatch, setShowWorkMatch] = useState<boolean>(false)
 	const [isCv, setisCv] = useState<boolean>(true)
 	const [showUserCallGiongNoi, setshowUserCallGiongNoi] = useState<boolean>(false)
 	const dispatch = useDispatch()
+
+	//BTN Lưu tin
 	const handleLuuTin: () => void = () => {
 		if (!isLogin) {
 			dispatch(openModal())
@@ -41,6 +44,7 @@ const Chi_tiet_td = ({ isLogin }: Props) => {
 			}
 		}
 	}
+	//BTN Lưu công việc
 	const handleLuuCongViec: () => void = () => {
 		if (!isLogin) {
 			dispatch(openModal())
@@ -55,17 +59,24 @@ const Chi_tiet_td = ({ isLogin }: Props) => {
 			}
 		}
 	}
+	//BTN Ứng tuyển
 	const handleUngTuyen: () => void = () => {
 		if (!isLogin) {
 			dispatch(openModal())
 		} else {
 			if (isCv) {
-				setshowMailUngTuyen(true)
+				if (name_UT === 'Ứng tuyển') {
+					setshowMailUngTuyen(true)
+					setname_UT('Đã ứng tuyển')
+				} else {
+					alert('Bạn đã ứng tuyển rồi')
+				}
 			} else {
 				setShowModelUngTuyen(true)
 			}
 		}
 	}
+	//BTN Phản ánh NTD
 	const handlePhanAnhNTD: () => void = () => {
 		if (!isLogin) {
 			dispatch(openModal())
@@ -259,7 +270,7 @@ const Chi_tiet_td = ({ isLogin }: Props) => {
 										src="https://timviec365.vn/images/detail/icon_ut.svg"
 										alt="ứng tuyển"
 									/>
-									Ứng tuyển
+									{name_UT}
 								</div>
 							</div>
 							<div
@@ -287,6 +298,7 @@ const Chi_tiet_td = ({ isLogin }: Props) => {
 
 			<div className={`${styles.content_info}`}>
 				<Scroll_option />
+
 				{/* audio */}
 				<div className={`${styles.audio_tindang}`}>
 					<div className={`${styles.audio_news}`}>
@@ -307,7 +319,7 @@ const Chi_tiet_td = ({ isLogin }: Props) => {
 								style={{ cursor: 'pointer' }}
 								onClick={() => setshowUserCallGiongNoi(!showUserCallGiongNoi)}
 								alt="Chọn người đọc"
-								title='Chọn người đọc'
+								title="Chọn người đọc"
 								width={20}
 								height={30}
 								src="https://timviec365.vn/images/img_new/exp_chuyengiong.png"
