@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import styles from '@/styles/common/box_search_tim_viec.module.scss'
 import Image from 'next/image'
 import Select from 'react-select'
-import BtnSelect from '../home/btnSelect'
+import BtnSelect from '../home/btn_search_advance/btnSelect'
 import Link from 'next/link'
 import { cityOption, jobsOptions } from '@/utils/constants'
 

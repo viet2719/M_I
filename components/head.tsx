@@ -1,20 +1,17 @@
 /* eslint-disable @next/next/no-css-tags */
 /* eslint-disable @next/next/next-script-for-ga */
+import { ISeo } from '@/utils/interface'
 import Head from 'next/head'
 
 import Script from 'next/script'
 // import { Helmet } from 'react-helmet'
+type Props ={
+	data:ISeo
+}
+//haha
 const Head_common = ({
-	title,
-	meta_title,
-	des,
-	keyw,
-	url,
-	robot,
-	url_img,
-	cano,
-	abstract,
-}: any) => {
+	data
+}: Props) => {
 	return (
 		<>
 			<Head>
@@ -22,12 +19,12 @@ const Head_common = ({
 				<link rel="preconnect" href="https://www.googletagmanager.com" />
 				<link rel="dns-prefetch" href="https://www.google-analytics.com" />
 				<link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-				<title>{title}</title>
-				<meta name="title" content="Tìm việc làm" />
+				<title>{data?.meta_title}</title>
+				<meta name="title" content={data?.h1} />
 				<meta httpEquiv="Content-Type" content="text/html;charset=UTF-8" />
-				<meta name="robots" content={robot} />
-				<meta name="description" content={des} />
-				<meta name="keywords" content={keyw} />
+				<meta name="robots" content={"index,nofollow"} />
+				<meta name="description" content={data?.meta_des} />
+				<meta name="keywords" content={data?.meta_key} />
 				<meta
 					name="viewport"
 					content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, width=device-width, user-scalable=no, minimal-ui"
@@ -35,17 +32,17 @@ const Head_common = ({
 				<meta property="og:site_name" content="Kênh tuyển dụng việc làm" />
 				<meta property="og:type" content="Website" />
 				<meta property="og:locale" content="vi_VN" />
-				<meta property="og:title" content={title} />
-				<meta property="og:url" content={url} />
-				<meta property="og:description" content={des} />
-				<meta property="og:image" content={url_img} />
+				<meta property="og:title" content={data?.meta_title} />
+				<meta property="og:url" content={data?.module} />
+				<meta property="og:description" content={data?.meta_des} />
+				<meta property="og:image" content={"https://timviec365.vn/images/banner/og_default.png"} />
 				<meta name="copyright" content="Copyright © 2018 by Timviec365.vn" />
 				<meta name="twitter:card" content="summary" />
-				<meta name="twitter:description" content={des} />
-				<meta name="twitter:title" content={title} />
+				<meta name="twitter:description" content={data?.meta_des} />
+				<meta name="twitter:title" content={data?.meta_title} />
 				<meta name="abstract" content="Tìm việc mới nhất trên toàn quốc - Tim viec online" />
 				<meta name="author" content="Timviec365.vn" />
-				<link rel="canonical" href={cano} />
+				<link rel="canonical" href={data?.module} />
 
 				{/* <Helmet> */}
 				<script type="application/ld+json">
