@@ -8,6 +8,7 @@ import Script from 'next/script'
 type Props ={
 	data:ISeo
 }
+//haha
 const Head_common = ({
 	data
 }: Props) => {
