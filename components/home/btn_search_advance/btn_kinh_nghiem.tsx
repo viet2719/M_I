@@ -1,22 +1,27 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from '@styles/home/btnSelect.module.scss'
 import Select from 'react-select'
+import { ICity } from '@/utils/interface'
 
-const BtnSelect = ({ children }: any) => {
-	const cityOptions = [
-		{ value: 'hanoi', label: 'Hà Nội' },
-		{ value: 'hochiminh', label: 'TP. Hồ Chí Minh' },
-		{ value: 'danang', label: 'Đà Nẵng' },
-		{ value: 'hue', label: 'Huế' },
-	]
+const BtnSelectKinhNghiem = ({ idCity }: any) => {
 	const [isSelectOpen, setIsSelectOpen] = useState(false)
+	const [listDistrict, setlistDistrict] = useState<any>([])
+	const [valueS, setvalueS] = useState<any>()
 	const handleSelectClick = () => {
 		setIsSelectOpen(!isSelectOpen) // Đảo ngược trạng thái khi click vào Select
 	}
+	const handleSelectCity = (value: any) => {
+		setvalueS(value)
+	}
+
 	return (
 		<div className={styles['pop']}>
-			<select className={styles['select']}>
-				<option value="">{children}</option>
+			<select
+				onChange={(e) => handleSelectCity(e.target.value)}
+				value={valueS}
+				className={styles['select']}
+			>
+				<option value="">Chọn kinh nghiệm</option>
 				<option value={0}>Chưa có kinh nghiệm</option>
 				<option value={1}>0 - 1 năm kinh nghiệm</option>
 				<option value={2}>Hơn 1 năm kinh nghiệm</option>
@@ -28,4 +33,4 @@ const BtnSelect = ({ children }: any) => {
 	)
 }
 
-export default BtnSelect
+export default BtnSelectKinhNghiem

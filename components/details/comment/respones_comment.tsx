@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { Icomment, Iicons } from './comment'
 import Input_Rep_comment from './input_rep_rep_comment'
 import { listIconStatus } from '@/utils/constants'
+import { base_timviec365 } from '@/components/service/functions'
 
 type Props = {
 	listComment: Icomment[]
@@ -78,7 +79,7 @@ const Respones_comment = ({ listComment, setlistComment, handleGetComment }: Pro
 	const handleComment = async (): Promise<void> => {
 		try {
 			if (content_comment) {
-				await fetch(`http://210.245.108.202:3001/api/timviec/new/comment`, {
+				await fetch(`${base_timviec365}/api/timviec/new/comment`, {
 					headers: {
 						'Content-Type': 'application/json',
 						Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6MTQwNDE1NiwiaWRUaW1WaWVjMzY1IjoxMzMzNjc2LCJpZFFMQyI6OTcwODU5LCJpZFJhb05oYW5oMzY1IjowLCJlbWFpbCI6bnVsbCwicGhvbmVUSyI6IjAzNjc2NDg5MDciLCJjcmVhdGVkQXQiOjE2OTA0MjEwODUsInR5cGUiOjB9LCJpYXQiOjE2OTM0NjcyNjgsImV4cCI6MTY5MzU1MzY2OH0.A3-8if-PGjG7WxigIX5qDaaHqFHL-6jKZT3FzTZyBI8`,

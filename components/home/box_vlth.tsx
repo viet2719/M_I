@@ -2,20 +2,24 @@ import Image from 'next/image'
 import React from 'react'
 import styles from '@styles/home/box_vlth.module.scss'
 import Link from 'next/link'
-
-const Box_vlth = ({ jobList }: any) => {
+import { calculateTimeDifference, unixTimestampToDateString } from '@/utils/convert'
+import { ICity, IJob } from '@/utils/interface'
+import { listCitys } from '@/utils/constants'
+type Props = {
+	jobList: IJob[]
+}
+const Box_vlth = ({ jobList }: Props) => {
 	return (
 		<div className={styles.main_box_vieclam1}>
 			<div className={styles.slide_hd}>
-				{jobList.map((job: any, index: any) => (
+				{jobList?.map((job: IJob, index: number) => (
 					<div key={index} className={`${styles.item_vl} ${styles.item_home_th}`}>
 						<div className={styles.in_vl}>
 							<div className={styles.img_item_vl}>
 								<Link
-									href={`/[slug]-p[id].html?slug=${job.link}&id=123`}
-									as={`/${job.link}-p123.html`}
+									href={`/${job?.new_alias}-p123.html`}
 									className={styles.logo_user_th}
-									title="[tuyen dung] nhan vien kinh doan"
+									title={job?.new_title}
 								>
 									<Image
 										height={70}
@@ -24,7 +28,9 @@ const Box_vlth = ({ jobList }: any) => {
 										className={`${styles.tia_set} ${styles.no_logo_chat} ${styles.lazyloaded}`}
 										alt="user_chat_off"
 									/>
-									<span className={styles.box_time_off}>1 ngay</span>
+									<span className={styles.box_time_off}>
+										{calculateTimeDifference(job.usc_time_login)}
+									</span>
 								</Link>
 								<div className={styles.box_vote_new}>
 									<Image
@@ -75,34 +81,46 @@ const Box_vlth = ({ jobList }: any) => {
 								<h3>
 									<Link
 										className={styles.tit_vip}
-										href={`/[slug]-p[id].html?slug=${job.link}&id=123`}
-										as={`/${job.link}-p123.html`}
-										title={job.title}
+										href={`/${job.new_alias}-p123.html`}
+										title={job.new_title}
 									>
-										{job.title}
+										{job.new_title}
 									</Link>
 								</h3>
 								<Link
 									className={styles.name_com}
-									href={`/[slug]-p[id].html?slug=${job.link}&id=123`}
-									as={`/${job.link}-p123.html`}
-									title={job.companyName}
+									href={`/${job.usc_alias}-co${job.new_id}`}
+									title={job.usc_company}
 								>
-									{job.companyName}
+									{job.usc_company}
 								</Link>
-								<p className={styles.job_local}>{job.location}</p>
-								<p className={styles.job_chat} data-id={job.id} id-chat={job.chatId}>
+								<p className={styles.job_local}>
+									{job.new_city[0] === 0
+										? 'Toàn quốc'
+										: job.new_city
+												.map((cityId, index) => {
+													const city = listCitys.find((item:any) => item.cit_id === cityId)
+													return city ? city.cit_name : null
+												})
+												.filter(Boolean)
+												.join(', ')}
+								</p>
+								<p className={styles.job_chat} data-id={job.new_id} id-chat={job.chat365_id}>
 									Chat
 								</p>
-								<p className={styles.job_time}>{job.date}</p>
-								<p className={styles.job_money} title={job.salary}>
-									{job.salary}
+								<p className={styles.job_time}>{unixTimestampToDateString(job.new_han_nop)}</p>
+								<p className={styles.job_money} title={`${job.nm_max_value}`}>
+									{job.nm_min_value / 1000000 == 0
+										? 'Thỏa thuận'
+										: `${job.nm_min_value / 1000000}${
+												job.nm_max_value / 1000000 == 0
+													? ''
+													: job.nm_max_value < 1000
+													? -job.nm_max_value
+													: -job.nm_max_value / 1000000
+										  } triệu`}
 								</p>
-								<Link
-									href={`/[slug]-p[id].html?slug=${job.link}&id=123`}
-									as={`/${job.link}-p123.html`}
-									className={styles.job_history}
-								>
+								<Link href={`/${job.new_alias}-p123.html`} className={styles.job_history}>
 									<Image
 										width={16}
 										height={16}

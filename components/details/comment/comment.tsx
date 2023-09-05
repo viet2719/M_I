@@ -12,6 +12,7 @@ import { useDispatch } from 'react-redux'
 import { openModal } from '@/actions/actions'
 import Model_Danhgia_details from '@/components/pop_up/model_danhgia_details'
 import { listIconStatus } from '@/utils/constants'
+import { base_timviec365 } from '@/components/service/functions'
 type Props = {
 	isLogin: boolean
 }
@@ -100,7 +101,7 @@ const Comment = ({ isLogin }: Props) => {
 	const handleComment = async (): Promise<void> => {
 		try {
 			if (content_comment) {
-				await fetch(`http://210.245.108.202:3001/api/timviec/new/comment`, {
+				await fetch(`${base_timviec365}/api/timviec/new/comment`, {
 					headers: {
 						'Content-Type': 'application/json',
 						Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6MTQwNDE1NiwiaWRUaW1WaWVjMzY1IjoxMzMzNjc2LCJpZFFMQyI6OTcwODU5LCJpZFJhb05oYW5oMzY1IjowLCJlbWFpbCI6bnVsbCwicGhvbmVUSyI6IjAzNjc2NDg5MDciLCJjcmVhdGVkQXQiOjE2OTA0MjEwODUsInR5cGUiOjB9LCJpYXQiOjE2OTM0NjcyNjgsImV4cCI6MTY5MzU1MzY2OH0.A3-8if-PGjG7WxigIX5qDaaHqFHL-6jKZT3FzTZyBI8`,
@@ -123,7 +124,7 @@ const Comment = ({ isLogin }: Props) => {
 	// Lấy danh sách comment của tin
 	const handleGetComment = async () => {
 		try {
-			const res = await fetch(`http://210.245.108.202:3001/api/timviec/new/listComment`, {
+			const res = await fetch(`${base_timviec365}/api/timviec/new/listComment`, {
 				headers: {
 					'Content-Type': 'application/json',
 					Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6MTQwNDE1NiwiaWRUaW1WaWVjMzY1IjoxMzMzNjc2LCJpZFFMQyI6OTcwODU5LCJpZFJhb05oYW5oMzY1IjowLCJlbWFpbCI6bnVsbCwicGhvbmVUSyI6IjAzNjc2NDg5MDciLCJjcmVhdGVkQXQiOjE2OTA0MjEwODUsInR5cGUiOjB9LCJpYXQiOjE2OTMzNjk3MDcsImV4cCI6MTY5MzQ1NjEwN30.hB8R4lGMIFDE0birZpTnjmcKDLdt5geN1uLDwPTQg3Q`,

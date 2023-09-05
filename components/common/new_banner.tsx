@@ -6,7 +6,7 @@ import Box_search from './box_search'
 import Header from './header'
 import Link from 'next/link'
 
-const New_banner = () => {
+const New_banner = ({}:any) => {
 	return (
 		<div>
 			<div className={styles.new_banner}>
@@ -33,7 +33,8 @@ const New_banner = () => {
 						<div className={styles.logo_banner}>
 							<h1 className={styles.title_search}>Tìm việc làm</h1>
 						</div>
-						<Box_search />
+						<Box_search 
+						/>
 					</div>
 
 					<div className={styles.btn_dow}>
