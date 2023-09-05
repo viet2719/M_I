@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-css-tags */
 /* eslint-disable @next/next/next-script-for-ga */
-import { ISeo } from '@/pages'
+import { ISeo } from '@/utils/interface'
 import Head from 'next/head'
 
 import Script from 'next/script'
