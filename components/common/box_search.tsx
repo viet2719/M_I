@@ -43,7 +43,6 @@ const Box_search = ({}: any) => {
 		setidCity(value)
 		setCheckSearchNameCity(true)
 	}
-	console.log('check', listDistrict, idCity)
 	// Sử dụng useEffect để theo dõi thay đổi của idCity
 	useEffect(() => {
 		if (idCity > 0) {
