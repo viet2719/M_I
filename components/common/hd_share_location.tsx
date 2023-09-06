@@ -3,9 +3,9 @@ import styles from '@/components/details/details.module.css'
 import Image from 'next/image'
 
 type Props = {
-  showHd:boolean
+  showHd?:boolean
   setshowHd:(value:boolean) => void
-  click:boolean
+  click?:boolean
 }
 
 const Hd_share_location = ({showHd,setshowHd,click}: Props) => {

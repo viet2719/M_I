@@ -6,13 +6,13 @@ import { calculateTimeDifference, unixTimestampToDateString } from '@/utils/conv
 import { ICity, IJob } from '@/utils/interface'
 import { listCitys } from '@/utils/constants'
 type Props = {
-	jobList: IJob[]
+	jobList: any
 }
-const Box_vlth = ({ jobList }: Props) => {
+const Box_AI = ({ jobList }: Props) => {
 	return (
 		<div className={styles.main_box_vieclam1}>
 			<div className={styles.slide_hd}>
-				{jobList?.map((job: IJob, index: number) => (
+				{jobList?.map((job: any, index: number) => (
 					<div key={index} className={`${styles.item_vl} ${styles.item_home_th}`}>
 						<div className={styles.in_vl}>
 							<div className={styles.img_item_vl}>
@@ -97,12 +97,21 @@ const Box_vlth = ({ jobList }: Props) => {
 									{job.usc_company}
 								</Link>
 								<p className={styles.job_local}>
-									{job.new_city[0] === 0
+									{job.new_city === '0'
 										? 'Toàn quốc'
-										: job?.new_city
-												?.map((cityId, index) => {
-													const city = listCitys?.find((item: any) => item.cit_id === cityId)
+										: job?.new_city?.split(',')
+												.map((cityId: any, index: number) => {
+													const city = listCitys.find(
+														(item: ICity) => item.cit_id === parseInt(cityId, 10)
+													)
 													return city ? city.cit_name : null
+												})
+												.sort((a: any, b: any) => {
+													const aId =
+														listCitys.find((item: ICity) => item.cit_name === a)?.cit_id || 0
+													const bId =
+														listCitys.find((item: ICity) => item.cit_name === b)?.cit_id || 0
+													return aId - bId
 												})
 												.filter(Boolean)
 												.join(', ')}
@@ -140,4 +149,4 @@ const Box_vlth = ({ jobList }: Props) => {
 	)
 }
 
-export default Box_vlth
+export default Box_AI
