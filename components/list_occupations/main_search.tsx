@@ -2,139 +2,26 @@ import Chat_NTD from '@/components/common/chat_NTD'
 import Footer from '@/components/common/footer'
 import New_banner from '@/components/common/new_banner'
 import Slide_cv from '@/components/common/slide_cv'
-import { listCities } from '@/utils/constants'
-import { unixTimestampToDateStringMon } from '@/utils/convert'
 import { IJob } from '@/utils/interface'
 import styles from '@styles/list_occupations/main_search.module.scss'
-import { Checkbox, Pagination } from 'antd'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import Box_bottom_cate from './box_bottom_cate'
+import { convertToSlug, removeHtmlTags, unixTimestampToDateStringMon } from '@/utils/convert'
+import { listCities } from '@/utils/constants'
+import { Button, Checkbox, Pagination } from 'antd'
+import Model_ungtuyen_sendmail_NTD from '../pop_up/model_ungtuyen_sendmail_NTD'
+import Model_works_match_after_ungtuyen from '../pop_up/model_works_match_after_ungtuyen'
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { base_timviec365 } from '../service/functions'
-import Box_bottom_cate from './box_bottom_cate'
 import List_cate from './item_cate'
 const Main_search = () => {
 	const islogin = true
+	const iscv = true
 	const dispatch = useDispatch()
 
-	const data = [
-		{
-			id: 1,
-			title: 'Ngành nghề liên quan:',
-			links: [
-				{
-					href: '/link-6',
-					text: 'Việc làm cộng tác viên kinh doanh tại Hà Nam',
-				},
-				{ href: '/link-7', text: 'Việc làm kinh doanh nội thất tại Hồ Vĩnh ' },
-				{ href: '/link-8', text: 'Việc làm kinh doanh online tại Ngã Ba Đần Lập' },
-				{
-					href: '/link-6',
-					text: 'Nhặt rác quanh hồ',
-				},
-				{
-					href: '/link-6',
-					text: 'Tester cấp thấp Hải Phòng',
-				},
-			],
-		},
-		{
-			id: 2,
-			title: 'Chức danh:',
-			links: [
-				{ href: '/link-4', text: 'Chủ tịch mặt trận' },
-				{ href: '/link-5', text: 'Lãnh đạo đánh cá' },
-				{ href: '/link-5', text: 'Trưởng phòng đào đạo đánh bắt hải sản' },
-				{ href: '/link-5', text: 'Nghiên cứu pháo chế tạo AL' },
-				{ href: '/link-5', text: 'Nhân viên cấp trung tính' },
-			],
-		},
-		{
-			id: 3,
-			title: 'Từ khóa liên quan:',
-			links: [
-				{
-					href: '/link-6',
-					text: 'Việc làm cộng tác viên kinh doanh tại Hồ Chí Minh',
-				},
-				{ href: '/link-7', text: 'Việc làm kinh doanh nội thất tại Hồ Chí Minh ' },
-				{ href: '/link-8', text: 'Việc làm kinh doanh online tại Hồ Chí Minh' },
-				{
-					href: '/link-6',
-					text: 'Việc làm cộng tác viên Hải Phòng',
-				},
-				{ href: '/link-7', text: 'Việc làm kinh doanh nội thất Hà Nội ' },
-				{ href: '/link-8', text: 'Việc làm kinh doanh online Hà Nội' },
-				{
-					href: '/link-6',
-					text: 'Việc làm cộng tác viên kinh doanh Hà Nội',
-				},
-				{ href: '/link-7', text: 'Việc làm kinh doanh nội thất tại Hồ Chí Minh ' },
-				{ href: '/link-8', text: 'Việc làm kinh doanh online tại Hồ Chí Minh' },
-			],
-		},
-		{
-			id: 4,
-			title: 'Địa điểm:',
-			links: [
-				{ href: '/link-9', text: 'Hà Tĩnh' },
-				{ href: '/link-9', text: 'Thanh Trì 9' },
-				{ href: '/link-9', text: 'Đô Lịch ' },
-				{ href: '/link-9', text: 'Trường Danh 21' },
-				{ href: '/link-9', text: 'Test thôi mà' },
-			],
-		},
-		{
-			id: 5,
-			title: 'Công ty:',
-			links: [
-				{ href: '/link-10', text: 'Link 10 Link 10 Link 10 Link 10 Link 10 Link 10Link 10' },
-				{ href: '/link-11', text: 'Link 11' },
-				{ href: '/link-12', text: 'Link 12' },
-				{ href: '/link-10', text: 'Link 10' },
-				{ href: '/link-11', text: 'Link 11' },
-				{ href: '/link-12', text: 'Link 12' },
-				{ href: '/link-10', text: 'Link 10' },
-				{ href: '/link-11', text: 'Link 11' },
-				{ href: '/link-12', text: 'Link 12' },
-				{ href: '/link-10', text: 'Link 10' },
-				{ href: '/link-11', text: 'Link 11' },
-				{ href: '/link-12', text: 'Link 12' },
-				{ href: '/link-10', text: 'Link 10' },
-				{ href: '/link-11', text: 'Link 11' },
-				{ href: '/link-12', text: 'Link 12' },
-				{ href: '/link-10', text: 'Link 10' },
-				{ href: '/link-11', text: 'Link 11' },
-				{ href: '/link-12', text: 'Link 12' },
-				{ href: '/link-10', text: 'Link 10' },
-				{ href: '/link-11', text: 'Link 11' },
-				{ href: '/link-12', text: 'Link 12' },
-				{ href: '/link-10', text: 'Link 10' },
-				{ href: '/link-11', text: 'Link 11' },
-				{ href: '/link-12', text: 'Link 12' },
-				{ href: '/link-10', text: 'Link 10' },
-				{ href: '/link-11', text: 'Link 11' },
-				{ href: '/link-12', text: 'Link 12' },
-				{ href: '/link-10', text: 'Link 10' },
-				{ href: '/link-11', text: 'Link 11' },
-				{ href: '/link-12', text: 'Link 12' },
-				{ href: '/link-10', text: 'Link 10' },
-				{ href: '/link-11', text: 'Link 11' },
-				{ href: '/link-12', text: 'Link 12' },
-				{ href: '/link-10', text: 'Link 10' },
-				{ href: '/link-11', text: 'Link 11' },
-				{ href: '/link-12', text: 'Link 12' },
-				{ href: '/link-10', text: 'Link 10' },
-				{ href: '/link-11', text: 'Link 11' },
-				{ href: '/link-12', text: 'Link 12' },
-				{ href: '/link-10', text: 'Link 10' },
-				{ href: '/link-11', text: 'Link 11' },
-				{ href: '/link-12', text: 'Link 12' },
-			],
-		},
-	]
 	const [expandedItems, setExpandedItems] = useState<any>()
 	const toggleItem = (index: number) => {
 		if (index === expandedItems) {
@@ -159,33 +46,65 @@ const Main_search = () => {
 	const [type, setType] = useState<string>('')
 	const [selectAllChecked, setSelectAllChecked] = useState<any>(false)
 	const [checkboxStates, setCheckboxStates] = useState<any>()
+	const [showMailUngTuyen, setshowMailUngTuyen] = useState<boolean>(false)
+	const [showWorkMatch, setShowWorkMatch] = useState<boolean>(false)
+	const [footerNew, setfooterNew] = useState<any>()
+	const [listChucDanh, setlistChucDanh] = useState<any>()
+	const [listDiaDiem, setlistDiaDiem] = useState<any>()
+	const [listCongTy, setlistCongTy] = useState<any>()
+	const data = [
+		{
+			id: 1,
+			title: 'Chức danh',
+			links: listChucDanh,
+		},
+		{
+			id: 2,
+			title: 'Địa điểm',
+			links: listDiaDiem,
+		},
+		{
+			id: 3,
+			title: 'Công ty',
+			links: listCongTy,
+		},
+	]
 	const handleGetJos = async () => {
-		try {
-			const res = await fetch(`${base_timviec365}/api/timviec/new/listJobBySearch`, {
-				headers: {
-					'Content-Type': 'application/json',
-				},
-				method: 'POST',
-				body: JSON.stringify({
-					city: router.query.id,
-					pageSize: pageSize,
-					page: page,
-					type: type,
-				}),
-			})
-			const data = await res.json()
-			setlistJobs(data?.data?.items)
-			setCheckboxStates(data?.data?.items?.map(() => false) || [])
-		} catch (error) {}
+		if( router.query.id){
+			try {
+			
+				const res = await fetch(`${base_timviec365}/api/timviec/new/listJobBySearch`, {
+					headers: {
+						'Content-Type': 'application/json',
+					},
+					method: 'POST',
+					body: JSON.stringify({
+						city: router.query.id,
+						pageSize: pageSize,
+						page: page,
+						type: type,
+					}),
+				})
+				const data = await res.json()
+				setlistJobs(data?.data?.items)
+				setCheckboxStates(data?.data?.items?.map(() => false) || [])
+				setfooterNew(data?.data?.footerNew)
+				setlistChucDanh(data?.data?.listChucDanh)
+				setlistDiaDiem(data?.data?.listCityReated)
+				setlistCongTy(data?.data?.listCongvieclienquan)
+			} catch (error) {}
+		}
+	
 	}
 	const [name, setname] = useState<string>('')
 	useEffect(() => {
-		handleGetJos()
+		
 		const nameCity: any = listCities.filter((item) => {
 			return item.cit_id === Number(router.query.id)
 		})
+		handleGetJos()
 		setname(nameCity[0]?.cit_name)
-	}, [page, router.query.id, pageSize, type])
+	}, [page, router.query.id,pageSize, type])
 
 	const date: any = new Date()
 	const handleChange = (e: any, cate: any) => {
@@ -209,9 +128,23 @@ const Main_search = () => {
 		setCheckboxStates(updatedStates)
 		setSelectAllChecked(!selectAllChecked)
 	}
+	const handleUngTuyen = () => {
+		setshowMailUngTuyen(true)
+	}
 	return (
 		<div>
 			<New_banner />
+			{/* Ấn nút ứng tuyển sau khi có CV */}
+			<Model_ungtuyen_sendmail_NTD
+				showMailUngTuyen={showMailUngTuyen}
+				setshowMailUngTuyen={setshowMailUngTuyen}
+				setShowWorkMatch={setShowWorkMatch}
+			/>
+			{/* Sau khi thoát model sendmail */}
+			<Model_works_match_after_ungtuyen
+				showWorkMatch={showWorkMatch}
+				setShowWorkMatch={setShowWorkMatch}
+			/>
 			<div className={styles.main_timviec}>
 				<div className={styles.container_timviec}>
 					<div className={`${styles.div_bre} ${styles.div_bre_2}`}>
@@ -243,7 +176,7 @@ const Main_search = () => {
 								{listComp.map((comp, index) => {
 									return (
 										<div key={index}>
-											{islogin && comp.id == 0 ? (
+											{islogin && iscv && comp.id == 0 ? (
 												<div
 													onClick={handleSelectAll}
 													key={index}
@@ -251,7 +184,8 @@ const Main_search = () => {
 														compActive === comp.id ? styles.active : ''
 													}`}
 												>
-													<Checkbox className="custom-checkbox" /> {comp.comp}
+													<Checkbox checked={selectAllChecked} className="custom-checkbox" />{' '}
+													{comp.comp}
 												</div>
 											) : (
 												<div>
@@ -283,8 +217,13 @@ const Main_search = () => {
 										</div>
 									)
 								})}
-								{islogin && (
-									<p className={`${styles.ut_all} ${styles.btn_bl_w}`}>Ứng tuyển tất cả</p>
+								{islogin && iscv && (
+									<p
+										onClick={() => handleUngTuyen()}
+										className={`${styles.ut_all} ${styles.btn_bl_w}`}
+									>
+										Ứng tuyển tất cả
+									</p>
 								)}
 
 								<div className={styles.box_mb_items}>
@@ -397,9 +336,33 @@ const Main_search = () => {
 								}`}
 							>
 								<p className={styles.title_tag}>{item.title}</p>
-								{item.links.map((link, linkIndex) => (
+								{item?.links?.map((link: any, linkIndex: any) => (
 									<React.Fragment key={linkIndex}>
-										<Link href={link.href}>{link.text}</Link>
+										<Link href={`tag4/viec-lam-nhan-vien-phuc-vu-quan-cafe-tai-ha-noi-698`}>
+											{link?.key_name ? (
+												link?.key_name
+											) : link?.key_qh_id ? (
+												listCities.map((item) => {
+													{
+														if (item.cit_id === link?.key_id) {
+															return (
+																<Link
+																	href={`tim-viec-tai-${convertToSlug(item?.cit_name)}-c0v${
+																		item?.cit_id
+																	}}`}
+																>
+																	Việc làm tại {item?.cit_name}
+																</Link>
+															)
+														}
+													}
+												})
+											) : (
+												<Link href={`${convertToSlug(link?.usc_company)}-co${link?.usc_id}`}>
+													{link?.usc_company}
+												</Link>
+											)}
+										</Link>
 										{linkIndex < item.links.length - 1 && <span>-</span>}
 									</React.Fragment>
 								))}
@@ -426,7 +389,7 @@ const Main_search = () => {
 						))}
 					</div>
 
-					<Box_bottom_cate />
+					<Box_bottom_cate footerNew={footerNew} />
 				</div>
 			</div>
 

@@ -1,10 +1,12 @@
-import { listCitys, listNganhNghe } from '@/utils/constants'
 import {
 	calculateTimeDifference,
 	convertToSlug,
 	removeHtmlTags,
 	unixTimestampToDateString,
 } from '@/utils/convert'
+import { listCitys, listNganhNghe } from '@/utils/constants'
+import Model_ungtuyen_sendmail_NTD from '../pop_up/model_ungtuyen_sendmail_NTD'
+import Model_works_match_after_ungtuyen from '../pop_up/model_works_match_after_ungtuyen'
 import { ICity, IJob } from '@/utils/interface'
 import styles from '@styles/list_occupations/item_cate.module.scss'
 import { Button, Checkbox } from 'antd'
@@ -25,6 +27,7 @@ type Props = {
 const List_cate = ({ listJobs, name, checkedBox, handleChange, checkboxStates }: Props) => {
 	const dispatch = useDispatch()
 	const islogin = true
+	const iscv = true
 	const [openCategory, setOpenCategory] = useState<any>(null)
 	const toggleCategory = (cateId: any) => {
 		if (openCategory === cateId) {
@@ -45,8 +48,6 @@ const List_cate = ({ listJobs, name, checkedBox, handleChange, checkboxStates }:
 
 	const [loading, setLoading] = useState<boolean>(true)
 	const [selectedId, setSelectedId] = useState<any | null>(null)
-	const [listJobsID, setlistJobsID] = useState<any[]>([])
-
 	// useEffect(() => {
 	// 	if (selectedId) {
 	// 		const fetchData1 = async () => {
@@ -78,15 +79,36 @@ const List_cate = ({ listJobs, name, checkedBox, handleChange, checkboxStates }:
 		setSelectedId(id)
 	}
 	const router = useRouter()
-
+	const [showMailUngTuyen, setshowMailUngTuyen] = useState<boolean>(false)
+	const [showWorkMatch, setShowWorkMatch] = useState<boolean>(false)
+	const [ungTuyen, setungTuyen] = useState('Ứng tuyển')
+	const [idUngTuyen, setIdUngTuyen] = useState<any>()
+	const handleUngTuyen = (cate: any) => {
+		if (idUngTuyen !== cate.new_id) {
+			setIdUngTuyen(cate.new_id)
+			setshowMailUngTuyen(true)
+			setungTuyen('Đã ứng tuyển')
+		}
+	}
 	return (
 		<div className={styles.main_cate}>
+			{/* Ấn nút ứng tuyển sau khi có CV */}
+			<Model_ungtuyen_sendmail_NTD
+				showMailUngTuyen={showMailUngTuyen}
+				setshowMailUngTuyen={setshowMailUngTuyen}
+				setShowWorkMatch={setShowWorkMatch}
+			/>
+			{/* Sau khi thoát model sendmail */}
+			<Model_works_match_after_ungtuyen
+				showWorkMatch={showWorkMatch}
+				setShowWorkMatch={setShowWorkMatch}
+			/>
 			{listJobs?.length > 0 && (
 				<ul>
 					{listJobs?.map((cate?: IJob | any, index?: any) => {
 						return (
 							<div className={styles.item_cate} key={index}>
-								{islogin && (
+								{islogin && iscv && (
 									<Checkbox
 										checked={checkboxStates[index]} // Sử dụng trạng thái tương ứng
 										onChange={(e: any) => handleChange(e, cate)}
@@ -132,8 +154,11 @@ const List_cate = ({ listJobs, name, checkedBox, handleChange, checkboxStates }:
 											{calculateTimeDifference(cate?.usc_time_login)}
 										</span>{' '}
 									</Link>
-									<Button style={{ background: '#4C5BD4', color: '#fff', borderRadius: 50 }}>
-										Ứng tuyển
+									<Button
+										onClick={() => handleUngTuyen(cate)}
+										style={{ background: '#4C5BD4', color: '#fff', borderRadius: 50 }}
+									>
+										{idUngTuyen === cate.new_id ? ungTuyen : 'Ứng tuyển'}
 									</Button>
 									<div className={styles.box_vote_new}>
 										<Image
@@ -291,10 +316,11 @@ const List_cate = ({ listJobs, name, checkedBox, handleChange, checkboxStates }:
 										</p>
 										<span className={styles.job_chat + ' ' + styles.m_online}>Chat</span>
 										<span
+											onClick={() => handleUngTuyen(cate)}
 											style={{ left: 200, width: 150, background: '#4C5BD4', color: '#fff' }}
 											className={styles.job_chat + ' ' + styles.ung_tuyen}
 										>
-											Ứng tuyển
+											{ungTuyen}
 										</span>
 
 										<div className={`${styles.con_tooltip} ${styles.top} ${styles.frame_txt}`}>
