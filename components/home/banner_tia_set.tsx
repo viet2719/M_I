@@ -2,10 +2,40 @@
 import styles from '@styles/home/home.module.scss'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useEffect, useState } from 'react'
+import dynamic from 'next/dynamic'
+
 type Props = {}
 
 const Banner_tia_set = (props: Props) => {
+    const [timeLeft, setTimeLeft] = useState(getTimeLeft());
 
+    useEffect(() => {
+      const timer = setInterval(() => {
+        setTimeLeft(getTimeLeft());
+      }, 1000);
+  
+      return () => {
+        clearInterval(timer);
+      };
+    }, []);
+  
+    function getTimeLeft() {
+      const now:any = new Date();
+      const midnight:any = new Date(now);
+      midnight.setHours(24, 0, 0, 0);
+  
+      const timeUntilMidnight:any = midnight - now;
+  
+      const hours = Math.floor((timeUntilMidnight % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((timeUntilMidnight % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timeUntilMidnight % (1000 * 60)) / 1000);
+      return {
+        hours: String(hours).padStart(2, '0'),
+        minutes: String(minutes).padStart(2, '0'),
+        seconds: String(seconds).padStart(2, '0'),
+      };
+    }
   return (
     <div className={`${styles.box_banner_tiaset} ${styles.banner_home_tiaset}`}>
     <div className={styles.content_banner_tiaset}>
@@ -23,10 +53,10 @@ const Banner_tia_set = (props: Props) => {
                     <div className={`${styles.box_countdown_item} ${styles.hour}`}>
                         <div className={styles.box_num_clock}>
                             <div className={styles.box_lock}>
-                                <p className={`${styles.num_clock} ${styles.one} `}>0</p>
+                                <p className={`${styles.num_clock} ${styles.one} `}>{timeLeft.hours[0]}</p>
                             </div>
                             <div className={styles.box_lock}>
-                                <p className={`${styles.num_clock} ${styles.two}`}>7</p>
+                                <p className={`${styles.num_clock} ${styles.two}`}>{timeLeft.hours[1]}</p>
                             </div>
                         </div>
                         <p className={styles.title_clock}>GIỜ</p>
@@ -35,10 +65,10 @@ const Banner_tia_set = (props: Props) => {
                     <div className={`${styles.box_countdown_item} ${styles.minute}`}>
                         <div className={styles.box_num_clock}>
                             <div className={styles.box_lock}>
-                                <p className={`${styles.num_clock} ${styles.one} `}>0</p>
+                                <p className={`${styles.num_clock} ${styles.one} `}>{timeLeft.minutes[0]}</p>
                             </div>
                             <div className={styles.box_lock}>
-                                <p className={`${styles.num_clock} ${styles.two}`}>7</p>
+                                <p className={`${styles.num_clock} ${styles.two}`}>{timeLeft.minutes[1]}</p>
                             </div>
                         </div>
                         <p className={styles.title_clock}>PHÚT</p>
@@ -47,10 +77,10 @@ const Banner_tia_set = (props: Props) => {
                     <div className={`${styles.box_countdown_item} ${styles.second}`}>
                         <div className={styles.box_num_clock}>
                             <div className={styles.box_lock}>
-                                <p className={`${styles.num_clock} ${styles.one} `}>0</p>
+                                <p className={`${styles.num_clock} ${styles.one} `}>{timeLeft.seconds[0]}</p>
                             </div>
                             <div className={styles.box_lock}>
-                                <p className={`${styles.num_clock} ${styles.two}`}>7</p>
+                                <p className={`${styles.num_clock} ${styles.two}`}>{timeLeft.seconds[1]}</p>
                             </div>
                         </div>
                         <p className={styles.title_clock}>GIÂY</p>

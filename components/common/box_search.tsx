@@ -4,7 +4,7 @@ import Image from 'next/image'
 import Select from 'react-select'
 import BtnSelect from '../home/btn_search_advance/btnSelect'
 import Link from 'next/link'
-import { listCitys } from '@/utils/constants'
+import { listCities, listCitys } from '@/utils/constants'
 import BtnSelectQuan from '../home/btn_search_advance/btn_quan_huyen'
 import BtnSelectLevel from '../home/btn_search_advance/btn_level'
 import BtnSelectSalary from '../home/btn_search_advance/btn_salary'
@@ -15,6 +15,7 @@ import BtnSelectKinhNghiem from '../home/btn_search_advance/btn_kinh_nghiem'
 import BtnSelectDay from '../home/btn_search_advance/btn_ngay_cap_nhat'
 import { base_timviec365 } from '../service/functions'
 import { ICity } from '@/utils/interface'
+import { convertToSlug } from '@/utils/convert'
 
 const Box_search = ({}: any) => {
 	// Xử lý show-hide phần tìm kiếm theo tên
@@ -26,6 +27,8 @@ const Box_search = ({}: any) => {
 	const [listDistrict, setlistDistrict] = useState<any>([])
 
 	const [idCity, setidCity] = useState<any>()
+	// Tên thành phố được chọn => c0v
+	const name:any = listCities.filter(item=>{return item.cit_id===idCity})
 	const handleGetDistrict = async () => {
 		try {
 			const res = await fetch(`${base_timviec365}/api/getData/district`, {
@@ -295,9 +298,9 @@ const Box_search = ({}: any) => {
 							/>
 						</span>
 					</span>
-					<div className={styles['mobi-bor']}>
+					<Link href={`/tim-viec-tai-${convertToSlug(name[0]?.cit_name)}-c0v${name[0]?.cit_id}`} className={styles['mobi-bor']}>
 						<input type="submit" className={styles.btn_search} value="Tìm kiếm" />
-					</div>
+					</Link>
 					<Image
 						height={40}
 						width={40}
