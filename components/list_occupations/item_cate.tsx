@@ -1,31 +1,28 @@
-import { openModal } from '@/actions/actions'
-import styles from '@styles/list_occupations/item_cate.module.scss'
-import Image from 'next/image'
-import Link from 'next/link'
-import { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
-import Model_noti from '../pop_up/model_noti'
-import Box_comment from '../common/box_comment'
-import axios from 'axios'
-import { base_timviec365 } from '../service/functions'
-import { useRouter } from 'next/router'
-import { ICity, IJob } from '@/utils/interface'
-import { Button, Checkbox } from 'antd'
+import { listCitys, listNganhNghe } from '@/utils/constants'
 import {
 	calculateTimeDifference,
 	convertToSlug,
 	removeHtmlTags,
 	unixTimestampToDateString,
 } from '@/utils/convert'
-import { listCitys, listNganhNghe } from '@/utils/constants'
+import { ICity, IJob } from '@/utils/interface'
+import styles from '@styles/list_occupations/item_cate.module.scss'
+import { Button, Checkbox } from 'antd'
+import Image from 'next/image'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+import { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import Box_comment from '../common/box_comment'
+import Model_noti from '../pop_up/model_noti'
 type Props = {
 	listJobs: IJob[]
 	name: string
 	checkedBox: any
-	handleChange:any
-	checkboxStates:any
+	handleChange: any
+	checkboxStates: any
 }
-const List_cate = ({ listJobs, name, checkedBox ,handleChange,checkboxStates}: Props) => {
+const List_cate = ({ listJobs, name, checkedBox, handleChange, checkboxStates }: Props) => {
 	const dispatch = useDispatch()
 	const islogin = true
 	const [openCategory, setOpenCategory] = useState<any>(null)
@@ -44,7 +41,6 @@ const List_cate = ({ listJobs, name, checkedBox ,handleChange,checkboxStates}: P
 			setStateSeenAll(id)
 		}
 	}
-
 	// Lấy danh sách tin
 
 	const [loading, setLoading] = useState<boolean>(true)
@@ -83,8 +79,6 @@ const List_cate = ({ listJobs, name, checkedBox ,handleChange,checkboxStates}: P
 	}
 	const router = useRouter()
 
-
-	
 	return (
 		<div className={styles.main_cate}>
 			{listJobs?.length > 0 && (
@@ -322,7 +316,7 @@ const List_cate = ({ listJobs, name, checkedBox ,handleChange,checkboxStates}: P
 											>
 												Yêu cầu: {removeHtmlTags(cate.new_yeucau)}
 											</p>
-											<span className={styles.tooltip}>
+											{/* <span className={styles.tooltip}>
 												<span>
 													Yêu thích kinh doanh, máu lửa, năng động, tự tin, giao tiếp tốt Tốt nghiệp
 													Cao đẳng trở lên các khối ngành kinh tế, quản trị kinh doanh,... Độ tuổi:
@@ -330,7 +324,7 @@ const List_cate = ({ listJobs, name, checkedBox ,handleChange,checkboxStates}: P
 													email. Năng động, nhiệt tình, kiên trì, chịu khó, có khả năng tập trung
 													công việc cao
 												</span>
-											</span>
+											</span> */}
 										</div>
 										<div className={styles.box_btn_ut_mb}></div>
 									</div>
@@ -378,7 +372,7 @@ const List_cate = ({ listJobs, name, checkedBox ,handleChange,checkboxStates}: P
 										</ul>
 									</div>
 								)}
-								{/* <Box_comment id={selectedId} /> */}
+								<Box_comment id={cate?.new_id} />
 							</div>
 						)
 					})}
