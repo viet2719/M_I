@@ -1,7 +1,3 @@
-import Chat_NTD from '@/components/common/chat_NTD'
-import Footer from '@/components/common/footer'
-import New_banner from '@/components/common/new_banner'
-import Slide_cv from '@/components/common/slide_cv'
 import styles from '@styles/list_occupations/main_search.module.scss'
 import Image from 'next/image'
 import Link from 'next/link'
