@@ -85,7 +85,7 @@ export const unixTimestampToDateStringMon=(timestamp:number)=> {
 // Bỏ thẻ html
   export const removeHtmlTags = (htmlString:any) =>{
 	// Sử dụng DOMParser để phân tích chuỗi HTML thành một tài liệu DOM
-	const parser = new DOMParser();
+	const parser:any = new DOMParser();
 	const doc = parser.parseFromString(htmlString, 'text/html');
 
   // Sử dụng innerText để trích xuất văn bản không có thẻ HTML

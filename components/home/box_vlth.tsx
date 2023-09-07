@@ -111,7 +111,7 @@ const Box_vlth = ({ jobList }: Props) => {
 								<Link
 									onClick={handleLinkClick}
 									className={styles.name_com}
-									href={`/${job.usc_alias?job.usc_alias:convertToSlug(job?.usc_company)}-co${job.new_id}`}
+									href={`/${job.usc_alias?job.usc_alias:convertToSlug(job?.usc_company)}-co${job.usc_id}`}
 									title={job.usc_company}
 								>
 									{job.usc_company}

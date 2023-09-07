@@ -91,7 +91,7 @@ const Box_AI = ({ jobList }: Props) => {
 								</h3>
 								<Link
 									className={styles.name_com}
-									href={`/${job.usc_alias?job.usc_alias:convertToSlug(job?.usc_company)}-co${job.new_id}`}
+									href={`/${job.usc_alias?job.usc_alias:convertToSlug(job?.usc_company)}-co${job?.usc_id}`}
 									title={job.usc_company}
 								>
 									{job.usc_company}
