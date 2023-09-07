@@ -21,8 +21,8 @@ const Mobile_form_after_login = (props: Props) => {
 							<div style={{ display: 'flex', gap: 10 }}>
 								<div>
 									<Image
-										width={36}
-										height={36}
+										width={64}
+										height={64}
 										className={`${styles.ctn_avt_us} + ${styles.lazyloaded}`}
 										src="https://timviec365.vn/images/dk_s.png"
 										data-src="/images/dk_s.png"

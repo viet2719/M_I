@@ -2,6 +2,7 @@ import React from 'react'
 import styles from '../main_timviec/main_timviec.module.css'
 import Link from 'next/link'
 import Image from 'next/image'
+import Slide_cv_details from '@/components/common/slide_cv_details'
 
 type Props = {}
 
@@ -236,64 +237,9 @@ const All_content_post_sub = (props: Props) => {
 					</div>
 					<div className={`${styles.tit_chat_right}`} />
 				</div>
-				<div className={`${styles.w_100} ${styles.slide_home}`}>
-					<div className={`${styles.list_cv} ${styles.slick_initialized} ${styles.slick_slider}`}>
-						<div aria-live="polite" className={`${styles.slick_list} ${styles.draggable}`}>
-							<div
-								className={`${styles.slick_track}`}
-								role="listbox"
-								style={{
-									opacity: 1,
-									width: 952,
-									transform: 'translate3d(-238px, 0px, 0px)',
-								}}
-							>
-								<div
-									className={`${styles.item} ${styles.slick_slide} ${styles.slick_cloned}`}
-									tabIndex={-1}
-									aria-describedby="slick_slide01"
-									style={{ width: 238 }}
-									data-slick-index={-1}
-									aria-hidden="true"
-								></div>
-								<div
-									className={`${styles.item} ${styles.slick_slide} ${styles.slick_current} ${styles.slick_active}`}
-									tabIndex={-1}
-									aria-describedby="slick_slide00"
-									style={{ width: 238 }}
-									data-slick-index={0}
-									aria-hidden="false"
-								>
-									<div className={`${styles.wa}`}>
-										<Image
-											width={1080}
-											height={300}
-											className={`${styles.lazyloaded}`}
-											src="https://timviec365.vn/cv365/upload/cv/thumb/avatar-cv-ky-thuat-tieng-nhat-timviec365.vn.jpg"
-											data-src="https://timviec365.vn/cv365/upload/cv/thumb/avatar-cv-ky-thuat-tieng-nhat-timviec365.vn.jpg"
-											alt="Kỹ Thuật 10"
-											title="Kỹ Thuật 10"
-										/>
-										<div className={`${styles.info}`}>
-											<div className={`${styles.btn_box}`}>
-												{/* <p><Link href="https://timviec365.vn/cv365/ky-thuat/mau-10" target="_blank">Sử dụng mẫu này</Link></p> */}
-												<p>
-													<Link
-														href="https://timviec365.vn/cv365/tao-cv-ky-thuat/mau-10"
-														target="_blank"
-														tabIndex={0}
-													>
-														Sử dụng mẫu này
-													</Link>
-												</p>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+
+				{/* CV */}
+				<Slide_cv_details />
 			</div>
 			<div className={`${styles.qr}`}>
 				<div className={`${styles.logo_timviec}`}>
@@ -326,7 +272,7 @@ const All_content_post_sub = (props: Props) => {
 						</Link>
 					</div>
 					<div className={`${styles.d_flex} ${styles.f_column}`}>
-					<Image
+						<Image
 							width={100}
 							height={100}
 							className={`${styles.img_dl_qr}`}

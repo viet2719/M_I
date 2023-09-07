@@ -52,5 +52,32 @@ a {
 	font-family: 'Roboto-Medium';
 	src: url('/font/Roboto-Medium.ttf');
 }
+:where(.css-dev-only-do-not-override-byeoj0).ant-carousel .slick-dots li button {
+    position: relative;
+    display: block;
+    width: 160%;
+    height: 8px;
+    padding: 0;
+    color: transparent;
+    font-size: 0;
+    background: #878080;
+    border: 0;
+    border-radius: 1px;
+    outline: none;
+    cursor: pointer;
+    opacity: 0.3;
+    transition: all 0.3s;
+}
+:where(.css-dev-only-do-not-override-byeoj0).ant-carousel .slick-dots-bottom {
+    display: flex;
+    gap: 25px;
+	top: 848px;
+}
+:where(.css-dev-only-do-not-override-byeoj0).ant-carousel .slick-dots li.slick-active button {
+  background: #4c5bd4;
+    opacity: 1;
+}
+
+
 
 

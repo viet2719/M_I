@@ -18,8 +18,8 @@ const Pc_form_after_login = (props: Props) => {
 							<div style={{ display: 'flex', gap: 10 }}>
 								<div>
 									<Image
-									width={20}
-									height={21}
+										width={64}
+										height={64}
 										className={`${styles.ctn_avt_us} + ${styles.lazyloaded}`}
 										src="https://timviec365.vn/images/dk_s.png"
 										data-src="/images/dk_s.png"
@@ -71,8 +71,8 @@ const Pc_form_after_login = (props: Props) => {
 										}}
 									>
 										<Image
-										width={20}
-										height={21}
+											width={20}
+											height={21}
 											className={`${styles.ic_menu}`}
 											src="https://timviec365.vn/images/New_images/ic_menu_btin.svg"
 											alt="bảng tin"
@@ -96,8 +96,8 @@ const Pc_form_after_login = (props: Props) => {
 											<div style={{ display: 'flex', gap: 10, color: 'black', fontSize: 14 }}>
 												<div>
 													<Image
-													width={20}
-													height={21}
+														width={20}
+														height={21}
 														className={styles.ic_menu}
 														src="https://timviec365.vn/images/New_images/ic_menu_qlc.svg"
 														alt="quản lý chung"
@@ -134,8 +134,8 @@ const Pc_form_after_login = (props: Props) => {
 													<div style={{ display: 'flex', gap: 10, color: 'black', fontSize: 14 }}>
 														<div>
 															<Image
-															width={20}
-															height={21}
+																width={20}
+																height={21}
 																className={styles.ic_menu}
 																src="https://timviec365.vn/images/New_images/ic_menu_hsxv.svg"
 																alt="hồ sơ xin việc"
@@ -152,8 +152,8 @@ const Pc_form_after_login = (props: Props) => {
 													</div>
 													<div>
 														<Image
-														width={20}
-														height={21}
+															width={20}
+															height={21}
 															className={`${styles.ic_menu} ${styles.ic_menu_angle} ${styles.angle_menu_hsxv}`}
 															src="https://timviec365.vn/images/New_images/angle_bottom.svg"
 															alt="mở rộng"
@@ -183,12 +183,7 @@ const Pc_form_after_login = (props: Props) => {
 																rel="nofollow"
 																className={`${styles.txt_qlc_more}${styles.cursor_pt}`}
 															>
-																<p
-																	className={`${styles.txt_qlct} ${styles.txt_menu_mobile}`}
-																	style={{ color: 'rgb(71, 71, 71)' }}
-																>
-																	CV xin việc
-																</p>
+																<p style={{ color: 'rgb(71, 71, 71)' }}>CV xin việc</p>
 															</Link>
 															<Link
 																href="/ho-so-tai-len"
@@ -274,8 +269,8 @@ const Pc_form_after_login = (props: Props) => {
 													<div style={{ display: 'flex', gap: 10, color: 'black', fontSize: 14 }}>
 														<div>
 															<Image
-															width={20}
-															height={21}
+																width={20}
+																height={21}
 																className={styles.ic_menu}
 																src="https://timviec365.vn/images/New_images/ic_menu_hths.svg"
 																alt="hoàn thiện hồ sơ"
@@ -292,8 +287,8 @@ const Pc_form_after_login = (props: Props) => {
 													</div>
 													<div>
 														<Image
-														width={20}
-														height={21}
+															width={20}
+															height={21}
 															className={`${styles.ic_menu} ${styles.ic_menu_angle} ${styles.angle_menu_hsxv}`}
 															src="https://timviec365.vn/images/New_images/angle_bottom.svg"
 															alt="mở rộng"
@@ -337,8 +332,8 @@ const Pc_form_after_login = (props: Props) => {
 											<div style={{ display: 'flex', gap: 10, color: 'black', fontSize: 14 }}>
 												<div>
 													<Image
-													width={20}
-													height={21}
+														width={20}
+														height={21}
 														className={`${styles.ic_menu}`}
 														src="https://timviec365.vn/images/New_images/ic_menu_gyvlai.svg"
 														alt="việc làm gợi ý từ AI"
@@ -363,8 +358,8 @@ const Pc_form_after_login = (props: Props) => {
 											<div style={{ display: 'flex', gap: 10, color: 'black', fontSize: 14 }}>
 												<div>
 													<Image
-													width={20}
-													height={21}
+														width={20}
+														height={21}
 														className={`${styles.ic_menu}`}
 														src="https://timviec365.vn/images/New_images/ic_menu_vldut.png"
 														alt="việc làm đã ứng tuyển"
@@ -388,8 +383,8 @@ const Pc_form_after_login = (props: Props) => {
 											<div style={{ display: 'flex', gap: 10, color: 'black', fontSize: 14 }}>
 												<div>
 													<Image
-													width={20}
-													height={21}
+														width={20}
+														height={21}
 														className={`${styles.ic_menu}`}
 														src="https://timviec365.vn/images/New_images/ic_menu_vldl.svg"
 														alt="việc làm đã lưu"
@@ -411,8 +406,8 @@ const Pc_form_after_login = (props: Props) => {
 											<div style={{ display: 'flex', gap: 10, color: 'black', fontSize: 14 }}>
 												<div>
 													<Image
-													width={20}
-													height={21}
+														width={20}
+														height={21}
 														className={`${styles.ic_menu}`}
 														src="https://timviec365.vn/images/New_images/ic_menu_chat.svg"
 														alt="chat365"
@@ -436,8 +431,8 @@ const Pc_form_after_login = (props: Props) => {
 											<div style={{ display: 'flex', gap: 10, color: 'black', fontSize: 14 }}>
 												<div>
 													<Image
-													width={20}
-													height={21}
+														width={20}
+														height={21}
 														className={`${styles.ic_menu}`}
 														src="https://timviec365.vn/images/New_images/ic_menu_email.svg"
 														alt="email đã nhận"
@@ -471,8 +466,8 @@ const Pc_form_after_login = (props: Props) => {
 												<div style={{ display: 'flex', gap: 10, color: 'black', fontSize: 14 }}>
 													<div>
 														<Image
-														width={20}
-														height={21}
+															width={20}
+															height={21}
 															className={`${styles.ic_menu}`}
 															src="https://timviec365.vn/images/New_images/ic_menu_qltk.svg"
 															alt="quản lý tài khoản"
@@ -489,8 +484,8 @@ const Pc_form_after_login = (props: Props) => {
 												</div>
 												<div>
 													<Image
-													width={20}
-													height={21}
+														width={20}
+														height={21}
 														className={`${styles.ic_menu} ${styles.ic_menu_angle} ${styles.angle_menu_hsxv}`}
 														src="https://timviec365.vn/images/New_images/angle_bottom.svg"
 														alt="mở rộng"
@@ -564,11 +559,20 @@ const Pc_form_after_login = (props: Props) => {
 								<li
 									className={`${styles.header_poppup_item} ${styles.box_ic_menu} ${styles.cursor_pt}`}
 								>
-									<div style={{ display: 'flex', gap: 10, color: 'black', fontSize: 14,paddingLeft:20,paddingTop:10 }}>
+									<div
+										style={{
+											display: 'flex',
+											gap: 10,
+											color: 'black',
+											fontSize: 14,
+											paddingLeft: 20,
+											paddingTop: 10,
+										}}
+									>
 										<div>
 											<Image
-											width={20}
-											height={21}
+												width={20}
+												height={21}
 												className={`${styles.ic_menu}`}
 												src="https://timviec365.vn/images/New_images/ic_menu_dxuat.svg"
 												alt="đăng xuất"
@@ -595,7 +599,9 @@ const Pc_form_after_login = (props: Props) => {
 									width={20}
 									height={21}
 									className={`${styles.ic_menu}`}
-									src="https://timviec365.vn/images/New_images/ic_menu_angle_left.svg" alt={''}								/>
+									src="https://timviec365.vn/images/New_images/ic_menu_angle_left.svg"
+									alt={''}
+								/>
 								<p className={`${styles.txt_list_header} ${styles.cursor_pt}`}>
 									CV theo ngành nghề
 								</p>
@@ -1105,8 +1111,8 @@ const Pc_form_after_login = (props: Props) => {
 						<div className={`${styles.container_list}`}>
 							<div className={`${styles.header_list} ${styles.cursor_pt}`}>
 								<Image
-								width={20}
-								height={21}
+									width={20}
+									height={21}
 									className={`${styles.ic_menu}`}
 									src="/images/New_images/ic_menu_angle_left.svg"
 									alt="cv theo ngôn ngữ"

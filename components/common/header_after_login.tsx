@@ -15,7 +15,7 @@ export default function HeaderAfterLogin({ children }: any, props: HeaderProps) 
 	return (
 		<>
 			<header className={styles.new_header}>
-				<Notify_after_login />
+				{/* <Notify_after_login /> */}
 				{showAvatar && <Pc_form_after_login/>}
 				<div className={styles.logo_header}>
 					<Link href="/">
@@ -28,7 +28,7 @@ export default function HeaderAfterLogin({ children }: any, props: HeaderProps) 
 					</Link>
 					<span
 						className={`${isToggle ? styles.mobi_sel : styles.close_mobi_sel}`}
-						style={{ paddingTop: 400 }}
+					
 						onClick={() => {
 							setIsToggle(!isToggle)
 						}}
@@ -193,7 +193,7 @@ export default function HeaderAfterLogin({ children }: any, props: HeaderProps) 
 							</div>
 						</div>
 						<div className={`${styles.menu_item} ${styles.ctn_menu_item}`}>
-							<Link href={'#'} className={styles.sub_domain_url}>
+							<Link href={'/nguoi-tim-viec.html'} className={styles.sub_domain_url}>
 								Tìm ứng viên
 							</Link>
 						</div>

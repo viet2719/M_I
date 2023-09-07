@@ -1,23 +1,54 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from '@styles/common/box_search.module.scss'
 import Image from 'next/image'
 import Select from 'react-select'
-import BtnSelect from '../home/btnSelect'
+import BtnSelect from '../home/btn_search_advance/btnSelect'
 import Link from 'next/link'
+import { listCitys } from '@/utils/constants'
+import BtnSelectQuan from '../home/btn_search_advance/btn_quan_huyen'
+import BtnSelectLevel from '../home/btn_search_advance/btn_level'
+import BtnSelectSalary from '../home/btn_search_advance/btn_salary'
+import BtnSelectSex from '../home/btn_search_advance/btn_sex'
+import BtnSelectHinhThuc from '../home/btn_search_advance/btn_hinh_thuc'
+import BtnSelectCapBac from '../home/btn_search_advance/btn_cap_bac'
+import BtnSelectKinhNghiem from '../home/btn_search_advance/btn_kinh_nghiem'
+import BtnSelectDay from '../home/btn_search_advance/btn_ngay_cap_nhat'
+import { base_timviec365 } from '../service/functions'
+import { ICity } from '@/utils/interface'
 
-const Box_search = () => {
-	const cityOptions = [
-		{ value: 'hanoi', label: 'Hà Nội' },
-		{ value: 'hochiminh', label: 'TP. Hồ Chí Minh' },
-		{ value: 'danang', label: 'Đà Nẵng' },
-		{ value: 'hue', label: 'Huế' },
-	]
+const Box_search = ({}: any) => {
 	// Xử lý show-hide phần tìm kiếm theo tên
 	const [valueNameSearch, setValueNameSearch] = useState('')
 	const [checkSearchNameCity, setCheckSearchNameCity] = useState<any>(false)
-
+	const [showKeyPhoBien, setshowKeyPhoBien] = useState<boolean>(false)
 	// Xử lý tìm kiếm nâng cao
 	const [chooseSearchAdvanced, setChooseSearchAdvanced] = useState<any>(false)
+	const [listDistrict, setlistDistrict] = useState<any>([])
+
+	const [idCity, setidCity] = useState<any>()
+	const handleGetDistrict = async () => {
+		try {
+			const res = await fetch(`${base_timviec365}/api/getData/district`, {
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				method: 'POST',
+				body: JSON.stringify({ cit_id: idCity }),
+			})
+			const data = await res.json()
+			setlistDistrict(data?.data.data)
+		} catch (error) {}
+	}
+	const handleSelect = (value: any) => {
+		setidCity(value)
+		setCheckSearchNameCity(true)
+	}
+	// Sử dụng useEffect để theo dõi thay đổi của idCity
+	useEffect(() => {
+		if (idCity > 0) {
+			handleGetDistrict()
+		}
+	}, [idCity]) // Thêm idCity vào danh sách dependencies của useEffect
 	return (
 		<div className={styles.box_m_search} id={styles.search_new_ntd}>
 			<div className={styles.new_search}>
@@ -27,6 +58,9 @@ const Box_search = () => {
 						id={styles.fts_id}
 						className={styles.enter_ntd}
 						placeholder="Nhập tên công việc, vị trí ..."
+						onClick={async () => {
+							setshowKeyPhoBien(true)
+						}}
 						onChange={(e) => {
 							setValueNameSearch(e.target.value)
 						}}
@@ -40,12 +74,12 @@ const Box_search = () => {
 						/>
 					</span>
 				</div>
-				{valueNameSearch && (
+				{showKeyPhoBien && (
 					<div className={`${styles.box_key} ${styles.box_show}`} id={styles.box_key}>
 						<span
 							className={styles.close_bs}
 							onClick={() => {
-								setValueNameSearch('')
+								setValueNameSearch(''), setshowKeyPhoBien(false)
 							}}
 						>
 							×
@@ -144,12 +178,15 @@ const Box_search = () => {
 					>
 						<span
 							className={styles.selection1}
-							onClick={() => {
-								setCheckSearchNameCity(true)
-							}}
+							// onClick={async () => {
+							// 	setCheckSearchNameCity(true)
+							// }}
 						>
 							<Select
-								options={cityOptions}
+								options={listCitys}
+								onChange={(value: any) => {
+									handleSelect(value?.value)
+								}}
 								placeholder="Chọn thành phố"
 								styles={{
 									indicatorsContainer: (baseStyles, state) => ({
@@ -207,7 +244,10 @@ const Box_search = () => {
 							}}
 						>
 							<Select
-								options={cityOptions}
+								onChange={(value: any) => {
+									handleSelect(value?.value)
+								}}
+								options={listCitys}
 								placeholder="Chọn thành phố"
 								styles={{
 									indicatorsContainer: (baseStyles, state) => ({
@@ -300,19 +340,29 @@ const Box_search = () => {
 												</div>
 											</div>
 											<div className={styles['pop-cod']}>
-												<BtnSelect>Chọn tỉnh thành</BtnSelect>
-												<BtnSelect>Chọn quận huyện</BtnSelect>
-												<BtnSelect> Chọn trình độ học vấn</BtnSelect>
-												<BtnSelect>Chọn giới tính</BtnSelect>
-												<BtnSelect> Chọn mức lương</BtnSelect>
-												<BtnSelect> Chọn hình thức</BtnSelect>
-												<BtnSelect>Chọn cấp bậc</BtnSelect>
-												<BtnSelect>Chọn kinh nghiệm</BtnSelect>
-												<BtnSelect> Chọn ngày cập nhật</BtnSelect>
+												<BtnSelect idCity={idCity} setidCity={setidCity} listCitys={listCitys}>
+													Chọn tỉnh thành
+												</BtnSelect>
+												<BtnSelectQuan
+													idCity={idCity}
+													setlistDistrict={setlistDistrict}
+													listDistrict={listDistrict}
+												>
+													Chọn quận huyện
+												</BtnSelectQuan>
+												<BtnSelectLevel> Chọn trình độ học vấn</BtnSelectLevel>
+												<BtnSelectSex>Chọn giới tính</BtnSelectSex>
+												<BtnSelectSalary> Chọn mức lương</BtnSelectSalary>
+												<BtnSelectHinhThuc> Chọn hình thức</BtnSelectHinhThuc>
+												<BtnSelectCapBac>Chọn cấp bậc</BtnSelectCapBac>
+												<BtnSelectKinhNghiem>Chọn kinh nghiệm</BtnSelectKinhNghiem>
+												<BtnSelectDay> Chọn ngày cập nhật</BtnSelectDay>
 											</div>
 											<div className={styles['btn-pop']}>
 												<div className={styles['btn-pop-click']}>
-													<Link href="#" id="btnsearchadvance">Tìm kiếm</Link>
+													<Link href="#" id="btnsearchadvance">
+														Tìm kiếm
+													</Link>
 												</div>
 											</div>
 										</div>
@@ -338,55 +388,118 @@ const Box_search = () => {
 						</span>
 						<div className={`${styles.nd_box_city}`}>
 							<div className={styles.kq_gy}>
-								<p className={styles.text_def}>Địa điểm phổ biến</p>
-								<span>
-									<Link href="#">
-										<strong>Đà Nẵng</strong>
-									</Link>
-								</span>
-								<span>
-									<Link href="#">
-										<strong>Hồ Chí Minh</strong>
-									</Link>
-								</span>
-								<span>
-									<Link href="#">
-										<strong>Hà Nội</strong>
-									</Link>
-								</span>
-								<span>
-									<Link href="#">Huyện Bình Chánh</Link>
-								</span>
-								<span>
-									<Link href="#">Huyện Bình Chánh</Link>
-								</span>
-								<span>
-									<Link href="#">Huyện Bình Chánh</Link>
-								</span>
-								<span>
-									<Link href="#">Huyện Bình Chánh</Link>
-								</span>
-								<span>
-									<Link href="#">Huyện Bình Chánh</Link>
-								</span>
-								<span>
-									<Link href="#">Huyện Bình Chánh</Link>
-								</span>
-								<span>
-									<Link href="#">Huyện Bình Chánh</Link>
-								</span>
-								<span>
-									<Link href="#">Huyện Bình Chánh</Link>
-								</span>
-								<span>
-									<Link href="#">Huyện Bình Chánh</Link>
-								</span>
-								<span>
-									<Link href="#">Huyện Bình Chánh</Link>
-								</span>
-								<span>
-									<Link href="#">Huyện Bình Chánh</Link>
-								</span>
+								{(listDistrict?.length == 0 || idCity === 0) && (
+									<div>
+										<p className={styles.text_def}>Địa điểm phổ biến</p>
+										<span>
+											<Link href="#">
+												<strong>Đà Nẵng</strong>
+											</Link>
+										</span>
+										<span>
+											<Link href="#">
+												<strong>Hồ Chí Minh</strong>
+											</Link>
+										</span>
+										<span>
+											<Link href="#">
+												<strong>Hà Nội</strong>
+											</Link>
+										</span>
+										<span>
+											<Link href={`/tag1/viec-lam-tai-huyen-thuan-thanh-bac-ninh-270`}>
+												Quận Cẩm lệ
+											</Link>
+										</span>
+										<span>
+											<Link href={`/tag1/viec-lam-tai-huyen-thuan-thanh-bac-ninh-270`}>
+												Huyện Bình Chánh
+											</Link>
+										</span>{' '}
+										<span>
+											<Link href={`/tag1/viec-lam-tai-huyen-thuan-thanh-bac-ninh-270`}>
+												Quận Cầu Giấy
+											</Link>
+										</span>{' '}
+										<span>
+											<Link href={`/tag1/viec-lam-tai-huyen-thuan-thanh-bac-ninh-270`}>
+												Quận Hải châu
+											</Link>
+										</span>{' '}
+										<span>
+											<Link href={`/tag1/viec-lam-tai-huyen-thuan-thanh-bac-ninh-270`}>
+												Huyện Cần Giờ
+											</Link>
+										</span>{' '}
+										<span>
+											<Link href={`/tag1/viec-lam-tai-huyen-thuan-thanh-bac-ninh-270`}>
+												Quận Hai Bà Trưng
+											</Link>
+										</span>{' '}
+										<span>
+											<Link href={`/tag1/viec-lam-tai-huyen-thuan-thanh-bac-ninh-270`}>
+												Huyện Hòa Vang
+											</Link>
+										</span>{' '}
+										<span>
+											<Link href={`/tag1/viec-lam-tai-huyen-thuan-thanh-bac-ninh-270`}>Quận 1</Link>
+										</span>
+										<span>
+											<Link href={`/tag1/viec-lam-tai-huyen-thuan-thanh-bac-ninh-270`}>
+												Quận Hoàng Mai
+											</Link>
+										</span>
+										<span>
+											<Link href={`/tag1/viec-lam-tai-huyen-thuan-thanh-bac-ninh-270`}>
+												Quận Liên Chiểu
+											</Link>
+										</span>
+										<span>
+											<Link href={`/tag1/viec-lam-tai-huyen-thuan-thanh-bac-ninh-270`}>Quận 2</Link>
+										</span>
+										<span>
+											<Link href={`/tag1/viec-lam-tai-huyen-thuan-thanh-bac-ninh-270`}>
+												Quận Nam Từ Liêm
+											</Link>
+										</span>
+										<span>
+											<Link href={`/tag1/viec-lam-tai-huyen-thuan-thanh-bac-ninh-270`}>
+												Quận Ngũ Hành Sơn
+											</Link>
+										</span>
+										<span>
+											<Link href={`/tag1/viec-lam-tai-huyen-thuan-thanh-bac-ninh-270`}>Quận 3</Link>
+										</span>
+										<span>
+											<Link href={`/tag1/viec-lam-tai-huyen-thuan-thanh-bac-ninh-270`}>
+												Quận Thannh Xuân
+											</Link>
+										</span>
+										<span>
+											<Link href={`/tag1/viec-lam-tai-huyen-thuan-thanh-bac-ninh-270`}>
+												Quận Thanh Khê
+											</Link>
+										</span>
+										<span>
+											<Link href={`/tag1/viec-lam-tai-huyen-thuan-thanh-bac-ninh-270`}>Quận 7</Link>
+										</span>
+										<span>
+											<Link href={`/tag1/viec-lam-tai-huyen-thuan-thanh-bac-ninh-270`}>
+												Quận Đống Đa
+											</Link>
+										</span>
+									</div>
+								)}
+								{idCity > 0 &&
+									listDistrict?.map((item: ICity, index: number) => {
+										return (
+											<span key={index}>
+												<Link href={`/tag1/viec-lam-tai-huyen-thuan-thanh-bac-ninh-270`}>
+													{item.cit_name}
+												</Link>
+											</span>
+										)
+									})}
 							</div>
 							<div className={`${styles.kq_lq} ${styles.solid}`} id={styles.city_lq}>
 								<p className={styles.text_def}>Danh sách địa điểm</p>

@@ -962,6 +962,12 @@
 	overflow: hidden;
 	max-height: 70px;
 }
+.nd_chitiettd .select_tag2 {
+	display: flex;
+	flex-wrap: wrap;
+	overflow: hidden;
+	max-height: 150px;
+}
 
 .nd_chitiettd .select_tag.show_list {
 	max-height: unset;
@@ -2240,16 +2246,55 @@
 }
 
 .pos_ttin_all {
-	position: fixed;
+	position: absolute;
 	background: #ffffff;
 	width: 220px;
 	padding: 5px 5px;
-	top: 100px;
+	top: 55px;
 	z-index: 3;
 	box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.25);
 	border-radius: 8px;
 }
-
+.audio_news {
+	width: 100%;
+	display: flex;
+	flex-wrap: nowrap;
+	gap: 10px;
+	align-items: center;
+	margin: 10px 0px;
+	padding: 0px 20px;
+}
+.audio_news audio {
+	width: 100%;
+	height: 30px;
+}
+.ctn_audio {
+	display: block;
+	width: calc(100% - 30px);
+	height: 30px;
+}
+.tca_giong {
+	position: absolute;
+	width: 200px;
+	padding: 10px 10px;
+	gap: 10px;
+	top: 110px;
+	right: 0px;
+	background: #ffffff;
+	border-radius: 10px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	z-index: 1;
+}
+.giong_moi {
+	width: 100%;
+	display: flex;
+	cursor: pointer;
+	font-size: 14px;
+	line-height: 16px;
+	color: #474747;
+	font-weight: 600;
+	margin-bottom: 10px;
+}
 .pos_ttin_all p {
 	width: 100%;
 	padding: 10px 10px;
@@ -3948,19 +3993,37 @@
 
 .popup_vote {
 	overflow: auto;
-	float: left;
 	width: 100%;
 	height: 100%;
 	position: fixed;
+	align-items: center;
 	top: 0;
 	left: 0;
 	right: 0;
 	bottom: 0;
 	z-index: 999999;
 	background: rgba(0, 0, 0, 0.5);
-	display: none;
 }
-
+#scroll {
+	position: relative;
+	transition: top 0.3s ease-in-out;
+}
+.scroll-fixed {
+	position: fixed;
+	top: 0px;
+	width: 60%;
+	z-index: 999;
+}
+@media (max-width:1200px) {
+	.scroll-fixed {
+		width: 70%;
+	}	
+}
+@media (max-width:1023px) {
+	.scroll-fixed {
+		width: 100%;
+	}	
+}
 .popup_vote .wapper {
 	display: flex;
 	flex-direction: column;
@@ -3971,6 +4034,7 @@
 	width: 469px;
 	padding: 30px;
 	row-gap: 24px;
+	margin: auto;
 }
 
 .banner_pp_vote {
@@ -4435,12 +4499,22 @@
 	background: #f3eeee;
 	border-radius: 10px;
 	z-index: 99;
+	top: 1%;
+}
+.box_items_like_ic :hover {
+	width: 40px;
+	height: 40px;
 }
 .box_items_like_ic2 {
 	position: absolute;
 	background: #f3eeee;
 	border-radius: 10px;
 	z-index: 99;
+	top: -30px;
+}
+.box_items_like_ic2 :hover {
+	width: 25px;
+	height: 25px;
 }
 .cm_like_ic img {
 	width: 20px;
@@ -4668,7 +4742,7 @@
 
 .cm_list_ev span:not(.cm_like_ic) {
 	padding-right: 7px;
-	font-size: 13px;
+	font-size: 14px;
 	line-height: 18px;
 }
 

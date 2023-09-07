@@ -334,7 +334,7 @@ export default function Header({ children }: any, {isLogin}: HeaderProps) {
 							</div>
 						</div>
 						<div className={`${styles.menu_item} ${styles.ctn_menu_item}`}>
-							<Link href="#" className={styles.sub_domain_url}>
+							<Link href="/nguoi-tim-viec.html" className={styles.sub_domain_url}>
 								Tìm ứng viên
 							</Link>
 						</div>

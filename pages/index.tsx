@@ -1,92 +1,136 @@
 import Chat_NTD from '@/components/common/chat_NTD'
 import Footer from '@/components/common/footer'
+import Hd_share_location from '@/components/common/hd_share_location'
 import New_banner from '@/components/common/new_banner'
 import Head_common from '@/components/head'
+import Banner_tia_set from '@/components/home/banner_tia_set'
+import Box_AI from '@/components/home/box_Ai'
 import Box_vlhd_top from '@/components/home/box_vlhd_top'
 import Box_vlth from '@/components/home/box_vlth'
 import Chat_container from '@/components/home/chat_container'
+import Filter_right_AI365_Mobile from '@/components/home/filter_right_AI365_Mobile'
+import Filter_right_AI365_PC from '@/components/home/filter_right_AI365_PC'
+import Hotline from '@/components/home/hotline'
+import Tia_set from '@/components/home/tia_set'
 import { HomePageBeforeLayout } from '@/components/layout/home_before_login'
+import { base_timviec365 } from '@/components/service/functions'
 import { NextPageWithLayout } from '@/models/common'
-import { convertToSlug } from '@/utils/convert'
+import { LocAI365, listCitys } from '@/utils/constants'
+import { ICity, IJob, ISeo } from '@/utils/interface'
 import styles from '@styles/home/home.module.scss'
 import { Carousel } from 'antd'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useEffect, useState } from 'react'
 import Select from 'react-select'
 
-const Home: NextPageWithLayout = () => {
-	const jobData = [
-		{
-			title: '[Tuyển dụng] Nhân viên Kinh doanh',
-			company: 'Công Ty TNHH Chung Anh Logistics',
-			location: 'Hà Nội',
-			date: '25/08/2023',
-			link: convertToSlug('[Tuyển dụng] Nhân viên Kinh doanh'),
-			salary: 'Từ 7.5 triệu',
-		},
-		{
-			title: '[Tuyển dụng] Nhân viên Kinh doanh',
-			company: 'Công Ty TNHH Chung Anh Logistics',
-			location: 'Hà Nội',
-			date: '25/08/2023',
-			link: convertToSlug('[Tuyển dụng] Nhân viên Kinh doanh'),
-			salary: 'Từ 7.5 triệu',
-		},
-		{
-			title: '[Tuyển dụng] Nhân viên Kinh doanh',
-			company: 'Công Ty TNHH Chung Anh Logistics',
-			location: 'Hà Nội',
-			date: '25/08/2023',
-			link: convertToSlug('[Tuyển dụng] Nhân viên Kinh doanh'),
-			salary: 'Từ 7.5 triệu',
-		},
-		{
-			title: '[Tuyển dụng] Nhân viên Kinh doanh',
-			company: 'Công Ty TNHH Chung Anh Logistics',
-			location: 'Hà Nội',
-			date: '25/08/2023',
-			link: convertToSlug('[Tuyển dụng] Nhân viên Kinh doanh'),
-			salary: 'Từ 7.5 triệu',
-		},
-		{
-			title: '[Tuyển dụng] Nhân viên Kinh doanh',
-			company: 'Công Ty TNHH Chung Anh Logistics',
-			location: 'Hà Nội',
-			date: '25/08/2023',
-			link: convertToSlug('[Tuyển dụng] Nhân viên Kinh doanh'),
-			salary: 'Từ 7.5 triệu',
-		},
-	]
+const Home: NextPageWithLayout = ({ data }: any) => {
+	const [VLHD, setVLHD] = useState<IJob[]>([])
+	const [VLTH, setVLTH] = useState<IJob[]>([])
+	const [VLTG, setVLTG] = useState<IJob[]>([])
+	const [dataSeo, setdataSeo] = useState<ISeo | any>()
 
-	const cityOptions = [
-		{ value: 'hanoi', label: 'Hà Nội' },
-		{ value: 'hochiminh', label: 'TP. Hồ Chí Minh' },
-		{ value: 'danang', label: 'Đà Nẵng' },
-		{ value: 'hue', label: 'Huế' },
-	]
-	const title = 'Tìm Việc Làm & Tuyển Dụng Việc Làm Nhanh | timviec365.vn'
-	const des =
-		'Tìm việc làm nhanh, việc làm 24h hiệu quả, lương cao từ những nhà tuyển dụng uy tín. Hàng nghìn việc làm mới mỗi ngày trên toàn quốc. Tìm việc ngay tại Timviec365.vn'
-	const keyw =
-		'Tìm việc, việc làm, tìm việc làm, tuyển dụng, tuyển dụng việc làm, cần tìm việc làm, tìm việc làm nhanh, việc làm nhanh, công ty tuyển dụng, việc làm online, tìm việc làm online, kiếm việc, tim viec, viec lam, tim viec lam, tuyen dung'
-	const url = 'https://timviec365.vn'
-	const robot = 'noindex,nofollow'
-	const cano = 'https://timviec365.vn'
-	const url_img = 'https://timviec365.vn/images/banner/og_default.png'
-	const abstract = 'Tìm việc mới nhất trên toàn quốc - Tim viec online'
+	const [showHd, setshowHd] = useState<boolean>(false)
+	const [click, setclick] = useState<boolean>(false)
 
+	const [listJobsAI, setlistJobsAI] = useState<IJob[]>([])
+
+	const [cityNameLocation, setCityNameLocation] = useState<string>()
+
+	const [selectedId, setSelectedId] = useState<number | any>()
+	const [cate_id, setCate_id] = useState<number | any>('')
+
+	const [selectLeft, setselectLeft] = useState<number>(0)
+	useEffect(() => {
+		setVLHD(data?.data?.VLHD)
+		setVLTG(data?.data?.VLTG)
+		setVLTH(data?.data?.VLTH)
+		setdataSeo(data?.data?.dataSeo)
+	}, [])
+
+	//Lấy tên từ tọa độ khi bật vị trí
+	const getCityName = async (latitude: any, longitude: any) => {
+		// Xây dựng URL cho OpenStreetMap Nominatim
+		const apiUrl = `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${latitude}&lon=${longitude}`
+
+		// Gửi yêu cầu HTTP đến API
+		try {
+			const response = await fetch(apiUrl, {})
+			const data = await response.json()
+			if (data?.address && data?.address?.city) {
+				setCityNameLocation(data.address.city)
+			} else {
+				console.log('Không thể tìm thấy tên thành phố.')
+			}
+		} catch (error) {}
+	}
+	// Lấy tọa độ khi bật vị trí
+	useEffect(() => {
+		try {
+			if ('geolocation' in navigator) {
+				navigator.geolocation.getCurrentPosition(function (position) {
+					var latitude = position.coords.latitude
+					var longitude = position.coords.longitude
+					// Bây giờ bạn có thể sử dụng thông tin vị trí này trong ứng dụng của bạn
+					getCityName(latitude, longitude)
+				})
+			} else {
+				console.log(
+					'Trình duyệt không hỗ trợ Geolocation hoặc người dùng đã từ chối chia sẻ vị trí.'
+				)
+			}
+		} catch (error) {}
+	}, [])
+
+	// Nếu bật vị trí, dùng AI 365 tìm theo tỉnh thành
+	const city: ICity[] = listCitys.filter((item: ICity) => item.cit_name === cityNameLocation)
+	const handleGetJobAI = async () => {
+		try {
+			const res = await fetch(`${base_timviec365}/api/timviec/new/listJobBySearch`, {
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				method: 'POST',
+				body: JSON.stringify({ city: city[0]?.cit_id, pageSize: 14, new_qh_id: selectedId,cate_id: cate_id}),
+			})
+			const data = await res.json()
+			setlistJobsAI(data?.data?.items)
+		} catch (error) {}
+	}
+	useEffect(() => {
+		if (city[0]?.cit_id) {
+			handleGetJobAI()
+		}
+	}, [city[0]?.cit_id, selectedId,cate_id])
+
+	//Lấy danh sách việc khi không có location
+	const handleGetJobAInoLocation = async () => {
+		try {
+			const res = await fetch(`${base_timviec365}/api/timviec/new/listJobBySearch`, {
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				method: 'POST',
+				body: JSON.stringify({
+					city: selectedId == 0 ? Math.floor(Math.random() * 35) : selectedId,
+					cate_id: cate_id,
+					pageSize: 14,
+				}),
+			})
+			const data = await res.json()
+			setlistJobsAI(data?.data?.items)
+		} catch (error) {}
+	}
+	useEffect(() => {
+		if ( (!selectedId && !city[0]?.cit_id) || (selectedId == 0 && !city[0]?.cit_id) || (selectedId && !city[0]?.cit_id)) {
+			handleGetJobAInoLocation()
+		}
+	}, [selectedId, cate_id])
 	return (
 		<>
-			<Head_common
-				title={title}
-				des={des}
-				keyw={keyw}
-				url={url}
-				robot={robot}
-				url_img={url_img}
-				cano={cano}
-				abstract={abstract}
-			/>
+			<Head_common data={dataSeo} />
+			<Hd_share_location click={click} showHd={showHd} setshowHd={setshowHd} />
+
 			<New_banner />
 			<section className={styles.section_home}>
 				<div className={styles.vieclam_container}>
@@ -115,11 +159,13 @@ const Home: NextPageWithLayout = () => {
 							<h2 className={styles.ic_vlth}>VIỆC LÀM HẤP DẪN</h2>
 
 							<div className={styles.main_box_vieclam}>
-								<Carousel autoplay className={styles.customCarousel}>
-									<Box_vlhd_top jobData={jobData} />
-									<Box_vlhd_top jobData={jobData} />
-									<Box_vlhd_top jobData={jobData} />
-									<Box_vlhd_top jobData={jobData} />
+								<Carousel
+								//  autoplay 
+								className={styles.customCarousel}>
+									<Box_vlhd_top jobData={VLHD?.slice(1, 15)} />
+									<Box_vlhd_top jobData={VLHD?.slice(15, 29)} />
+									<Box_vlhd_top jobData={VLHD?.slice(29, 43)} />
+									<Box_vlhd_top jobData={VLHD?.slice(43, 58)} />
 								</Carousel>
 							</div>
 							<div className={styles.plus_next}>
@@ -167,163 +213,36 @@ const Home: NextPageWithLayout = () => {
 					</div>
 					<div id={styles.box_vlth} className={`${styles.box_vieclam} ${styles.box_vieclam_hot}`}>
 						<h2 className={styles.icn_vlhd}>VIỆC LÀM THƯƠNG HIỆU</h2>
-						<Box_vlth jobList={jobData} />
+						<Box_vlth jobList={VLTG} />
 						<div className={styles.plus_next}>
 							<Link className={styles.icon_plus} href="/tin-tuyen-dung-viec-lam.html">
 								Tất cả tin tuyển dụng &gt;&gt;
 							</Link>
 						</div>
 					</div>
-					<div className={`${styles.box_banner_tiaset} ${styles.banner_home_tiaset}`}>
-						<div className={styles.content_banner_tiaset}>
-							<div className={styles.banner_tiaset_left}>
-								<div className={styles.box_title_banner}>
-									<p className={styles.title_tiaset}>HUY HIỆU TIA SÉT</p>
-									<p className={styles.note_tiaset}>
-										Ghi nhận sự tương tác giữa ứng viên và nhà tuyển dụng thông qua tin tuyển dụng
-										trong vòng 12 giờ.
-									</p>
-								</div>
-								<div className={styles.box_time_tiaset}>
-									<p className={styles.txt_time_ts}>TỰ ĐỘNG CẬP NHẬT SAU</p>
-									<div className={styles.box_countdown_clock}>
-										<div className={`${styles.box_countdown_item} ${styles.hour}`}>
-											<div className={styles.box_num_clock}>
-												<div className={styles.box_lock}>
-													<p className={`${styles.num_clock} ${styles.one} `}>0</p>
-												</div>
-												<div className={styles.box_lock}>
-													<p className={`${styles.num_clock} ${styles.two}`}>7</p>
-												</div>
-											</div>
-											<p className={styles.title_clock}>GIỜ</p>
-										</div>
-										<span className={styles.hai_cham}>:</span>
-										<div className={`${styles.box_countdown_item} ${styles.minute}`}>
-											<div className={styles.box_num_clock}>
-												<div className={styles.box_lock}>
-													<p className={`${styles.num_clock} ${styles.one} `}>0</p>
-												</div>
-												<div className={styles.box_lock}>
-													<p className={`${styles.num_clock} ${styles.two}`}>7</p>
-												</div>
-											</div>
-											<p className={styles.title_clock}>PHÚT</p>
-										</div>
-										<span className={styles.hai_cham}>:</span>
-										<div className={`${styles.box_countdown_item} ${styles.second}`}>
-											<div className={styles.box_num_clock}>
-												<div className={styles.box_lock}>
-													<p className={`${styles.num_clock} ${styles.one} `}>0</p>
-												</div>
-												<div className={styles.box_lock}>
-													<p className={`${styles.num_clock} ${styles.two}`}>7</p>
-												</div>
-											</div>
-											<p className={styles.title_clock}>GIÂY</p>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div className={styles.banner_tiaset_right}>
-								<p className={styles.title_list}>Danh sách tin ĐĂNG đạt huy hiệu tia sét</p>
-								<Link className={styles.link_list} href="/danh-sach-tia-set">
-									XEM NGAY{' '}
-									<Image
-										width={20}
-										height={20}
-										alt="xem ngay"
-										src="/images/before_login/arrow_right.svg"
-									/>
-								</Link>
-							</div>
-						</div>
-					</div>
+					<Banner_tia_set />
 					<div id={styles.box_vlth} className={`${styles.box_vieclam} ${styles.box_vieclam_hot}`}>
 						<h2 className={styles.icn_vllc}>VIỆC LÀM TUYỂN GẤP</h2>
-						<Box_vlth jobList={jobData} />
+						<Carousel autoplay className={styles.customCarousel}>
+							<Box_vlth jobList={VLTH?.slice(1, 22)} />
+							<Box_vlth jobList={VLTH?.slice(22, 43)} />
+							<Box_vlth jobList={VLTH?.slice(43, 64)} />
+						</Carousel>
 						<div className={styles.plus_next}>
 							<Link className={styles.icon_plus} href="/tin-tuyen-dung-viec-lam.html">
 								Tất cả tin tuyển dụng &gt;&gt;
 							</Link>
 						</div>
 					</div>
-					<div className={`${styles.banner_home_tiaset} ${styles.banner_home_anhsao}`}>
-						<div className={styles.content_banner_anhsao}>
-							<div className={styles.banner_anhsao_left}>
-								<Image
-									width={111}
-									height={111}
-									className={styles.icon_anhsao_banner}
-									src="/images/icon_anhsao.gif"
-									alt="logo ánh sao"
-								/>
-								<div className={styles.box_title_banner}>
-									<p className={styles.title_tiaset}>HUY HIỆU ÁNH SAO</p>
-									<p className={styles.note_tiaset}>
-										Với những NTD có điểm lịch sử lớn hơn 50 điểm sẽ có huy hiệu ánh sao
-									</p>
-								</div>
-							</div>
-							<div className={styles.box_time_tiaset}>
-								<p className={styles.txt_time_ts}>TỰ ĐỘNG CẬP NHẬT SAU</p>
-								<div className={styles.box_countdown_clock}>
-									<div className={`${styles.box_countdown_item} ${styles.hour}`}>
-										<div className={styles.box_num_clock}>
-											<div className={styles.box_lock}>
-												<p className={`${styles.num_clock} ${styles.one} `}>0</p>
-											</div>
-											<div className={styles.box_lock}>
-												<p className={`${styles.num_clock} ${styles.two}`}>7</p>
-											</div>
-										</div>
-										<p className={styles.title_clock}>GIỜ</p>
-									</div>
-									<span className={styles.hai_cham}>:</span>
-									<div className={`${styles.box_countdown_item} ${styles.minute}`}>
-										<div className={styles.box_num_clock}>
-											<div className={styles.box_lock}>
-												<p className={`${styles.num_clock} ${styles.one} `}>0</p>
-											</div>
-											<div className={styles.box_lock}>
-												<p className={`${styles.num_clock} ${styles.two}`}>7</p>
-											</div>
-										</div>
-										<p className={styles.title_clock}>PHÚT</p>
-									</div>
-									<span className={styles.hai_cham}>:</span>
-									<div className={`${styles.box_countdown_item} ${styles.second}`}>
-										<div className={styles.box_num_clock}>
-											<div className={styles.box_lock}>
-												<p className={`${styles.num_clock} ${styles.one} `}>0</p>
-											</div>
-											<div className={styles.box_lock}>
-												<p className={`${styles.num_clock} ${styles.two}`}>7</p>
-											</div>
-										</div>
-										<p className={styles.title_clock}>GIÂY</p>
-									</div>
-								</div>
-							</div>
-							<div className={styles.banner_tiaset_right}>
-								<p className={styles.title_list}>Danh sách tin ĐĂNG đạt huy hiệu ÁNH SAO</p>
-								<Link className={styles.link_list} href="/danh-sach-anh-sao">
-									XEM NGAY{' '}
-									<Image
-										width={20}
-										height={20}
-										alt="xem ngay"
-										src="/images/before_login/arrow_right.svg"
-									/>
-								</Link>
-							</div>
-						</div>
-					</div>
+					{/* Tia set */}
+					<Tia_set />
+
 					<div id={styles.box_vlth} className={`${styles.box_vieclam} ${styles.box_vieclam_hot}`}>
 						<h2 className={styles.icon_ai_home}>VIỆC LÀM ĐỀ XUẤT BỞI AI365</h2>
 						<div className={styles.sub_text}>
 							Hệ thống AI365 cần bạn đăng nhập hoặc thông tin về vị trí của bạn để có thể hiển thị
-							các việc làm phù hợp nhất.<button>Xem hướng dẫn chia sẻ vị trí tại đây!</button>
+							các việc làm phù hợp nhất.
+							<button onClick={() => setshowHd(true)}>Xem hướng dẫn chia sẻ vị trí tại đây!</button>
 						</div>
 						<div className={`${styles.box_filter} ${styles.filter_new}`}>
 							<div className={styles.filter_left}>
@@ -339,8 +258,9 @@ const Home: NextPageWithLayout = () => {
 											<Select
 												id="city_search"
 												className={styles.city_search}
-												options={cityOptions}
-												placeholder="Chọn thành phố"
+												options={LocAI365}
+												placeholder={LocAI365[0].label}
+												onChange={(value: any) => setselectLeft(value?.value)}
 												styles={{
 													indicatorsContainer: (baseStyles, state) => ({
 														...baseStyles,
@@ -388,107 +308,28 @@ const Home: NextPageWithLayout = () => {
 									<span className={`${styles.dropdown_wrapper}`} aria-hidden="true" />
 								</span>
 							</div>
-							<div className={styles.filter_right}>
-								<div className={styles.btn_prev}>
-									<Image
-										width={10}
-										height={18}
-										src="/images/before_login/icon_arrow_left.svg"
-										alt="prev"
-									/>
-								</div>
-								<div className={styles.box_list_item}>
-									<div className={styles.list_item}>
-										<button className={`${styles.item} ${styles.active}`}>Ngẫu nhiên</button>
-										<button className={`${styles.item}`} data-city={1}>
-											Hà Nội
-										</button>
-										<button className={`${styles.item}`} data-city={45}>
-											Hồ Chí Minh
-										</button>
-										<button className={`${styles.item}`} data-area={1}>
-											Miền Bắc
-										</button>
-										<button className={`${styles.item}`} data-area={2}>
-											Miền Trung
-										</button>
-										<button className={`${styles.item}`} data-area={3}>
-											Miền Nam
-										</button>
-									</div>
-								</div>
-								<div className={styles.btn_next}>
-									<Image
-										width={10}
-										height={18}
-										src="/images/before_login/icon_arrow_right.svg"
-										alt="prev"
-									/>
-								</div>
-							</div>
-							<div className={styles.filter_right_select}>
-								<span
-									className={`${styles.select2} ${styles.select2_container} ${styles.select2_container_default}`}
-									dir="ltr"
-								>
-									<span className={`${styles.selection}`}>
-										<span
-											className={`${styles.select2_selection} ${styles.select2_selection_single} ${styles.addr}`}
-										>
-											<Select
-												id="city_search"
-												className={styles.city_search}
-												options={cityOptions}
-												placeholder="Ngẫu nhiên"
-												styles={{
-													indicatorsContainer: (baseStyles, state) => ({
-														...baseStyles,
-														display: 'none',
-													}),
-													input: (baseStyles, state) => ({
-														...baseStyles,
-														outline: 'none',
-														border: 'none',
-													}),
-													placeholder: (baseStyles, state) => ({
-														...baseStyles,
-														fontSize: '16px',
-													}),
-													singleValue: (baseStyles, state) => ({
-														...baseStyles,
-														height: '100%',
-														fontSize: '16px',
-														color: '#474747',
-														lineHeight: '28px',
-														fontWeight: 600,
-													}),
 
-													control: (baseStyles, state) => ({
-														...baseStyles,
-														margin: '0',
-														height: '30px',
-														lineHeight: '22px',
-														minHeight: '25px',
-														border: 'none',
-														outline: 'none',
-														boxShadow: 'none',
-													}),
-													option: (baseStyles, state) => ({
-														...baseStyles,
-														padding: '0 8px',
-													}),
-												}}
-											/>
-											<span className={`${styles.select2_selection__arrow}`} role="presentation">
-												<b role="presentation" />
-											</span>
-										</span>
-									</span>
-									<span className={`${styles.dropdown_wrapper}`} aria-hidden="true" />
-								</span>
-							</div>
+							<Filter_right_AI365_PC
+								idLocation={city[0]?.cit_id}
+								nameCity={city[0]?.cit_name}
+								selectLeft={selectLeft}
+								setSelectedId={setSelectedId}
+								selectedId={selectedId}
+								setCate_id={setCate_id}
+							/>
+
+							<Filter_right_AI365_Mobile
+							idLocation={city[0]?.cit_id}
+							nameCity={city[0]?.cit_name}
+							selectLeft={selectLeft}
+							setSelectedId={setSelectedId}
+							selectedId={selectedId}
+							setCate_id={setCate_id}
+							/>
 						</div>
-						<Box_vlth jobList={jobData} />
+
+						<Box_AI jobList={listJobsAI} />
+
 						<div className={styles.plus_next}>
 							<Link className={styles.icon_plus} href="/tin-tuyen-dung-viec-lam.html">
 								Tất cả tin tuyển dụng &gt;&gt;
@@ -496,83 +337,35 @@ const Home: NextPageWithLayout = () => {
 						</div>
 					</div>
 					{/* Hotline */}
-					<div className={styles.hotlineLeft}>
-						<div className={styles.hotline}>
-							<h3 className={styles.hotlineH4}>
-								<span className={styles.icon}>
-									<Image
-										width={41}
-										height={41}
-										src="/images/before_login/icon_hotline.svg"
-										alt="HOTLINE HỖ TRỢ"
-									/>
-								</span>
-								HOTLINE HỖ TRỢ CHO NTD và Ứng viên
-							</h3>
-							<div className={styles.boxHotline}>
-								<div className={styles.boxContact}>
-									<p className={styles.hotlineTitle}>HOTLINE tư vấn tuyển dụng</p>
-									<div className={styles.content}>
-										<div className={styles.hotNd}>
-											<p>
-												<span>0985.472.529</span> - Nhóm Ngô Dung
-											</p>
-											<p>
-												<span>0985.771.347</span> - Nhóm Huyền Ly{' '}
-											</p>
-											<p>
-												<span>0904.646.975</span> - Nhóm Mai Hương
-											</p>
-										</div>
-										<div className={styles.hotNd}>
-											<p>
-												<span>0981.208.813</span> - Nhóm Thùy Linh
-											</p>
-											<p>
-												<span>0946.131.908</span> - Nhóm Thanh Hoa
-											</p>
-											<p>
-												<span>0971.207.216</span> - Nhóm Ngọc Hà{' '}
-											</p>
-										</div>
-									</div>
-								</div>
-								<div className={styles.boxComplaint}>
-									<p className={styles.hotlineTitle}>CSKH &amp; Khiếu nại dịch vụ</p>
-									<div className={`${styles.hotNd} ${styles.mbHot}`}>
-										<p className={styles.callHot}>
-											<span className={styles.icon}>
-												<Image
-													height={24}
-													width={24}
-													src="/images/before_login/ic_call_hot.png"
-													alt="Hotline"
-												/>
-											</span>
-											Hotline: <span>0982.079.209</span>
-										</p>
-										<Link className={`${styles.callHot} ${styles.chat365}`} href="#">
-											<span className={styles.icon}>
-												<Image
-													height={24}
-													width={24}
-													src="/images/before_login/icon_chat_blue.svg"
-													alt="Chat"
-												/>
-											</span>
-											<span>Chat 365</span>
-										</Link>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
+					<Hotline />
 				</div>
 			</section>
 			<Footer />
 			<Chat_container />
 		</>
 	)
+}
+
+// SSR
+export async function getServerSideProps() {
+	// Danh sách việc làm
+	let data
+	try {
+		const listWorks = await fetch(`${base_timviec365}/api/timviec/new/homePage`, {
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			method: 'POST',
+			body: JSON.stringify({ pageSizeTH: 63, pageSizeHD: 56, pageSizeTG: 21 }),
+		})
+		const datas = await listWorks.json()
+		data = datas
+	} catch (error) {}
+	return {
+		props: {
+			data,
+		},
+	}
 }
 
 Home.Layout = HomePageBeforeLayout

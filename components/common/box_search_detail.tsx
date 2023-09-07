@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import styles from '@styles/common/Box_search_details.module.scss'
 import Image from 'next/image'
 import Select from 'react-select'
-import BtnSelect from '../home/btnSelect'
+import BtnSelect from '../home/btn_search_advance/btnSelect'
 import Link from 'next/link'
 
 const Box_search_details = () => {

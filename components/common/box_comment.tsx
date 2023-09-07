@@ -245,7 +245,12 @@ const Box_comment = (id: any) => {
 							)}
 						</div>
 						<div className={styles.cm_ev_div}>
-							<span className={styles.comment_event}>
+							<span
+								className={styles.comment_event}
+								onClick={() => {
+									console.log(id)
+								}}
+							>
 								<svg
 									width={21}
 									height={20}

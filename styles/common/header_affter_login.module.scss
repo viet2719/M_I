@@ -6,7 +6,7 @@
 	float: left;
 	width: 100%;
 	background-color: #4c5bd4;
-	height: 104px;
+	height: 70px;
 	display: block;
 	z-index: 1000;
 	.logo_header {
@@ -32,7 +32,7 @@
 			height: 31px;
 			display: none;
 			position: absolute;
-			top: 55px;
+			top: 20px;
 			left: 20px;
 		}
 		.ctn_noti_chat {
@@ -451,7 +451,7 @@
 			.mobi_sel {
 				display: block;
 				position: absolute;
-				top: 60px;
+				top: 20px;
 				left: 20px;
 			}
 			.close_mobi_sel {
@@ -467,7 +467,7 @@
 					position: absolute;
 					right: 10px;
                     display: flex;
-                    padding-top: 40px;
+                    padding-top: 0px;
 					.chat_notifice  {
 						position: absolute;
 						right: 50px;
@@ -682,7 +682,7 @@
 			.mobi_sel {
 				display: block;
 				position: absolute;
-				top: 100px;
+				top: 20px;
 				left: 20px;
 			}
 			.close_mobi_sel {
@@ -690,7 +690,7 @@
 			}
 			.close_mobi_sel {
 
-				top: 99px;
+				top: 20px;
 			
 			}
 			.ctn_noti_chat {
@@ -703,7 +703,7 @@
 					position: absolute;
 					right: 10px;
                     display: flex;
-                    padding-top: 80px;
+                    padding-top: 0px;
 					.chat_notifice  {
 						position: absolute;
 						right: 50px;
@@ -765,4 +765,9 @@
     height: 30px;
     margin-right: 0px;
     margin-top: 0px !important;
+}
+.focus_filter{
+	background: #4c5bd4 !important;
+	color: #fff  !important;
+	transition: all 0.3s ease;
 }

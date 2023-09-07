@@ -37,8 +37,8 @@ const AI_365 = (props: Props) => {
 									href="/nhan-vien-ky-thuat-san-pham-p850760.html"
 								>
 									<Image
-									width={70}
-									height={70}
+										width={70}
+										height={70}
 										className={`${styles.ava_com_same_job} ${styles.lazyloaded}`}
 										src={item.src}
 										data-src="https://timviec365.vn/images/no-image.png"
@@ -48,31 +48,36 @@ const AI_365 = (props: Props) => {
 								</Link>
 								<div className={`${styles.box_vote_new}`}>
 									<Image
-									width={13} height={13}
-										className={`${styles.icon_vote_new}`}
-										src="/images/icon_star_gray.svg"
-										alt="star grey"
-									/>
-										<Image
-									width={13} height={13}
+										width={13}
+										height={13}
 										className={`${styles.icon_vote_new}`}
 										src="/images/icon_star_gray.svg"
 										alt="star grey"
 									/>
 									<Image
-									width={13} height={13}
+										width={13}
+										height={13}
 										className={`${styles.icon_vote_new}`}
 										src="/images/icon_star_gray.svg"
 										alt="star grey"
 									/>
-										<Image
-									width={13} height={13}
+									<Image
+										width={13}
+										height={13}
 										className={`${styles.icon_vote_new}`}
 										src="/images/icon_star_gray.svg"
 										alt="star grey"
 									/>
-										<Image
-									width={13} height={13}
+									<Image
+										width={13}
+										height={13}
+										className={`${styles.icon_vote_new}`}
+										src="/images/icon_star_gray.svg"
+										alt="star grey"
+									/>
+									<Image
+										width={13}
+										height={13}
 										className={`${styles.icon_vote_new}`}
 										src="/images/icon_star_gray.svg"
 										alt="star grey"
@@ -85,7 +90,7 @@ const AI_365 = (props: Props) => {
 										className={`${styles.name_job}`}
 										href="/nhan-vien-ky-thuat-san-pham-p850760.html"
 									>
-									{item.name_work}
+										{item.name_work}
 									</Link>
 								</div>
 								<Link
@@ -97,8 +102,8 @@ const AI_365 = (props: Props) => {
 								<div className={`${styles.detail_info}`}>
 									<p className={`${styles.detail_info_l}`}>
 										<Image
-										width={16}
-										height={16}
+											width={16}
+											height={16}
 											src="/images/calendar.svg"
 											alt=""
 											style={{ width: 16 }}
@@ -108,18 +113,18 @@ const AI_365 = (props: Props) => {
 									</p>
 									<p className={`${styles.detail_info_l}`}>
 										<Image
-										width={16}
-										height={16}
+											width={16}
+											height={16}
 											src="/images/location.svg"
 											alt=""
 											style={{ width: 16 }}
 										/>
 										<span>{item.address}</span>
 									</p>
-									<p className={`${styles.detail_info_r} ${styles.openApp}`} id-chat={30825}>
+									<p className={`${styles.detail_info_r} ${styles.openApp}`}>
 										<Image
-										width={16}
-										height={16}
+											width={16}
+											height={16}
 											src="/images/icon_chat.svg"
 											alt=""
 											style={{ width: 16 }}
@@ -128,8 +133,8 @@ const AI_365 = (props: Props) => {
 									</p>
 									<p className={`${styles.detail_info_all}`}>
 										<Image
-										width={16}
-										height={16}
+											width={16}
+											height={16}
 											src="/images/dola.svg"
 											alt=""
 											style={{ width: 16 }}

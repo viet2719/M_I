@@ -7,6 +7,7 @@ import { useDispatch } from 'react-redux'
 import Model_noti from '../pop_up/model_noti'
 import Box_comment from '../common/box_comment'
 import axios from 'axios'
+import { base_timviec365 } from '../service/functions'
 
 const List_cate = () => {
 	const listCate = [
@@ -35,7 +36,7 @@ const List_cate = () => {
 				'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6MjA4NTEzLCJpZFRpbVZpZWMzNjUiOjExNzgzODQsImlkUUxDIjoxNzAzODAsImlkUmFvTmhhbmgzNjUiOjAsImVtYWlsIjoiIiwicGhvbmVUSyI6IjA4Njk1MTY5NzgiLCJjcmVhdGVkQXQiOjE2ODQyMjc1NDcsInR5cGUiOjB9LCJpYXQiOjE2OTM0NDYyNTAsImV4cCI6MTY5MzUzMjY1MH0.3UwrRDW3F-TQbYecgwYuedNaTLepj4kInZDb_UL5dQA'
 			try {
 				const response = await axios.post(
-					'http://210.245.108.202:3001/api/timviec/new/homePage',
+					`${base_timviec365}/api/timviec/new/homePage`,
 					{ pageSizeHD: 6, pageSizeTH: 1, pageSizeTG: 1 },
 					{
 						headers: {
@@ -61,7 +62,7 @@ const List_cate = () => {
 					'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6MjA4NTEzLCJpZFRpbVZpZWMzNjUiOjExNzgzODQsImlkUUxDIjoxNzAzODAsImlkUmFvTmhhbmgzNjUiOjAsImVtYWlsIjoiIiwicGhvbmVUSyI6IjA4Njk1MTY5NzgiLCJjcmVhdGVkQXQiOjE2ODQyMjc1NDcsInR5cGUiOjB9LCJpYXQiOjE2OTM0NDYyNTAsImV4cCI6MTY5MzUzMjY1MH0.3UwrRDW3F-TQbYecgwYuedNaTLepj4kInZDb_UL5dQA'
 				try {
 					const response = await axios.post(
-						'http://210.245.108.202:3001/api/timviec/new/listComment',
+						`${base_timviec365}/api/timviec/new/listComment`,
 						{ new_id: selectedId },
 						{
 							headers: {

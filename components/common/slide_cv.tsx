@@ -5,6 +5,7 @@ import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import Slider from 'react-slick'
 import Image from 'next/image'
+import Link from 'next/link'
 
 const Slide = ({ children }: any) => {
 	return (
@@ -21,14 +22,14 @@ const Slide = ({ children }: any) => {
 				<div className={styles.info}>
 					<div className={styles.btnBox}>
 						<p>
-							<a
+							<Link
 								href="https://timviec365.vn/cv365/tao-cv-phuc-vu/mau-04"
 								rel="nofollow"
 								target="_blank"
 								tabIndex={-1}
 							>
 								Sử dụng mẫu này
-							</a>
+							</Link>
 						</p>
 					</div>
 				</div>
