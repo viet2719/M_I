@@ -175,7 +175,7 @@ const Main_search = () => {
 							<div className={styles.box_type}>
 								{listComp.map((comp, index) => {
 									return (
-										<div>
+										<div key={index}>
 											{islogin && iscv && comp.id == 0 ? (
 												<div
 													onClick={handleSelectAll}
