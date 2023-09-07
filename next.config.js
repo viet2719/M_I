@@ -17,8 +17,8 @@ const nextConfig = {
         destination: '/chi_tiet_nganh_nghe',
       },
       {
-        source: '/:title-test-p:id.html',
-        destination: '/chi_tiet_nganh_nghe1',
+        source: '/tag7/DS-viec-lam-tuyen-dung-:title-:id',
+        destination: '/ds_viec_lam_tag',
       },
       {
         source: '/tim-viec-tai-:title-c0v:id',

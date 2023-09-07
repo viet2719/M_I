@@ -1,0 +1,142 @@
+.main_timviec {
+	float: left;
+	width: 100%;
+	position: relative;
+	background: #fff;
+	.container_timviec {
+		max-width: 1200px;
+		margin: auto;
+		.div_bre_2 {
+			margin-bottom: 20px;
+		}
+		.div_bre {
+			float: left;
+			width: 100%;
+			background: #fff;
+			line-height: 37px;
+			.breadcrumb {
+				margin: 0;
+				padding: 0;
+				font-size: 0;
+				line-height: 0;
+				height: 37px;
+				li {
+					list-style: none;
+					a {
+						padding-right: 0 !important;
+						font-weight: 700;
+						span {
+							padding: 0 !important;
+						}
+					}
+				}
+				.first {
+					a {
+						span:not(.line_h) {
+							color: #4c5bd4;
+							padding-left: 16px;
+							padding-right: 14px;
+						}
+					}
+				}
+				li:not(.first)::before {
+					content: '>';
+					font-size: 14px;
+					line-height: 37px;
+					color: #474747;
+					padding: 0 5px;
+					float: left;
+					position: relative;
+					left: -10px;
+					margin-left: 20px;
+				}
+			}
+			.breadcrumb > li {
+				a {
+					display: inline-block;
+					font-size: 14px;
+					line-height: 37px;
+					color: #474747;
+					text-decoration: none;
+					background: #fff;
+					float: left;
+					font-family: Roboto-Regular, sans-serif;
+					padding-right: 14px;
+				}
+			}
+		}
+		.vl_left {
+			width: 74%;
+			float: left;
+			#nd_cate {
+				float: left;
+				width: 100%;
+			}
+		}
+	}
+}
+@media screen and (max-width: 1519.98px) {
+	.main_timviec {
+		.container_timviec {
+			max-width: 1091px;
+		}
+	}
+}
+@media screen and (max-width: 1300px) {
+	.main_timviec {
+		.container_timviec {
+			.div_bre_2 {
+				padding-left: 10px;
+				margin-bottom: 10px;
+			}
+			.vl_left {
+				#nd_cate {
+					width: 100%;
+				}
+			}
+		}
+	}
+}
+@media screen and (max-width: 1023.98px) {
+	.main_timviec {
+		padding: 0 20px;
+	}
+}
+@media screen and (max-width: 767.98px) {
+	.main_timviec {
+		.container_timviec {
+			.div_bre_2 {
+				margin-top: 5px;
+			}
+			.div_bre {
+				.breadcrumb {
+					li {
+						a {
+							line-height: 25px;
+						}
+					}
+					li:not(.first)::before {
+						line-height: 26px;
+					}
+				}
+			}
+		}
+	}
+}
+@media screen and (max-width: 480px) {
+	.main_timviec {
+		padding: 0 5px;
+		.container_timviec {
+			.div_bre_2 {
+				padding-left: 0;
+			}
+			.div_bre {
+				.breadcrumb {
+					li:not(.first)::before {
+						line-height: 26px;
+					}
+				}
+			}
+		}
+	}
+}

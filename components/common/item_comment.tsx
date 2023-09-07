@@ -3,7 +3,7 @@ import styles from '@styles/common/box_content_comment.module.scss'
 import Image from 'next/image'
 import Input_reply from './input_reply'
 
-const Item_comment = ({ data, children, id, cm_parent_id }: any) => {
+const Item_comment = ({ data, children, id, cm_parent_id, endLine }: any) => {
 	const [hoveredItemIdBottom, setHoveredItemIdBottom] = useState<number | null>(null)
 	const listIconStatus = [
 		{ id: 1, img: '/images/img_comment/Ic_1.png', alt: 'Thích', color: 'blue' },
@@ -35,7 +35,7 @@ const Item_comment = ({ data, children, id, cm_parent_id }: any) => {
 
 	return (
 		<div className={`${styles.cm_content} ${styles.cm_8397} ${styles.cm_reply_box}`}>
-			{children}
+			{endLine && <span className={styles.line_reply1}></span>}
 			<span className={styles.line_reply2} />
 			<Image
 				height={48}
