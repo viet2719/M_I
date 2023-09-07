@@ -1,6 +1,6 @@
 import LoadingOverlay from '@/pages/LoadingOverlay'
 import { listCitys } from '@/utils/constants'
-import { calculateTimeDifference, unixTimestampToDateString } from '@/utils/convert'
+import { calculateTimeDifference, convertToSlug, unixTimestampToDateString } from '@/utils/convert'
 import { IJob } from '@/utils/interface'
 import styles from '@styles/home/box_vlhd_top.module.scss'
 import Image from 'next/image'
@@ -113,7 +113,7 @@ const Box_vlhd_top = ({ jobData }: Props) => {
 									</h3>
 									<Link
 										className={styles.name_com}
-										href={`/${job.usc_alias}-co${job.new_id}`}
+										href={`/${job.usc_alias?job.usc_alias:convertToSlug(job?.usc_company)}-co${job.new_id}`}
 										title={job.usc_company}
 									>
 										{job.usc_company}

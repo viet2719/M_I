@@ -19,12 +19,16 @@ import { LocAI365, listCitys } from '@/utils/constants'
 import { ICity, IJob, ISeo } from '@/utils/interface'
 import styles from '@styles/home/home.module.scss'
 import { Carousel } from 'antd'
+import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import Select from 'react-select'
 
-const Home: NextPageWithLayout = ({ data }: any) => {
+const Home: NextPageWithLayout = ({ data,jobAiSSR }: any) => {
+	const Banner_tia_set = dynamic(() => import('@/components/home/banner_tia_set'), { ssr: false })
+	const Banner_anh_sao = dynamic(() => import('@/components/home/tia_set'), { ssr: false })
+
 	const [VLHD, setVLHD] = useState<IJob[]>([])
 	const [VLTH, setVLTH] = useState<IJob[]>([])
 	const [VLTG, setVLTG] = useState<IJob[]>([])
@@ -122,8 +126,13 @@ const Home: NextPageWithLayout = ({ data }: any) => {
 		} catch (error) {}
 	}
 	useEffect(() => {
-		if ( (!selectedId && !city[0]?.cit_id) || (selectedId == 0 && !city[0]?.cit_id) || (selectedId && !city[0]?.cit_id)) {
+		if (
+			//  (!selectedId && !city[0]?.cit_id) ||
+		 (selectedId == 0 && !city[0]?.cit_id) || (selectedId && !city[0]?.cit_id)) {
 			handleGetJobAInoLocation()
+		}
+		if( (!selectedId && !city[0]?.cit_id)){
+			setlistJobsAI(jobAiSSR?.data?.items)
 		}
 	}, [selectedId, cate_id])
 	return (
@@ -235,7 +244,7 @@ const Home: NextPageWithLayout = ({ data }: any) => {
 						</div>
 					</div>
 					{/* Tia set */}
-					<Tia_set />
+					<Banner_anh_sao />
 
 					<div id={styles.box_vlth} className={`${styles.box_vieclam} ${styles.box_vieclam_hot}`}>
 						<h2 className={styles.icon_ai_home}>VIỆC LÀM ĐỀ XUẤT BỞI AI365</h2>
@@ -350,6 +359,7 @@ const Home: NextPageWithLayout = ({ data }: any) => {
 export async function getServerSideProps() {
 	// Danh sách việc làm
 	let data
+	let jobAiSSR
 	try {
 		const listWorks = await fetch(`${base_timviec365}/api/timviec/new/homePage`, {
 			headers: {
@@ -361,9 +371,24 @@ export async function getServerSideProps() {
 		const datas = await listWorks.json()
 		data = datas
 	} catch (error) {}
+		try {
+			const res = await fetch(`${base_timviec365}/api/timviec/new/listJobBySearch`, {
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				method: 'POST',
+				body: JSON.stringify({
+					city: Math.floor(Math.random() * 35) ,
+					pageSize: 25,
+				}),
+			})
+			const data = await res.json()
+			jobAiSSR = data
+		} catch (error) {}
+	
 	return {
 		props: {
-			data,
+			data,jobAiSSR
 		},
 	}
 }

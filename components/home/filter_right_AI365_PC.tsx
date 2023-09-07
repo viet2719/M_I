@@ -94,7 +94,7 @@ const Filter_right_AI365_PC = ({
 					<div className={styles.list_item}>
 						<button
 							onClick={() => handleButtonClick(0)}
-							className={`${styles.item} ${(showNgauNhien || !selectedId )? show.focus_filter : ''}`}
+							className={`${styles.item} ${showNgauNhien || !selectedId ? show.focus_filter : ''}`}
 						>
 							Ngẫu nhiên
 						</button>
@@ -121,30 +121,30 @@ const Filter_right_AI365_PC = ({
 						</button>
 					</div>
 				)}
-				{!idLocation && selectLeft == 1 && (
+				{!idLocation && selectLeft === 1 && (
 					<div className={styles.list_item}>
-						<button className={`${styles.item} ${styles.active}`}>Chọn mức lương</button>
-						<button className={`${styles.item}`}>Thỏa thuận</button>
-						<button className={`${styles.item}`}>1 - 3 triệu</button>
-						<button className={`${styles.item}`}>3 - 5 triệu</button>
-						<button className={`${styles.item}`}>5 - 7 triệu</button>
-						<button className={`${styles.item}`}>7 - 10 triệu</button>
-						<button className={`${styles.item}`}>10 - 15 triệu</button>
-						<button className={`${styles.item}`}>15 - 20 triệu</button>
-						<button className={`${styles.item}`}>20 - 30 triệu</button>
-						<button className={`${styles.item}`}>Trên 30 triệu</button>
-						<button className={`${styles.item}`}>Trên 50 triệu</button>
-						<button className={`${styles.item}`}>Trên 100 triệu</button>
+						{listMucLuong.slice(listPosition, listPosition + 8).map((item: any, index: number) => (
+							<button
+								key={index}
+								className={`${styles.item} ${
+									item.cat_id === idNganhNgheChangeColor ? show.focus_filter : ''
+								}`}
+							>
+								{item.cat_name}
+							</button>
+						))}
 					</div>
 				)}
 
-				{!idLocation && selectLeft == 2 && (
-					<div className={styles.list_item}>
-						<button className={`${styles.item} ${styles.active}`}>Chưa có kinh nghiệm</button>
-						<button className={`${styles.item}`}>0 - 1 năm kinh nghiệm</button>
-						<button className={`${styles.item}`}>Hơn 1 năm kinh nghiệm</button>
-						<button className={`${styles.item}`}>Hơn 2 năm kinh nghiệm</button>
-						<button className={`${styles.item}`}>Hơn 10 năm kinh nghiệm</button>
+				{!idLocation && selectLeft === 2 && (
+					<div className={styles.list_item} style={{ overflow: 'hidden' }}>
+						{listKinhNghiem
+							.slice(listPosition, listPosition + 4)
+							.map((item: any, index: number) => (
+								<button key={index} className={`${styles.item} `}>
+									{item.cat_name}
+								</button>
+							))}
 					</div>
 				)}
 

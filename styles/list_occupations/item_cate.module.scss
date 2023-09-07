@@ -408,7 +408,7 @@
 		.item_cate {
 			width: 100%;
 			.center_cate {
-				width: 70%;
+				// width: 70%;
 			}
 		}
 	}
@@ -556,7 +556,9 @@
 		}
 	}
 }
+.ung_tuyen{display: none;}
 @media screen and (max-width: 480px) {
+	.ung_tuyen{display: block;}
 	.main_cate {
 		.item_cate {
 			.box_input {

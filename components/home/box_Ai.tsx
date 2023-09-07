@@ -2,7 +2,7 @@ import Image from 'next/image'
 import React from 'react'
 import styles from '@styles/home/box_vlth.module.scss'
 import Link from 'next/link'
-import { calculateTimeDifference, unixTimestampToDateString } from '@/utils/convert'
+import { calculateTimeDifference, convertToSlug, unixTimestampToDateString } from '@/utils/convert'
 import { ICity, IJob } from '@/utils/interface'
 import { listCitys } from '@/utils/constants'
 type Props = {
@@ -91,7 +91,7 @@ const Box_AI = ({ jobList }: Props) => {
 								</h3>
 								<Link
 									className={styles.name_com}
-									href={`/${job.usc_alias}-co${job.new_id}`}
+									href={`/${job.usc_alias?job.usc_alias:convertToSlug(job?.usc_company)}-co${job.new_id}`}
 									title={job.usc_company}
 								>
 									{job.usc_company}
@@ -99,7 +99,7 @@ const Box_AI = ({ jobList }: Props) => {
 								<p className={styles.job_local}>
 									{job.new_city === '0'
 										? 'Toàn quốc'
-										: job?.new_city?.split(',')
+										: typeof job?.new_city === 'string' && job?.new_city?.split(',')
 												.map((cityId: any, index: number) => {
 													const city = listCitys.find(
 														(item: ICity) => item.cit_id === parseInt(cityId, 10)
