@@ -393,7 +393,7 @@ const Footer = () => {
 									<Link
 										rel="nofollow"
 										target="_blank"
-										href="/https://www.youtube.com/watch?v=UssNzo6m1p8"
+										href="/https:/www.youtube.com/watch?v=UssNzo6m1p8"
 									>
 										Video
 									</Link>
@@ -497,12 +497,12 @@ const Footer = () => {
 						<span className={styles.wrap_365_txt}>KẾT NỐI VỚI TIMVIEC365.VN</span>
 						<div className={styles.wrap_block_connect}>
 							<div className={styles.wrap_icon_connet}>
-								<Link href="/https://chat365.timviec365.vn/" rel="nofollow" target="_blank">
+								<Link href="/https:/chat365.timviec365.vn/" rel="nofollow" target="_blank">
 									<Image width={27} height={14} src="/images/before_login/icon365.svg" alt="chat" />
 								</Link>
 							</div>
 							<div className={styles.wrap_icon_connet}>
-								<Link href="/https://www.facebook.com/Timviec365.Vn/" rel="nofollow" target="_blank">
+								<Link href="/https:/www.facebook.com/Timviec365.Vn/" rel="nofollow" target="_blank">
 									<Image
 										width={9}
 										height={14}
@@ -512,7 +512,7 @@ const Footer = () => {
 								</Link>
 							</div>
 							<div className={styles.wrap_icon_connet}>
-								<Link href="/https://twitter.com/timviec365vn" rel="nofollow" target="_blank">
+								<Link href="/https:/twitter.com/timviec365vn" rel="nofollow" target="_blank">
 									<Image
 										width={13}
 										height={11}
@@ -523,7 +523,7 @@ const Footer = () => {
 							</div>
 							<div className={styles.wrap_icon_connet}>
 								<Link
-									href="/https://www.youtube.com/channel/UCI6_mZYL8exLuvmtipBFrkg/videos"
+									href="/https:/www.youtube.com/channel/UCI6_mZYL8exLuvmtipBFrkg/videos"
 									rel="nofollow"
 									target="_blank"
 								>
@@ -537,7 +537,7 @@ const Footer = () => {
 							</div>
 						</div>
 						<div className={styles.wrap_certify}>
-							<Link rel="nofollow" href="/http://online.gov.vn/Home/WebDetails/35979">
+							<Link rel="nofollow" href="/http:/online.gov.vn/Home/WebDetails/35979">
 								<Image
 									width={108}
 									height={40}
@@ -560,7 +560,7 @@ const Footer = () => {
 					<div className={styles.wrap_address}>
 						<p className={styles.wrap_address_header}>CÔNG TY CỔ PHẦN THANH TOÁN HƯNG HÀ</p>
 						<Link
-							href="/https://goo.gl/maps/stYYuH5Ln5U2"
+							href="/https:/goo.gl/maps/stYYuH5Ln5U2"
 							rel="nofollow"
 							target="_blank"
 							className={styles.wrap_address_txt}
@@ -649,7 +649,7 @@ const Footer = () => {
 							<Link
 								rel="nofollow"
 								target="_blank"
-								href="/http://online.gov.vn/Home/WebDetails/35979?AspxAutoDetectCookieSupport=1"
+								href="/http:/online.gov.vn/Home/WebDetails/35979?AspxAutoDetectCookieSupport=1"
 							>
 								<Image
 									width={109}
@@ -671,12 +671,12 @@ const Footer = () => {
 						</div>
 						<div className={`${styles.wrap_block_connect}`}>
 							<div className={`${styles.wrap_icon_connet}`}>
-								<Link href="/https://chat365.timviec365.vn/" rel="nofollow" target="_blank">
+								<Link href="/https:/chat365.timviec365.vn/" rel="nofollow" target="_blank">
 									<Image width={9} height={14} src="/images/before_login/icon365.svg" alt="chat" />
 								</Link>
 							</div>
 							<div className={`${styles.wrap_icon_connet}`}>
-								<Link href="/https://www.facebook.com/Timviec365.Vn/" rel="nofollow" target="_blank">
+								<Link href="/https:/www.facebook.com/Timviec365.Vn/" rel="nofollow" target="_blank">
 									<Image
 										width={9}
 										height={14}
@@ -686,7 +686,7 @@ const Footer = () => {
 								</Link>
 							</div>
 							<div className={`${styles.wrap_icon_connet}`}>
-								<Link href="/https://twitter.com/timviec365vn" rel="nofollow" target="_blank">
+								<Link href="/https:/twitter.com/timviec365vn" rel="nofollow" target="_blank">
 									<Image
 										width={9}
 										height={14}
@@ -697,7 +697,7 @@ const Footer = () => {
 							</div>
 							<div className={`${styles.wrap_icon_connet}`}>
 								<Link
-									href="/https://www.youtube.com/channel/UCI6_mZYL8exLuvmtipBFrkg/videos"
+									href="/https:/www.youtube.com/channel/UCI6_mZYL8exLuvmtipBFrkg/videos"
 									rel="nofollow"
 									target="_blank"
 								>
@@ -720,8 +720,8 @@ const Footer = () => {
 					<div className={styles.wrap_qr_block}>
 						<button className={styles.wrap_qr_child}>
 							<Link
-								href="/https://play.google.com/store/apps/details?id=timviec365vn.timviec365_vn"
-								ios-href="/https://apps.apple.com/vn/app/t%C3%ACm-vi%E1%BB%87c-365-t%C3%ACm-vi%E1%BB%87c-online/id1597712953?l=vi"
+								href="/https:/play.google.com/store/apps/details?id=timviec365vn.timviec365_vn"
+								ios-href="/https:/apps.apple.com/vn/app/t%C3%ACm-vi%E1%BB%87c-365-t%C3%ACm-vi%E1%BB%87c-online/id1597712953?l=vi"
 								className={styles.ios_check}
 								rel="nofollow"
 								target="_blank"
@@ -738,8 +738,8 @@ const Footer = () => {
 						</button>
 						<button className={styles.wrap_qr_child}>
 							<Link
-								href="/https://play.google.com/store/apps/details?id=vn.timviec365.company"
-								ios-href="/https://apps.apple.com/vn/app/nh%C3%A0-tuy%E1%BB%83n-d%E1%BB%A5ng-timviec365-vn/id1606069668"
+								href="/https:/play.google.com/store/apps/details?id=vn.timviec365.company"
+								ios-href="/https:/apps.apple.com/vn/app/nh%C3%A0-tuy%E1%BB%83n-d%E1%BB%A5ng-timviec365-vn/id1606069668"
 								rel="nofollow"
 								className={styles.ios_check}
 								target="_blank"
@@ -756,9 +756,9 @@ const Footer = () => {
 						</button>
 						<button className={styles.wrap_qr_child + ' ' + styles.wrap_qr_child_respon}>
 							<Link
-								href="/https://play.google.com/store/apps/details?id=vn.timviec365.cv.cv365_vn"
+								href="/https:/play.google.com/store/apps/details?id=vn.timviec365.cv.cv365_vn"
 								className={styles.ios_check}
-								ios-href="/https://apps.apple.com/us/app/cv-xin-vi%E1%BB%87c-365-t%E1%BA%A1o-cv-%C4%91%E1%BA%B9p/id1631076979"
+								ios-href="/https:/apps.apple.com/us/app/cv-xin-vi%E1%BB%87c-365-t%E1%BA%A1o-cv-%C4%91%E1%BA%B9p/id1631076979"
 								rel="nofollow"
 								target="_blank"
 							>
@@ -774,9 +774,9 @@ const Footer = () => {
 						</button>
 						<button className={styles.wrap_qr_child + ' ' + styles.wrap_qr_child_respon}>
 							<Link
-								href="/https://play.google.com/store/apps/details?id=vn.timviec365.chat_365"
+								href="/https:/play.google.com/store/apps/details?id=vn.timviec365.chat_365"
 								className={styles.ios_check}
-								ios-href="/https://apps.apple.com/us/app/chat365-nh%E1%BA%AFn-tin-nhanh-ch%C3%B3ng/id1623353330"
+								ios-href="/https:/apps.apple.com/us/app/chat365-nh%E1%BA%AFn-tin-nhanh-ch%C3%B3ng/id1623353330"
 								rel="nofollow"
 								target="_blank"
 							>

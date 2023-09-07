@@ -1,5 +1,6 @@
-export function convertToSlug(inputString: any): any {
-	const cleanedString = inputString
+export function convertToSlug(inputString?: any): any {
+	if(inputString){
+		const cleanedString = inputString
 		.toLowerCase()
 		.normalize('NFD')
 		.replace(/[\u0300-\u036f]/g, '')
@@ -7,6 +8,8 @@ export function convertToSlug(inputString: any): any {
 
 	const slug = cleanedString.replace(/\s+/g, '-')
 	return `${slug}`
+	}	
+
 }
 export function checkUrl(url: any): boolean {
 	const pattern = /^[a-zA-Z0-9-]+-d[0-9]+\.html$/
@@ -28,6 +31,21 @@ export const unixTimestampToDateString=(timestamp:number)=> {
   
 	// Tạo chuỗi ngày tháng năm định dạng
 	const formattedDate = `${day}/${month}/${year}`;
+  
+	return formattedDate;
+  }
+  
+export const unixTimestampToDateStringMon=(timestamp:number)=> {
+	// Tạo một đối tượng Date mới và truyền timestamp như mili giây
+	const date = new Date(timestamp * 1000);
+  
+	// Trích xuất các thành phần của ngày
+	const year = date.getFullYear();
+	const month = date.getMonth() + 1; // Tháng tính từ 0 nên cộng thêm 1
+	const day = date.getDate();
+  
+	// Tạo chuỗi ngày tháng năm định dạng
+	const formattedDate = `${month}/${year}`;
   
 	return formattedDate;
   }
@@ -63,4 +81,27 @@ export const unixTimestampToDateString=(timestamp:number)=> {
 	  result = result.substring(1);
 	}
 	return result;
+  }
+// Bỏ thẻ html
+  export const removeHtmlTags = (htmlString:any) =>{
+	// Sử dụng DOMParser để phân tích chuỗi HTML thành một tài liệu DOM
+	const parser = new DOMParser();
+	const doc = parser.parseFromString(htmlString, 'text/html');
+
+  // Sử dụng innerText để trích xuất văn bản không có thẻ HTML
+
+  // Loại bỏ các thuộc tính class, title, dir và các thuộc tính khác
+  const cssLikeAttributes = ['color', 'background', 'font - size', 'font-family', 'text - align','height' /* thêm các thuộc tính khác nếu cần */];
+
+	// Sử dụng innerText để trích xuất văn bản không có thẻ HTML
+	const textWithoutTags = doc.body.innerText;
+	const cleanedHtml = textWithoutTags.replace(/\s(class|title|dir|style|align|valign|bgcolor)\s*=\s*(['"])(?:(?!\2).)*\2/g, '');
+
+	const cleanedHtml2 = cleanedHtml.replace(/<[^>]*>/g, '');
+	const cleanedHtml3 = cleanedHtml2.replace(/\s(\w+)=['"][^'"]*['"]/g, '');
+	const cleanedHtml4 = cleanedHtml3.replace(
+		new RegExp(`\\s(${cssLikeAttributes.join('|')})\\s*=\\s*['"][^'"]*['"]`, 'g'),
+		''
+	  );
+	return cleanedHtml4;
   }

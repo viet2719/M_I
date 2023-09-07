@@ -540,6 +540,17 @@
 			}
 		}
 	}
+	.nd_cate_new .ut_all,
+    .nd_cate_new .item_cate .img_cate {
+        display: none
+    }
+	.nd_cate_new .box_btn_ut_mb .btn_bl_w {
+        width: 100px;
+        border-radius: 20px;
+        padding: 3px 0px 3px 0px;
+        font-size: 13px;
+        margin: unset;
+    }
 }
 @media screen and (max-width: 500px) {
 	.box_bottom_cate {
@@ -593,4 +604,29 @@
 			}
 		}
 	}
+}
+.nd_cate_new .ut_all {
+    float: right;
+}
+
+.nd_cate_new .btn_bl_w {
+    background: #4C5BD4;
+    border-radius: 8px;
+    padding: 9px;
+    font-weight: 500;
+    font-size: 16px;
+    color: #fff;
+    cursor: pointer;
+}
+.nd_cate_new .box_new_left .btn_bl_w {
+    margin-bottom: 10px;
+}
+.job_ut {
+    margin-left: 20px;
+    padding-left: 18px;
+    color: #307DF1;
+    font-size: 14px;
+    line-height: 17px;
+    background: url(/images/chat_icon/job_ut.png) no-repeat;
+    cursor: pointer;
 }

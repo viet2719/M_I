@@ -2,7 +2,7 @@ import Image from 'next/image'
 import React from 'react'
 import styles from '@styles/home/box_vlth.module.scss'
 import Link from 'next/link'
-import { calculateTimeDifference, unixTimestampToDateString } from '@/utils/convert'
+import { calculateTimeDifference, convertToSlug, unixTimestampToDateString } from '@/utils/convert'
 import { ICity, IJob } from '@/utils/interface'
 import { listCitys } from '@/utils/constants'
 type Props = {
@@ -78,12 +78,21 @@ const Box_vlth = ({ jobList }: Props) => {
 										alt=""
 									/>
 								)}
+									{job.usc_star == 1 && (
+										<Image
+											width={28}
+											height={28}
+											src="/images/icon_anhsao.gif"
+											className={styles.icon_tiaset_new}
+											alt=""
+										/>
+									)}
 							</div>
 							<div className={styles.right_item_vl}>
 								<h3>
 									<Link
 										className={styles.tit_vip}
-										href={`/${job.new_alias}-p123.html`}
+										href={`/${job.new_alias}-p${job.new_id}.html`}
 										title={job.new_title}
 									>
 										{job.new_title}
@@ -91,7 +100,7 @@ const Box_vlth = ({ jobList }: Props) => {
 								</h3>
 								<Link
 									className={styles.name_com}
-									href={`/${job.usc_alias}-co${job.new_id}`}
+									href={`/${job.usc_alias?job.usc_alias:convertToSlug(job?.usc_company)}-co${job.new_id}`}
 									title={job.usc_company}
 								>
 									{job.usc_company}
