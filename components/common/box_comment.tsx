@@ -337,7 +337,6 @@ const Box_comment = (id: any) => {
 									{apiDataID?.map((item, index) => {
 										const hasReplyArray =
 											item?.arr_reply.length > 0 && Array.isArray(item?.arr_reply)
-										const isLastItem = index === apiDataID.length - 1
 										return (
 											<Content_Component
 												key={index}
@@ -347,15 +346,19 @@ const Box_comment = (id: any) => {
 											>
 												{hasReplyArray && (
 													<>
-														{item?.arr_reply.map((item_rep: any, index_rep: any) => (
-															<Item_comment
-																data={item_rep}
-																key={index_rep}
-																cm_parent_id={item?.cm_id}
-																id={item_rep?.cm_id}
-															></Item_comment>
-														))}
-														{isLastItem && (
+														{item?.arr_reply.map((item_rep: any, index_rep: any) => {
+															const isLastItem = index_rep === item?.arr_reply?.length - 1
+															return (
+																<Item_comment
+																	data={item_rep}
+																	key={index_rep}
+																	cm_parent_id={item?.cm_id}
+																	id={item_rep?.cm_id}
+																	endLine={isLastItem}
+																></Item_comment>
+															)
+														})}
+														{/* {isLastItem && (
 															<>
 																<Item_comment
 																	data={item?.arr_reply[item?.arr_reply.length - 1]}
@@ -366,7 +369,7 @@ const Box_comment = (id: any) => {
 																	<span className={styles.line_reply1}></span>
 																</Item_comment>
 															</>
-														)}
+														)} */}
 													</>
 												)}
 											</Content_Component>

@@ -59,8 +59,5 @@ export const handleCreateLogin = async (api: string, data: any) => {
 			alert('Thành công')
 		}
 		return response.status
-	} catch (error) {
-		alert('Thất bại')
-		console.log('Lỗi khi thêm ý kiêns:', error)
-	}
+	} catch (error) {}
 }
