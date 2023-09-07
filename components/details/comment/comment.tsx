@@ -104,7 +104,7 @@ const Comment = ({ isLogin }: Props) => {
 				await fetch(`${base_timviec365}/api/timviec/new/comment`, {
 					headers: {
 						'Content-Type': 'application/json',
-						Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6MTQwNDE1NiwiaWRUaW1WaWVjMzY1IjoxMzMzNjc2LCJpZFFMQyI6OTcwODU5LCJpZFJhb05oYW5oMzY1IjowLCJlbWFpbCI6bnVsbCwicGhvbmVUSyI6IjAzNjc2NDg5MDciLCJjcmVhdGVkQXQiOjE2OTA0MjEwODUsInR5cGUiOjB9LCJpYXQiOjE2OTM0NjcyNjgsImV4cCI6MTY5MzU1MzY2OH0.A3-8if-PGjG7WxigIX5qDaaHqFHL-6jKZT3FzTZyBI8`,
+						Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6MjA4NTEzLCJpZFRpbVZpZWMzNjUiOjExNzgzODQsImlkUUxDIjoxNzAzODAsImlkUmFvTmhhbmgzNjUiOjAsImVtYWlsIjoiIiwicGhvbmVUSyI6IjA4Njk1MTY5NzgiLCJjcmVhdGVkQXQiOjE2ODQyMjc1NDcsInR5cGUiOjB9LCJpYXQiOjE2OTQwNTY1NDYsImV4cCI6MTY5NDE0Mjk0Nn0.798srusUmgRGfCq42uCQ-iUuGFt2jtMKDOXerIdnQMc`,
 					},
 					method: 'POST',
 					body: JSON.stringify({ cm_comment: content_comment, cm_new_id: 871632 }),

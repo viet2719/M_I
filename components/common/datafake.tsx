@@ -115,7 +115,22 @@ export const arr_comments = [
 				lk_user_idchat: 776931,
 			},
 		],
-		arr_reply: [],
+		arr_reply: [
+			{
+				_id: '64ba08079217714c7b9b6f45',
+				cm_id: 3394,
+				cm_url:
+					'https://timviec365.vn/chuyen-vien-tu-van-khach-hang-luong-cung-17-trieu-25-tr-p860696.html',
+				cm_new_id: 860696,
+				cm_sender_idchat: 781407,
+				cm_comment: 'e này',
+				cm_img: null,
+				cm_ip: '118.107.10.36',
+				cm_tag: '[]',
+				cm_time: 1689685638,
+				cm_sender_avatar: [''],
+			},
+		],
 	},
 
 	{

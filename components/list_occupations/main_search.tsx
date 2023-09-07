@@ -558,7 +558,7 @@ const Main_search = () => {
 								</h2>
 								<h3
 									style={{ textAlign: 'justify' }}
-									id="tuyen-nhan-vien-kinh-doanh-o-to-tai-tp-hcm"
+									id="tuyen-nhan-vien-kinh-doOanh-o-to-tai-tp-hcm"
 								>
 									<span style={{}}>Tuyển nhân viên kinh doanh ô tô tại TP.HCM</span>
 								</h3>

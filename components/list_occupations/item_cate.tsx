@@ -1,20 +1,12 @@
-import { openModal } from '@/actions/actions'
+import { fetchData } from '@/utils/BaseApi'
 import styles from '@styles/list_occupations/item_cate.module.scss'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
-import Model_noti from '../pop_up/model_noti'
 import Box_comment from '../common/box_comment'
-import axios from 'axios'
-import { base_timviec365 } from '../service/functions'
+import Model_noti from '../pop_up/model_noti'
 
 const List_cate = () => {
-	const listCate = [
-		{ id: 1, title: 'TUYỂN DỤNG TRƯỞNG NHÓM BÁN HÀNG' },
-		{ id: 2, title: 'TUYỂN DỤNG TRƯỞNG NHÓM BÁN HÀNG 2' },
-		{ id: 3, title: 'TUYỂN DỤNG TRƯỞNG NHÓM BÁN HÀNG 3' },
-	]
 	const [stateSeenAll, setStateSeenAll] = useState<any>(null)
 	const toggleIdSeenAll = (id: any) => {
 		if (stateSeenAll === id) {
@@ -23,69 +15,26 @@ const List_cate = () => {
 			setStateSeenAll(id)
 		}
 	}
-
 	// Lấy danh sách tin
 	const [apiData, setApiData] = useState<any[]>([])
 	const [loading, setLoading] = useState<boolean>(true)
-	const [selectedId, setSelectedId] = useState<any | null>(null)
-	const [apiDataID, setApiDataID] = useState<any[]>([])
-
 	useEffect(() => {
-		const fetchData = async () => {
-			const token =
-				'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6MjA4NTEzLCJpZFRpbVZpZWMzNjUiOjExNzgzODQsImlkUUxDIjoxNzAzODAsImlkUmFvTmhhbmgzNjUiOjAsImVtYWlsIjoiIiwicGhvbmVUSyI6IjA4Njk1MTY5NzgiLCJjcmVhdGVkQXQiOjE2ODQyMjc1NDcsInR5cGUiOjB9LCJpYXQiOjE2OTM0NDYyNTAsImV4cCI6MTY5MzUzMjY1MH0.3UwrRDW3F-TQbYecgwYuedNaTLepj4kInZDb_UL5dQA'
+		const fetchGetDataCmt = async () => {
 			try {
-				const response = await axios.post(
-					`${base_timviec365}/api/timviec/new/homePage`,
-					{ pageSizeHD: 6, pageSizeTH: 1, pageSizeTG: 1 },
-					{
-						headers: {
-							'Content-Type': 'application/json',
-							Authorization: `Bearer ${token}`,
-						},
-					}
-				)
-				setApiData(response.data?.data?.VLHD || [])
+				const response = await fetchData('/api/timviec/new/homePage', {
+					pageSizeHD: 8,
+					pageSizeTH: 1,
+					pageSizeTG: 1,
+				})
+				setApiData(response?.data?.VLHD || [])
 				setLoading(false)
 			} catch (error) {
-				console.error(error)
+				console.log('Error fetching home data:', error)
 				setLoading(false)
 			}
 		}
-
-		fetchData()
+		fetchGetDataCmt()
 	}, [])
-	useEffect(() => {
-		if (selectedId) {
-			const fetchData1 = async () => {
-				const token =
-					'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6MjA4NTEzLCJpZFRpbVZpZWMzNjUiOjExNzgzODQsImlkUUxDIjoxNzAzODAsImlkUmFvTmhhbmgzNjUiOjAsImVtYWlsIjoiIiwicGhvbmVUSyI6IjA4Njk1MTY5NzgiLCJjcmVhdGVkQXQiOjE2ODQyMjc1NDcsInR5cGUiOjB9LCJpYXQiOjE2OTM0NDYyNTAsImV4cCI6MTY5MzUzMjY1MH0.3UwrRDW3F-TQbYecgwYuedNaTLepj4kInZDb_UL5dQA'
-				try {
-					const response = await axios.post(
-						`${base_timviec365}/api/timviec/new/listComment`,
-						{ new_id: selectedId },
-						{
-							headers: {
-								'Content-Type': 'application/json',
-								Authorization: `Bearer ${token}`,
-							},
-						}
-					)
-					setApiDataID(response?.data || [])
-					setLoading(false)
-				} catch (error) {
-					console.error(error)
-					setLoading(false)
-				}
-			}
-
-			fetchData1()
-		}
-	}, [selectedId])
-	const handleItemClick = (id: any) => {
-		setSelectedId(id)
-	}
-
 	return (
 		<div className={styles.main_cate}>
 			{loading ? (
@@ -242,7 +191,7 @@ const List_cate = () => {
 												sáng tạo. Được hưởng đầy đủ các chế độ phúc lợi của công ty : BHXH, BHYT,
 												BHTN... Thời gian làm việc: 08h00 - 17h30 Thứ 2 đến sáng Thứ 7
 											</p>
-											<span className={styles.tooltip}>
+											{/* <span className={styles.tooltip}>
 												<span>
 													Lương khởi điểm 7.000.000đ + thưởng doanh số tháng/quý/năm, thu nhập bình
 													quân tháng từ 15.000.000đ + Được xem xét điều chỉnh chế độ đãi ngộ 2 lần/
@@ -251,7 +200,7 @@ const List_cate = () => {
 													sáng tạo. Được hưởng đầy đủ các chế độ phúc lợi của công ty : BHXH, BHYT,
 													BHTN... Thời gian làm việc: 08h00 - 17h30 Thứ 2 đến sáng Thứ 7
 												</span>
-											</span>
+											</span> */}
 										</div>
 										<div
 											className={`${styles.con_tooltip} ${styles.top} ${styles.frame_txt} ${styles.ctn_frame_txt}`}
@@ -270,7 +219,7 @@ const List_cate = () => {
 												gửi/nhận email. Năng động, nhiệt tình, kiên trì, chịu khó, có khả năng tập
 												trung công việc cao
 											</p>
-											<span className={styles.tooltip}>
+											{/* <span className={styles.tooltip}>
 												<span>
 													Yêu thích kinh doanh, máu lửa, năng động, tự tin, giao tiếp tốt Tốt nghiệp
 													Cao đẳng trở lên các khối ngành kinh tế, quản trị kinh doanh,... Độ tuổi:
@@ -278,7 +227,7 @@ const List_cate = () => {
 													email. Năng động, nhiệt tình, kiên trì, chịu khó, có khả năng tập trung
 													công việc cao
 												</span>
-											</span>
+											</span> */}
 										</div>
 										<div className={styles.box_btn_ut_mb}></div>
 									</div>
@@ -311,7 +260,7 @@ const List_cate = () => {
 										</ul>
 									</div>
 								)}
-								<Box_comment id={selectedId} />
+								<Box_comment id={cate?.new_id} />
 							</div>
 						)
 					})}
