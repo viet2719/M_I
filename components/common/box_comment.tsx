@@ -1,43 +1,34 @@
-import Image from 'next/image'
-import React, { useEffect, useState } from 'react'
-import styles from '@styles/common/box_comment.module.scss'
-import { useDispatch } from 'react-redux'
 import { openModal } from '@/actions/actions'
-import Input_reply from './input_reply'
+import { fetchData } from '@/utils/BaseApi'
+import styles from '@styles/common/box_comment.module.scss'
+import Image from 'next/image'
+import { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
 import Content_Component from './box_content_comment'
+import Input_reply from './input_reply'
 import Item_comment from './item_comment'
-import axios from 'axios'
-import { arr_comments } from './datafake'
 
 const Box_comment = (id: any) => {
-	const [apiDataID, setApiDataID] = useState<any[]>(arr_comments)
+	const [apiDataID, setApiDataID] = useState<any[]>()
 	const [loading, setLoading] = useState<boolean>(true)
-	// useEffect(() => {
-	// 	if (id) {
-	// 		const fetchData1 = async () => {
-	// 			const token =
-	// 				'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6MjA4NTEzLCJpZFRpbVZpZWMzNjUiOjExNzgzODQsImlkUUxDIjoxNzAzODAsImlkUmFvTmhhbmgzNjUiOjAsImVtYWlsIjoiIiwicGhvbmVUSyI6IjA4Njk1MTY5NzgiLCJjcmVhdGVkQXQiOjE2ODQyMjc1NDcsInR5cGUiOjB9LCJpYXQiOjE2OTM0NDYyNTAsImV4cCI6MTY5MzUzMjY1MH0.3UwrRDW3F-TQbYecgwYuedNaTLepj4kInZDb_UL5dQA'
-	// 			try {
-	// 				const response = await axios.post(
-	// 					'http://210.245.108.202:3001/api/timviec/new/listComment',
-	// 					{ new_id: 860696 },
-	// 					{
-	// 						headers: {
-	// 							'Content-Type': 'application/json',
-	// 							Authorization: `Bearer ${token}`,
-	// 						},
-	// 					}
-	// 				)
-	// 				setApiDataID(response?.data?.data?.arr_comments || [])
-	// 				setLoading(false)
-	// 			} catch (error) {
-	// 				console.error(error)
-	// 				setLoading(false)
-	// 			}
-	// 		}
-	// 		fetchData1()
-	// 	}
-	// }, [id])
+	// save id choose cmt
+	const [idCmtItem, setIdCmtItem] = useState<any>()
+	const [dataApiItem, setDataApiItem] = useState<any>()
+	useEffect(() => {
+		const fetchGetDataCmtID = async () => {
+			try {
+				const response = await fetchData('/api/timviec/new/listComment', { new_id: idCmtItem?.id })
+				setApiDataID(response?.data?.arr_comments)
+				setLoading(false)
+				setDataApiItem(response?.data)
+			} catch (error) {
+				console.log('Error fetching home data:', error)
+				setLoading(false)
+			}
+		}
+		fetchGetDataCmtID()
+	}, [idCmtItem])
+
 	const dispatch = useDispatch()
 	const listIconStatus = [
 		{ id: 1, img: '/images/img_comment/Ic_1.png', alt: 'Thích' },
@@ -86,59 +77,7 @@ const Box_comment = (id: any) => {
 			setStateItemShare(id)
 		}
 	}
-	// Lưu trữ danh sách total của các loại cảm xúc
-	const listTotalFeel = [
-		{
-			id: 1,
-			total: 12,
-			title: 'Thích',
-		},
-		{
-			id: 2,
-			total: 4,
-			title: 'Thích',
-		},
-		{
-			id: 3,
-			total: 12,
-			title: 'Thích',
-		},
-		{
-			id: 1,
-			total: 12,
-			title: 'Thích',
-		},
-		{
-			id: 1,
-			total: 12,
-			title: 'Thích',
-		},
-		{
-			id: 1,
-			total: 12,
-			title: 'Thích',
-		},
-		{
-			id: 1,
-			total: 12,
-			title: 'Thích',
-		},
-		{
-			id: 1,
-			total: 12,
-			title: 'Thích',
-		},
-	]
-	const dataCha = [
-		{ id: 1, cm_sender_name: 'Test Cha nè', cm_comment: ' Comment dạo cha 1' },
-		{ id: 1, cm_sender_name: 'Hoàng', cm_comment: ' Comment dạo 2' },
-		{ id: 1, cm_sender_name: 'Hoàng nè', cm_comment: ' Comment dạo 3' },
-	]
-	const data = [
-		{ id: 1, cm_sender_name: 'Test', cm_comment: ' Comment dạo 1' },
-		{ id: 1, cm_sender_name: 'Hoàng 1', cm_comment: ' Comment dạo 2' },
-		{ id: 1, cm_sender_name: 'Hoàng nè 3', cm_comment: ' Comment dạo 3' },
-	]
+
 	return (
 		<div className={`${styles.box_comment_chat} ${styles.not_login}`}>
 			<div style={{ clear: 'both' }} />
@@ -183,10 +122,11 @@ const Box_comment = (id: any) => {
 							</span>
 						</div>
 						<span className={styles.cm_sh_ic}>
-							<b>•</b> 0 chia sẻ{' '}
+							<b>•</b>
+							{dataApiItem ? dataApiItem?.arr_share_new.length : 0} chia sẻ{' '}
 						</span>
 						<span className={styles.cm_cm_ic}>
-							<b>•</b> <span>0</span> bình luận{' '}
+							<b>•</b> <span>{dataApiItem ? dataApiItem?.count_comments : 0}</span> bình luận{' '}
 						</span>
 						<span className={styles.cm_view_ic}>639 lượt xem</span>
 					</div>
@@ -248,7 +188,7 @@ const Box_comment = (id: any) => {
 							<span
 								className={styles.comment_event}
 								onClick={() => {
-									console.log(id)
+									setIdCmtItem(id)
 								}}
 							>
 								<svg
@@ -386,43 +326,56 @@ const Box_comment = (id: any) => {
 							</div>
 						</div>
 					</div>
+					{idCmtItem && idCmtItem === id && (
+						<>
+							<div className={styles.order_cm}>
+								<Input_reply cm_new_id={idCmtItem} />
+							</div>
 
-					<div className={styles.order_cm}>
-						<Input_reply />
-					</div>
-					<div className={styles.cm_list}>
-						<div className={styles.box_cm_list}>
-							{apiDataID?.map((item, index) => {
-								const hasReplyArray = item?.arr_reply.length > 0 && Array.isArray(item?.arr_reply)
-								const isLastItem = index === apiDataID.length - 1
-								return (
-									<Content_Component
-										key={index}
-										dataCha={item}
-										containerClassName={hasReplyArray ? styles.cm_has_reply : ''}
-									>
-										{hasReplyArray && (
-											<>
-												{item?.arr_reply.map((item_rep: any, index_rep: any) => (
-													<Item_comment data={item_rep} key={index_rep}></Item_comment>
-												))}
-												{isLastItem && (
+							<div className={styles.cm_list}>
+								<div className={styles.box_cm_list}>
+									{apiDataID?.map((item, index) => {
+										const hasReplyArray =
+											item?.arr_reply.length > 0 && Array.isArray(item?.arr_reply)
+										const isLastItem = index === apiDataID.length - 1
+										return (
+											<Content_Component
+												key={index}
+												id={item?.cm_id}
+												dataCha={item}
+												containerClassName={hasReplyArray ? styles.cm_has_reply : ''}
+											>
+												{hasReplyArray && (
 													<>
-														<Item_comment
-															data={item?.arr_reply[item?.arr_reply.length - 1]}
-															key="last-item"
-														>
-															<span className={styles.line_reply1}></span>
-														</Item_comment>
+														{item?.arr_reply.map((item_rep: any, index_rep: any) => (
+															<Item_comment
+																data={item_rep}
+																key={index_rep}
+																cm_parent_id={item?.cm_id}
+																id={item_rep?.cm_id}
+															></Item_comment>
+														))}
+														{isLastItem && (
+															<>
+																<Item_comment
+																	data={item?.arr_reply[item?.arr_reply.length - 1]}
+																	key="last-item"
+																	id={item?.arr_reply[item?.arr_reply.length - 1]?.cm_id}
+																	cm_parent_id={item?.cm_id}
+																>
+																	<span className={styles.line_reply1}></span>
+																</Item_comment>
+															</>
+														)}
 													</>
 												)}
-											</>
-										)}
-									</Content_Component>
-								)
-							})}
-						</div>
-					</div>
+											</Content_Component>
+										)
+									})}
+								</div>
+							</div>
+						</>
+					)}
 				</div>
 			</div>
 		</div>

@@ -1,8 +1,29 @@
-import React from 'react'
+import { handleCreateLogin } from '@/utils/BaseApi'
 import styles from '@styles/common/input_reply.module.scss'
 import Image from 'next/image'
+import { useRouter } from 'next/router'
+import { useState } from 'react'
 
-const Input_reply = () => {
+const Input_reply = ({ cm_new_id, cm_parent_id }: any) => {
+	const router = useRouter()
+	const [data, setData] = useState(null)
+	const [valueCmt, setValueCmt] = useState<any>()
+	const [isLoading, setIsLoading] = useState(false)
+	const handleSendCmt = async () => {
+		setIsLoading(true)
+		try {
+			const api = '/api/timviec/new/comment'
+			await handleCreateLogin(api, {
+				cm_new_id: cm_new_id,
+				cm_comment: valueCmt,
+				cm_parent_id: cm_parent_id,
+			})
+			setIsLoading(false)
+			// router.push(`/tim-viec-tai-${router.query.title}-c0v2123`)
+		} catch (error) {
+			alert('Đã xảy ra lỗi khi lưu sổ văn bản:')
+		}
+	}
 	return (
 		<div className={`${styles.cm_input} ${styles.input_comment}`}>
 			<span className={styles.line_reply1}></span>
@@ -18,6 +39,10 @@ const Input_reply = () => {
 				maxLength={250}
 				placeholder="Viết bình luận"
 				style={{ height: 48 }}
+				value={valueCmt}
+				onChange={(e: any) => {
+					setValueCmt(e.target.value)
+				}}
 			/>
 			<svg
 				className={styles.ic_send_cm}
@@ -26,6 +51,7 @@ const Input_reply = () => {
 				viewBox="0 0 32 32"
 				fill="none"
 				xmlns="http://www.w3.org/2000/svg"
+				onClick={handleSendCmt}
 			>
 				<rect width="32" height="32" rx="16" fill="#4C5BD4"></rect>
 				<path

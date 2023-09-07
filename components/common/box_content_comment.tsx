@@ -2,6 +2,7 @@ import Image from 'next/image'
 import React, { ReactNode, useState } from 'react'
 import styles from '@styles/common/box_content_comment.module.scss'
 import Item_comment from './item_comment'
+import Input_reply from './input_reply'
 
 const Content_Component = ({ children, id, dataCha, containerClassName }: any) => {
 	const [hoveredItemIdBottom, setHoveredItemIdBottom] = useState<number | null>(null)
@@ -31,6 +32,9 @@ const Content_Component = ({ children, id, dataCha, containerClassName }: any) =
 			setStatus(null)
 		}
 	}
+	// Id reply cmt parent
+	const [idReplyCmtParent, setIdReplyCmtParent] = useState<any>()
+
 	return (
 		<div className={`${styles.cm_comment}  ${containerClassName}`}>
 			<div className={`${styles.cm_content} ${styles.cm_7294}`}>
@@ -63,7 +67,14 @@ const Content_Component = ({ children, id, dataCha, containerClassName }: any) =
 								</span>
 								|
 							</span>
-							<span className={styles.reply_cm}>Phản hồi |</span>
+							<span
+								className={styles.reply_cm}
+								onClick={() => {
+									setIdReplyCmtParent(id)
+								}}
+							>
+								Phản hồi |
+							</span>
 							<span className={styles.delete_cm}>
 								Xóa <span className={styles.span_del}>|</span>
 							</span>
@@ -107,7 +118,13 @@ const Content_Component = ({ children, id, dataCha, containerClassName }: any) =
 							</span>
 						</span>
 					</div>
+
 					{children}
+					{idReplyCmtParent && idReplyCmtParent === id && (
+						<div className={styles.order_cm}>
+							<Input_reply cm_new_id={dataCha?.cm_new_id} cm_parent_id={idReplyCmtParent} />
+						</div>
+					)}
 				</div>
 			</div>
 		</div>
