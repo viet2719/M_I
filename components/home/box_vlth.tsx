@@ -1,9 +1,17 @@
 import Image from 'next/image'
-import React from 'react'
+import React, { useState } from 'react'
 import styles from '@styles/home/box_vlth.module.scss'
 import Link from 'next/link'
+import LoadingOverlay from '../../pages/LoadingOverlay'
 
 const Box_vlth = ({ jobList }: any) => {
+	const [loading, setLoading] = useState(false)
+	const handleLinkClick = () => {
+		setLoading(true)
+		// setTimeout(() => {
+		// 	setLoading(false)
+		// }, 2000)
+	}
 	return (
 		<div className={styles.main_box_vieclam1}>
 			<div className={styles.slide_hd}>
@@ -12,6 +20,7 @@ const Box_vlth = ({ jobList }: any) => {
 						<div className={styles.in_vl}>
 							<div className={styles.img_item_vl}>
 								<Link
+									onClick={handleLinkClick}
 									href={`/${job.link}-p123.html`}
 									className={styles.logo_user_th}
 									title="[tuyen dung] nhan vien kinh doan"
@@ -73,6 +82,7 @@ const Box_vlth = ({ jobList }: any) => {
 							<div className={styles.right_item_vl}>
 								<h3>
 									<Link
+										onClick={handleLinkClick}
 										className={styles.tit_vip}
 										href={`/${job.link}-p123.html`}
 										title={job.title}
@@ -81,6 +91,7 @@ const Box_vlth = ({ jobList }: any) => {
 									</Link>
 								</h3>
 								<Link
+									onClick={handleLinkClick}
 									className={styles.name_com}
 									href={`/${job.link}-p123.html`}
 									title={job.companyName}
@@ -95,7 +106,11 @@ const Box_vlth = ({ jobList }: any) => {
 								<p className={styles.job_money} title={job.salary}>
 									{job.salary}
 								</p>
-								<Link href={`/${job.link}-p123.html`} className={styles.job_history}>
+								<Link
+									onClick={handleLinkClick}
+									href={`/${job.link}-p123.html`}
+									className={styles.job_history}
+								>
 									<Image
 										width={16}
 										height={16}
@@ -109,6 +124,7 @@ const Box_vlth = ({ jobList }: any) => {
 					</div>
 				))}
 			</div>
+			<LoadingOverlay loading={loading} />
 		</div>
 	)
 }

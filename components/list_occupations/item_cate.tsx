@@ -94,13 +94,6 @@ const List_cate = () => {
 					{apiData?.map((cate, index) => {
 						return (
 							<div className={styles.item_cate} key={index}>
-								<div
-									onClick={() => {
-										handleItemClick(cate?.new_id)
-									}}
-								>
-									Click
-								</div>
 								<div className={`${styles.img_cate} ${styles.box_new_left}`}>
 									<Link
 										className={`${styles.logo_user_th}`}
