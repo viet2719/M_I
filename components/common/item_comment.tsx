@@ -1,8 +1,35 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from '@styles/common/box_content_comment.module.scss'
 import Image from 'next/image'
 
 const Item_comment = ({ data, children }: any) => {
+	const [hoveredItemIdBottom, setHoveredItemIdBottom] = useState<number | null>(null)
+	const listIconStatus = [
+		{ id: 1, img: '/images/img_comment/Ic_1.png', alt: 'Thích', color: 'blue' },
+		{ id: 2, img: '/images/img_comment/Ic_2.png', alt: 'Yêu thích', color: 'red' },
+		{ id: 3, img: '/images/img_comment/Ic_3.png', alt: 'Wow', color: 'orange' },
+		{ id: 4, img: '/images/img_comment/Ic_4.png', alt: 'Thương thương', color: 'orange' },
+		{ id: 5, img: '/images/img_comment/Ic_5.png', alt: 'Phẫn nộ', color: 'orange' },
+		{ id: 6, img: '/images/img_comment/Ic_6.png', alt: 'Buồn', color: 'orange' },
+		{ id: 7, img: '/images/img_comment/Ic_7.png', alt: 'Haha', color: 'orange' },
+	]
+	const [stateIconState, setStateIconState] = useState<any>(null)
+	const [status, setStatus] = useState<any>(null)
+	const handleChooseIconStatus = (itemId: any, cateId: any) => {
+		const foundItem = listIconStatus.find((item) => item.id === itemId)
+		setStatus(foundItem)
+		if (stateIconState !== cateId) {
+			setStateIconState(cateId)
+		}
+	}
+	const handleLike = (obj: any) => {
+		if (status == null) {
+			const foundItem = listIconStatus.find((item) => item.id === 1)
+			setStatus(foundItem)
+		} else {
+			setStatus(null)
+		}
+	}
 	return (
 		<div className={`${styles.cm_content} ${styles.cm_8397} ${styles.cm_reply_box}`}>
 			{children}
@@ -20,30 +47,62 @@ const Item_comment = ({ data, children }: any) => {
 					<p className={styles.cm_nd}>{data?.cm_comment}</p>
 				</div>
 				<div className={styles.cm_cm_ev}>
-					<div className={styles.cm_list_ev}>
-						<span className={styles.like_cm}>
-							<span className={styles.like_cm_txt}>Thích</span> |
+					<div
+						className={styles.cm_list_ev}
+						onMouseEnter={() => setHoveredItemIdBottom(data?.new_id)}
+						onMouseLeave={() => setHoveredItemIdBottom(null)}
+					>
+						<span
+							className={styles.like_cm}
+							onClick={() => {
+								handleLike(status)
+							}}
+						>
+							<span className={styles.like_cm_txt} style={{ color: status ? status.color : '' }}>
+								{status ? status.alt : 'Thích'}
+							</span>
+							|
 						</span>
 						<span className={styles.reply_cm}>Phản hồi |</span>
 						<span className={styles.delete_cm}>
 							Xóa <span className={styles.span_del}>|</span>
 						</span>
 						<span className={styles.time_cm}>Vừa xong</span>
-						<div className={styles.show_ic} style={{ display: 'none' }}>
-							{/* Các biểu tượng ic tương ứng */}
-						</div>
+						{hoveredItemIdBottom === data?.new_id ? (
+							<div className={styles.show_ic}>
+								{listIconStatus.map((icon, index) => {
+									return (
+										<span
+											className={styles.cm_like_ic}
+											key={index}
+											onClick={() => {
+												handleChooseIconStatus(icon.id, data?.new_id)
+											}}
+										>
+											<Image height={35} width={35} src={icon.img} alt={icon.alt} />
+										</span>
+									)
+								})}
+							</div>
+						) : (
+							''
+						)}
 					</div>
 					<span className={styles.cm_list_like}>
 						<span className={`${styles.cm_count_like} ${styles.count_ic}`} />
 						<span className={styles.box_items_like_ic}>
 							<span className={`${styles.cm_like_ic}`}>
-								<Image
-									height={20}
-									width={20}
-									className={`${styles.item_like_ic} ${styles.ic1}`}
-									src="/images/img_comment/Ic_1.png"
-									alt="Thích"
-								/>
+								{status ? (
+									<Image
+										height={20}
+										width={20}
+										className={`${styles.item_like_ic} ${styles.ic1}`}
+										src={status.img}
+										alt={status.alt}
+									/>
+								) : (
+									<></>
+								)}
 							</span>
 						</span>
 					</span>

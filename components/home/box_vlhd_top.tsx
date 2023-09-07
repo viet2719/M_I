@@ -1,15 +1,22 @@
-import Image from 'next/image'
-import React from 'react'
-import styles from '@styles/home/box_vlhd_top.module.scss'
-import Link from 'next/link'
-import { calculateTimeDifference, unixTimestampToDateString } from '@/utils/convert'
-import Item from 'antd/es/list/Item'
-import { ICity, IJob } from '@/utils/interface'
+import LoadingOverlay from '@/pages/LoadingOverlay'
 import { listCitys } from '@/utils/constants'
+import { calculateTimeDifference, unixTimestampToDateString } from '@/utils/convert'
+import { IJob } from '@/utils/interface'
+import styles from '@styles/home/box_vlhd_top.module.scss'
+import Image from 'next/image'
+import Link from 'next/link'
+import { useState } from 'react'
 type Props = {
 	jobData: IJob[]
 }
 const Box_vlhd_top = ({ jobData }: Props) => {
+	const [loading, setLoading] = useState(false)
+	const handleLinkClick = () => {
+		setLoading(true)
+		// setTimeout(() => {
+		// 	setLoading(false)
+		// }, 2000)
+	}
 	return (
 		<div>
 			<div className={styles.slide_hd}>
@@ -153,6 +160,7 @@ const Box_vlhd_top = ({ jobData }: Props) => {
 					)
 				})}
 			</div>
+			<LoadingOverlay loading={loading} />
 		</div>
 	)
 }
