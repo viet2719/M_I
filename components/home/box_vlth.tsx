@@ -1,14 +1,23 @@
 import Image from 'next/image'
-import React from 'react'
+import React, { useState } from 'react'
 import styles from '@styles/home/box_vlth.module.scss'
 import Link from 'next/link'
 import { calculateTimeDifference, convertToSlug, unixTimestampToDateString } from '@/utils/convert'
+import LoadingOverlay from '../../pages/LoadingOverlay'
+
 import { ICity, IJob } from '@/utils/interface'
 import { listCitys } from '@/utils/constants'
 type Props = {
 	jobList: IJob[]
 }
 const Box_vlth = ({ jobList }: Props) => {
+	const [loading, setLoading] = useState(false)
+	const handleLinkClick = () => {
+		setLoading(true)
+		// setTimeout(() => {
+		// 	setLoading(false)
+		// }, 2000)
+	}
 	return (
 		<div className={styles.main_box_vieclam1}>
 			<div className={styles.slide_hd}>
@@ -91,6 +100,7 @@ const Box_vlth = ({ jobList }: Props) => {
 							<div className={styles.right_item_vl}>
 								<h3>
 									<Link
+										onClick={handleLinkClick}
 										className={styles.tit_vip}
 										href={`/${job.new_alias}-p${job.new_id}.html`}
 										title={job.new_title}
@@ -99,6 +109,7 @@ const Box_vlth = ({ jobList }: Props) => {
 									</Link>
 								</h3>
 								<Link
+									onClick={handleLinkClick}
 									className={styles.name_com}
 									href={`/${job.usc_alias?job.usc_alias:convertToSlug(job?.usc_company)}-co${job.new_id}`}
 									title={job.usc_company}
@@ -145,6 +156,7 @@ const Box_vlth = ({ jobList }: Props) => {
 					</div>
 				))}
 			</div>
+			<LoadingOverlay loading={loading} />
 		</div>
 	)
 }
