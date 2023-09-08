@@ -9397,7 +9397,7 @@ ul li .ava_mess::before {
 .ctn_xemtca {
 	width: 100%;
 	display: flex;
-	justify-content: end;
+	justify-content: flex-end;
 	margin-top: 20px;
 }
 

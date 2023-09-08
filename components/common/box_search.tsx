@@ -298,7 +298,7 @@ const Box_search = ({}: any) => {
 							/>
 						</span>
 					</span>
-					<Link href={`/tim-viec-tai-${convertToSlug(name[0]?.cit_name)}-c0v${name[0]?.cit_id}`} className={styles['mobi-bor']}>
+					<Link href={`/tim-viec-tai-${convertToSlug(name[0]?.cit_name)}-c${0}v${name[0]?.cit_id}`} className={styles['mobi-bor']}>
 						<input type="submit" className={styles.btn_search} value="Tìm kiếm" />
 					</Link>
 					<Image

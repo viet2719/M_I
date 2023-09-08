@@ -2,7 +2,7 @@
 /** @type {import('next').NextConfig} */
 const path = require('path');
 const nextConfig = {
-  reactStrictMode: true,
+  reactStrictMode: false,
   images: {
     domains: ['timviec365.vn'],
   },
@@ -21,7 +21,7 @@ const nextConfig = {
         destination: '/ds_viec_lam_tag',
       },
       {
-        source: '/tim-viec-tai-:title-c0v:id',
+        source: '/:slug-c:cateidv:id',
         destination: '/tim_kiem_tinh_thanh',
       },
       {

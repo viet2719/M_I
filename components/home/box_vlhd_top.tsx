@@ -113,7 +113,7 @@ const Box_vlhd_top = ({ jobData }: Props) => {
 									</h3>
 									<Link
 										className={styles.name_com}
-										href={`/${job.usc_alias?job.usc_alias:convertToSlug(job?.usc_company)}-co${job.new_id}`}
+										href={`/${job.usc_alias?job.usc_alias:convertToSlug(job?.usc_company)}-co${job.usc_id}`}
 										title={job.usc_company}
 									>
 										{job.usc_company}
@@ -133,7 +133,7 @@ const Box_vlhd_top = ({ jobData }: Props) => {
 										Chat
 									</p>
 									<p className={styles.job_time}>{unixTimestampToDateString(job.new_han_nop)}</p>
-									<p className={styles.job_money} title={'job.salary'}>
+									<p className={styles.job_money} title={'Lương'}>
 										{job.nm_min_value / 1000000 == 0
 											? 'Thỏa thuận'
 											: `${job.nm_min_value / 1000000}${

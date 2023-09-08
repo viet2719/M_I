@@ -148,27 +148,27 @@ const Filter_right_AI365_PC = ({
 					</div>
 				)}
 
-				{!idLocation && selectLeft == 3 && (
-					<div className={styles.list_item}>
-						{listNganhNghe.map((item: any, index: number) => {
-							return (
-								<button
-									onClick={() => (
-										setCate_id(item?.cat_id),
-										setSelectedId(0),
+{!idLocation && selectLeft === 3 && (
+						<div className={styles.list_item}>
+							{listNganhNghe
+								.slice(listPosition, listPosition + 8)
+								.map((item: any, index: number) => (
+									<button
+										onClick={() => {
+											setCate_id(item?.cat_id),
+										setSelectedId(-1),
 										setidNganhNgheChangeColor(item?.cat_id)
-									)}
-									key={index}
-									className={`${styles.item} ${
-										item.cat_id === idNganhNgheChangeColor ? show.focus_filter : ''
-									}`}
-								>
-									{item.cat_name}
-								</button>
-							)
-						})}
-					</div>
-				)}
+										}}
+										key={index}
+										className={`${styles.item} ${
+											item.cat_id === idNganhNgheChangeColor ? show.focus_filter : ''
+										}`}
+									>
+										{item.cat_name}
+									</button>
+								))}
+						</div>
+					)}
 
 				{/* Bật vị trí */}
 				<div className={styles.list_item}>
@@ -236,8 +236,9 @@ const Filter_right_AI365_PC = ({
 								.map((item: any, index: number) => (
 									<button
 										onClick={() => {
-											setCate_id(item?.cat_id)
-											setidNganhNgheChangeColor(item?.cat_id)
+											setCate_id(item?.cat_id),
+										setSelectedId(0),
+										setidNganhNgheChangeColor(item?.cat_id)
 										}}
 										key={index}
 										className={`${styles.item} ${
