@@ -69,17 +69,19 @@ const Main_search = () => {
 			links: listCongTy,
 		},
 	]
+	const idFromRouter: any = router.query.id // Assuming you have a variable or object representing the ID.
+	const idAsString = idFromRouter?.toString() // Convert it to a string if it's not already.
+	const sanitizedId = idAsString?.replace('v', '') // Remove 'v' from the string.
 	const handleGetJos = async () => {
-		if( router.query.id){
+		if (sanitizedId) {
 			try {
-			
 				const res = await fetch(`${base_timviec365}/api/timviec/new/listJobBySearch`, {
 					headers: {
 						'Content-Type': 'application/json',
 					},
 					method: 'POST',
 					body: JSON.stringify({
-						city: router.query.id,
+						city: sanitizedId,
 						pageSize: pageSize,
 						page: page,
 						type: type,
@@ -94,17 +96,15 @@ const Main_search = () => {
 				setlistCongTy(data?.data?.listCongvieclienquan)
 			} catch (error) {}
 		}
-	
 	}
 	const [name, setname] = useState<string>('')
 	useEffect(() => {
-		
 		const nameCity: any = listCities.filter((item) => {
-			return item.cit_id === Number(router.query.id)
+			return item.cit_id === Number(sanitizedId)
 		})
 		handleGetJos()
 		setname(nameCity[0]?.cit_name)
-	}, [page, router.query.id,pageSize, type])
+	}, [page, sanitizedId, pageSize, type])
 
 	const date: any = new Date()
 	const handleChange = (e: any, cate: any) => {
@@ -206,6 +206,10 @@ const Main_search = () => {
 																		setType('money')
 																		handleGetJos()
 																	}
+																	if (comp.id == 1) {
+																		setType('')
+																		handleGetJos()
+																	}
 																}
 															}}
 														>
@@ -270,6 +274,7 @@ const Main_search = () => {
 							)}
 						</div>
 						<Pagination
+							style={{ float: 'right' }}
 							pageSize={pageSize}
 							current={page}
 							total={page * 20 * 6}
@@ -347,7 +352,8 @@ const Main_search = () => {
 														if (item.cit_id === link?.key_id) {
 															return (
 																<Link
-																	href={`tim-viec-tai-${convertToSlug(item?.cit_name)}-c0v${
+																	key={index}
+																	href={`tim-viec-tai-${convertToSlug(item?.cit_name)}-c${0}v${
 																		item?.cit_id
 																	}}`}
 																>
