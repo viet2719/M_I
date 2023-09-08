@@ -17,7 +17,7 @@ const nextConfig = {
         destination: '/chi_tiet_nganh_nghe',
       },
       {
-        source: '/tag7/DS-viec-lam-tuyen-dung-:title-:id',
+        source: '/tag:idTag/DS-viec-lam-tuyen-dung-:title-:id',
         destination: '/ds_viec_lam_tag',
       },
       {
