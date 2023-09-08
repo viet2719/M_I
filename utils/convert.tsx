@@ -10,6 +10,12 @@ export function convertToSlug(inputString?: any): any {
 		return `${slug}`
 	}
 }
+export function convertToSlugNo(inputString?: any): any {
+	if (inputString) {
+		const slug = inputString.replace(/\s+/g, '-')
+		return `${slug}`
+	}
+}
 export function checkUrl(url: any): boolean {
 	const pattern = /^[a-zA-Z0-9-]+-d[0-9]+\.html$/
 	return pattern.test(url)
@@ -117,38 +123,40 @@ export const removeHtmlTags = (htmlString: any) => {
 export function extractH2Content(htmlContent: any) {
 	// Kiểm tra xem mã đang chạy trong trình duyệt
 	if (typeof document === 'undefined') {
-	  return []; // Hoặc xử lý lỗi theo cách của bạn
+		return [] // Hoặc xử lý lỗi theo cách của bạn
 	}
-  
+
 	// Mã JavaScript ở đây chỉ chạy trong trình duyệt
-	var tempDiv = document.createElement('div');
-	tempDiv.innerHTML = htmlContent;
-  
-	var h2Elements = tempDiv.querySelectorAll('h2');
-	var h2Contents: any = [];
-  
+	var tempDiv = document.createElement('div')
+	tempDiv.innerHTML = htmlContent
+
+	var h2Elements = tempDiv.querySelectorAll('h2')
+	var h2Contents: any = []
+
 	h2Elements.forEach(function (element) {
-	  h2Contents.push(element.innerText);
-	});
-  
-	return h2Contents;
-  }
-  export function extractH3Content(htmlContent: any) {
+		h2Contents.push(element.innerText)
+	})
+
+	return h2Contents
+}
+export function extractH3Content(htmlContent: any) {
 	// Kiểm tra xem mã đang chạy trong trình duyệt
 	if (typeof document === 'undefined') {
-	  return []; // Hoặc xử lý lỗi theo cách của bạn
+		return [] // Hoặc xử lý lỗi theo cách của bạn
 	}
-  
+
 	// Mã JavaScript ở đây chỉ chạy trong trình duyệt
-	var tempDiv = document.createElement('div');
-	tempDiv.innerHTML = htmlContent;
-  
-	var h2Elements = tempDiv.querySelectorAll('h3');
-	var h2Contents: any = [];
-  
+	var tempDiv = document.createElement('div')
+	tempDiv.innerHTML = htmlContent
+
+	var h2Elements = tempDiv.querySelectorAll('h3')
+	var h2Contents: any = []
+
 	h2Elements.forEach(function (element) {
-	  h2Contents.push(element.innerText);
-	});
-  
-	return h2Contents;
-  }
+		h2Contents.push(element.innerText)
+	})
+
+	return h2Contents
+}
+
+

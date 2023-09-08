@@ -398,7 +398,7 @@ const List_cate = ({ listJobs, name, checkedBox, handleChange, checkboxStates }:
 										</ul>
 									</div>
 								)}
-								<Box_comment id={cate?.new_id} />
+								{/* <Box_comment id={cate?.new_id} /> */}
 							</div>
 						)
 					})}

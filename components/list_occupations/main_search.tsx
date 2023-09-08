@@ -14,28 +14,24 @@ import { Button, Checkbox, Pagination } from 'antd'
 import Model_ungtuyen_sendmail_NTD from '../pop_up/model_ungtuyen_sendmail_NTD'
 import Model_works_match_after_ungtuyen from '../pop_up/model_works_match_after_ungtuyen'
 import React, { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { base_timviec365 } from '../service/functions'
 import List_cate from './item_cate'
-const Main_search = () => {
+import { parse } from 'querystring'
+import { createContext } from 'vm'
+import { useMyContext } from '../useContext/useContext'
+const Main_search = ({
+	dataSSR,
+	checkBox,
+	footnewSSR,
+	chucdanhSSR,
+	diadiemSSR,
+	congtySSR,
+}: any) => {
 	const islogin = true
 	const iscv = true
 	const dispatch = useDispatch()
-
 	const [expandedItems, setExpandedItems] = useState<any>()
-	const toggleItem = (index: number) => {
-		if (index === expandedItems) {
-			setExpandedItems('')
-		} else {
-			setExpandedItems(index)
-		}
-	}
-	const listComp = [
-		{ id: 0, comp: 'Chọn tất cả' },
-		{ id: 1, comp: 'Phù hợp nhất' },
-		{ id: 2, comp: 'Mới nhất' },
-		{ id: 3, comp: 'Lương tốt nhất' },
-	]
 	const [compActive, setCompActive] = useState<any>(1)
 	const router = useRouter()
 	const [listJobs, setlistJobs] = useState<IJob[] | any>([])
@@ -45,13 +41,27 @@ const Main_search = () => {
 	const [checkedBox, setcheckedBox] = useState(true)
 	const [type, setType] = useState<string>('')
 	const [selectAllChecked, setSelectAllChecked] = useState<any>(false)
-	const [checkboxStates, setCheckboxStates] = useState<any>()
+	const [checkboxStates, setCheckboxStates] = useState<any>(checkBox)
 	const [showMailUngTuyen, setshowMailUngTuyen] = useState<boolean>(false)
 	const [showWorkMatch, setShowWorkMatch] = useState<boolean>(false)
 	const [footerNew, setfooterNew] = useState<any>()
 	const [listChucDanh, setlistChucDanh] = useState<any>()
 	const [listDiaDiem, setlistDiaDiem] = useState<any>()
 	const [listCongTy, setlistCongTy] = useState<any>()
+	const [name, setname] = useState<string>('')
+	const [withoutDiadiem, setwithoutDiadiem] = useState('')
+	useEffect(() => {
+		if (typeof window !== 'undefined') {
+			const queryString = window?.location.pathname
+			const withoutKeyword = decodeURIComponent(queryString).replace('/keyword=', '')
+			// Loại bỏ dấu "-" từ chuỗi
+			const withoutDashes = withoutKeyword.replace(/-/g, ' ') // Sử dụng biểu thức chính quy để thay thế tất cả dấu "-" bằng khoảng trắng
+			// Loại bỏ "&diadiem=1" từ chuỗi (nếu có)
+			const withoutDiadiem = withoutDashes.replace(/&diadiem=\d*/, '')
+			setwithoutDiadiem(withoutDiadiem)
+		}
+	}, [withoutDiadiem])
+
 	const data = [
 		{
 			id: 1,
@@ -69,9 +79,35 @@ const Main_search = () => {
 			links: listCongTy,
 		},
 	]
-	const idFromRouter: any = router.query.id // Assuming you have a variable or object representing the ID.
-	const idAsString = idFromRouter?.toString() // Convert it to a string if it's not already.
-	const sanitizedId = idAsString?.replace('v', '') // Remove 'v' from the string.
+	const toggleItem = (index: number) => {
+		if (index === expandedItems) {
+			setExpandedItems('')
+		} else {
+			setExpandedItems(index)
+		}
+	}
+	const listComp = [
+		{ id: 0, comp: 'Chọn tất cả' },
+		{ id: 1, comp: 'Phù hợp nhất' },
+		{ id: 2, comp: 'Mới nhất' },
+		{ id: 3, comp: 'Lương tốt nhất' },
+	]
+	const idFromRouter: any = router.query.id // Giả sử bạn đã có biến hoặc đối tượng đại diện cho ID.
+	const idAsString = idFromRouter?.toString() // Chuyển đổi nó thành chuỗi nếu nó chưa phải là chuỗi.
+	let sanitizedId = ''
+	if (idAsString) {
+		const vIndex = idAsString.indexOf('v')
+		const diadiemIndex = idAsString.indexOf('diadiem=')
+
+		if (diadiemIndex !== -1) {
+			// Nếu có 'diadiem=' trong chuỗi, lấy giá trị sau 'diadiem='.
+			sanitizedId = idAsString.substring(diadiemIndex + 8) // 8 là độ dài của "diadiem=".
+		} else if (vIndex !== -1) {
+			// Nếu không có 'diadiem=', lấy giá trị sau 'v'.
+			sanitizedId = idAsString.substring(vIndex + 1)
+		}
+	}
+
 	const handleGetJos = async () => {
 		if (sanitizedId) {
 			try {
@@ -97,12 +133,19 @@ const Main_search = () => {
 			} catch (error) {}
 		}
 	}
-	const [name, setname] = useState<string>('')
 	useEffect(() => {
+		if (page == 1 && type == '') {
+			setlistJobs(dataSSR)
+			setfooterNew(footnewSSR)
+			setlistChucDanh(chucdanhSSR)
+			setlistDiaDiem(diadiemSSR)
+			setlistCongTy(congtySSR)
+		} else {
+			handleGetJos()
+		}
 		const nameCity: any = listCities.filter((item) => {
 			return item.cit_id === Number(sanitizedId)
 		})
-		handleGetJos()
 		setname(nameCity[0]?.cit_name)
 	}, [page, sanitizedId, pageSize, type])
 
@@ -131,6 +174,7 @@ const Main_search = () => {
 	const handleUngTuyen = () => {
 		setshowMailUngTuyen(true)
 	}
+	const selectedNganhNghe: any = useMyContext()
 	return (
 		<div>
 			<New_banner />
@@ -161,12 +205,20 @@ const Main_search = () => {
 							</li>
 						</ul>
 					</div>
-					<div className={styles.tag_tdnew}>
-						<h1>
-							{' '}
-							Tuyển dụng, tìm việc làm tại {name} tháng {unixTimestampToDateStringMon(date / 1000)}{' '}
-						</h1>
-					</div>
+					{idAsString.includes('diadiem') ? (
+						<p className={styles.title_cate_list}>
+							Việc làm {withoutDiadiem} mới nhất tại {name}
+						</p>
+					) : (
+						<div className={styles.tag_tdnew}>
+							<h1>
+								{' '}
+								Tuyển dụng, tìm việc làm {selectedNganhNghe?.data} {name ? 'tại ' + name : ''} tháng{' '}
+								{unixTimestampToDateStringMon(date / 1000)}{' '}
+							</h1>
+						</div>
+					)}
+
 					<div className={styles.vl_left}>
 						<div
 							className={`${styles.right_cate} ${styles.nd_cate} ${styles.nd_caten} ${styles.nd_cate_new}`}
@@ -200,15 +252,12 @@ const Main_search = () => {
 																	setCompActive(comp.id)
 																	if (comp.id == 2) {
 																		setType('new')
-																		handleGetJos()
 																	}
 																	if (comp.id == 3) {
 																		setType('money')
-																		handleGetJos()
 																	}
 																	if (comp.id == 1) {
 																		setType('')
-																		handleGetJos()
 																	}
 																}
 															}}
@@ -273,20 +322,22 @@ const Main_search = () => {
 								/>
 							)}
 						</div>
-						<Pagination
-							style={{ float: 'right' }}
-							pageSize={pageSize}
-							current={page}
-							total={page * 20 * 6}
-							onChange={(current, pageSizes) => {
-								if (current != page) {
-									setpPage(current)
-								}
-								if (pageSizes != pageSize) {
-									setpageSize(pageSizes)
-								}
-							}}
-						/>
+						{listJobs.length > 1 && (
+							<Pagination
+								style={{ float: 'right' }}
+								pageSize={pageSize}
+								current={page}
+								total={page * 20 * 6}
+								onChange={(current, pageSizes) => {
+									if (current != page) {
+										setpPage(current)
+									}
+									if (pageSizes != pageSize) {
+										setpageSize(pageSizes)
+									}
+								}}
+							/>
+						)}
 					</div>
 
 					<Chat_NTD classNameProps={true} propsElementSlugNganhNghe={true} />

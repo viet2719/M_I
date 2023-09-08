@@ -33,13 +33,13 @@ const Box_bottom_cate = ({ footerNew }: Props) => {
 				const h3Elements = divElement.querySelectorAll('h3')
 
 				// Lặp qua danh sách thẻ h3 và đặt id cho các thẻ thỏa mãn điều kiện
-			    h3Elements.forEach((h3Element) => {
-                    const text = h3Element.innerText;
-          
-                    // Sử dụng biểu thức chính quy để loại bỏ dấu chấm và các ký tự sau nó
-                    const id = text.replace(/\./g, '').substring(0,2); // Loại bỏ tất cả dấu chấm
-                    h3Element.id = id;
-                  });
+				h3Elements.forEach((h3Element) => {
+					const text = h3Element.innerText
+
+					// Sử dụng biểu thức chính quy để loại bỏ dấu chấm và các ký tự sau nó
+					const id = text.replace(/\./g, '').substring(0, 2) // Loại bỏ tất cả dấu chấm
+					h3Element.id = id
+				})
 			}
 		}
 	}, [footerNew])
