@@ -22,7 +22,7 @@ const Tia_set = (props: Props) => {
     function getTimeLeft() {
       const now:any = new Date();
       const midnight:any = new Date(now);
-      midnight.setHours(24, 0, 0, 0);
+      midnight.setHours(12, 0, 0, 0);
   
       const timeUntilMidnight:any = midnight - now;
   

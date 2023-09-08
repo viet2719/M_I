@@ -25,6 +25,10 @@ const nextConfig = {
         destination: '/tim_kiem_tinh_thanh',
       },
       {
+        source: '/:slug&diadiem=:id',
+        destination: '/tim_kiem_tinh_thanh',
+      },
+      {
         source: '/nguoi-tim-viec.html',
         destination: '/nguoi_tim_viec',
       },
