@@ -8,7 +8,7 @@ import { base_timviec365 } from '../service/functions'
 import { useRouter } from 'next/router'
 import { convertToSlug, extractH2Content, extractH3Content, removeHtmlTags } from '@/utils/convert'
 type Props = {
-	footerNew: any
+	footerNew?: any
 }
 
 const Box_bottom_cate = ({ footerNew }: Props) => {
