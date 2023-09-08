@@ -25,7 +25,7 @@ import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import Select from 'react-select'
 
-const Home: NextPageWithLayout = ({ data,jobAiSSR }: any) => {
+const Home: NextPageWithLayout = ({ data, jobAiSSR }: any) => {
 	const Banner_tia_set = dynamic(() => import('@/components/home/banner_tia_set'), { ssr: false })
 	const Banner_anh_sao = dynamic(() => import('@/components/home/tia_set'), { ssr: false })
 
@@ -95,7 +95,12 @@ const Home: NextPageWithLayout = ({ data,jobAiSSR }: any) => {
 					'Content-Type': 'application/json',
 				},
 				method: 'POST',
-				body: JSON.stringify({ city: city[0]?.cit_id, pageSize: 14, new_qh_id: selectedId,cate_id: cate_id}),
+				body: JSON.stringify({
+					city: city[0]?.cit_id,
+					pageSize: 14,
+					new_qh_id: selectedId,
+					cate_id: cate_id,
+				}),
 			})
 			const data = await res.json()
 			setlistJobsAI(data?.data?.items)
@@ -105,7 +110,7 @@ const Home: NextPageWithLayout = ({ data,jobAiSSR }: any) => {
 		if (city[0]?.cit_id) {
 			handleGetJobAI()
 		}
-	}, [city[0]?.cit_id, selectedId,cate_id])
+	}, [city[0]?.cit_id, selectedId, cate_id])
 
 	//Lấy danh sách việc khi không có location
 	const handleGetJobAInoLocation = async () => {
@@ -128,13 +133,16 @@ const Home: NextPageWithLayout = ({ data,jobAiSSR }: any) => {
 	useEffect(() => {
 		if (
 			//  (!selectedId && !city[0]?.cit_id) ||
-		 (selectedId == 0 && !city[0]?.cit_id) || (selectedId && !city[0]?.cit_id)) {
+			(selectedId == 0 && !city[0]?.cit_id) ||
+			(selectedId && !city[0]?.cit_id)
+		) {
 			handleGetJobAInoLocation()
 		}
-		if( (!selectedId && !city[0]?.cit_id)){
+		if (!selectedId && !city[0]?.cit_id) {
 			setlistJobsAI(jobAiSSR?.data?.items)
 		}
 	}, [selectedId, cate_id])
+
 	return (
 		<>
 			<Head_common data={dataSeo} />
@@ -169,8 +177,9 @@ const Home: NextPageWithLayout = ({ data,jobAiSSR }: any) => {
 
 							<div className={styles.main_box_vieclam}>
 								<Carousel
-								//  autoplay 
-								className={styles.customCarousel}>
+									//  autoplay
+									className={styles.customCarousel}
+								>
 									<Box_vlhd_top jobData={VLHD?.slice(1, 15)} />
 									<Box_vlhd_top jobData={VLHD?.slice(15, 29)} />
 									<Box_vlhd_top jobData={VLHD?.slice(29, 43)} />
@@ -328,12 +337,12 @@ const Home: NextPageWithLayout = ({ data,jobAiSSR }: any) => {
 							/>
 
 							<Filter_right_AI365_Mobile
-							idLocation={city[0]?.cit_id}
-							nameCity={city[0]?.cit_name}
-							selectLeft={selectLeft}
-							setSelectedId={setSelectedId}
-							selectedId={selectedId}
-							setCate_id={setCate_id}
+								idLocation={city[0]?.cit_id}
+								nameCity={city[0]?.cit_name}
+								selectLeft={selectLeft}
+								setSelectedId={setSelectedId}
+								selectedId={selectedId}
+								setCate_id={setCate_id}
 							/>
 						</div>
 
@@ -371,24 +380,25 @@ export async function getServerSideProps() {
 		const datas = await listWorks.json()
 		data = datas
 	} catch (error) {}
-		try {
-			const res = await fetch(`${base_timviec365}/api/timviec/new/listJobBySearch`, {
-				headers: {
-					'Content-Type': 'application/json',
-				},
-				method: 'POST',
-				body: JSON.stringify({
-					city: Math.floor(Math.random() * 35) ,
-					pageSize: 25,
-				}),
-			})
-			const data = await res.json()
-			jobAiSSR = data
-		} catch (error) {}
-	
+	try {
+		const res = await fetch(`${base_timviec365}/api/timviec/new/listJobBySearch`, {
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			method: 'POST',
+			body: JSON.stringify({
+				city: Math.floor(Math.random() * 35),
+				pageSize: 25,
+			}),
+		})
+		const data = await res.json()
+		jobAiSSR = data
+	} catch (error) {}
+
 	return {
 		props: {
-			data,jobAiSSR
+			data,
+			jobAiSSR,
 		},
 	}
 }

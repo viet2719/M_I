@@ -302,7 +302,7 @@ const List_cate = ({ listJobs, name, checkedBox, handleChange, checkboxStates }:
 										</div>
 										<p>
 											<span className={styles.cate_hn} title="Hạn nộp CV">
-												{unixTimestampToDateString(cate.new_han_nop)}
+											Hạn nộp: {unixTimestampToDateString(cate.new_han_nop)}
 											</span>
 										</p>
 

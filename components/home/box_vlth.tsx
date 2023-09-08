@@ -131,7 +131,7 @@ const Box_vlth = ({ jobList }: Props) => {
 									Chat
 								</p>
 								<p className={styles.job_time}>{unixTimestampToDateString(job.new_han_nop)}</p>
-								<p className={styles.job_money} title={`${job.nm_max_value}`}>
+								<p className={styles.job_money} title={`Lương`}>
 									{job.nm_min_value / 1000000 == 0
 										? 'Thỏa thuận'
 										: `${job.nm_min_value / 1000000}${
