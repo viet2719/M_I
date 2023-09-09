@@ -78,6 +78,35 @@ const Box_AI = ({ jobList }: Props) => {
 										alt=""
 									/>
 								)}
+									{job.usc_star == 1 && (
+										<Image
+											width={28}
+											height={28}
+											src="/images/icon_anhsao.gif"
+											className={styles.icon_tiaset_new}
+											alt=""
+										/>
+									)}
+										{(job.new_badge == 1 || job.usc_badge == 1) && job.usc_star == 1 && (
+										<div>
+											<Image
+												width={28}
+												height={28}
+												src="/images/before_login/icon_tiaset.svg"
+												className={styles.icon_tiaset_new}
+												alt=""
+											/>
+											
+											<Image
+											style={{position:"absolute",top:'0',right:"0"}}
+												width={28}
+												height={28}
+												src="/images/icon_anhsao.gif"
+												// className={styles.icon_tiaset_new}
+												alt=""
+											/>
+										</div>
+									)}
 							</div>
 							<div className={styles.right_item_vl}>
 								<h3>
@@ -91,7 +120,9 @@ const Box_AI = ({ jobList }: Props) => {
 								</h3>
 								<Link
 									className={styles.name_com}
-									href={`/${job.usc_alias?job.usc_alias:convertToSlug(job?.usc_company)}-co${job?.usc_id}`}
+									href={`/${job.usc_alias ? job.usc_alias : convertToSlug(job?.usc_company)}co${
+										job?.usc_id
+									}`}
 									title={job.usc_company}
 								>
 									{job.usc_company}
@@ -99,7 +130,9 @@ const Box_AI = ({ jobList }: Props) => {
 								<p className={styles.job_local}>
 									{job.new_city === '0'
 										? 'Toàn quốc'
-										: typeof job?.new_city === 'string' && job?.new_city?.split(',')
+										: typeof job?.new_city === 'string' &&
+										  job?.new_city
+												?.split(',')
 												.map((cityId: any, index: number) => {
 													const city = listCitys.find(
 														(item: ICity) => item.cit_id === parseInt(cityId, 10)
@@ -121,7 +154,7 @@ const Box_AI = ({ jobList }: Props) => {
 								</p>
 								<p className={styles.job_time}>{unixTimestampToDateString(job.new_han_nop)}</p>
 								<p className={styles.job_money} title={`Lương`}>
-									{job.nm_min_value / 1000000 == 0
+									{(job.nm_min_value / 1000000 == 0 && job.nm_max_value / 1000000 == 0)
 										? 'Thỏa thuận'
 										: `${job.nm_min_value / 1000000}${
 												job.nm_max_value / 1000000 == 0

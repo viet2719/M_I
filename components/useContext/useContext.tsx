@@ -4,11 +4,10 @@ import { createContext, useContext, useState } from 'react'
 const MyContext = createContext({})
 
 export const MyProvider = ({ children }: any) => {
-	const [data, setData] = useState({}) // Dữ liệu bạn muốn chia sẻ
-    const [selectedNganhNghe, setSelectedNganhNghe] = useState('');
+	const [dataConText, setDataContext] = useState({}) // Dữ liệu bạn muốn chia sẻ
 
 
-	return <MyContext.Provider value={{ data, setData }}>{children}</MyContext.Provider>
+	return <MyContext.Provider value={{ dataConText, setDataContext }}>{children}</MyContext.Provider>
 }
 
 export const useMyContext = () => {

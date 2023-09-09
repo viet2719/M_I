@@ -43,7 +43,9 @@ const Jobs_tag = () => {
 						</div>
 					</div>
 					<Chat_NTD classNameProps={true} propsElementSlugNganhNghe={true} />
-					<Box_bottom_cate />
+					<Box_bottom_cate
+					
+					/>
 				</div>
 			</div>
 			<Footer />

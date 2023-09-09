@@ -1,15 +1,23 @@
-export function convertToSlug(inputString?: any): any {
+export function convertToSlug(inputString?: string): string | undefined {
 	if (inputString) {
-		const cleanedString = inputString
-			.toLowerCase()
-			.normalize('NFD')
-			.replace(/[\u0300-\u036f]/g, '')
-			.replace(/[^\w\s-]/g, '')
-
-		const slug = cleanedString.replace(/\s+/g, '-')
-		return `${slug}`
+	  const cleanedString = inputString
+		.toLowerCase()
+		.normalize('NFD')
+		.replace(/[\u0300-\u036f]/g, '')
+		.replace(/[^\w\s-]/g, '');
+  
+	  let slug = cleanedString.replace(/\s+/g, '-');
+  
+	  // Kiểm tra nếu ký tự cuối cùng của slug là "-"
+	  if (slug.endsWith('-')) {
+		// Loại bỏ dấu "-" cuối cùng
+		slug = slug.slice(0, -1);
+	  }
+  
+	  return slug;
 	}
-}
+	return undefined;
+  }
 export function convertToSlugNo(inputString?: any): any {
 	if (inputString) {
 		const slug = inputString.replace(/\s+/g, '-')

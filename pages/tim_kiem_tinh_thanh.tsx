@@ -13,18 +13,21 @@ const Tim_kiem_theo_tinh_thanh = ({
 	chucdanh,
 	diadiem,
 	congty,
+	nganhNgheLienQuan,
 }: any) => {
 	return (
-			<Main_search
-				dataSSR={dataSSR}
-				checkBox={checkBox}
-				footnewSSR={footnew}
-				chucdanhSSR={chucdanh}
-				diadiemSSR={diadiem}
-				congtySSR={congty}
-			/>
+		<Main_search
+			dataSSR={dataSSR}
+			checkBox={checkBox}
+			footnewSSR={footnew}
+			chucdanhSSR={chucdanh}
+			diadiemSSR={diadiem}
+			congtySSR={congty}
+			nganhNgheLienQuan={nganhNgheLienQuan}
+		/>
 	)
 }
+//SSR
 export async function getServerSideProps(context: any) {
 	// Danh sách việc làm
 
@@ -33,12 +36,22 @@ export async function getServerSideProps(context: any) {
 	const idAsString = id?.toString()
 	const startIndex = idAsString?.indexOf('v') // Tìm vị trí của 'v' trong chuỗi.
 	const sanitizedId = idAsString?.substring(startIndex + 1) // Lấy tất cả ký tự sau 'v'.
+	console.log(context.query)
+	let cate_id
+	if (context.query.id[0] != 'v') {
+		let id = context.query.cateidv + context.query.id[0]
+		cate_id = id
+	} else {
+		cate_id = context.query.cateidv
+	}
+
 	let dataSSR
 	let checkBox
 	let footnew
 	let chucdanh
 	let diadiem
 	let congty
+	let nganhNgheLienQuan
 	try {
 		const res = await fetch(`${base_timviec365}/api/timviec/new/listJobBySearch`, {
 			headers: {
@@ -47,6 +60,7 @@ export async function getServerSideProps(context: any) {
 			method: 'POST',
 			body: JSON.stringify({
 				city: sanitizedId ? sanitizedId : id2,
+				cate_id: cate_id,
 				pageSize: 20,
 				page: 1,
 			}),
@@ -57,7 +71,8 @@ export async function getServerSideProps(context: any) {
 		footnew = data?.data?.footerNew
 		chucdanh = data?.data?.listChucDanh
 		diadiem = data?.data?.listCityReated
-		congty = data?.data?.listCongvieclienquan
+		congty = data?.data?.listCityReated
+		nganhNgheLienQuan = data?.data?.listWordReacted
 	} catch (error) {}
 
 	return {
@@ -68,6 +83,7 @@ export async function getServerSideProps(context: any) {
 			chucdanh,
 			diadiem,
 			congty,
+			nganhNgheLienQuan,
 		},
 	}
 }
