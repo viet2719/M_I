@@ -12,6 +12,28 @@ const nextConfig = {
   },
   async rewrites() {
     return [
+      // Đăng nhập
+      {
+        source: '/dang-nhap.html',
+        destination: '/authentication/login'
+      },
+      {
+        source: '/dang-nhap-nha-tuyen-dung.html',
+        destination: '/authentication/employer_login'
+      },
+      {
+        source: '/dang-nhap-ung-vien.html',
+        destination: '/authentication/candidate_login/'
+      },
+      // Quên mật khẩu
+      {
+        source: '/quen-mat-khau-ung-vien.html',
+        destination: '/authentication/forgot_password'
+      },
+      {
+        source: '/quen-mat-khau-nha-tuyen-dung.html',
+        destination: '/authentication/forgot_password'
+      },
       {
         source: '/:title-p:id.html',
         destination: '/chi_tiet_nganh_nghe',

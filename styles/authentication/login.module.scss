@@ -1,0 +1,158 @@
+@media screen and (min-width: 1700px) {
+	.banner_login {
+		background: url('/images/bg_login.png') no-repeat;
+		background-size: 100% 100%;
+	}
+}
+@media screen and (min-width: 1300px) {
+	.banner_login {
+		background: url('/images/bg_login.png') no-repeat;
+		background-size: 100% 100%;
+	}
+}
+.banner_login {
+	background: url('/images/bg_login.png') no-repeat;
+	min-height: 750px;
+	position: relative;
+	background-size: 100% 100%;
+}
+.box_dnc {
+	text-align: center;
+	width: 840px;
+	position: absolute;
+	left: calc((100% - 840px) / 2);
+	top: 160px;
+	.dnc {
+		width: 330px;
+		float: left;
+		text-align: right;
+		img {
+			float: left;
+			width: 100%;
+			object-fit: cover;
+		}
+		.dn_content {
+			width: 100%;
+			float: left;
+			background: #fff;
+			border-radius: 0 0 20px 20px;
+			padding: 30px;
+			text-align: left;
+		}
+		.dn_content p {
+			color: #545454;
+			font-size: 15px;
+			line-height: 18px;
+			margin-bottom: 10px;
+		}
+		.dn_content p:before {
+			content: '';
+			display: list-item;
+			list-style-type: disc;
+			list-style-position: inside;
+			float: left;
+			color: orange;
+		}
+		.dn_content.uv p:before {
+			color: #242993;
+		}
+		.dn_content .btn {
+			width: calc(100% - 20px);
+			margin: 32px 0 0 10px;
+			height: 39px;
+			background: #ffa800;
+			line-height: 39px;
+			border-radius: 9px;
+			text-align: center;
+			a {
+				color: #fff;
+				font-size: 14px;
+				font-weight: 700;
+				line-height: 16px;
+			}
+		}
+		.dn_content.uv .btn {
+			background: #242993;
+		}
+	}
+	.dnc:nth-child(2) {
+		float: right;
+	}
+}
+@media screen and (min-width: 650px) {
+	.box_dnc.dnc_mobile {
+		display: none;
+	}
+}
+
+@media screen and (max-width: 1165px) {
+	.banner_login {
+		background: url('/images/bg_loginchung_mobi.png');
+		background-size: 100% 100%;
+		min-height: 1000px;
+	}
+	.box_dnc {
+		width: 720px;
+		left: calc((100% - 720px) / 2);
+		top: 180px;
+		.dnc {
+			width: 310px;
+		}
+	}
+}
+@media screen and (max-width: 768px) {
+	.banner_login {
+		background: url('/images/bg_loginchung_mobi.png');
+		background-size: 100% 100%;
+	}
+	.box_dnc {
+		width: 660px;
+		left: calc((100% - 660px) / 2);
+		top: 200px;
+		.dnc {
+			width: 300px;
+			.dn_content {
+				width: 100%;
+				padding: 25px;
+			}
+		}
+		.dnc p {
+			font-size: 18px;
+			color: #fff;
+		}
+	}
+}
+@media screen and (max-width: 650px) {
+	.banner_login {
+		min-height: 650px;
+	}
+	.box_dnc {
+		text-align: center;
+		width: 100%;
+		position: absolute;
+		left: 0;
+		top: 250px;
+		padding: 0 10%;
+		.dnc {
+			width: 50%;
+			float: left;
+			margin-bottom: 0;
+			text-align: center;
+			img {
+				float: none;
+				width: 100px;
+				height: 100px;
+				margin-bottom: 0;
+			}
+			.dn_content .btn {
+				a {
+					width: 100%;
+					float: left;
+				}
+			}
+		}
+	}
+	.box_dnc.dnc_pc {
+		display: none;
+	}
+}

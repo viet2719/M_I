@@ -7,10 +7,10 @@ import { useDispatch } from 'react-redux'
 import Model_noti from '../pop_up/model_noti'
 
 export interface HeaderProps {
-	isLogin:boolean
+	isLogin: boolean
 }
 
-export default function Header({ children }: any, {isLogin}: HeaderProps) {
+export default function Header({ children }: any, { isLogin }: HeaderProps) {
 	const [isToggle, setIsToggle] = useState(true)
 	const img_so_xuong = '/images/angle_bottom.svg'
 	const img_cv = '/images/banner/exp_cv_xviec_hso.png'
@@ -170,7 +170,7 @@ export default function Header({ children }: any, {isLogin}: HeaderProps) {
 	const [chooseKhamPha, setChooseKhamPha] = useState(false)
 	const [chooseTienIch, setChooseTienIch] = useState(false)
 	const dispatch = useDispatch()
-	const handleChat = () =>{
+	const handleChat = () => {
 		if (!isLogin) {
 			dispatch(openModal())
 		}
@@ -178,7 +178,7 @@ export default function Header({ children }: any, {isLogin}: HeaderProps) {
 	return (
 		<>
 			<header className={styles.new_header}>
-				<Model_noti/>
+				<Model_noti />
 				<div className={styles.logo_header}>
 					<Link href="/">
 						<Image
@@ -194,7 +194,7 @@ export default function Header({ children }: any, {isLogin}: HeaderProps) {
 							setIsToggle(!isToggle)
 						}}
 					></span>
-					<div  className={styles.ctn_noti_chat}>
+					<div className={styles.ctn_noti_chat}>
 						<div className={styles.chat_tt}>
 							<div className={styles.ctn_menu_chat}>
 								<span className={styles.chat_notifice}>
@@ -210,7 +210,7 @@ export default function Header({ children }: any, {isLogin}: HeaderProps) {
 						<div id={styles.mobi}>
 							<div className={styles.mobi_from}>
 								<div className={styles.box_btn} id={styles.box_dangnhap}>
-									<Link href="#" className={styles.ctn_chung_hr}>
+									<Link href="/dang-nhap.html" className={styles.ctn_chung_hr}>
 										<span>Đăng nhập</span>
 									</Link>
 								</div>
@@ -226,7 +226,7 @@ export default function Header({ children }: any, {isLogin}: HeaderProps) {
 								Đăng tin
 							</Link>
 						</div>
-						<div onClick={()=>handleChat()} className={styles.ctn_menu_chat}>
+						<div onClick={() => handleChat()} className={styles.ctn_menu_chat}>
 							<span className={styles.chat_notifice}>
 								<i className={styles.num_tb}>0</i>
 							</span>
