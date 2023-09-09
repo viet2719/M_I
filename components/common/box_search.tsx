@@ -24,7 +24,7 @@ import { useMyContext } from '../useContext/useContext'
 
 const Box_search = ({}: any) => {
 	const dispatch = useDispatch()
-	const [catId, setcatId] = useState<number>()
+	const [catId, setcatId] = useState<number | any>()
 	const [nameCatId, setnameCatId] = useState<string>('')
 	const [keyName, setkeyName] = useState<string>('')
 	// Xử lý show-hide phần tìm kiếm theo tên
@@ -77,7 +77,6 @@ const Box_search = ({}: any) => {
 			handleGetDistrict()
 		}
 	}, [idCity]) // Thêm idCity vào danh sách dependencies của useEffect
-	const { setData }: any = useMyContext()
 	const [datacache, setdatacache] = useState<any>()
 	const handleSlectNganhNghe = (item: any) => {
 		setshowKeyPhoBien(false)
@@ -96,14 +95,17 @@ const Box_search = ({}: any) => {
 
 	//Điều hướng trang cho đúng
 	const handleSearch = () => {
-		setData(datacache)
+		if (datacache) {
+			sessionStorage.setItem('tenNganhNghe', datacache)
+		}
+		localStorage.setItem('catId', catId)
 		setCheckSearchNameCity(false)
 		if (name[0]?.cit_id && !catId && !keyName) {
 			router.push(`/tim-viec-tai-${convertToSlug(name[0]?.cit_name)}-c${0}v${name[0]?.cit_id}`)
 		}
 		if (name[0]?.cit_id && catId && !keyName) {
 			router.push(
-				`/tim-viec-${convertToSlug(nameCatId)}-tai-${convertToSlug(name[0]?.cit_name)}-c${catId}v${
+				`/viec-lam-${convertToSlug(nameCatId)}-tai-${convertToSlug(name[0]?.cit_name)}-c${catId}v${
 					name[0]?.cit_id
 				}`
 			)
@@ -112,7 +114,7 @@ const Box_search = ({}: any) => {
 			router.push(`/viec-lam-${convertToSlug(nameCatId)}-c${catId}v${0}`)
 		}
 		if (keyName && name[0]?.cit_id) {
-			router.push(`/keyword=${convertToSlugNo(keyName)}&diadiem=${name[0]?.cit_id}`)
+			router.push(`/tim-kiem/keyword=${convertToSlugNo(keyName)}&diadiem=${name[0]?.cit_id}`)
 		}
 		if (keyName && !name[0]?.cit_id && !catId) {
 			//tag7

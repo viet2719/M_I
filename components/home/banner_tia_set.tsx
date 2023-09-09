@@ -23,11 +23,11 @@ const Banner_tia_set = (props: Props) => {
     function getTimeLeft() {
       const now:any = new Date();
       const midnight:any = new Date(now);
-      midnight.setHours(12, 0, 0, 0);
+      midnight.setHours(24, 0, 0, 0);
   
       const timeUntilMidnight:any = midnight - now;
   
-      const hours = Math.floor((timeUntilMidnight % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const hours = Math.floor((timeUntilMidnight % (1000 * 60 * 60 * 12)) / (1000 * 60 * 60));
       const minutes = Math.floor((timeUntilMidnight % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((timeUntilMidnight % (1000 * 60)) / 1000);
       return {

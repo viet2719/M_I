@@ -146,7 +146,6 @@ const Home: NextPageWithLayout = ({ data, jobAiSSR }: any) => {
 			setlistJobsAI(jobAiSSR?.data?.items)
 		}
 	}, [selectedId, cate_id, list_id])
-
 	return (
 
 		<Provider store={store_per}>
