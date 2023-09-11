@@ -5,10 +5,9 @@ import '../styles/globals.scss'
 import store from '@/stores'
 import { useEffect } from 'react'
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps }: any) {
 	const Layout = Component.Layout ?? EmptyLayout
 
-	
 	return (
 		<Provider store={store}>
 			<Layout>
