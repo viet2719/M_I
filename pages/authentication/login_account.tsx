@@ -2,80 +2,133 @@
 /* eslint-disable @next/next/no-img-element */
 import Footer from '@/components/common/footer'
 import Header from '@/components/common/header'
-import styles from '@styles/authentication/candidate.module.scss'
+import authenticateUser from '@/components/service/auth'
+import styles from '@styles/authentication/login_account.module.scss'
 import { Modal } from 'antd'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useState } from 'react'
+import { useRouter } from 'next/router'
+import { useEffect, useState } from 'react'
 import validator from 'validator'
 
-const Employer_login = () => {
+const Candidate_login = () => {
+	const route = useRouter()
+	const [checkLayout, setCheckLayout] = useState(false)
+	const asPath = route.asPath
+	useEffect(() => {
+		if (asPath.includes('nha-tuyen-dung')) {
+			setCheckLayout(true)
+		}
+		if (asPath.includes('ung-vien')) {
+			setCheckLayout(false)
+		}
+	}, [asPath])
 	const [loginQr, setLoginQr] = useState(true)
+	// Validate onChange
 	const [inputValue, setInputValue] = useState('')
 	const [isValidSDT_Email, setIsValidSDT_Email] = useState(true)
+
 	const handleInputChange = (event: any) => {
 		const value = event.target.value
 		setInputValue(value)
 		const phoneNumberPattern = /^(0[1-9][0-9]{8,9})$/
-		if (validator.isEmail(value) || phoneNumberPattern.test(value)) {
-			setIsValidSDT_Email(true)
-		} else {
-			setIsValidSDT_Email(false)
-		}
-	}
-	const [password, setPassword] = useState('')
-	const [isValid, setIsValid] = useState(true)
+		const isEmail = validator.isEmail(value)
+		const isPhoneNumber = phoneNumberPattern.test(value)
 
+		setIsValidSDT_Email(isEmail || isPhoneNumber)
+	}
+
+	const [password, setPassword] = useState('')
+	const [isValidPassword, setIsValidPassword] = useState(true)
+	const [hasTouchedPassword, setHasTouchedPassword] = useState(false)
 	const handlePasswordChange = (event: any) => {
 		const newPassword = event.target.value
 		setPassword(newPassword)
+		setHasTouchedPassword(true)
 		const hasUpperCase = /[A-Z]/.test(newPassword)
 		const hasLowerCase = /[a-z]/.test(newPassword)
 		const hasDigit = /[0-9]/.test(newPassword)
 		const hasSpecialChar = /[!@#$%^&*()_+[\]{};':"\\|,.<>/?]+/.test(newPassword)
 		const isLengthValid = newPassword.length >= 8
 
-		if (hasUpperCase && hasLowerCase && hasDigit && isLengthValid) {
-			setIsValid(true)
+		setIsValidPassword(hasLowerCase && hasDigit && isLengthValid)
+	}
+
+	const [errorMessage, setErrorMessage] = useState('')
+	const [authenticationStatus, setAuthenticationStatus] = useState('')
+
+	const handleLoginCandidate = async (event: any) => {
+		event.preventDefault()
+
+		if (isValidSDT_Email) {
+			if (isValidPassword && password !== '') {
+				try {
+					const response = await authenticateUser(inputValue, password)
+					if (response) {
+						// Thực hiện các hành động sau khi đăng nhập thành công
+					} else {
+						showModalLogin()
+						setAuthenticationStatus('error')
+						setErrorMessage('Tài khoản không tồn tại hoặc mật khẩu không đúng.')
+					}
+				} catch (error) {
+					console.error(error)
+					// Xử lý lỗi
+				}
+			} else {
+				setAuthenticationStatus('error')
+			}
 		} else {
-			setIsValid(false)
+			setAuthenticationStatus('error')
+			setErrorMessage('Vui lòng kiểm tra lại thông tin đăng nhập.')
 		}
+	}
+	// Mở modal sai tài khoản
+	const [isModalLogin, setIsModalLogin] = useState(false)
+	const showModalLogin = () => {
+		setIsModalLogin(true)
+	}
+	const handleCancelLogin = () => {
+		setIsModalLogin(false)
 	}
 	// Mở modal hướng dẫn quét
 	const [isModalOpen, setIsModalOpen] = useState(false)
 	const showModal = () => {
 		setIsModalOpen(true)
 	}
-	const handleOk = () => {
-		setIsModalOpen(false)
-	}
 	const handleCancel = () => {
 		setIsModalOpen(false)
 	}
+
 	return (
 		<>
 			<Header />
 			<section className={`${styles.login_uv} ${styles.login_uv_mb}`}>
 				<div className={styles.vieclam_container} style={{ background: 'unset' }}>
 					<div className={styles.login_content}>
-						<h1>Đăng nhập tài khoản nhà tuyển dụng để chat với ứng viên</h1>
+						<h1>
+							Đăng nhập tài khoản{' '}
+							{checkLayout
+								? 'nhà tuyển dụng để chat với ứng viên'
+								: ' ứng viên để chat với nhà tuyển dụng'}
+						</h1>
 						{/* <p>
-					<img src="/images/New_images/1.png" alt="100.000+ Công việc mơ ước" />
-					<span>100.000+</span>&nbsp; Công việc mơ ước
-				</p>
-				<p>
-					<img src="/images/New_images/2.png" alt="365+ Mẫu CV chuyên nghiệp" />
-					<span>365+</span>&nbsp; Mẫu CV chuyên nghiệp
-				</p>
-				<p>
-					<img src="/images/New_images/3.png" alt="22+ Bộ đề câu hỏi tuyển dụng" />
-					<span>22+</span>&nbsp; Bộ đề câu hỏi tuyển dụng
-				</p> */}
+							<img src="/images/New_images/1.png" alt="100.000+ Công việc mơ ước" />
+							<span>100.000+</span>&nbsp; Công việc mơ ước
+						</p>
+						<p>
+							<img src="/images/New_images/2.png" alt="365+ Mẫu CV chuyên nghiệp" />
+							<span>365+</span>&nbsp; Mẫu CV chuyên nghiệp
+						</p>
+						<p>
+							<img src="/images/New_images/3.png" alt="22+ Bộ đề câu hỏi tuyển dụng" />
+							<span>22+</span>&nbsp; Bộ đề câu hỏi tuyển dụng
+						</p> */}
 					</div>
 					<div className={`${styles.form_dang_nhap} ${styles.form_dn_uv}`}>
 						{/* <div className={styles.login_logo_header}>
-					<img src="/images/New_images/logo_login1.png" />
-				</div> */}
+							<img src="/images/New_images/logo_login1.png" />
+						</div> */}
 						<div className={`${styles.box_select_login} ${styles.lg_uv}`}>
 							<button
 								className={`${styles.select_login} ${styles.lg_qr} ${styles.act}`}
@@ -124,6 +177,7 @@ const Employer_login = () => {
 								id={styles.formSignUp}
 								method="POST"
 								className={`${styles.form_tk} ${styles.dbn}`}
+								onSubmit={handleLoginCandidate}
 							>
 								<div className={styles.form_uv}>
 									<i className={styles.email_lg} />
@@ -152,15 +206,14 @@ const Employer_login = () => {
 										onChange={handlePasswordChange}
 										placeholder="Nhập mật khẩu"
 									/>
-									{/* {password === '' && (
-								<label id="user_password_first_error" className={styles.error}>
-									Vui lòng nhập mật khẩu.
-								</label>
-							)} */}
-									{!isValid && (
+									{(!isValidPassword || password === '') && (
 										<label id="user_password_first_error" className={styles.error}>
-											Mật khẩu phải bao gồm ít nhất 8 ký tự, bao gồm chữ cái viết hoa, chữ cái viết
-											thường, số và ký tự đặc biệt.
+											{hasTouchedPassword
+												? password === ''
+													? 'Vui lòng nhập mật khẩu.'
+													: // : 'Mật khẩu phải bao gồm ít nhất 8 ký tự, bao gồm chữ cái viết hoa, chữ cái viết thường, số và ký tự đặc biệt.'
+													  'Mật khẩu phải bao gồm ít nhất 8 ký tự, số và ký tự đặc biệt.'
+												: ''}
 										</label>
 									)}
 								</div>
@@ -173,12 +226,30 @@ const Employer_login = () => {
 									<div className={styles.triangleLeft} />
 									<div className={styles.triangleRight} />
 								</div>
+								{/* Hiển thị thông báo lỗi */}
+								{authenticationStatus === 'error' && (
+									<Modal footer={false} open={isModalLogin} closeIcon={false}>
+										<div className={styles.wapper}>
+											<div className={styles.auth_form1}>
+												<div className={styles.top}>
+													<div className={styles.icon}>
+														<img src="/images/tb_login.svg" alt="" />
+													</div>
+													<p className={styles.text}>Tài khoản hoặc mật khẩu không đúng.</p>
+												</div>
+												<div className={styles.button}>
+													<button onClick={handleCancelLogin}>OK</button>
+												</div>
+											</div>
+										</div>
+									</Modal>
+								)}
 							</form>
 						)}
 
 						<div className={styles.forget_pw}>
 							<Link
-								href="/quen-mat-khau-nha-tuyen-dung.html"
+								href="/quen-mat-khau-ung-vien.html"
 								title="Quên mật khẩu"
 								className={styles.qmk}
 							>
@@ -189,7 +260,7 @@ const Employer_login = () => {
 					<div className={styles.login_register}>
 						<p>
 							Bạn chưa có tài khoản?{' '}
-							<Link href="/" title="Đăng ký ngay">
+							<Link href="/dang-ky-ung-vien.html" title="Đăng ký ngay">
 								Đăng ký ngay
 							</Link>
 						</p>
@@ -197,16 +268,7 @@ const Employer_login = () => {
 				</div>
 			</section>
 
-			<Modal
-				footer={false}
-				open={isModalOpen}
-				onCancel={handleCancel}
-				bodyStyle={
-					{
-						// padding: '40px',
-					}
-				}
-			>
+			<Modal footer={false} open={isModalOpen} onCancel={handleCancel}>
 				<div className={styles.content_body_md}>
 					<h5
 						className={`${styles['modal-title']} ${styles['modal-title1']}`}
@@ -246,4 +308,4 @@ const Employer_login = () => {
 	)
 }
 
-export default Employer_login
+export default Candidate_login

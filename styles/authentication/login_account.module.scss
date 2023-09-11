@@ -525,3 +525,53 @@
 		}
 	}
 }
+// Modal sai tài khoản
+.wapper {
+	.auth_form1 {
+		width: 460px;
+		height: 110px;
+		margin: 0 auto;
+		background-color: #fff;
+		border-radius: 8px;
+		padding: 20px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		.top {
+			display: flex;
+			gap: 15px;
+			.icon {
+				img {
+					vertical-align: middle;
+				}
+			}
+			.text {
+				font-weight: 400;
+				font-size: 16px;
+				line-height: 135%;
+				color: #333333;
+			}
+		}
+		.button {
+			display: flex;
+			justify-content: flex-end;
+			button {
+				border: none;
+				min-width: 105px;
+				height: 35px;
+				background: #4c5bd4;
+				border-radius: 6px;
+				font-family: 'Roboto-Medium';
+				font-weight: 500;
+				font-size: 15px;
+				line-height: 135%;
+				color: #ffffff;
+				padding-left: 10px;
+				padding-right: 10px;
+				&:hover {
+					cursor: pointer;
+				}
+			}
+		}
+	}
+}
