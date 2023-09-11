@@ -13,32 +13,14 @@ import { openModal } from '@/actions/actions'
 import Model_Danhgia_details from '@/components/pop_up/model_danhgia_details'
 import { listIconStatus } from '@/utils/constants'
 import { base_timviec365 } from '@/components/service/functions'
+import { Icomment, Iicons } from '@/utils/interface'
 type Props = {
-	isLogin: boolean
+	
 }
-export interface Iicons {
-	id: number
-	img: string
-	alt: string
-	style: string
-}
-export interface Icomment {
-	arr_likes: []
-	arr_reply: []
-	cm_comment: string
-	cm_id: number
-	cm_img: string
-	cm_new_id: number
-	cm_parent_id: number
-	cm_sender_avatar: string
-	cm_sender_idchat: number
-	cm_sender_name: string
-	cm_sender_type: number
-	cm_tag: []
-	cm_time: string
-}
-const Comment = ({ isLogin }: Props) => {
+
+const Comment = ({  }: Props) => {
 	const dispatch = useDispatch()
+	const isLogin=false
 
 	const name_comment = 'Nguyễn Quang Trường'
 	const [showModelDanhGia, setshowModelDanhgia] = useState<boolean>(false)

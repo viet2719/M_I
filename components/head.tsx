@@ -6,7 +6,7 @@ import Head from 'next/head'
 import Script from 'next/script'
 // import { Helmet } from 'react-helmet'
 type Props ={
-	data:ISeo
+	data?:ISeo
 }
 //haha
 const Head_common = ({

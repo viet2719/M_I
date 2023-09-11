@@ -20,7 +20,6 @@ import { useRouter } from 'next/router'
 import { JobsCache } from '@/utils/jobsCache'
 import { useDispatch } from 'react-redux'
 import { doSaveKeyName } from '../redux/user/userSlice'
-import { useMyContext } from '../useContext/useContext'
 
 const Box_search = ({}: any) => {
 	const dispatch = useDispatch()

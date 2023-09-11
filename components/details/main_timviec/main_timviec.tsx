@@ -9,10 +9,10 @@ import All_content_post_sub from '../all_content_post_sub/all_content_post_sub'
 import Ctn_all_new from '../ctn_all_new/ctn_all_new'
 import Image from 'next/image'
 type Props = {
-	isLogin:boolean
 }
 
-const Main_timviec = ({isLogin }: Props) => {
+const Main_timviec = ({ }: Props) => {
+	const isLogin = false
 	return (
 		<div className={`${styles.main_timviec} ${styles.m_detail_city}`}>
 			<div className={`${styles.nd_chitiettd}`}>
@@ -21,10 +21,10 @@ const Main_timviec = ({isLogin }: Props) => {
 						<div className={`${styles.all_content_post_main}`}>
 
 							{/* Chi tiết tin  */}
-							<Chi_tiet_td isLogin={isLogin}/>
+							<Chi_tiet_td />
 
 							{/* Phần bình luận */}
-							<Comment isLogin={isLogin}/>
+							<Comment />
 							<div className={`${styles.banner_timviec}`}>
 								<Link href="/cv-xin-viec" className={`${styles.cv_xinviec}`} target="blank">
 									CV XIN VIỆC

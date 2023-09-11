@@ -111,6 +111,7 @@ const Box_AI = ({ jobList }: Props) => {
 							<div className={styles.right_item_vl}>
 								<h3>
 									<Link
+									style={{ color: job.new_do ? 'red' : '' }}
 										className={styles.tit_vip}
 										href={`/${job.new_alias}-p123.html`}
 										title={job.new_title}

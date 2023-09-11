@@ -109,9 +109,9 @@ const Box_vlhd_top = ({ jobData }: Props) => {
 												className={styles.icon_tiaset_new}
 												alt=""
 											/>
-											
+
 											<Image
-											style={{position:"absolute",top:'0',right:"0"}}
+												style={{ position: 'absolute', top: '0', right: '0' }}
 												width={28}
 												height={28}
 												src="/images/icon_anhsao.gif"
@@ -124,6 +124,7 @@ const Box_vlhd_top = ({ jobData }: Props) => {
 								<div className={styles.right_item_vl}>
 									<h3>
 										<Link
+											style={{ color: job.new_do ? 'red' : '' }}
 											className={styles.tit_vip}
 											href={`/${job.new_alias}-p${job.new_id}.html`}
 											title={job.new_title}
@@ -152,7 +153,9 @@ const Box_vlhd_top = ({ jobData }: Props) => {
 									<p className={styles.job_chat} data-id="243931" id-chat="1346583">
 										Chat
 									</p>
-									<p className={styles.job_time}>{unixTimestampToDateString(job.new_han_nop)}</p>
+									<p title="Hạn nộp" className={styles.job_time}>
+										{unixTimestampToDateString(job.new_han_nop)}
+									</p>
 									<p className={styles.job_money} title={'Lương'}>
 										{job.nm_min_value / 1000000 == 0 && job.nm_max_value / 1000000 == 0
 											? 'Thỏa thuận'

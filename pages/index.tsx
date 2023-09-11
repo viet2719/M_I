@@ -54,7 +54,15 @@ const Home: NextPageWithLayout = ({ data, jobAiSSR }: any) => {
 		setVLTH(data?.data?.VLTH)
 		setdataSeo(data?.data?.dataSeo)
 	}, [])
+	useEffect(() => {
+		if (typeof sessionStorage !== 'undefined') {
+			sessionStorage.removeItem('tenNganhNghe');
+		} else {
+			console.log('Trình duyệt không hỗ trợ sessionStorage.')
+		}
 
+	}, [])
+	
 	//Lấy tên từ tọa độ khi bật vị trí
 	const getCityName = async (latitude: any, longitude: any) => {
 		// Xây dựng URL cho OpenStreetMap Nominatim
