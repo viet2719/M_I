@@ -2,11 +2,10 @@ import Footer from '@/components/common/footer'
 import Header from '@/components/common/header'
 import styles from '@styles/authentication/forgot_password.module.scss'
 import Image from 'next/image'
-import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 
-const Forgot_password = () => {
+const PasswordReset = () => {
 	const route = useRouter()
 	const [checkLayout, setCheckLayout] = useState(false)
 	const asPath = route.asPath
@@ -18,6 +17,80 @@ const Forgot_password = () => {
 			setCheckLayout(false)
 		}
 	}, [asPath])
+
+	const [emailOrPhone, setEmailOrPhone] = useState('')
+	const [captcha, setCaptcha] = useState('')
+	const [errorMessages, setErrorMessages] = useState<any>({})
+	// const [showCaptcha, setShowCaptcha] = useState(false)
+
+	const handleEmailOrPhoneChange = (event: any) => {
+		setEmailOrPhone(event.target.value)
+		// Kiểm tra định dạng ở đây và cập nhật errorMessage nếu cần
+		if (event.target.value !== '') {
+			if (!isValidEmailOrPhone(event.target.value)) {
+				const newErrorMessages = {
+					phoneOrMail: 'Địa chỉ email hoặc số điện thoại không hợp lệ.',
+				}
+				setErrorMessages(newErrorMessages)
+			} else {
+				const newErrorMessages = {
+					phoneOrMail: '',
+				}
+				setErrorMessages(newErrorMessages)
+			}
+		} else {
+			const newErrorMessages = {
+				phoneOrMail: 'Vui lòng nhập địa chỉ email hoặc số điện thoại.',
+			}
+			setErrorMessages(newErrorMessages)
+		}
+	}
+
+	const handleCaptchaChange = (event: any) => {
+		setCaptcha(event.target.value)
+		if (event.target.value !== '') {
+			const newErrorMessages2 = {
+				capCha: '',
+			}
+			setErrorMessages(newErrorMessages2)
+		} else {
+			const newErrorMessages2 = {
+				capCha: 'Vui lòng nhập mã Captcha.',
+			}
+			setErrorMessages(newErrorMessages2)
+		}
+	}
+
+	const handlePasswordReset = (event: any) => {
+		event.preventDefault()
+		if (emailOrPhone === '') {
+			const newErrorMessages = {
+				phoneOrMail: 'Vui lòng nhập địa chỉ email hoặc số điện thoại.',
+			}
+			setErrorMessages(newErrorMessages)
+		} else if (captcha === '') {
+			const newErrorMessages2 = {
+				capCha: 'Vui lòng nhập mã Captcha.',
+			}
+			setErrorMessages(newErrorMessages2)
+		} else {
+			console.log(emailOrPhone, captcha)
+		}
+	}
+
+	const isValidEmailOrPhone = (value: any) => {
+		return isValidEmail(value) || isValidPhone(value)
+	}
+	const isValidEmail = (value: any) => {
+		const emailRegex = /^[A-Za-z0-9+_.-]+@(.+)$/
+		return emailRegex.test(value)
+	}
+
+	const isValidPhone = (value: any) => {
+		// Đây là một ví dụ kiểm tra số điện thoại có dạng 10 hoặc 11 chữ số bắt đầu bằng số 0
+		const phoneRegex = /^(0[1-9][0-9]{8,9})$/
+		return phoneRegex.test(value)
+	}
 	return (
 		<>
 			<Header />
@@ -42,31 +115,42 @@ const Forgot_password = () => {
 								</h1>
 								<div className={styles.form_uv_mk}>
 									<label className={styles.email}>
-										Tài khoản đăng nhập<i style={{ color: 'red' }}>*</i>{' '}
+										Tài khoản đăng nhập<i style={{ color: 'red' }}>*</i>
 									</label>
 									<input
 										type="text"
 										id="user_pass"
 										name="email"
-										defaultValue=""
+										value={emailOrPhone}
+										onChange={handleEmailOrPhoneChange}
 										className={styles['form-control']}
 										placeholder="Nhập địa chỉ email hoặc số điện thoại đã đăng ký"
+										style={{
+											border: errorMessages?.phoneOrMail ? '1px solid #ff0000' : '',
+										}}
 									/>
+									{errorMessages?.phoneOrMail && (
+										<span className={styles.error_message}>{errorMessages?.phoneOrMail}</span>
+									)}
 									<br />
 									<br />
 									<label className={styles.email}>
-										Mã Captcha<i style={{ color: 'red' }}>*</i>{' '}
+										Mã Captcha<i style={{ color: 'red' }}>*</i>
 									</label>
 									<div className={styles.show_captcha}>
 										<input
 											type="text"
 											id="captcha"
+											value={captcha}
+											onChange={handleCaptchaChange}
 											className={`${styles.captcha} ${styles['form-control']}`}
 											name="captcha"
 											placeholder="Nhập mã Captcha"
-											style={{ width: 'calc(100% - 200px)' }}
+											style={{
+												border: errorMessages?.capCha ? '1px solid #ff0000' : '',
+												width: 'calc(100% - 200px)',
+											}}
 										/>
-										{/* <CaptchaImage /> */}
 										<Image
 											height={30}
 											width={120}
@@ -99,20 +183,24 @@ const Forgot_password = () => {
 											/>
 										</button>
 									</div>
+									{errorMessages?.capCha && (
+										<span className={styles.error_message}>{errorMessages?.capCha}</span>
+									)}
 									<div id="recaptcha-container" className={styles.recaptcha} />
 									<p>
 										Mời bạn nhập địa chỉ email hoặc số điện thoại đã đăng ký tài khoản trên
 										Timviec365.vn. Chúng tôi sẽ gửi tới bạn một mã OTP để xác thực và tạo mật khẩu
 										mới, vui lòng kiểm tra email hoặc tin nhắn.
 									</p>
-								</div>
-								<div className={styles.div_su_quen_mk}>
-									<input
-										type="submit"
-										name="Submit"
-										className={styles.btn_quen_mk}
-										value="Lấy lại mật khẩu"
-									/>
+									<div className={styles.div_su_quen_mk}>
+										<input
+											type="submit"
+											name="Submit"
+											className={styles.btn_quen_mk}
+											value="Lấy lại mật khẩu"
+											onClick={handlePasswordReset}
+										/>
+									</div>
 								</div>
 								<p
 									style={{
@@ -190,4 +278,4 @@ const Forgot_password = () => {
 	)
 }
 
-export default Forgot_password
+export default PasswordReset

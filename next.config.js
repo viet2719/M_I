@@ -18,11 +18,11 @@ const nextConfig = {
       },
       {
         source: '/dang-nhap-nha-tuyen-dung.html',
-        destination: '/authentication/employer_login'
+        destination: '/authentication/login_account'
       },
       {
         source: '/dang-nhap-ung-vien.html',
-        destination: '/authentication/candidate_login/'
+        destination: '/authentication/login_account/'
       },
       // Quên mật khẩu
       {
