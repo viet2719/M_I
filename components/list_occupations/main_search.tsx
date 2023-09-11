@@ -429,11 +429,8 @@ const Main_search = ({
 								{item.title === 'Ngành nghề liên quan' &&
 									listNganhNgheLienQuan?.map((item: any, index: number) => {
 										return (
-											<div>
-												<Link
-													key={index}
-													href={`/viec-lam-${convertToSlug(item?.key_name)}-${item?.key_id}`}
-												>
+											<div key={index}>
+												<Link href={`/viec-lam-${convertToSlug(item?.key_name)}-${item?.key_id}`}>
 													Việc làm {item?.key_name}
 													{<span>-</span>}
 												</Link>
@@ -443,11 +440,8 @@ const Main_search = ({
 								{item.title === 'Chức danh' &&
 									listChucDanh?.map((item: any, index: number) => {
 										return (
-											<div>
-												<Link
-													key={index}
-													href={`/viec-lam-${convertToSlug(item?.key_name)}-${item?.key_id}`}
-												>
+											<div key={index}>
+												<Link href={`/viec-lam-${convertToSlug(item?.key_name)}-${item?.key_id}`}>
 													Việc làm {item?.key_name}
 													{<span>-</span>}
 												</Link>
@@ -457,7 +451,7 @@ const Main_search = ({
 								{item.title === 'Từ khóa' &&
 									tuKhoa?.map((item: any, index: number) => {
 										return (
-											<div>
+											<div key={index}>
 												<Link
 													key={index}
 													href={`/viec-lam-${convertToSlug(item?.key_name)}-${item?.key_id}`}
@@ -507,11 +501,8 @@ const Main_search = ({
 								{item.title === 'Công ty' &&
 									listJobs?.map((item: any, index: number) => {
 										return (
-											<div>
-												<Link
-													key={index}
-													href={`/${convertToSlug(item?.usc_company)}-co${item?.usc_id}`}
-												>
+											<div key={index}>
+												<Link href={`/${convertToSlug(item?.usc_company)}-co${item?.usc_id}`}>
 													{item?.usc_company}
 													{<span>-</span>}
 												</Link>

@@ -9,8 +9,8 @@ import Input_reply from './input_reply'
 import Item_comment from './item_comment'
 import { IJob, IJobsTinhThanh } from '@/utils/interface'
 type Props = {
-	id: any
-	job: IJobsTinhThanh
+	id?: any
+	job?: IJobsTinhThanh
 }
 const Box_comment = ({ id, job }: Props) => {
 	const [apiDataID, setApiDataID] = useState<any[]>()
