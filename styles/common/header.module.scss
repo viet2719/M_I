@@ -499,6 +499,9 @@
 	}
 }
 @media screen and (max-width: 768px) {
+	.new_header {
+		position: fixed;
+	}
 	.chat_notifice {
 		background: url('../../public/images/before_login/mess_icon2.png') no-repeat;
 		background-size: 100% 100%;

@@ -1,0 +1,527 @@
+.login_uv_mb {
+	padding-top: 120px;
+}
+.login_uv {
+	background: url('/images/bg_login_ntd_v2.png') no-repeat;
+	background-position: center;
+	padding-bottom: 200px;
+	background-size: cover;
+	.vieclam_container {
+		width: 1170px;
+		margin-right: auto;
+		margin-left: auto;
+		height: auto;
+		padding-top: 119px;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		.login_content {
+			width: 42%;
+			padding-top: 150px !important;
+			padding-left: 5%;
+			float: right;
+			h1 {
+				color: #232f87;
+				font-family: Roboto-Medium, sans-serif;
+				font-size: 34px;
+				font-weight: 500;
+				margin: 0;
+			}
+		}
+		.form_dang_nhap {
+			width: 525px;
+			height: unset !important;
+			padding-bottom: 10px;
+			background: #ffffff;
+			border-radius: 12px;
+			.box_select_login {
+				display: flex;
+				align-items: center;
+				border-bottom: solid 1px #cccccc;
+				padding: 5px 0;
+			}
+			.lg_uv {
+				height: 70px;
+				padding-top: 15px;
+				justify-content: space-evenly;
+				p {
+					line-height: 25.5px;
+				}
+				.select_login {
+					height: 54px;
+					padding-bottom: 5px;
+					text-align: center;
+					font-size: 17px;
+					line-height: 40px;
+					display: flex;
+					flex-direction: column;
+					cursor: pointer;
+					background: unset;
+					border: unset;
+					p {
+						text-transform: uppercase;
+						font-size: 20px;
+						color: #4c5bd4;
+					}
+				}
+				.lg_qr {
+					position: relative;
+					justify-content: center;
+					p {
+						width: 100%;
+					}
+				}
+				.lg_tk {
+					.nbon {
+						font-family: 'Roboto-Regular';
+						font-weight: 200;
+					}
+					.upn {
+						text-transform: none !important;
+					}
+					p {
+						width: 100%;
+					}
+				}
+				.lg_qr::after {
+					content: '';
+					width: 1px;
+					height: 20px;
+					background-color: #ccc;
+					position: absolute;
+					right: -50px;
+				}
+				.act {
+					color: #4c5bd4;
+					background-position: center bottom;
+				}
+			}
+			.scan_qr {
+				padding: 29px 0 0 0;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				gap: 10px;
+				.img_qr {
+					width: 184px;
+					min-width: 184px;
+					height: 186px;
+					min-height: 186px;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					img {
+						vertical-align: middle;
+					}
+				}
+				.f16 {
+					font-size: 16px;
+					line-height: 21.6px;
+				}
+				.mrt9 {
+					margin-top: 9px;
+				}
+				.cur_p {
+					cursor: pointer;
+				}
+				.cl4c {
+					color: #4c5bd4;
+				}
+				button {
+					background: unset;
+					border: unset;
+				}
+			}
+			#formSignUp {
+				width: 100%;
+				padding: 23px;
+				background: #fff;
+				float: left;
+				border-radius: 0 0 12px 12px;
+			}
+			.form_tk {
+				input {
+					border: unset;
+				}
+				.form_uv {
+					position: relative;
+					width: 100%;
+					float: left;
+					padding-bottom: 15px;
+					.email_lg {
+						background: url('/images/icn_user.png') no-repeat;
+						width: 20px;
+						position: absolute;
+						height: 25px;
+						top: 12px;
+						left: 20px;
+					}
+					#user_email {
+						width: 100%;
+						height: 50px;
+						border: none;
+						font-size: 22px;
+						background-color: #fff !important;
+						padding-left: 65px;
+						border-radius: 10px;
+						box-sizing: border-box;
+						color: #a5abc7;
+					}
+					.pass_lg {
+						background: url('/images/icn_pass.png') no-repeat;
+						width: 23px;
+						position: absolute;
+						height: 25px;
+						top: 12px;
+						left: 20px;
+					}
+					#user_password_first {
+						width: 100%;
+						height: 50px;
+						border: none;
+						color: #a5abc7;
+						font-size: 22px;
+						background-color: #fff !important;
+						padding-left: 65px;
+						border-radius: 10px;
+						box-sizing: border-box;
+					}
+					.form-control {
+						display: block;
+						padding: 6px 12px;
+						line-height: 1.42857143;
+						transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+					}
+
+					label {
+						display: inline-block;
+						max-width: 100%;
+						margin-bottom: 5px;
+						font-weight: 700;
+					}
+					.error {
+						margin-top: 3px;
+						color: red;
+					}
+				}
+				.form_uv:first-child {
+					border-bottom: 1px solid #a5abc7;
+					margin-bottom: 10px;
+				}
+				.btn_login2 {
+					width: 120%;
+					margin-left: -10.3%;
+					margin-top: 30px;
+					float: left;
+					height: 40px;
+					cursor: pointer;
+					margin-bottom: 40px;
+					.btn_login_uv {
+						width: 100%;
+						height: 65px;
+						background: #232f87;
+						border: none;
+						color: #fff;
+						font-size: 22px;
+						font-family: Roboto-Medium, sans-serif;
+						cursor: pointer;
+					}
+					.triangleLeft {
+						width: 0;
+						height: 0;
+						border-top: 13px solid #212a68;
+						border-right: 23px solid transparent;
+						float: right;
+					}
+					.triangleRight {
+						width: 0;
+						height: 0;
+						border-top: 13px solid #212a68;
+						border-left: 25px solid transparent;
+						float: left;
+					}
+				}
+			}
+
+			.forget_pw {
+				text-align: center;
+				padding-top: 35px;
+				.qmk {
+					color: #232f87;
+					font-size: 17px;
+					line-height: 26px;
+					float: unset;
+					text-decoration: underline;
+					&:hover {
+						text-decoration: none;
+					}
+				}
+			}
+		}
+		.login_register {
+			text-align: right;
+			width: 100%;
+			padding-right: 10%;
+			padding-top: 20px;
+			p {
+				font-size: 16px;
+			}
+			a {
+				color: #ff7009;
+			}
+		}
+	}
+}
+@media screen and (max-width: 1200px) {
+	.login_uv {
+		.vieclam_container {
+			width: auto;
+			// background: unset;
+			.login_content {
+				display: block;
+			}
+			.form_dang_nhap {
+				margin: auto;
+				// background: #ffffff;
+				width: 430px;
+				.lg_uv {
+					.lg_qr::after {
+						right: -35px;
+					}
+				}
+			}
+			.login_register {
+				padding-right: 16%;
+				padding-right: 0px;
+				text-align: center;
+			}
+		}
+	}
+}
+@media screen and (max-width: 1165px) {
+	.login_uv {
+		.vieclam_container {
+			padding-top: unset;
+			background: #fff;
+			width: auto;
+		}
+	}
+}
+@media only screen and (max-width: 768px) {
+	.login_uv_mb {
+		padding-top: unset;
+		position: relative;
+		margin-top: 65px !important;
+		padding-top: 138px !important;
+		padding-bottom: 50px;
+	}
+	.login_uv {
+		background: url('/images/bg_login_ntd_v2.png') no-repeat;
+		width: 100%;
+		float: left;
+		height: 700px;
+		background-size: auto 100%;
+		background-position: center;
+		padding-top: unset !important;
+		.vieclam_container {
+			padding-top: unset;
+			.login_content {
+				display: none;
+			}
+			.form_dang_nhap {
+				background: #ffffff;
+				width: 536px;
+				height: 345px;
+				background: unset;
+				width: 80%;
+				background-color: #fff;
+				margin-top: 90px;
+				.lg_uv {
+					.act {
+						color: #ffffff !important;
+						background: url('/images/bdbt.png') no-repeat;
+						background-position: center bottom;
+					}
+					.select_login {
+						color: #aaaaaa;
+					}
+					.lg_qr::after {
+						right: -70px;
+					}
+				}
+				.scan_qr {
+					.cur_p {
+						margin-top: -4px;
+					}
+				}
+				#formSignUp {
+					padding-top: 29px !important;
+					width: 100% !important;
+					margin-left: unset !important;
+					padding: 23px;
+					background: transparent;
+					float: none;
+					border-radius: 0 0 12px 12px;
+					margin: auto;
+					.form_uv {
+						.email_lg {
+							background: url('/images/icn_user_mobi.png') no-repeat;
+							width: 18px;
+							position: absolute;
+							height: 25px;
+							top: 12px;
+							left: auto;
+							right: 20px;
+						}
+						.pass_lg {
+							background: url('/images/icn_pass_mobi.png') no-repeat;
+							width: 22px;
+							position: absolute;
+							height: 28px;
+							top: 12px;
+							left: auto;
+							right: 20px;
+						}
+						#user_email {
+							padding-left: 20px;
+							width: 100%;
+							height: 41px;
+							border: none;
+							font-size: 16px;
+							padding-right: 40px;
+							border-radius: 5px;
+							box-sizing: border-box;
+						}
+						#user_password_first {
+							width: 100%;
+							height: 41px;
+							border: none;
+							font-size: 16px;
+							padding-right: 40px;
+							padding-left: 20px;
+							border-radius: 5px;
+							box-sizing: border-box;
+						}
+					}
+					.form_uv:first-child {
+						margin-bottom: unset;
+					}
+					.btn_login2 {
+						width: 117%;
+						margin-left: -50px;
+						margin-top: 20px;
+						margin-bottom: 2px;
+						.btn_login_uv {
+							height: 46px;
+							background: #4c5bd4;
+							font-size: 16px;
+							border-radius: 5px;
+							background: #4c5bd4;
+							width: 100%;
+						}
+					}
+				}
+				.forget_pw {
+					margin-bottom: -10px;
+					.qmk {
+						line-height: 50px;
+					}
+				}
+			}
+			.form_dn_uv {
+				padding-bottom: 20px;
+			}
+			.login_register {
+				text-align: center;
+				width: 100%;
+				padding: 20px 0;
+			}
+		}
+	}
+}
+@media screen and (max-width: 414px) {
+	.login_uv {
+		height: unset;
+		.vieclam_container {
+			.form_dang_nhap {
+				.lg_uv {
+					.select_login {
+						p {
+							font-size: 15px;
+						}
+					}
+					.lg_qr::after {
+						right: -20px;
+					}
+				}
+				.scan_qr {
+					text-align: center;
+				}
+				#formSignUp {
+					.btn_login2 {
+						width: 100% !important;
+						margin-left: unset !important;
+						margin-top: 16px !important;
+						margin-bottom: 2px !important;
+					}
+				}
+			}
+		}
+	}
+}
+
+// Modal- hướng dẫn quét
+.content_body_md {
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+	align-items: center;
+	.modal-title {
+		margin: 0;
+		line-height: 1.42857143;
+	}
+	.modal-title1 {
+		font-size: 18px;
+		line-height: 21.6px;
+		font-weight: bold;
+		text-align: center;
+	}
+	.img_qr {
+		width: 184px;
+		min-width: 184px;
+		height: 186px;
+		min-height: 186px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	.ct_list {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+		.item_l {
+			display: flex;
+			gap: 15px;
+			align-items: center;
+			.cicle_list {
+				width: 32px;
+				min-width: 32px;
+				height: 32px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				background: #4c5bd4;
+				border-radius: 99em;
+				color: #ffffff;
+			}
+			p {
+				font-size: 16px;
+				margin: 0;
+				padding: 0;
+				img {
+					vertical-align: middle;
+				}
+			}
+		}
+	}
+}

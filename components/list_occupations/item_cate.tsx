@@ -19,11 +19,11 @@ import Box_comment from '../common/box_comment'
 import Model_noti from '../pop_up/model_noti'
 type Props = {
 	listJobs: IJobsTinhThanh[]
-	name: string
-	checkedBox: any
-	handleChange: any
-	checkboxStates: any
-	sanitizedId: any
+	name?: string
+	checkedBox?: any
+	handleChange?: any
+	checkboxStates?: any
+	sanitizedId?: any
 }
 const List_cate = ({
 	listJobs,
@@ -487,9 +487,7 @@ const List_cate = ({
 										</ul>
 									</div>
 								)}
-								<Box_comment id={cate?.new_id} 
-								job={cate}
-								/>
+								<Box_comment id={cate?.new_id} job={cate} />
 							</div>
 						)
 					})}

@@ -1,9 +1,8 @@
 import { EmptyLayout } from '@/components/layout'
-import { Provider } from 'react-redux'
-import { AppPropsWithLayout } from '@/models/index'
-import '../styles/globals.scss'
-import store from '@/stores'
 import { MyProvider } from '@/components/useContext/useContext'
+import store from '@/stores'
+import { Provider } from 'react-redux'
+import '../styles/globals.scss'
 
 function MyApp({ Component, pageProps }: any) {
 	const Layout = Component.Layout ?? EmptyLayout
