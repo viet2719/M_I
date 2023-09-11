@@ -123,7 +123,7 @@ export default function Header({ children }: any, { isLogin }: HeaderProps) {
 			height: 21,
 			className: styles.angle_menu_mobile,
 			text: 'Trắc nghiệm MI',
-			link: '/',
+			link: '/mi',
 			menuClass: styles.menu_mi,
 		},
 		{
@@ -133,7 +133,7 @@ export default function Header({ children }: any, { isLogin }: HeaderProps) {
 			height: 21,
 			className: styles.angle_menu_mobile,
 			text: 'Trắc nghiệm MBTI',
-			link: '/',
+			link: '/mbti',
 			menuClass: styles.menu_MBTI,
 		},
 		{
@@ -305,12 +305,12 @@ export default function Header({ children }: any, { isLogin }: HeaderProps) {
 											</Link>
 										</li>
 										<li className={styles.ctn_box_ch}>
-											<Link href="#" className={styles.menu_mi}>
+											<Link href="/mi" className={styles.menu_mi}>
 												Trắc nghiệm MI
 											</Link>
 										</li>
 										<li className={styles.ctn_box_ch}>
-											<Link href="#" className={styles.menu_mbti}>
+											<Link href="/mbti" className={styles.menu_mbti}>
 												Trắc nghiệm MBTI
 											</Link>
 										</li>
