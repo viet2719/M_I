@@ -3,7 +3,7 @@ const path = require('path')
 const nextConfig = {
   reactStrictMode: false,
   images: {
-    domains: ['timviec365.vn'],
+    domains: ['timviec365.vn',['hungha365.com']],
   },
   webpack: (config) => {
     config.resolve.alias['@styles'] = path.join(__dirname, '/styles');

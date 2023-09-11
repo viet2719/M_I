@@ -1,0 +1,333 @@
+
+    .section{
+        padding-top: 100px;
+        background: rgb(241,249,255);
+    }
+    .resuilt__header{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-bottom: 20px;
+    }
+    .header{
+        display: block;
+        text-align: center;
+    }
+   
+    .gr_character{
+        font-size: 22px;
+        line-height: 26px;
+        font-weight: 400;
+        color: #474747;
+        padding-bottom: 15px;
+    }
+    .personality_name{
+         font-size: 30px;
+        line-height: 26px;
+        font-weight: 600;
+        color: #474747;
+        padding-top: 15px;
+    }
+    .suitable_job{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #ffffff;
+        padding: 20px 0;
+    }
+    .main1{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px 150px;
+        
+    }
+    .children1{
+         background: rgb(241,249,255);
+    }
+    .children1> span {
+        text-align: start;
+        color:#474747;
+        font-weight: 400;
+        font-size: 20px;
+    }
+    .children1> span>a{
+        color:#4c5bd4;
+    }
+    .title__overview {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .title__overview > h4{
+        font-size: 26px;
+        line-height: 26px;
+        font-weight: 600;
+        padding: 20px 0;
+    }
+    .btn{
+        display: flex;
+    }
+   .btn_restart,
+   .btn_share{
+        display: flex;
+        background: #4c5bd4;
+        line-height: 26px;
+        
+        border:none;
+        border-radius: 5px;
+        padding: 0 5px;
+         color:#caceec;
+        cursor: pointer;
+          opacity: 0.9;
+    }
+    .btn_restart{
+        margin-right: 20px;
+        display: flex;
+        
+        align-items: center;
+    }
+    .btn_share:hover,
+    .btn_restart:hover{
+       opacity: 1;
+       color: #ffffff;
+    }
+     
+        .btn_share{
+        display: flex;
+        align-items: center;
+    }
+  .content_children1{
+    padding: 20px 0;
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 400;
+  }
+  .content_children2 > li {
+    list-style: none;
+  }
+    
+    .main2{
+        padding: 20px 150px;
+        background: #ffffff;
+    }
+     .content_children2{
+    padding: 20px 0;
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 400;
+  }
+  .tongcon {
+    display: none;
+  }
+.job_tong{
+    display: block;
+}
+.job_con{
+    display: none;
+}
+
+    // 3
+     .content_children3{
+    padding: 20px 0;
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 400;
+  }
+  .content_children3
+   > li {
+    list-style: none;
+  }
+    
+    .main3{
+        padding: 20px 150px;
+        background: rgb(241,249,255);
+    }
+
+    // 4
+    .main4{
+        padding: 20px 150px;
+        background: #ffffff;
+    }
+     .content_children4{
+        padding: 20px 0;
+        font-size: 16px;
+        line-height: 22px;
+        font-weight: 400;
+    }
+    .content_children4> li {
+            list-style: none;
+    }
+    .children4 >img {
+        width: 100%;
+    }
+
+    // main__footer
+    .main_footer{
+        padding: 20px 150px;
+    }
+    .grid_footer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 15px; 
+        }
+     .grid_footer .img_tit{
+         display: flex;
+          align-items: center;  
+       
+    }
+    .img_tit >p{
+         padding-left: 10px;
+        font-size: 16px;
+        }
+    .grid_item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+
+    h4 {
+        margin-top: 10px;
+        font-size: 26px;
+    }
+}
+@media(max-width:1366px)
+{
+.main1{
+        padding: 20px 80px;
+    }
+    .main2{
+        padding: 20px 80px;
+    }
+    .main3{
+        padding: 20px 80px;
+    }
+    .main4{
+        padding: 20px 80px;
+    }
+    .main_footer{
+        padding: 20px 80px;
+    }
+
+}
+@media(max-width:1024px) and (min-width:768.9px)
+{
+.main1{
+        padding: 20px 50px;
+    }
+    .main2{
+        padding: 20px 50px;
+    }
+    .main3{
+        padding: 20px 50px;
+    }
+    .main4{
+        padding: 20px 50px;
+    }
+    .main_footer{
+        padding: 20px 50px;
+    }
+
+}
+@media(max-width:768px)
+{
+    .main1{
+        padding: 20px 10px;
+    }
+    .main2{
+        padding: 20px 10px;
+    }
+    .main3{
+        padding: 20px 10px;
+    }
+    .main4{
+        padding: 20px 10px;
+    }
+    .main_footer{
+        padding: 20px 10px;
+    }
+     .main_footer{
+        padding: 20px 10px;
+    }
+    .grid_footer {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 15px; 
+    }
+    .img_tit > img {
+        width: 90px;
+        height: 90px;
+    }
+}
+@media(max-width:570px)
+{
+    .main1{
+        padding: 20px 10px;
+    }
+    .main2{
+        padding: 20px 10px;
+    }
+    .main3{
+        padding: 20px 10px;
+    }
+    .main4{
+        padding: 20px 10px;
+    }
+    .main_footer{
+        padding: 20px 10px;
+    }
+    .tongquan{
+        display: none;
+    }
+    .tongcon{
+        display: block;
+        margin-left: 25%;
+       
+    }
+    .personality_name{
+        padding-top: 20px;
+        font-size: 20px;
+    }
+    .gr_character{
+        padding-bottom: 20px;
+        font-size: 18px;
+    }
+    .job_tong{
+        display: none;
+    }
+    .job_con{
+        display: block;
+        width: 95% ;
+    }
+     .main_footer{
+        padding: 20px 10px;
+    }
+    .grid_footer {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr); 
+        gap: 15px; 
+    }
+     .img_tit > img {
+        width: 60px !important;
+        height: 60px !important;
+    }
+    .title__overview{
+        display: block;
+    h4{
+        font-size: 20px;
+        padding: 5px 0;
+    }
+    }
+   .btn_restart,.btn_share{
+    line-height: 15px;
+   }
+     .children4 >img {
+        width: 100%;
+        height: 100px;
+    }
+     .btn_restart{
+        margin-right: 10px;
+        line-height: 26px;
+    }
+}
