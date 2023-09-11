@@ -4,7 +4,7 @@ import Image from 'next/image'
 import Select from 'react-select'
 import BtnSelect from '../home/btn_search_advance/btnSelect'
 import Link from 'next/link'
-import { listCities, listCitys } from '@/utils/constants'
+import { listCities, listCitys, listNganhNghe } from '@/utils/constants'
 import BtnSelectQuan from '../home/btn_search_advance/btn_quan_huyen'
 import BtnSelectLevel from '../home/btn_search_advance/btn_level'
 import BtnSelectSalary from '../home/btn_search_advance/btn_salary'
@@ -15,9 +15,17 @@ import BtnSelectKinhNghiem from '../home/btn_search_advance/btn_kinh_nghiem'
 import BtnSelectDay from '../home/btn_search_advance/btn_ngay_cap_nhat'
 import { base_timviec365 } from '../service/functions'
 import { ICity } from '@/utils/interface'
-import { convertToSlug } from '@/utils/convert'
+import { convertToSlug, convertToSlugNo } from '@/utils/convert'
+import { useRouter } from 'next/router'
+import { JobsCache } from '@/utils/jobsCache'
+import { useDispatch } from 'react-redux'
+import { doSaveKeyName } from '../redux/user/userSlice'
 
 const Box_search = ({}: any) => {
+	const dispatch = useDispatch()
+	const [catId, setcatId] = useState<number | any>()
+	const [nameCatId, setnameCatId] = useState<string>('')
+	const [keyName, setkeyName] = useState<string>('')
 	// Xử lý show-hide phần tìm kiếm theo tên
 	const [valueNameSearch, setValueNameSearch] = useState('')
 	const [checkSearchNameCity, setCheckSearchNameCity] = useState<any>(false)
@@ -27,8 +35,24 @@ const Box_search = ({}: any) => {
 	const [listDistrict, setlistDistrict] = useState<any>([])
 
 	const [idCity, setidCity] = useState<any>()
+	const filteredItems = listNganhNghe?.filter((item) =>
+		[9, 13, 1, 33, 26, 14, 10, 4, 77, 29, 62, 43, 45, 11, 34, 21, 48, 58, 66, 61, 25].includes(
+			item.cat_id
+		)
+	)
+	filteredItems.sort(
+		(a, b) =>
+			[9, 13, 1, 33, 26, 14, 10, 4, 77, 29, 62, 43, 45, 11, 34, 21, 48, 58, 66, 61, 25].indexOf(
+				a.cat_id
+			) -
+			[9, 13, 1, 33, 26, 14, 10, 4, 77, 29, 62, 43, 45, 11, 34, 21, 48, 58, 66, 61, 25].indexOf(
+				b.cat_id
+			)
+	)
 	// Tên thành phố được chọn => c0v
-	const name:any = listCities.filter(item=>{return item.cit_id===idCity})
+	const name: any = listCities.filter((item) => {
+		return item.cit_id === idCity
+	})
 	const handleGetDistrict = async () => {
 		try {
 			const res = await fetch(`${base_timviec365}/api/getData/district`, {
@@ -52,6 +76,50 @@ const Box_search = ({}: any) => {
 			handleGetDistrict()
 		}
 	}, [idCity]) // Thêm idCity vào danh sách dependencies của useEffect
+	const [datacache, setdatacache] = useState<any>()
+	const handleSlectNganhNghe = (item: any) => {
+		setshowKeyPhoBien(false)
+		if (item.cat_id) {
+			setdatacache(item.cat_name)
+			setcatId(item.cat_id)
+			setnameCatId(listNganhNghe.filter((items) => items.cat_id === item.cat_id)[0].cat_name)
+		}
+		if (item.key_name) {
+			setkeyName(item.key_name)
+			setnameCatId(item.key_name)
+			dispatch(doSaveKeyName(item.key_name))
+		}
+	}
+	const router = useRouter()
+
+	//Điều hướng trang cho đúng
+	const handleSearch = () => {
+		if (datacache) {
+			sessionStorage.setItem('tenNganhNghe', datacache)
+		}
+		localStorage.setItem('catId', catId)
+		setCheckSearchNameCity(false)
+		if (name[0]?.cit_id && !catId && !keyName) {
+			router.push(`/tim-viec-tai-${convertToSlug(name[0]?.cit_name)}-c${0}v${name[0]?.cit_id}`)
+		}
+		if (name[0]?.cit_id && catId && !keyName) {
+			router.push(
+				`/viec-lam-${convertToSlug(nameCatId)}-tai-${convertToSlug(name[0]?.cit_name)}-c${catId}v${
+					name[0]?.cit_id
+				}`
+			)
+		}
+		if (!name[0]?.cit_id && catId && !keyName) {
+			router.push(`/viec-lam-${convertToSlug(nameCatId)}-c${catId}v${0}`)
+		}
+		if (keyName && name[0]?.cit_id) {
+			router.push(`/tim-kiem/keyword=${convertToSlugNo(keyName)}&diadiem=${name[0]?.cit_id}`)
+		}
+		if (keyName && !name[0]?.cit_id && !catId) {
+			//tag7
+		}
+	}
+
 	return (
 		<div className={styles.box_m_search} id={styles.search_new_ntd}>
 			<div className={styles.new_search}>
@@ -61,11 +129,12 @@ const Box_search = ({}: any) => {
 						id={styles.fts_id}
 						className={styles.enter_ntd}
 						placeholder="Nhập tên công việc, vị trí ..."
+						value={nameCatId}
 						onClick={async () => {
 							setshowKeyPhoBien(true)
 						}}
 						onChange={(e) => {
-							setValueNameSearch(e.target.value)
+							setnameCatId(e.target.value)
 						}}
 					/>
 					<span className={styles.tkiem_giongnoi} id={styles.recordButton}>
@@ -90,86 +159,38 @@ const Box_search = ({}: any) => {
 						<div className={styles.nd_box_key}>
 							<div className={styles.kq_lq} id={styles.key_lq}>
 								<p className={styles.text_def}>Tìm kiếm gần đây</p>
-								<div className={styles.autocomplete_items}>
-									<div>
-										Kế toán - Kiểm toán
-										<input type="hidden" value="Kế toán - Kiểm toán" />
+								{nameCatId && (
+									<div className={styles.autocomplete_items}>
+										{[...JobsCache, ...listNganhNghe]?.map((item: any, index: number) => {
+											if (
+												(item.key_name || item.cat_name)
+													.toLowerCase()
+													.includes(nameCatId.toLowerCase())
+											) {
+												return (
+													<div onClick={() => handleSlectNganhNghe(item)} key={index}>
+														{item.key_name ? item.key_name : item.cat_name}
+													</div>
+												)
+											}
+										})}
 									</div>
-									<div>
-										Kế toán - Kiểm toán
-										<input type="hidden" value="Kế toán - Kiểm toán" />
-									</div>
-									<div>
-										Kế toán - Kiểm toán
-										<input type="hidden" value="Kế toán - Kiểm toán" />
-									</div>
-								</div>
+								)}
 							</div>
 							<div className={`${styles.kq_gy} ${styles.solid}`}>
 								<p className={styles.text_def}>Từ khóa phổ biến</p>
-								<span>
-									<Link href="#">Nhân viên kinh doanh</Link>
-								</span>
-								<span>
-									<Link href="#">IT phần mềm</Link>
-								</span>
-								<span>
-									<Link href="#">Kế toán - Kiểm toán</Link>
-								</span>
-								<span>
-									<Link href="#">KD bất động sản</Link>
-								</span>
-								<span>
-									<Link href="#">IT Phần cứng - mạng</Link>
-								</span>
-								<span>
-									<Link href="#">Marketing - PR</Link>
-								</span>
-								<span>
-									<Link href="#">Việc làm bán hàng</Link>
-								</span>
-								<span>
-									<Link href="#">Xây dựng</Link>
-								</span>
-								<span>
-									<Link href="#">Tiếp thị - Quảng cáo</Link>
-								</span>
-								<span>
-									<Link href="#">Tư vấn</Link>
-								</span>
-								<span>
-									<Link href="#">Sản xuất - Vận hành sản xuất</Link>
-								</span>
-								<span>
-									<Link href="#">Nhập liệu</Link>
-								</span>
-								<span>
-									<Link href="#">Chăm sóc khách hàng</Link>
-								</span>
-								<span>
-									<Link href="#">Cơ khí - Chế tạo</Link>
-								</span>
-								<span>
-									<Link href="#">Du lịch</Link>
-								</span>
-								<span>
-									<Link href="#">Dịch vụ</Link>
-								</span>
-								<span>
-									<Link href="#">Bưu chính viễn thông</Link>
-								</span>
-								<span>
-									<Link href="#">Phát triển thị trường</Link>
-								</span>
-								<span>
-									<Link href="#">Bảo hiểm</Link>
-								</span>
-								<span>
-									<Link href="#">Quản lý điều hành</Link>
-								</span>
-								<span>
-									<Link href="#">Xuất - nhập khẩu</Link>
-								</span>
+								{filteredItems.map((item, index) => (
+									<span key={index}>
+										<div
+											style={{ cursor: 'pointer' }}
+											onClick={() => {
+												handleSlectNganhNghe(item)
+											}}
+										>
+											{item?.cat_name}
+										</div>
+									</span>
+								))}
 							</div>
 						</div>
 					</div>
@@ -242,9 +263,9 @@ const Box_search = ({}: any) => {
 						</span>
 						<span
 							className={styles.selection2}
-							onClick={() => {
-								setCheckSearchNameCity(true)
-							}}
+							// onClick={() => {
+							// 	setCheckSearchNameCity(true)
+							// }}
 						>
 							<Select
 								onChange={(value: any) => {
@@ -298,9 +319,14 @@ const Box_search = ({}: any) => {
 							/>
 						</span>
 					</span>
-					<Link href={`/tim-viec-tai-${convertToSlug(name[0]?.cit_name)}-c${0}v${name[0]?.cit_id}`} className={styles['mobi-bor']}>
+					<div
+						onClick={() => {
+							handleSearch()
+						}}
+						className={styles['mobi-bor']}
+					>
 						<input type="submit" className={styles.btn_search} value="Tìm kiếm" />
-					</Link>
+					</div>
 					<Image
 						height={40}
 						width={40}

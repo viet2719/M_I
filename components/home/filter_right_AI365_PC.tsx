@@ -4,7 +4,7 @@ import { Carousel } from 'antd'
 import show from '@/styles/common/header_affter_login.module.scss'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
-import { base_timviec365 } from '../service/functions'
+import { base_ai, base_timviec365 } from '../service/functions'
 import { listKinhNghiem, listMucLuong, listNganhNghe } from '@/utils/constants'
 
 type Props = {
@@ -14,6 +14,7 @@ type Props = {
 	setSelectedId: any
 	selectedId: any
 	setCate_id: any
+	setList_id: any
 }
 
 const Filter_right_AI365_PC = ({
@@ -23,6 +24,7 @@ const Filter_right_AI365_PC = ({
 	setSelectedId,
 	selectedId,
 	setCate_id,
+	setList_id,
 }: Props) => {
 	const [listDistrict, setlistDistrict] = useState<any[]>([])
 	const [idNganhNgheChangeColor, setidNganhNgheChangeColor] = useState<number>()
@@ -78,6 +80,38 @@ const Filter_right_AI365_PC = ({
 			setdefaultValueCity(true)
 		}
 	}, [idLocation])
+
+	const [mb, setmb] = useState<any>()
+	const [mt, setmt] = useState<any>()
+	const [mn, setmn] = useState<any>()
+
+	// const handleGetList_id5001 = async () => {
+	// 	try {
+	// 		const res = await fetch(`http://43.239.223.4:5001/search_tin`, {
+	// 			headers: {
+	// 				'Content-Type': 'application/json',
+	// 				'Access-Control-Allow-Origin': '*', // Cho phép mọi nguồn truy cập
+	// 				'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE',
+	// 				'Access-Control-Allow-Headers': 'Content-Type',
+	// 				'Access-Control-Allow-Credentials': 'true',
+	// 				"Content-Length":"<calculated when request is sent>",
+	// 				'mode':"no-cors"
+	// 			  },
+	// 			method: 'POST',
+	// 			body: JSON.stringify({
+	// 				site:'timviec365',
+	// 				new_north_id: 1,
+	// 				new_centeral_id:mt,
+	// 				new_sourth_id:mn
+	// 			}),
+	// 		})
+	// 		const data = await res.json()
+	// 	console.log(data)
+	// 	} catch (error) {}
+	// }
+	// useEffect(()=>{
+	// 	handleGetList_id5001()
+	// },[])
 	return (
 		<div className={styles.filter_right}>
 			<div className={styles.btn_prev}>
@@ -148,27 +182,25 @@ const Filter_right_AI365_PC = ({
 					</div>
 				)}
 
-{!idLocation && selectLeft === 3 && (
-						<div className={styles.list_item}>
-							{listNganhNghe
-								.slice(listPosition, listPosition + 8)
-								.map((item: any, index: number) => (
-									<button
-										onClick={() => {
-											setCate_id(item?.cat_id),
+				{!idLocation && selectLeft === 3 && (
+					<div className={styles.list_item}>
+						{listNganhNghe.slice(listPosition, listPosition + 8).map((item: any, index: number) => (
+							<button
+								onClick={() => {
+									setCate_id(item?.cat_id),
 										setSelectedId(-1),
 										setidNganhNgheChangeColor(item?.cat_id)
-										}}
-										key={index}
-										className={`${styles.item} ${
-											item.cat_id === idNganhNgheChangeColor ? show.focus_filter : ''
-										}`}
-									>
-										{item.cat_name}
-									</button>
-								))}
-						</div>
-					)}
+								}}
+								key={index}
+								className={`${styles.item} ${
+									item.cat_id === idNganhNgheChangeColor ? show.focus_filter : ''
+								}`}
+							>
+								{item.cat_name}
+							</button>
+						))}
+					</div>
+				)}
 
 				{/* Bật vị trí */}
 				<div className={styles.list_item}>
@@ -237,8 +269,8 @@ const Filter_right_AI365_PC = ({
 									<button
 										onClick={() => {
 											setCate_id(item?.cat_id),
-										setSelectedId(0),
-										setidNganhNgheChangeColor(item?.cat_id)
+												setSelectedId(0),
+												setidNganhNgheChangeColor(item?.cat_id)
 										}}
 										key={index}
 										className={`${styles.item} ${

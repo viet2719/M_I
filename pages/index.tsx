@@ -23,8 +23,10 @@ import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
+import { Provider } from 'react-redux'
 import Select from 'react-select'
-
+import { store_per,persistor } from '@/components/redux/store'
+import { PersistGate } from 'redux-persist/integration/react';
 const Home: NextPageWithLayout = ({ data, jobAiSSR }: any) => {
 	const Banner_tia_set = dynamic(() => import('@/components/home/banner_tia_set'), { ssr: false })
 	const Banner_anh_sao = dynamic(() => import('@/components/home/tia_set'), { ssr: false })
@@ -43,6 +45,7 @@ const Home: NextPageWithLayout = ({ data, jobAiSSR }: any) => {
 
 	const [selectedId, setSelectedId] = useState<number | any>()
 	const [cate_id, setCate_id] = useState<number | any>('')
+	const [list_id, setList_id] = useState<string>('')
 
 	const [selectLeft, setselectLeft] = useState<number>(0)
 	useEffect(() => {
@@ -51,7 +54,15 @@ const Home: NextPageWithLayout = ({ data, jobAiSSR }: any) => {
 		setVLTH(data?.data?.VLTH)
 		setdataSeo(data?.data?.dataSeo)
 	}, [])
+	useEffect(() => {
+		if (typeof sessionStorage !== 'undefined') {
+			sessionStorage.removeItem('tenNganhNghe');
+		} else {
+			console.log('Trình duyệt không hỗ trợ sessionStorage.')
+		}
 
+	}, [])
+	
 	//Lấy tên từ tọa độ khi bật vị trí
 	const getCityName = async (latitude: any, longitude: any) => {
 		// Xây dựng URL cho OpenStreetMap Nominatim
@@ -124,6 +135,7 @@ const Home: NextPageWithLayout = ({ data, jobAiSSR }: any) => {
 					city: selectedId == 0 ? Math.floor(Math.random() * 35) : selectedId,
 					cate_id: cate_id,
 					pageSize: 14,
+					list_id: list_id,
 				}),
 			})
 			const data = await res.json()
@@ -141,10 +153,10 @@ const Home: NextPageWithLayout = ({ data, jobAiSSR }: any) => {
 		if (!selectedId && !city[0]?.cit_id) {
 			setlistJobsAI(jobAiSSR?.data?.items)
 		}
-	}, [selectedId, cate_id])
-
+	}, [selectedId, cate_id, list_id])
 	return (
-		<>
+
+		<Provider store={store_per}>
 			<Head_common data={dataSeo} />
 			<Hd_share_location click={click} showHd={showHd} setshowHd={setshowHd} />
 
@@ -176,10 +188,7 @@ const Home: NextPageWithLayout = ({ data, jobAiSSR }: any) => {
 							<h2 className={styles.ic_vlth}>VIỆC LÀM HẤP DẪN</h2>
 
 							<div className={styles.main_box_vieclam}>
-								<Carousel
-									//  autoplay
-									className={styles.customCarousel}
-								>
+								<Carousel autoplay className={styles.customCarousel}>
 									<Box_vlhd_top jobData={VLHD?.slice(1, 15)} />
 									<Box_vlhd_top jobData={VLHD?.slice(15, 29)} />
 									<Box_vlhd_top jobData={VLHD?.slice(29, 43)} />
@@ -334,6 +343,7 @@ const Home: NextPageWithLayout = ({ data, jobAiSSR }: any) => {
 								setSelectedId={setSelectedId}
 								selectedId={selectedId}
 								setCate_id={setCate_id}
+								setList_id={setList_id}
 							/>
 
 							<Filter_right_AI365_Mobile
@@ -360,7 +370,10 @@ const Home: NextPageWithLayout = ({ data, jobAiSSR }: any) => {
 			</section>
 			<Footer />
 			<Chat_container />
-		</>
+
+	
+		</Provider>
+	
 	)
 }
 
@@ -389,6 +402,7 @@ export async function getServerSideProps() {
 			body: JSON.stringify({
 				city: Math.floor(Math.random() * 35),
 				pageSize: 25,
+				page: 1,
 			}),
 		})
 		const data = await res.json()

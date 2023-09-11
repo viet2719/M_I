@@ -2,27 +2,105 @@ import Chat_NTD from '@/components/common/chat_NTD'
 import Footer from '@/components/common/footer'
 import New_banner from '@/components/common/new_banner'
 import Slide_cv from '@/components/common/slide_cv'
-import { IJob } from '@/utils/interface'
+import { IJob, IJobsTinhThanh } from '@/utils/interface'
 import styles from '@styles/list_occupations/main_search.module.scss'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import Box_bottom_cate from './box_bottom_cate'
 import { convertToSlug, removeHtmlTags, unixTimestampToDateStringMon } from '@/utils/convert'
-import { listCities } from '@/utils/constants'
+import { listCities, listQuanhuyen } from '@/utils/constants'
 import { Button, Checkbox, Pagination } from 'antd'
 import Model_ungtuyen_sendmail_NTD from '../pop_up/model_ungtuyen_sendmail_NTD'
 import Model_works_match_after_ungtuyen from '../pop_up/model_works_match_after_ungtuyen'
 import React, { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { base_timviec365 } from '../service/functions'
 import List_cate from './item_cate'
-const Main_search = () => {
-	const islogin = true
-	const iscv = true
+import New_banner_detai_befor from '../common/new_banner_detais_befor'
+const Main_search = ({
+	dataSSR,
+	checkBox,
+	footnewSSR,
+	chucdanhSSR,
+	diadiemSSR,
+	nganhNgheLienQuan,
+	tuKhoaSSR,
+	totalSSR,
+}: any) => {
+	const islogin = false
+	const iscv = false
 	const dispatch = useDispatch()
-
 	const [expandedItems, setExpandedItems] = useState<any>()
+	const [compActive, setCompActive] = useState<any>(1)
+	const router = useRouter()
+	const [listJobs, setlistJobs] = useState<IJobsTinhThanh[] | any>([])
+	const [page, setpPage] = useState<number>(1)
+	const [pageSize, setpageSize] = useState<number>(20)
+	const [id, setid] = useState<number>()
+	const [checkedBox, setcheckedBox] = useState(true)
+	const [type, setType] = useState<string>('')
+	const [selectAllChecked, setSelectAllChecked] = useState<any>(false)
+	const [checkboxStates, setCheckboxStates] = useState<any>(checkBox)
+	const [showMailUngTuyen, setshowMailUngTuyen] = useState<boolean>(false)
+	const [showWorkMatch, setShowWorkMatch] = useState<boolean>(false)
+	const [footerNew, setfooterNew] = useState<any>()
+	const [listChucDanh, setlistChucDanh] = useState<any>()
+	const [listDiaDiem, setlistDiaDiem] = useState<any>()
+	const [listCongTy, setlistCongTy] = useState<any>()
+	const [listNganhNgheLienQuan, setListNganhNgheLienQuan] = useState<any>()
+	const [tuKhoa, settuKhoa] = useState<any>()
+	const [name, setname] = useState<string>('')
+	const [withoutDiadiem, setwithoutDiadiem] = useState('')
+	const [tenNganhNghe, settenNganhNghe] = useState<string | any>('')
+
+	useEffect(() => {
+		if (typeof window !== 'undefined') {
+			const queryString = window?.location.pathname
+			const withoutKeyword = decodeURIComponent(queryString).replace('/tim-kiem/keyword=', '')
+			// Loại bỏ dấu "-" từ chuỗi
+			const withoutDashes = withoutKeyword.replace(/-/g, ' ')
+			// Loại bỏ "&diadiem=..." từ chuỗi (nếu có)
+			const withoutDiadiem = withoutDashes.replace(/&diadiem=\d*/, '')
+			setwithoutDiadiem(withoutDiadiem)
+		}
+		if (typeof sessionStorage !== 'undefined') {
+			const name: any = sessionStorage.getItem('tenNganhNghe')
+			if (name && name.length > 4) {
+				settenNganhNghe(name)
+			}
+		} else {
+			console.log('Trình duyệt không hỗ trợ sessionStorage.')
+		}
+	}, [withoutDiadiem, router.asPath])
+
+	const data = [
+		{
+			id: 1,
+			title: 'Ngành nghề liên quan',
+			links: nganhNgheLienQuan,
+		},
+		{
+			id: 2,
+			title: 'Chức danh',
+			links: listChucDanh,
+		},
+		{
+			id: 3,
+			title: 'Từ khóa',
+			links: tuKhoa,
+		},
+		{
+			id: 4,
+			title: 'Địa điểm',
+			links: listDiaDiem,
+		},
+		{
+			id: 5,
+			title: 'Công ty',
+			links: listCongTy,
+		},
+	]
 	const toggleItem = (index: number) => {
 		if (index === expandedItems) {
 			setExpandedItems('')
@@ -36,44 +114,21 @@ const Main_search = () => {
 		{ id: 2, comp: 'Mới nhất' },
 		{ id: 3, comp: 'Lương tốt nhất' },
 	]
-	const [compActive, setCompActive] = useState<any>(1)
-	const router = useRouter()
-	const [listJobs, setlistJobs] = useState<IJob[] | any>([])
-	const [page, setpPage] = useState<number>(1)
-	const [pageSize, setpageSize] = useState<number>(20)
-	const [id, setid] = useState<number>()
-	const [checkedBox, setcheckedBox] = useState(true)
-	const [type, setType] = useState<string>('')
-	const [selectAllChecked, setSelectAllChecked] = useState<any>(false)
-	const [checkboxStates, setCheckboxStates] = useState<any>()
-	const [showMailUngTuyen, setshowMailUngTuyen] = useState<boolean>(false)
-	const [showWorkMatch, setShowWorkMatch] = useState<boolean>(false)
-	const [footerNew, setfooterNew] = useState<any>()
-	const [listChucDanh, setlistChucDanh] = useState<any>()
-	const [listDiaDiem, setlistDiaDiem] = useState<any>()
-	const [listCongTy, setlistCongTy] = useState<any>()
-	const data = [
-		{
-			id: 1,
-			title: 'Chức danh',
-			links: listChucDanh,
-		},
-		{
-			id: 2,
-			title: 'Địa điểm',
-			links: listDiaDiem,
-		},
-		{
-			id: 3,
-			title: 'Công ty',
-			links: listCongTy,
-		},
-	]
-	const idFromRouter: any = router.query.id // Assuming you have a variable or object representing the ID.
-	const idAsString = idFromRouter?.toString() // Convert it to a string if it's not already.
-	const sanitizedId = idAsString?.replace('v', '') // Remove 'v' from the string.
+
+	const fullURL = router.asPath
+	const parts = fullURL.split('-') // Tách chuỗi thành mảng các phần tử dựa trên dấu '-'
+
+	// Lấy giá trị cuối cùng sau dấu '-'
+	const lastValue = parts[parts.length - 1]
+
+	// Tách giá trị giữa 'c' và 'v'
+	const cate_id = lastValue.split('c')[1]?.split('v')[0]
+
+	// Lấy giá trị sau 'v'
+	const cit_id = lastValue.split('v')[1]
+
 	const handleGetJos = async () => {
-		if (sanitizedId) {
+		if (cit_id) {
 			try {
 				const res = await fetch(`${base_timviec365}/api/timviec/new/listJobBySearch`, {
 					headers: {
@@ -81,7 +136,8 @@ const Main_search = () => {
 					},
 					method: 'POST',
 					body: JSON.stringify({
-						city: sanitizedId,
+						city: cit_id,
+						cate_id: cate_id,
 						pageSize: pageSize,
 						page: page,
 						type: type,
@@ -93,27 +149,33 @@ const Main_search = () => {
 				setfooterNew(data?.data?.footerNew)
 				setlistChucDanh(data?.data?.listChucDanh)
 				setlistDiaDiem(data?.data?.listCityReated)
-				setlistCongTy(data?.data?.listCongvieclienquan)
+				setListNganhNgheLienQuan(data?.data.listCongvieclienquan)
+				settuKhoa(data?.data?.listWordReacted)
 			} catch (error) {}
 		}
 	}
-	const [name, setname] = useState<string>('')
 	useEffect(() => {
+		if (page == 1 && type == '') {
+			setlistJobs(dataSSR)
+			setfooterNew(footnewSSR)
+			setlistChucDanh(chucdanhSSR)
+			setlistDiaDiem(diadiemSSR)
+			setListNganhNgheLienQuan(nganhNgheLienQuan)
+			settuKhoa(tuKhoaSSR)
+		} else {
+			handleGetJos()
+		}
 		const nameCity: any = listCities.filter((item) => {
-			return item.cit_id === Number(sanitizedId)
+			return item.cit_id === Number(cit_id || router.query.id)
 		})
-		handleGetJos()
 		setname(nameCity[0]?.cit_name)
-	}, [page, sanitizedId, pageSize, type])
-
+	}, [page, cit_id, pageSize, type])
 	const date: any = new Date()
 	const handleChange = (e: any, cate: any) => {
 		const updatedStates = [...checkboxStates] // Sao chép mảng trạng thái hiện tại
 
-		// Tìm index của cate trong listJobs
 		const index = listJobs.findIndex((job: any) => job === cate)
 
-		// Đảm bảo mảng trạng thái đủ lớn để lưu trạng thái của từng Checkbox
 		while (updatedStates.length <= index) {
 			updatedStates.push(false) // Mặc định là false
 		}
@@ -133,7 +195,8 @@ const Main_search = () => {
 	}
 	return (
 		<div>
-			<New_banner />
+			{/* <div>&#x2705;</div> */}
+			<New_banner_detai_befor />
 			{/* Ấn nút ứng tuyển sau khi có CV */}
 			<Model_ungtuyen_sendmail_NTD
 				showMailUngTuyen={showMailUngTuyen}
@@ -151,22 +214,42 @@ const Main_search = () => {
 						<ul className={styles.breadcrumb} itemScope itemType="http://schema.org/BreadcrumbList">
 							<li className={styles.first}>
 								<Link href="/" target="_blank" itemProp="item">
-									<span itemProp="name">Trang chủ</span>
+									<span itemProp="name">Trang chủ </span>
 								</Link>
 							</li>
 							<li itemProp="itemListElement" itemScope itemType="http://schema.org/ListItem">
 								<Link href={'#'} itemProp="item">
-									<span itemProp="name">Việc làm tại {name}</span>
+									<span itemProp="name">
+										{router.asPath.includes('diadiem') ? (
+											<p>
+												Việc làm {withoutDiadiem} mới nhất tại {name}
+											</p>
+										) : (
+											<div className={styles.tag_tdnew}>
+												{tenNganhNghe?.includes('Việc') ? tenNganhNghe : 'việc làm ' + tenNganhNghe}{' '}
+												{name ? ' Tại ' + name : ''}
+											</div>
+										)}
+									</span>
 								</Link>
 							</li>
 						</ul>
 					</div>
-					<div className={styles.tag_tdnew}>
-						<h1>
-							{' '}
-							Tuyển dụng, tìm việc làm tại {name} tháng {unixTimestampToDateStringMon(date / 1000)}{' '}
-						</h1>
-					</div>
+					{router.asPath.includes('diadiem') ? (
+						<p className={styles.title_cate_list}>
+							Việc làm {withoutDiadiem} mới nhất tại {name} ({totalSSR} Việc làm)
+						</p>
+					) : (
+						<div className={styles.tag_tdnew}>
+							<h1>
+								Tuyển dụng, tìm
+								{tenNganhNghe?.includes('Việc') ? tenNganhNghe : 'việc làm ' + tenNganhNghe}{' '}
+								{name ? ' Tại ' + name : ''} tháng {unixTimestampToDateStringMon(date / 1000)} (
+								{totalSSR} Việc làm)
+							</h1>
+						</div>
+					)}
+
 					<div className={styles.vl_left}>
 						<div
 							className={`${styles.right_cate} ${styles.nd_cate} ${styles.nd_caten} ${styles.nd_cate_new}`}
@@ -200,15 +283,12 @@ const Main_search = () => {
 																	setCompActive(comp.id)
 																	if (comp.id == 2) {
 																		setType('new')
-																		handleGetJos()
 																	}
 																	if (comp.id == 3) {
 																		setType('money')
-																		handleGetJos()
 																	}
 																	if (comp.id == 1) {
 																		setType('')
-																		handleGetJos()
 																	}
 																}
 															}}
@@ -252,6 +332,7 @@ const Main_search = () => {
 									checkedBox={checkedBox}
 									handleChange={handleChange}
 									checkboxStates={checkboxStates}
+									sanitizedId={cit_id}
 								/>
 							)}
 							{compActive === 2 && (
@@ -261,6 +342,7 @@ const Main_search = () => {
 									checkedBox={checkedBox}
 									handleChange={handleChange}
 									checkboxStates={checkboxStates}
+									sanitizedId={cit_id}
 								/>
 							)}
 							{compActive === 3 && (
@@ -270,23 +352,26 @@ const Main_search = () => {
 									checkedBox={checkedBox}
 									handleChange={handleChange}
 									checkboxStates={checkboxStates}
+									sanitizedId={cit_id}
 								/>
 							)}
 						</div>
-						<Pagination
-							style={{ float: 'right' }}
-							pageSize={pageSize}
-							current={page}
-							total={page * 20 * 6}
-							onChange={(current, pageSizes) => {
-								if (current != page) {
-									setpPage(current)
-								}
-								if (pageSizes != pageSize) {
-									setpageSize(pageSizes)
-								}
-							}}
-						/>
+						{listJobs.length > 1 && (
+							<Pagination
+								style={{ float: 'right' }}
+								pageSize={pageSize}
+								current={page}
+								total={page * 20 * 6}
+								onChange={(current, pageSizes) => {
+									if (current != page) {
+										setpPage(current)
+									}
+									if (pageSizes != pageSize) {
+										setpageSize(pageSizes)
+									}
+								}}
+							/>
+						)}
 					</div>
 
 					<Chat_NTD classNameProps={true} propsElementSlugNganhNghe={true} />
@@ -341,37 +426,89 @@ const Main_search = () => {
 								}`}
 							>
 								<p className={styles.title_tag}>{item.title}</p>
-								{item?.links?.map((link: any, linkIndex: any) => (
-									<React.Fragment key={linkIndex}>
-										<Link href={`tag4/viec-lam-nhan-vien-phuc-vu-quan-cafe-tai-ha-noi-698`}>
-											{link?.key_name ? (
-												link?.key_name
-											) : link?.key_qh_id ? (
-												listCities.map((item) => {
-													{
-														if (item.cit_id === link?.key_id) {
-															return (
-																<Link
-																	key={index}
-																	href={`tim-viec-tai-${convertToSlug(item?.cit_name)}-c${0}v${
-																		item?.cit_id
-																	}}`}
-																>
-																	Việc làm tại {item?.cit_name}
-																</Link>
-															)
-														}
-													}
-												})
-											) : (
-												<Link href={`${convertToSlug(link?.usc_company)}-co${link?.usc_id}`}>
-													{link?.usc_company}
+								{item.title === 'Ngành nghề liên quan' &&
+									listNganhNgheLienQuan?.map((item: any, index: number) => {
+										return (
+											<div key={index}>
+												<Link href={`/viec-lam-${convertToSlug(item?.key_name)}-${item?.key_id}`}>
+													Việc làm {item?.key_name}
+													{<span>-</span>}
 												</Link>
-											)}
-										</Link>
-										{linkIndex < item.links.length - 1 && <span>-</span>}
-									</React.Fragment>
-								))}
+											</div>
+										)
+									})}
+								{item.title === 'Chức danh' &&
+									listChucDanh?.map((item: any, index: number) => {
+										return (
+											<div key={index}>
+												<Link href={`/viec-lam-${convertToSlug(item?.key_name)}-${item?.key_id}`}>
+													Việc làm {item?.key_name}
+													{<span>-</span>}
+												</Link>
+											</div>
+										)
+									})}
+								{item.title === 'Từ khóa' &&
+									tuKhoa?.map((item: any, index: number) => {
+										return (
+											<div key={index}>
+												<Link
+													key={index}
+													href={`/viec-lam-${convertToSlug(item?.key_name)}-${item?.key_id}`}
+												>
+													Việc làm {item?.key_name}
+													{<span>-</span>}
+												</Link>
+											</div>
+										)
+									})}
+								{item.title === 'Địa điểm' &&
+									listDiaDiem?.map((link: any, index: number) =>
+										listQuanhuyen.map((item) => {
+											{
+												if (item.cit_id === link?.key_qh_id) {
+													return (
+														<Link
+															key={index}
+															href={`tag${item.cit_parent}/tim-viec-tai-${convertToSlug(
+																item?.cit_name
+															)}-${convertToSlug(
+																(
+																	listCities.find(
+																		(items: any) => items.cit_id === link?.key_city_id
+																	) || {}
+																).cit_name
+															)}-
+															${item?.cit_id}`}
+														>
+															Việc làm tại {item?.cit_name}{' '}
+															{listCities.map((items: any) => {
+																if (items.cit_id == link?.key_city_id) {
+																	return (
+																		<>
+																			{' '}
+																			{items.cit_name} <span>-</span>
+																		</>
+																	)
+																}
+															})}
+														</Link>
+													)
+												}
+											}
+										})
+									)}
+								{item.title === 'Công ty' &&
+									listJobs?.map((item: any, index: number) => {
+										return (
+											<div key={index}>
+												<Link href={`/${convertToSlug(item?.usc_company)}-co${item?.usc_id}`}>
+													{item?.usc_company}
+													{<span>-</span>}
+												</Link>
+											</div>
+										)
+									})}
 								{expandedItems === item.id ? (
 									<span className={styles.hiden_cd} onClick={() => toggleItem(item.id)}>
 										<Image
@@ -394,7 +531,6 @@ const Main_search = () => {
 							</div>
 						))}
 					</div>
-
 					<Box_bottom_cate footerNew={footerNew} />
 				</div>
 			</div>

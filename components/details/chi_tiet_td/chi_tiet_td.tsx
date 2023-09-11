@@ -12,11 +12,11 @@ import { openModal } from '@/actions/actions'
 import Info from './info'
 import Scroll_option from './scroll_option'
 
-type Props = {
-	isLogin: boolean
-}
+type Props = {}
 
-const Chi_tiet_td = ({ isLogin }: Props) => {
+const Chi_tiet_td = ({}: Props) => {
+	const isLogin = false
+	const isCv = false
 	const [showModelUngTuyen, setShowModelUngTuyen] = useState<boolean>(false)
 	const [showLuuTin, setLuuTin] = useState<boolean>(false)
 	const [stt_luutin, setStt_luutin] = useState<string>('Lưu tin')
@@ -25,7 +25,6 @@ const Chi_tiet_td = ({ isLogin }: Props) => {
 	const [showPhanAnhNTD, setShowPhanAnhNTD] = useState<boolean>(false)
 	const [showMailUngTuyen, setshowMailUngTuyen] = useState<boolean>(false)
 	const [showWorkMatch, setShowWorkMatch] = useState<boolean>(false)
-	const [isCv, setisCv] = useState<boolean>(true)
 	const [showUserCallGiongNoi, setshowUserCallGiongNoi] = useState<boolean>(false)
 	const dispatch = useDispatch()
 

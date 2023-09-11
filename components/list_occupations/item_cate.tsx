@@ -7,7 +7,7 @@ import {
 import { listCitys, listNganhNghe } from '@/utils/constants'
 import Model_ungtuyen_sendmail_NTD from '../pop_up/model_ungtuyen_sendmail_NTD'
 import Model_works_match_after_ungtuyen from '../pop_up/model_works_match_after_ungtuyen'
-import { ICity, IJob } from '@/utils/interface'
+import { ICity, IJob, IJobsTinhThanh } from '@/utils/interface'
 import styles from '@styles/list_occupations/item_cate.module.scss'
 import { Button, Checkbox } from 'antd'
 import Image from 'next/image'
@@ -18,16 +18,24 @@ import { useDispatch } from 'react-redux'
 import Box_comment from '../common/box_comment'
 import Model_noti from '../pop_up/model_noti'
 type Props = {
-	listJobs: IJob[]
-	name: string
-	checkedBox: any
-	handleChange: any
-	checkboxStates: any
+	listJobs: IJobsTinhThanh[]
+	name?: string
+	checkedBox?: any
+	handleChange?: any
+	checkboxStates?: any
+	sanitizedId?: any
 }
-const List_cate = ({ listJobs, name, checkedBox, handleChange, checkboxStates }: Props) => {
+const List_cate = ({
+	listJobs,
+	name,
+	checkedBox,
+	handleChange,
+	checkboxStates,
+	sanitizedId,
+}: Props) => {
 	const dispatch = useDispatch()
-	const islogin = true
-	const iscv = true
+	const islogin = false
+	const iscv = false
 	const [openCategory, setOpenCategory] = useState<any>(null)
 	const toggleCategory = (cateId: any) => {
 		if (openCategory === cateId) {
@@ -125,7 +133,11 @@ const List_cate = ({ listJobs, name, checkedBox, handleChange, checkboxStates }:
 									style={{ paddingLeft: 8 }}
 									className={`${styles.img_cate} ${styles.box_new_left}`}
 								>
-									<Link className={`${styles.logo_user_th}`} href={`#`} title={cate?.new_title}>
+									<Link
+										className={`${styles.logo_user_th}`}
+										href={`/${cate?.new_alias}-p${cate?.new_id}.html`}
+										title={cate?.new_title}
+									>
 										<Image
 											width={141}
 											height={141}
@@ -149,6 +161,26 @@ const List_cate = ({ listJobs, name, checkedBox, handleChange, checkboxStates }:
 												className={styles.icon_tiaset_new}
 												alt=""
 											/>
+										)}
+										{(cate.new_badge == 1 || cate.usc_badge == 1) && cate.usc_star == 1 && (
+											<div>
+												<Image
+													width={28}
+													height={28}
+													src="/images/before_login/icon_tiaset.svg"
+													className={styles.icon_tiaset_new}
+													alt=""
+												/>
+
+												<Image
+													style={{ position: 'absolute', top: '0', right: '15px' }}
+													width={35}
+													height={35}
+													src="/images/icon_anhsao.gif"
+													// className={styles.icon_tiaset_new}
+													alt=""
+												/>
+											</div>
 										)}
 										<span className={styles.box_time_off}>
 											{calculateTimeDifference(cate?.usc_time_login)}
@@ -204,30 +236,68 @@ const List_cate = ({ listJobs, name, checkedBox, handleChange, checkboxStates }:
 											<Link
 												style={{ width: 70, overflow: 'unset' }}
 												className={`${styles.logo_user_th} ${styles}`}
-												href={`${cate.new_title}-p${cate.new_id}.html`}
-												title="TUYỂN DỤNG TRƯỞNG NHÓM BÁN HÀNG"
+												href={`${convertToSlug(cate.new_title)}-p${cate.new_id}.html`}
+												title={cate.new_title}
 											>
 												<Image
 													height={142}
 													width={142}
 													className={`${styles.tia_set} lazyload ${styles.img_center_cate_mb} ${styles.no_logo_chat}`}
-													src="/images/load.gif"
+													src="/images/before_login/user_chat_off.png"
 													alt={cate?.usc_company}
 												/>
 												<span className={styles.box_time_off}>3 ngày</span>{' '}
-												<Image
-													height={33}
-													width={33}
-													className={styles.icon_tiaset_new}
-													alt=""
-													src="/images/before_login/icon_tiaset.svg"
-												></Image>
+												{(cate.new_badge == 1 || cate.usc_badge == 1) && (
+													<Image
+														width={28}
+														height={28}
+														src="/images/before_login/icon_tiaset.svg"
+														className={styles.icon_tiaset_new}
+														alt=""
+													/>
+												)}
+												{cate.usc_star == 1 && (
+													<Image
+														width={28}
+														height={28}
+														src="/images/icon_anhsao.gif"
+														className={styles.icon_tiaset_new}
+														alt=""
+													/>
+												)}
+												{(cate.new_badge == 1 || cate.usc_badge == 1) && cate.usc_star == 1 && (
+													<div>
+														<Image
+															width={28}
+															height={28}
+															src="/images/before_login/icon_tiaset.svg"
+															className={styles.icon_tiaset_new}
+															alt=""
+														/>
+
+														<Image
+															style={{ position: 'absolute', top: '0', right: '10px' }}
+															width={25}
+															height={25}
+															src="/images/icon_anhsao.gif"
+															// className={styles.icon_tiaset_new}
+															className="fix_iconanhsao"
+															alt=""
+														/>
+													</div>
+												)}
 											</Link>
 											<Link
-												style={{ color: '#4C5BD4' }}
+												style={{ color: cate.new_do ? 'red' : '' }}
 												href={`/${cate?.new_alias}-p${cate?.new_id}.html`}
 												title={cate?.new_title}
 												className={`${styles.tag_th} ${styles.title_cate}`}
+												onMouseOver={(e) => {
+													e.currentTarget.style.textDecoration = 'underline'
+												}}
+												onMouseOut={(e) => {
+													e.currentTarget.style.textDecoration = 'none'
+												}}
 											>
 												{cate?.new_title}
 											</Link>
@@ -242,6 +312,12 @@ const List_cate = ({ listJobs, name, checkedBox, handleChange, checkboxStates }:
 														cate.usc_alias ? cate.usc_alias : convertToSlug(cate?.usc_company)
 													}-co${cate.new_id}`}
 													title={cate.usc_company}
+													onMouseOver={(e) => {
+														e.currentTarget.style.textDecoration = 'underline' // Thêm gạch chân khi hover
+													}}
+													onMouseOut={(e) => {
+														e.currentTarget.style.textDecoration = 'none' // Loại bỏ gạch chân khi hover ra khỏi phần tử
+													}}
 												>
 													{cate?.usc_company}{' '}
 												</Link>
@@ -253,7 +329,7 @@ const List_cate = ({ listJobs, name, checkedBox, handleChange, checkboxStates }:
 										>
 											<p style={{ width: '100%' }}>
 												<span className={styles.cate_ml}>
-													{cate.nm_min_value / 1000000 == 0
+													{cate.nm_min_value / 1000000 == 0 && cate.nm_max_value / 1000000 == 0
 														? 'Thỏa thuận'
 														: `${cate.nm_min_value / 1000000}${
 																cate.nm_max_value / 1000000 == 0
@@ -264,9 +340,6 @@ const List_cate = ({ listJobs, name, checkedBox, handleChange, checkboxStates }:
 														  } triệu`}
 												</span>
 											</p>
-											{/* <span className={styles.tooltip}>
-										<span>Từ 7.000.000 VNĐ Đến 15.000.000 VNĐ</span>
-									</span> */}
 										</div>
 										<div className={`${styles.con_tooltip} ${styles.top} ${styles.tt_sm}`}>
 											<p className={`${styles.ddlv} ${styles.cate_dd}`} style={{ width: '100%' }}>
@@ -296,18 +369,21 @@ const List_cate = ({ listJobs, name, checkedBox, handleChange, checkboxStates }:
 																.join(', ')}
 												</span>
 											</p>
-											{/* <span className={styles.tooltip}>
-										<span>Hồ Chí MinhHà Nội</span>
-									</span> */}
 										</div>
 										<p>
 											<span className={styles.cate_hn} title="Hạn nộp CV">
-											Hạn nộp: {unixTimestampToDateString(cate.new_han_nop)}
+												Hạn nộp: {unixTimestampToDateString(cate.new_han_nop)}
 											</span>
 										</p>
 
 										<p>
 											<Link
+												onMouseOver={(e) => {
+													e.currentTarget.style.textDecoration = 'underline' // Thêm gạch chân khi hover
+												}}
+												onMouseOut={(e) => {
+													e.currentTarget.style.textDecoration = 'none' // Loại bỏ gạch chân khi hover ra khỏi phần tử
+												}}
 												href="/lich-su/danh-sach-tong-u241071t1"
 												className={styles.history_point}
 											>
@@ -342,15 +418,6 @@ const List_cate = ({ listJobs, name, checkedBox, handleChange, checkboxStates }:
 											>
 												Yêu cầu: {removeHtmlTags(cate.new_yeucau)}
 											</p>
-											{/* <span className={styles.tooltip}>
-												<span>
-													Yêu thích kinh doanh, máu lửa, năng động, tự tin, giao tiếp tốt Tốt nghiệp
-													Cao đẳng trở lên các khối ngành kinh tế, quản trị kinh doanh,... Độ tuổi:
-													Từ 21 đến 26 Có Laptop thành thạo sử dụng các phần mềm văn phòng, gửi/nhận
-													email. Năng động, nhiệt tình, kiên trì, chịu khó, có khả năng tập trung
-													công việc cao
-												</span>
-											</span> */}
 										</div>
 										<div className={styles.box_btn_ut_mb}></div>
 									</div>
@@ -369,9 +436,18 @@ const List_cate = ({ listJobs, name, checkedBox, handleChange, checkboxStates }:
 															+items == item.cat_id && (
 																<li key={index}>
 																	<Link
+																		onClick={() => {
+																			sessionStorage.setItem('tenNganhNghe', item.cat_name)
+																		}}
 																		href={`/viec-lam-${convertToSlug(item.cat_name)}-c${
 																			item.cat_id
-																		}v${0}`}
+																		}v0`}
+																		onMouseOver={(e) => {
+																			e.currentTarget.style.textDecoration = 'underline' // Thêm gạch chân khi hover
+																		}}
+																		onMouseOut={(e) => {
+																			e.currentTarget.style.textDecoration = 'none' // Loại bỏ gạch chân khi hover ra khỏi phần tử
+																		}}
 																	>
 																		{item.cat_name}
 																	</Link>
@@ -380,17 +456,30 @@ const List_cate = ({ listJobs, name, checkedBox, handleChange, checkboxStates }:
 													)
 												)}
 											</ul>
-
-											<li>
-												<Link href={`/tim-viec-tai-${convertToSlug(name)}-c0v${router.query.id}`}>
-													Việc làm tại {name}
-												</Link>
-											</li>
+											{name && (
+												<li>
+													<Link
+														onMouseOver={(e) => {
+															e.currentTarget.style.textDecoration = 'underline' // Thêm gạch chân khi hover
+														}}
+														onMouseOut={(e) => {
+															e.currentTarget.style.textDecoration = 'none' // Loại bỏ gạch chân khi hover ra khỏi phần tử
+														}}
+														href={`/tim-viec-tai-${convertToSlug(name)}-c0v${sanitizedId}`}
+													>
+														Việc làm tại {name}
+													</Link>
+												</li>
+											)}
 											<li>
 												<Link
-													href={
-														cate?.usc_alias ? cate?.usc_alias : convertToSlug(cate?.usc_company)
-													}
+													href={convertToSlug(cate?.usc_company) + `-co${cate.usc_id}`}
+													onMouseOver={(e) => {
+														e.currentTarget.style.textDecoration = 'underline' // Thêm gạch chân khi hover
+													}}
+													onMouseOut={(e) => {
+														e.currentTarget.style.textDecoration = 'none' // Loại bỏ gạch chân khi hover ra khỏi phần tử
+													}}
 												>
 													Việc làm tại {cate?.usc_company}
 												</Link>
@@ -398,7 +487,7 @@ const List_cate = ({ listJobs, name, checkedBox, handleChange, checkboxStates }:
 										</ul>
 									</div>
 								)}
-								<Box_comment id={cate?.new_id} />
+								<Box_comment id={cate?.new_id} job={cate} />
 							</div>
 						)
 					})}

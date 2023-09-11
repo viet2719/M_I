@@ -2,10 +2,10 @@ import React, { useState } from 'react'
 import styles from '../main_timviec/main_timviec.module.css'
 import Rep_comment from './rep_comment'
 import Image from 'next/image'
-import { Icomment, Iicons } from './comment'
 import Input_Rep_comment from './input_rep_rep_comment'
 import { listIconStatus } from '@/utils/constants'
 import { base_timviec365 } from '@/components/service/functions'
+import { Icomment, Iicons } from '@/utils/interface'
 
 type Props = {
 	listComment: Icomment[]
