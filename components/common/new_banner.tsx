@@ -5,8 +5,10 @@ import Banner_QR from './banner_QR'
 import Box_search from './box_search'
 import Header from './header'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 
-const New_banner = ({}:any) => {
+const New_banner = ({}: any) => {
+	const router = useRouter()
 	return (
 		<div>
 			<div className={styles.new_banner}>
@@ -16,25 +18,26 @@ const New_banner = ({}:any) => {
 					id={styles.box_search_index}
 				>
 					<div className={styles.main_search}>
-						<div className={styles.box_text_search}>
-							<p className={styles.box_text}>
-								CHAT LIỀN TAY
-								<span className={styles.img_txt_s}>
-									<Image
-										src={'/images/before_login/mess_icon2.png'}
-										width={44}
-										height={44}
-										alt="Chat"
-									/>
-								</span>
-							</p>
-							<span className={styles.txt_s}>VIỆC TỚI NGAY</span>{' '}
+						<div>
+							<div className={styles.box_text_search}>
+								<p className={styles.box_text}>
+									CHAT LIỀN TAY
+									<span className={styles.img_txt_s}>
+										<Image
+											src={'/images/before_login/mess_icon2.png'}
+											width={44}
+											height={44}
+											alt="Chat"
+										/>
+									</span>
+								</p>
+								<span className={styles.txt_s}>VIỆC TỚI NGAY</span>{' '}
+							</div>
+							<div className={styles.logo_banner}>
+								<h1 className={styles.title_search}>Tìm việc làm</h1>
+							</div>
 						</div>
-						<div className={styles.logo_banner}>
-							<h1 className={styles.title_search}>Tìm việc làm</h1>
-						</div>
-						<Box_search 
-						/>
+						<Box_search />
 					</div>
 
 					<div className={styles.btn_dow}>

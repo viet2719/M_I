@@ -7,7 +7,7 @@ import {
 import { listCitys, listNganhNghe } from '@/utils/constants'
 import Model_ungtuyen_sendmail_NTD from '../pop_up/model_ungtuyen_sendmail_NTD'
 import Model_works_match_after_ungtuyen from '../pop_up/model_works_match_after_ungtuyen'
-import { ICity, IJob } from '@/utils/interface'
+import { ICity, IJob, IJobsTinhThanh } from '@/utils/interface'
 import styles from '@styles/list_occupations/item_cate.module.scss'
 import { Button, Checkbox } from 'antd'
 import Image from 'next/image'
@@ -18,13 +18,12 @@ import { useDispatch } from 'react-redux'
 import Box_comment from '../common/box_comment'
 import Model_noti from '../pop_up/model_noti'
 type Props = {
-	listJobs: IJob[]
+	listJobs: IJobsTinhThanh[]
 	name: string
 	checkedBox: any
 	handleChange: any
 	checkboxStates: any
 	sanitizedId: any
-	idAsString: any
 }
 const List_cate = ({
 	listJobs,
@@ -33,11 +32,10 @@ const List_cate = ({
 	handleChange,
 	checkboxStates,
 	sanitizedId,
-	idAsString,
 }: Props) => {
 	const dispatch = useDispatch()
-	const islogin = true
-	const iscv = true
+	const islogin = false
+	const iscv = false
 	const [openCategory, setOpenCategory] = useState<any>(null)
 	const toggleCategory = (cateId: any) => {
 		if (openCategory === cateId) {
@@ -135,7 +133,11 @@ const List_cate = ({
 									style={{ paddingLeft: 8 }}
 									className={`${styles.img_cate} ${styles.box_new_left}`}
 								>
-									<Link className={`${styles.logo_user_th}`} href={`#`} title={cate?.new_title}>
+									<Link
+										className={`${styles.logo_user_th}`}
+										href={`/${cate?.new_alias}-p${cate?.new_id}.html`}
+										title={cate?.new_title}
+									>
 										<Image
 											width={141}
 											height={141}
@@ -234,14 +236,14 @@ const List_cate = ({
 											<Link
 												style={{ width: 70, overflow: 'unset' }}
 												className={`${styles.logo_user_th} ${styles}`}
-												href={`${cate.new_title}-p${cate.new_id}.html`}
-												title="TUYỂN DỤNG TRƯỞNG NHÓM BÁN HÀNG"
+												href={`${convertToSlug(cate.new_title)}-p${cate.new_id}.html`}
+												title={cate.new_title}
 											>
 												<Image
 													height={142}
 													width={142}
 													className={`${styles.tia_set} lazyload ${styles.img_center_cate_mb} ${styles.no_logo_chat}`}
-													src="/images/load.gif"
+													src="/images/before_login/user_chat_off.png"
 													alt={cate?.usc_company}
 												/>
 												<span className={styles.box_time_off}>3 ngày</span>{' '}
@@ -286,15 +288,15 @@ const List_cate = ({
 												)}
 											</Link>
 											<Link
-												style={{ color: '#4C5BD4' }}
+												style={{ color: cate.new_do ? 'red' : '' }}
 												href={`/${cate?.new_alias}-p${cate?.new_id}.html`}
 												title={cate?.new_title}
 												className={`${styles.tag_th} ${styles.title_cate}`}
 												onMouseOver={(e) => {
-													e.currentTarget.style.textDecoration = 'underline' // Thêm gạch chân khi hover
+													e.currentTarget.style.textDecoration = 'underline'
 												}}
 												onMouseOut={(e) => {
-													e.currentTarget.style.textDecoration = 'none' // Loại bỏ gạch chân khi hover ra khỏi phần tử
+													e.currentTarget.style.textDecoration = 'none'
 												}}
 											>
 												{cate?.new_title}
@@ -376,6 +378,12 @@ const List_cate = ({
 
 										<p>
 											<Link
+												onMouseOver={(e) => {
+													e.currentTarget.style.textDecoration = 'underline' // Thêm gạch chân khi hover
+												}}
+												onMouseOut={(e) => {
+													e.currentTarget.style.textDecoration = 'none' // Loại bỏ gạch chân khi hover ra khỏi phần tử
+												}}
 												href="/lich-su/danh-sach-tong-u241071t1"
 												className={styles.history_point}
 											>
@@ -457,9 +465,7 @@ const List_cate = ({
 														onMouseOut={(e) => {
 															e.currentTarget.style.textDecoration = 'none' // Loại bỏ gạch chân khi hover ra khỏi phần tử
 														}}
-														href={`/tim-viec-tai-${convertToSlug(name)}-c0v${
-															sanitizedId || idAsString
-														}`}
+														href={`/tim-viec-tai-${convertToSlug(name)}-c0v${sanitizedId}`}
 													>
 														Việc làm tại {name}
 													</Link>
@@ -481,7 +487,9 @@ const List_cate = ({
 										</ul>
 									</div>
 								)}
-								{/* <Box_comment id={cate?.new_id} /> */}
+								<Box_comment id={cate?.new_id} 
+								job={cate}
+								/>
 							</div>
 						)
 					})}

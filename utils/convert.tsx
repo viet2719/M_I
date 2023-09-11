@@ -1,23 +1,32 @@
-export function convertToSlug(inputString?: string): string | undefined {
-	if (inputString) {
-	  const cleanedString = inputString
-		.toLowerCase()
-		.normalize('NFD')
-		.replace(/[\u0300-\u036f]/g, '')
-		.replace(/[^\w\s-]/g, '');
-  
-	  let slug = cleanedString.replace(/\s+/g, '-');
-  
-	  // Kiểm tra nếu ký tự cuối cùng của slug là "-"
-	  if (slug.endsWith('-')) {
-		// Loại bỏ dấu "-" cuối cùng
-		slug = slug.slice(0, -1);
-	  }
-  
-	  return slug;
-	}
-	return undefined;
-  }
+
+/* Enhanced from: https://codepen.io/trongthanh/pen/rmYBdX */
+export function convertToSlug(str:any) {
+	// Chuyển hết sang chữ thường
+	str = str.toLowerCase();     
+ 
+	// xóa dấu
+	str = str
+		.normalize('NFD') // chuyển chuỗi sang unicode tổ hợp
+		.replace(/[\u0300-\u036f]/g, ''); // xóa các ký tự dấu sau khi tách tổ hợp
+ 
+	// Thay ký tự đĐ
+	str = str.replace(/[đĐ]/g, 'd');
+	
+	// Xóa ký tự đặc biệt
+	str = str.replace(/([^0-9a-z-\s])/g, '');
+ 
+	// Xóa khoảng trắng thay bằng ký tự -
+	str = str.replace(/(\s+)/g, '-');
+	
+	// Xóa ký tự - liên tiếp
+	str = str.replace(/-+/g, '-');
+ 
+	// xóa phần dư - ở đầu & cuối
+	str = str.replace(/^-+|-+$/g, '');
+ 
+	// return
+	return str;
+}
 export function convertToSlugNo(inputString?: any): any {
 	if (inputString) {
 		const slug = inputString.replace(/\s+/g, '-')
@@ -166,5 +175,3 @@ export function extractH3Content(htmlContent: any) {
 
 	return h2Contents
 }
-
-

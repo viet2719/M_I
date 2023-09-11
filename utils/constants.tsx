@@ -1,4 +1,4 @@
-import { Iicons } from '@/components/details/comment/comment'
+import { Iicons } from "./interface"
 export const cityOption: any[] = [
 	{ value: 'Tỉnh thành', label: 'Tỉnh thành' },
 	{ value: 'Hà Nội', label: 'Hà Nội' },

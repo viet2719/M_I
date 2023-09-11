@@ -120,7 +120,8 @@ const Box_vlth = ({ jobList }: Props) => {
 							<div className={styles.right_item_vl}>
 								<h3>
 									<Link
-										onClick={handleLinkClick}
+									style={{ color: job.new_do ? 'red' : '' }}
+										// onClick={handleLinkClick}
 										className={styles.tit_vip}
 										href={`/${job.new_alias}-p${job.new_id}.html`}
 										title={job.new_title}
@@ -129,7 +130,7 @@ const Box_vlth = ({ jobList }: Props) => {
 									</Link>
 								</h3>
 								<Link
-									onClick={handleLinkClick}
+									// onClick={handleLinkClick}
 									className={styles.name_com}
 									href={`/${convertToSlug(job?.usc_company)}-co${job.usc_id}`}
 									title={job.usc_company}

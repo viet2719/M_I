@@ -84,10 +84,10 @@ const Box_bottom_cate = ({ footerNew }: Props) => {
 					</div>
 				</div>
 				<div
-					style={{ overflow: 'hidden' }}
+				
 					className={`${styles.gt_text} ${seenMore ? styles.over_bv_footer : ''}`}
 				>
-					<div className="footerNew" dangerouslySetInnerHTML={{ __html: footerNew?.cate_des }} />
+					<div 	style={{ overflow:"hidden" }} className="footerNew" dangerouslySetInnerHTML={{ __html: footerNew?.cate_des }} />
 				</div>
 
 				<p

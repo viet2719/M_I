@@ -7,27 +7,31 @@ import { useDispatch } from 'react-redux'
 import Content_Component from './box_content_comment'
 import Input_reply from './input_reply'
 import Item_comment from './item_comment'
-
-const Box_comment = (id: any) => {
+import { IJob, IJobsTinhThanh } from '@/utils/interface'
+type Props = {
+	id: any
+	job: IJobsTinhThanh
+}
+const Box_comment = ({ id, job }: Props) => {
 	const [apiDataID, setApiDataID] = useState<any[]>()
 	const [loading, setLoading] = useState<boolean>(true)
 	// save id choose cmt
 	const [idCmtItem, setIdCmtItem] = useState<any>()
 	const [dataApiItem, setDataApiItem] = useState<any>()
-	useEffect(() => {
-		const fetchGetDataCmtID = async () => {
-			try {
-				const response = await fetchData('/api/timviec/new/listComment', { new_id: idCmtItem?.id })
-				setApiDataID(response?.data?.arr_comments)
-				setLoading(false)
-				setDataApiItem(response?.data)
-			} catch (error) {
-				console.log('Error fetching home data:', error)
-				setLoading(false)
-			}
-		}
-		fetchGetDataCmtID()
-	}, [idCmtItem])
+	// useEffect(() => {
+	// 	const fetchGetDataCmtID = async () => {
+	// 		try {
+	// 			const response = await fetchData('/api/timviec/new/listComment', { new_id: idCmtItem?.id })
+	// 			setApiDataID(response?.data?.arr_comments)
+	// 			setLoading(false)
+	// 			setDataApiItem(response?.data)
+	// 		} catch (error) {
+	// 			console.log('Error fetching home data:', error)
+	// 			setLoading(false)
+	// 		}
+	// 	}
+	// 	fetchGetDataCmtID()
+	// }, [idCmtItem])
 
 	const dispatch = useDispatch()
 	const listIconStatus = [
@@ -118,17 +122,17 @@ const Box_comment = (id: any) => {
 								})}
 							</div>
 							<span className={styles.count_ic} data-like={11}>
-								{status ? 'Pa Link và ' : ''}10 người khác
+								{job?.arr_likes_new.length}
 							</span>
 						</div>
 						<span className={styles.cm_sh_ic}>
 							<b>•</b>
-							{dataApiItem ? dataApiItem?.arr_share_new.length : 0} chia sẻ{' '}
+							{job?.arr_share_new.length} chia sẻ{' '}
 						</span>
 						<span className={styles.cm_cm_ic}>
-							<b>•</b> <span>{dataApiItem ? dataApiItem?.count_comments : 0}</span> bình luận{' '}
+							<b>•</b> <span>{job?.count_comments}</span> bình luận{' '}
 						</span>
-						<span className={styles.cm_view_ic}>639 lượt xem</span>
+						<span className={styles.cm_view_ic}>{job?.new_view_count} lượt xem</span>
 					</div>
 					<div className={styles.cm_event}>
 						<div
