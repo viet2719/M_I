@@ -8,7 +8,7 @@ import Model_noti from '../pop_up/model_noti'
 type Props = {}
 
 const Detail = (props: Props) => {
-	const [isLogin, setIsLogin] = useState<boolean>(true)
+	const [isLogin, setIsLogin] = useState<boolean>(false)
 	const [isFixedHeader, setIsFixedHeader] = useState(false)
 
 	const handleScroll = () => {
@@ -34,11 +34,11 @@ const Detail = (props: Props) => {
 					{isFixedHeader && <New_banner_detail />}
 				</div>
 			) : (
-				<New_banner_detai_befor isLogin={isLogin} />
+				<New_banner_detai_befor  />
 			)}
 			{!isLogin && <div style={{ color: '#fff', height: 30 }}></div>}
 			<Main_breadcrumb />
-			<Main_timviec isLogin={isLogin} />
+			<Main_timviec />
 			<Footer_chat />
 		</div>
 	)

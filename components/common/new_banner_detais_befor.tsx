@@ -6,9 +6,10 @@ import Link from 'next/link'
 import Box_search_details from './box_search_detail'
 import Banner_QR_Details from './banner_QR_details'
 type Props = {
-	isLogin: boolean
+	
 }
-const New_banner_detai_befor = ({ isLogin }: Props) => {
+const New_banner_detai_befor = ({  }: Props) => {
+	const isLogin=false
 	return (
 		<div>
 			<div className={styles.new_banner}>

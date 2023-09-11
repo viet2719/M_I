@@ -26,7 +26,7 @@ const Tia_set = (props: Props) => {
   
       const timeUntilMidnight:any = midnight - now;
   
-      const hours = Math.floor((timeUntilMidnight % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const hours = Math.floor((timeUntilMidnight % (1000 * 60 * 60 * 12)) / (1000 * 60 * 60));
       const minutes = Math.floor((timeUntilMidnight % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((timeUntilMidnight % (1000 * 60)) / 1000);
       return {

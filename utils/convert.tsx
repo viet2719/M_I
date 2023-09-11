@@ -1,12 +1,35 @@
-export function convertToSlug(inputString?: any): any {
-	if (inputString) {
-		const cleanedString = inputString
-			.toLowerCase()
-			.normalize('NFD')
-			.replace(/[\u0300-\u036f]/g, '')
-			.replace(/[^\w\s-]/g, '')
 
-		const slug = cleanedString.replace(/\s+/g, '-')
+/* Enhanced from: https://codepen.io/trongthanh/pen/rmYBdX */
+export function convertToSlug(str:any) {
+	// Chuyển hết sang chữ thường
+	str = str.toLowerCase();     
+ 
+	// xóa dấu
+	str = str
+		.normalize('NFD') // chuyển chuỗi sang unicode tổ hợp
+		.replace(/[\u0300-\u036f]/g, ''); // xóa các ký tự dấu sau khi tách tổ hợp
+ 
+	// Thay ký tự đĐ
+	str = str.replace(/[đĐ]/g, 'd');
+	
+	// Xóa ký tự đặc biệt
+	str = str.replace(/([^0-9a-z-\s])/g, '');
+ 
+	// Xóa khoảng trắng thay bằng ký tự -
+	str = str.replace(/(\s+)/g, '-');
+	
+	// Xóa ký tự - liên tiếp
+	str = str.replace(/-+/g, '-');
+ 
+	// xóa phần dư - ở đầu & cuối
+	str = str.replace(/^-+|-+$/g, '');
+ 
+	// return
+	return str;
+}
+export function convertToSlugNo(inputString?: any): any {
+	if (inputString) {
+		const slug = inputString.replace(/\s+/g, '-')
 		return `${slug}`
 	}
 }
@@ -117,38 +140,38 @@ export const removeHtmlTags = (htmlString: any) => {
 export function extractH2Content(htmlContent: any) {
 	// Kiểm tra xem mã đang chạy trong trình duyệt
 	if (typeof document === 'undefined') {
-	  return []; // Hoặc xử lý lỗi theo cách của bạn
+		return [] // Hoặc xử lý lỗi theo cách của bạn
 	}
-  
+
 	// Mã JavaScript ở đây chỉ chạy trong trình duyệt
-	var tempDiv = document.createElement('div');
-	tempDiv.innerHTML = htmlContent;
-  
-	var h2Elements = tempDiv.querySelectorAll('h2');
-	var h2Contents: any = [];
-  
+	var tempDiv = document.createElement('div')
+	tempDiv.innerHTML = htmlContent
+
+	var h2Elements = tempDiv.querySelectorAll('h2')
+	var h2Contents: any = []
+
 	h2Elements.forEach(function (element) {
-	  h2Contents.push(element.innerText);
-	});
-  
-	return h2Contents;
-  }
-  export function extractH3Content(htmlContent: any) {
+		h2Contents.push(element.innerText)
+	})
+
+	return h2Contents
+}
+export function extractH3Content(htmlContent: any) {
 	// Kiểm tra xem mã đang chạy trong trình duyệt
 	if (typeof document === 'undefined') {
-	  return []; // Hoặc xử lý lỗi theo cách của bạn
+		return [] // Hoặc xử lý lỗi theo cách của bạn
 	}
-  
+
 	// Mã JavaScript ở đây chỉ chạy trong trình duyệt
-	var tempDiv = document.createElement('div');
-	tempDiv.innerHTML = htmlContent;
-  
-	var h2Elements = tempDiv.querySelectorAll('h3');
-	var h2Contents: any = [];
-  
+	var tempDiv = document.createElement('div')
+	tempDiv.innerHTML = htmlContent
+
+	var h2Elements = tempDiv.querySelectorAll('h3')
+	var h2Contents: any = []
+
 	h2Elements.forEach(function (element) {
-	  h2Contents.push(element.innerText);
-	});
-  
-	return h2Contents;
-  }
+		h2Contents.push(element.innerText)
+	})
+
+	return h2Contents
+}
