@@ -14,7 +14,7 @@ export default function Content_header() {
 			{!isShow ? (
 				<div>
 					<label className={styles.title}>TRẮC NGHIỆM TÍNH CÁCH MBTI</label>
-					<div className={styles.content__intro}>
+					<div className={styles.content__intro_mbti}>
 						<p>
 							<b>Trắc nghiệm tính cách MBTI (Myers-Briggs Type Indicator)</b>
 							là một phương pháp sử dụng hàng loạt các câu hỏi trắc nghiệm để phân tích tính cách

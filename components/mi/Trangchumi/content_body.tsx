@@ -86,38 +86,37 @@ export default function content_body() {
 							/>
 							<div className={styles.noidung__children}>
 								<p>
-									MI là một trắc nghiệm tâm lý nên để thực hiện nó một cách chính xác nhất bạn nên
-									hiểu rõ:{' '}
+									Về mặt bản chất, bài trắc nghiệm đa trí thông minh MI là một bài đánh giá về tâm
+									lý, thường được dùng để hướng nghiệp hay xác định điểm mạnh, điểm yếu của bản
+									thân. Vì vậy, các bạn cần đặc biệt chú ý tới một số điều cơ bản sau đây để có kết
+									quả bài trắc nghiệm chính xác nhất:
 								</p>
 								<br />
 
 								<ul>
-									- Kết quả của một trắc nghiệm tâm lý có thể phụ thuộc vào tâm trạng hay tình trạng
-									sức khỏe của bạn. Tốt nhất hãy thực hiện nó trong một trạng thái tâm lý và thể
-									chất bình ổn nhất. Nếu bạn đang quá vui, buồn, phấn khích, bực bội hay đang trong
-									quá trình thay đổi nhận thức thì sẽ không đảm bảo được độ chính xác.
+									- Trước khi làm bài kiểm tra, bạn cần đảm bảo tâm trạng và tình trạng sức khỏe của
+									bản thân đang ở trong trạng thái ổn định nhất. Bạn tuyệt đối không bài kiểm tra
+									trong lúc bản thân đang có sự chuyển đổi cảm xúc như nóng giận, buồn bực, phấn
+									khích hay bực bội. Nhất là khi, bạn đang trong thời gian thay đổi quan điểm,
+									chuyển đổi nhận thức.
 								</ul>
 
 								<ul>
-									- Trung thực khi trả lời câu hỏi, phân biệt giữa lý tưởng và thực tế. Kết quả của
-									trắc nghiệm hoàn toàn là câu chuyện cá nhân của bạn, đừng để yếu tố bên ngoài tác
-									động đến câu trả lời.
+									- Trong lúc làm bài kiểm tra, bạn chỉ nên xét các tình huống thuộc phạm vi cá
+									nhân, hạn chế tối đa các yếu tố bên ngoài tác động khi làm bài. Mọi câu hỏi đều có
+									sự cân nhắc và trung thực, cần có sự phân biệt rõ ràng giữa thực tế, những việc đã
+									xảy ra với lý tưởng, suy nghĩ của bản thân.
 								</ul>
 
 								<ul>
-									- Chúng ta trưởng thành và thay đổi từng ngày, kết quả trắc nghiệm tất nhiên có
-									thể từ đó mà thay đổi tùy theo nhận thức và thế giới quan của mỗi người. Tốt nhất
-									hãy làm bài kiểm tra nhiều lần và điều độ để có cái nhìn tổng quát và chính xác
-									nhất.{' '}
+									- Bởi đây là một bài kiểm tra về mặt tâm lý nên kết quả sẽ có sự tương đối, thường
+									được dùng để tham khảo. Nhất là khi, con người luôn có sự trưởng thành và học hỏi
+									mỗi ngày. Điều này đã tác động phần nào khiến kết quả bài trắc nghiệm thay đổi dựa
+									theo quan điểm và cách suy nghĩ. Lời khuyên cho bạn là nên làm bài kiểm tra mỗi
+									ngày một ngày và làm lại vào những ngày tiếp theo để từ đó có cái nhìn tổng quát
+									nhất và có được điểm chung giữa các kết quả đó.
 								</ul>
 								<br />
-								<p>
-									Kết quả của bài trắc nghiệm MI sau đây cung cấp thông tin để bạn có lựa chọn nghề
-									nghiệp thích hợp dựa trên các loại hình trí thông minh. Mọi dữ liệu đưa ra đều
-									mang tính chất tham khảo, quyết định thuộc về bạn. Timviec365.vn sẽ luôn đồng hành
-									cùng bạn trong mọi lựa chọn nghề nghiệp. Với một hành trang vững vàng, bạn hãy tin
-									tưởng rằng mọi kế hoạch đều sẽ thành công!.
-								</p>
 							</div>
 						</div>
 					</div>

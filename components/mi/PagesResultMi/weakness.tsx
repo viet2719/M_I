@@ -14,12 +14,13 @@ export default function strength() {
 					/>
 					Thấu hiểu Thiên nhiên (natural - NA)
 				</ul>
-				<p>
+				<p style={{ fontSize: 17, fontWeight: 400 }}>
 					Là người thường không chú ý tới thiên nhiên, bạn ít khi bộc lộ khả năng nhận ra hay phân
 					loại các loài cây, động vật, và các sự vật hiện tượng trong tự nhiên. Ít khi có niềm ham
 					thích khám phá và tìm tòi trong thiên nhiên, bạn có thể sẽ không chọn lên rừng xuống biển
 					trong các kì nghỉ của mình, hay bất cứ nơi nào giúp bạn được tiếp xúc với thiên nhiên càng
 					nhiều càng tốt, mà có thể ngồi nhà chơi điện tử hay xem phim thì thích hơn.
+					<br />
 					<br />
 					Bên cạnh đó, bạn cũng thường không có hứng thú với các bộ phận của cơ thể người hay động
 					vật. Bạn có thể không phải là người giỏi môn sinh học trong thời niên thiếu và cũng ít có
@@ -39,7 +40,7 @@ export default function strength() {
 					/>
 					Cảm thụ Âm nhạc (musical - MU)
 				</ul>
-				<p>
+				<p style={{ fontSize: 17, fontWeight: 400 }}>
 					Khi không có khả năng cảm thụ âm nhạc, bạn sẽ thấy khó khăn trong việc phân biệt sắc thái
 					và thứ tự của các tông, cụ thể là độ cao, cường độ của âm thanh hay nốt nhạc đó. Bạn rất
 					ít bị nhạy cảm với âm thanh có tông cao và đồng thời không có khả năng đồng điệu với âm
@@ -48,6 +49,7 @@ export default function strength() {
 					thường bạn cũng sẽ không thấy hứng thú. Bạn cũng ít có khả năng cảm thụ được nhiều dòng
 					nhạc khác nhau, hay đồng cảm và ghi nhớ giai điệu của chúng, do đó bạn thường không có
 					nhiều các bài hát đa dạng để cùng đồng điệu khi bạn có những cảm xúc khác nhau.
+					<br />
 					<br />
 					Bạn ít có xu hướng nghe hay để ý tới âm thanh. Bạn không tin vào âm thanh mà mình cảm nhận
 					được. Khi ở một môi trường hay vùng đất mới, bạn ít khi để ý và ghi nhớ những âm thanh đặc
@@ -69,12 +71,13 @@ export default function strength() {
 					/>
 					Xử lý Ngôn ngữ (linguistic - LI)
 				</ul>
-				<p>
+				<p style={{ fontSize: 17, fontWeight: 400 }}>
 					Bạn thuộc về nhóm những người có khả năng hiểu nhiều khía cạnh của bản thân. Bạn có thể
 					nắm bắt được nhu cầu của bản thân, thực sự biết mình muốn gì cũng như không muốn gì, điều
 					gì là phù hợp với mình hoặc không, cũng như nhận thức được điểm mạnh, điểm yếu, tính cách
 					của chính mình và sử dụng các yếu tố đó để đưa ra các quyết định phù hợp và có lợi cho bản
 					thân.
+					<br />
 					<br />
 					Trong một nhóm, bạn có thể là người lặng lẽ hoặc sôi nổi, nhưng có lẽ không khó để nhận ra
 					khả năng tự chủ về mặt cảm xúc và sự kiên định của bạn. Bạn là người không dễ thể hiện sự
@@ -83,6 +86,7 @@ export default function strength() {
 					cách tự tạo động lực để bước tiếp khi người khác chùn bước, bởi bạn biết mục tiêu của mình
 					là gì, và một khi đã chắc chắn là nó phù hợp với mình, bạn không phải là người dễ dàng từ
 					bỏ.
+					<br />
 					<br />
 					Với bạn bè hay người thân, bạn là một người giỏi lắng nghe, và từ những câu chuyện của
 					người khác, bạn cũng có thể tự rút ra những đúc kết riêng cho mình.

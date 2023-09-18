@@ -6,7 +6,8 @@ html,
 body {
 	font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Roboto-Regular, Ubuntu,
 		Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-}
+		scroll-behavior: smooth;
+	}
 
 body {
 	font-family: Roboto-Regular, sans-serif;
@@ -52,6 +53,62 @@ a {
 	font-family: 'Roboto-Medium';
 	src: url('/font/Roboto-Medium.ttf');
 }
+@media(max-width:475px)
+{
+	.border_ra 
+	.ant-checkbox-group, 
+	.ant-radio-group{
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+	}
+}
+	li	{
+		list-style: none;
+}
+.ant-modal .ant-modal-content{
+	.ant-modal-title{
+		text-align: center;
+		font-size: 26px;
+		font-weight: 600;
+		color:#474747;
+	}
+	.ant-modal-body {
+		text-align: center;
+		display: flex;
+		justify-content: space-around;
+	}
+}
+.mi .ant-divider-horizontal{
+	margin: 10px 0;
+	background: #474747;
+}
+
+// select
+.border_ra .ant-radio-group {
+	width: 100%;
+	display: flex;
+	.ant-radio-wrapper:first-child{
+		width: 50%;
+
+	}
+	.ant-radio-wrapper:last-child{
+		flex: 1;
+	}
+}
+.border_ra .ant-checkbox-group {
+	width: 100%;
+	display: flex;
+	.ant-checkbox-wrapper:first-child{
+		width: 50%;
+	}
+	.ant-checkbox-wrapper:last-child{
+		flex: 1;
+	}
+	.ant-checkbox .ant-checkbox-inner  {
+		border-radius: 50%;
+	}
+}
 :where(.css-dev-only-do-not-override-byeoj0).ant-carousel .slick-dots li button {
 	position: relative;
 	display: block;
@@ -67,6 +124,9 @@ a {
 	cursor: pointer;
 	opacity: 0.3;
 	transition: all 0.3s;
+}
+li{
+	list-style: none;
 }
 :where(.css-dev-only-do-not-override-byeoj0).ant-carousel .slick-dots-bottom {
 	display: flex;
@@ -90,5 +150,110 @@ a {
 	}
 	.fix_iconanhsao{
 		display: block;
+	}
+}
+.header {
+	.ant-image .ant-image-img{
+		margin: 0;
+	}
+}
+@media (min-width:555px) {
+	.radachart {
+		width: 550px;
+		display: flex;
+		height: auto;
+		justify-content: center;
+		text-align: center;
+		margin: 0 auto;
+		canvas{
+			width: 100%;
+			
+		}
+		margin-bottom: 20px;
+	}
+	
+}
+@media (max-width:554.9px) {
+	.radachart {
+		width: 320px;
+		display: flex;
+		height: auto;
+		justify-content: center;
+		text-align: center;
+		margin: 0 auto;
+		canvas{
+			width: 100%;
+			
+		}
+		margin-bottom: 20px;
+	}
+	
+}
+.keotim{
+	display: flex;
+    position: relative;
+	top: -55px;
+    left: 56px;
+}
+.keoxanhla{
+	display: flex;
+    position: relative;
+	top: 60px;
+    left: 14px;
+}
+.keodoxanh{
+	display: flex;
+    position: relative;
+	top: 0px;
+    left: -13px;
+}
+// .hidden{
+// 	display: none;
+// }
+.btnllxemmi {
+    z-index: 1000;
+    width: 100%;
+    max-width: 520px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 12px 0;
+    text-align: center;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+
+    .btnll {
+        background-color: #88D88A;
+        padding: 5px 10px;
+        border: none;
+		display: flex;
+		gap: 5px;
+		align-items: center;
+        font-size: 17px;
+		cursor: pointer;
+    }
+
+    .btnface {
+        background-color: #4c5bd4;
+        padding: 5px 10px;
+		display: flex;
+		align-items: center;
+		gap: 5px;
+        border: none;
+        font-size: 17px;
+        color: #f2f2f2;
+		cursor: pointer;
+
+    }
+	.btnface:hover{
+		opacity: 0.8;
+		color: white;
+	}
+	.btnll:hover{
+		opacity: 0.8;
 	}
 }

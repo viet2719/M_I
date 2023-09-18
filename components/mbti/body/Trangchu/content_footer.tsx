@@ -11,7 +11,6 @@ interface PersonalityData {
 	overview: string
 }
 export default function content_footer() {
-	// process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'
 	const data: PersonalityData[] = [
 		{
 			id: '1',

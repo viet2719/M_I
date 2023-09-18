@@ -1,0 +1,15 @@
+<svg width="47" height="32" viewBox="0 0 47 32" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<path d="M1.01953 30.7232L35.8963 6.52783" stroke="#150D36" stroke-width="2" stroke-miterlimit="10"/>
+<rect x="31.9961" y="3.50977" width="14.2983" height="14.2778" fill="url(#pattern0)"/>
+<path d="M29.3945 6.5305C29.3945 10.1109 32.3091 13.0214 35.8947 13.0214C39.4913 13.0214 42.395 10.1109 42.395 6.5305C42.395 2.95006 39.4803 0.0395818 35.8947 0.0395818C32.3091 0.0285988 29.3945 2.93908 29.3945 6.5305Z" fill="url(#paint0_linear_3659_271353)"/>
+<defs>
+<pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
+<use xlink:href="#image0_3659_271353" transform="scale(0.0769231)"/>
+</pattern>
+<linearGradient id="paint0_linear_3659_271353" x1="29.3928" y1="6.52632" x2="42.3973" y2="6.52632" gradientUnits="userSpaceOnUse">
+<stop offset="0.00372263" stop-color="#FF062C"/>
+<stop offset="0.9926" stop-color="#C40077"/>
+</linearGradient>
+<image id="image0_3659_271353" width="13" height="13" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAANCAYAAABy6+R8AAAACXBIWXMAAAsSAAALEgHS3X78AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAEdJREFUeNpiZMACJk+e3ABj5+bmNqDLM+JSjA3ADGAkRjG6RiYGMgAjKbbAAFk2DXZN2CKP6jaBLGEkNjVgpAhiNCJ7AyDAAKAfGdzwCBwnAAAAAElFTkSuQmCC"/>
+</defs>
+</svg>

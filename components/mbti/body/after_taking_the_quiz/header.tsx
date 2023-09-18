@@ -147,10 +147,12 @@ export default function Header() {
 												trắc nghiệm
 											</button>
 										</Link>
-										<button className={styles.btn_detail}>
-											<Image width={20} height={20} alt="" src="/images/mbti/share.svg" />
-											Xem giải thích chi tiết{' '}
-										</button>
+										<Link href={'mbti/result'}>
+											<button className={styles.btn_detail}>
+												<Image width={20} height={20} alt="" src="/images/mbti/share.svg" />
+												Xem giải thích chi tiết{' '}
+											</button>
+										</Link>
 									</div>
 								</div>
 							</div>
